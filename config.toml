@@ -1,0 +1,62 @@
+title = "dmerej blog"
+author = "Dimitri Merejkowsky"
+# Do not hit production while developping
+# baseurl = "http://dmerej.info/blog/"
+languageCode = "en-us"
+canonifyurls = true
+
+theme = "blackburn"
+
+pygmentsStyle = "colorful"
+pygmentsCodeFences = true
+
+buildDrafts = true
+
+[menu]
+
+[[menu.main]]
+name = "Home"
+pre = "<i class='fa fa-home fa-fw'></i>"
+weight = 0
+identifier = "home"
+url = "/"
+
+[[menu.main]]
+name = "About"
+pre = "<i class='fa fa-user fa-fw'></i>"
+weight = 1
+identifier = "About"
+url = "/pages/about/index.html"
+
+[[menu.main]]
+name = "Links"
+pre = "<i class='fa fa-link fa-fw'></i>"
+weight = 2
+identifier = "links"
+url = "/pages/links/index.html"
+
+[[menu.main]]
+name = "Feedback"
+pre = "<i class='fa fa-commenting fa-fw'></i>"
+weight = 3
+identifier = "feedback"
+url = "/pages/feedback/index.html"
+
+[[menu.main]]
+name = "Legal"
+pre = "<i class='fa fa-balance-scale fa-fw'></i>"
+weight = 4
+identifier = "legal"
+url = "/pages/legal/index.html"
+
+[[menu.main]]
+name = "Posts"
+pre = "<i class='fa fa-list fa-fw'></i>"
+weight = 5
+identifier = "post"
+url = "/post/"
+
+
+[social]
+twitter = "d_merej"
+github = "dmerejkowsky"
