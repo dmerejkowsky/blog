@@ -1,7 +1,7 @@
 title = "dmerej blog"
 author = "Dimitri Merejkowsky"
 # Do not hit production while developping
-# baseurl = "http://dmerej.info/blog/"
+baseurl = "http://dmerej.info/blog/"
 languageCode = "en-us"
 canonifyurls = true
 
@@ -29,32 +29,34 @@ identifier = "About"
 url = "/pages/about/index.html"
 
 [[menu.main]]
+name = "Posts"
+pre = "<i class='fa fa-list fa-fw'></i>"
+weight = 2
+identifier = "post"
+url = "/post/"
+
+[[menu.main]]
 name = "Links"
 pre = "<i class='fa fa-link fa-fw'></i>"
-weight = 2
+weight = 3
 identifier = "links"
 url = "/pages/links/index.html"
+
 
 [[menu.main]]
 name = "Feedback"
 pre = "<i class='fa fa-commenting fa-fw'></i>"
-weight = 3
+weight = 4
 identifier = "feedback"
 url = "/pages/feedback/index.html"
 
-[[menu.main]]
-name = "Legal"
-pre = "<i class='fa fa-balance-scale fa-fw'></i>"
-weight = 4
-identifier = "legal"
-url = "/pages/legal/index.html"
 
 [[menu.main]]
-name = "Posts"
-pre = "<i class='fa fa-list fa-fw'></i>"
+name = "Subscribe"
+pre = "<i class='fa fa-rss fa-fw'></i>"
 weight = 5
-identifier = "post"
-url = "/post/"
+identifier = "rss"
+url = "/index.xml"
 
 
 [social]
