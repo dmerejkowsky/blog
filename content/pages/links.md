@@ -216,6 +216,8 @@ https://dmerej.info/links.atom)!
 * [Bootstrap](http://getbootstrap.com)
 * [Buku: Powerful command-line bookmark manager](https://github.com/jarun/Buku)
 * [colout: Color up commands output](https://nojhan.github.io/colout/)
+* [cpp-dependencies: Creates #include dependency information](
+  https://github.com/tomtom-international/cpp-dependencies)
 * [DevAssistant](http://devassistant.org/)
 * [Disk2vhd: convert Windows installation to virtual image](
   https://technet.microsoft.com/en-us/sysinternals/ee656415.aspx)
