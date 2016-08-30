@@ -235,6 +235,8 @@ https://dmerej.info/links.atom)!
 * [NixOS](http://nixos.org)
 * [nsntrace: Network trace of a single process](
   https://github.com/jonasdn/nsntrace)
+* [ntfy: brings notification to your shell](
+  https://pypi.python.org/pypi/ntfy)
 * [pass: the standard unix password manager](https://www.passwordstore.org/)
 * [Passbolt: Password management for a team](https://www.passbolt.com)
 * [Polymer: Javascript HTML framework](https://www.polymer-project.org/)
