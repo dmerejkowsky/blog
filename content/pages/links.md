@@ -57,6 +57,8 @@ https://dmerej.info/links.atom)!
 * [Sakaki's EFI Install Guide](https://wiki.gentoo.org/wiki/Sakaki%27s_EFI_Install_Guide)
 * [Open Your Source, More](
   https://rhettinger.wordpress.com/2011/01/28/open-your-source-more)
+* [So a product manager asks you to fix a bug…](
+  https://medium.freecodecamp.com/youre-asked-to-make-a-fix-e156b802ad92A)
 * [Short, Self Contained, Correct (Compilable), Example](
     http://sscce.org/)
 * [Stop Working So Hard](
