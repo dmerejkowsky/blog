@@ -63,6 +63,8 @@ https://dmerej.info/links.atom)!
     http://sscce.org/)
 * [Stop Working So Hard](
   https://glyph.twistedmatrix.com/2016/01/stop-working-so-hard.html)
+* [Testing, for people who hate testing](
+  https://eev.ee/blog/2016/08/22/testing-for-people-who-hate-testing/)
 * [The Quiet Crisis unfolding in Software Development](
   https://medium.com/@billjordan1/the-quiet-crisis-unfolding-in-software-development-cffbdafbf450#.y0v0uk1oo)
 * [The Six Dumbest Ideas in Computer Security](
