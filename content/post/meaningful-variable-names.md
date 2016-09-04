@@ -48,11 +48,11 @@ The first version of the algorithm was quite simple:
 
 * Generate a new version of the blog locally. I use [hugo](http://gohugo.io/)
   for this, meaning the `links.html` page is generated from a
-  `links.md` markdown file.
+  `links.md` markdown file
 * Fetch the remote `links.html` page from `dmerej.info`
-* Compare all the links to find new ones
+* Compare the two html files to find new links
 * Generate a new tweet for each new link
-* `rsync` everything to `dmerej.info`
+* `rsync` the newly generated `links.html` to the remote server
 
 That's where the `compare_links` function is used:
 
