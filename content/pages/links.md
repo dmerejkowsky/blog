@@ -263,7 +263,7 @@ https://dmerej.info/links.atom)!
 * [zsh-pure-prompt: pretty, minimal and fast ZSH prompt](
   https://github.com/sindresorhus/pure)
 
-## Build Systems
+## Building stuff
 
 * [Bazel](http://bazel.io)
 * [Buck](https://buckbuild.com)
@@ -280,6 +280,8 @@ https://dmerej.info/links.atom)!
 * [redo](https://github.com/apenwarr/redo)
 * [SCons](http://scons.org)
 * [Tup](http://gittup.org/tup/)
+* [Installing Visual Studio command line tools only](
+  http://landinghub.visualstudio.com/visual-cpp-build-tools
 * [waf](http://waf.io)
 
 ## Git
