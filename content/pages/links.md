@@ -249,6 +249,8 @@ https://dmerej.info/links.atom)!
 * [replacer: replace text in files](https://pypi.python.org/pypi/replacer)
 * [rkt: App container runtime for Linux](https://github.com/coreos/rkt)
 * [rr: lightweight recording & deterministic debugging](http://rr-project.org/)
+* [Serverless Decentralized Editing of Encrypted Stuff](
+  https://github.com/schollz/sdees)
 * [setconf: change settings in configuration files](
   http://setconf.roboticoverlords.org/)
 * [Smartphone test farm](http://openstf.io/)
