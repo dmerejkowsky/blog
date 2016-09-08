@@ -10,7 +10,7 @@ theme = "blackburn"
 pygmentsStyle = "colorful"
 pygmentsCodeFences = true
 
-buildDrafts = true
+buildDrafts = false
 
 [menu]
 
