@@ -41,6 +41,7 @@ https://dmerej.info/links.atom)!
   http://www.codewithoutrules.com/2016/02/27/testing-terminology/)
 * [Cools URLs don't change](https://www.w3.org/Provider/Style/URI.html)
 * [Creating Your Code Review Checklist](http://www.daedtech.com/creating-code-review-checklist)
+* [Dark Scrum](http://ronjeffries.com/articles/016-09ff/defense)
 * [Dealing with Legacy Code for Developers: Managing your Manager](
   http://www.daedtech.com/dealing-legacy-code-developers-managing-manager)
 * [Graphite, Grafana and statsd gotchas](
