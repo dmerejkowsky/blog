@@ -287,7 +287,7 @@ https://dmerej.info/links.atom)!
 * [SCons](http://scons.org)
 * [Tup](http://gittup.org/tup/)
 * [Installing Visual Studio command line tools only](
-  http://landinghub.visualstudio.com/visual-cpp-build-tools
+  http://landinghub.visualstudio.com/visual-cpp-build-tools)
 * [waf](http://waf.io)
 
 ## Git
