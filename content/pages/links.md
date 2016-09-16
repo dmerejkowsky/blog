@@ -237,6 +237,7 @@ https://dmerej.info/links.atom)!
 * [Knox: Secret management service](https://github.com/pinterest/knox)
 * [Lektor: Static File Content Management System](https://www.getlektor.com)
 * [MachoView: Visual Mach-O file browser](https://sourceforge.net/projects/machoview)
+* [Mail-in-a-box](https://mailinabox.email/)
 * [NixOS](http://nixos.org)
 * [nsntrace: Network trace of a single process](
   https://github.com/jonasdn/nsntrace)
