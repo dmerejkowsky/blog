@@ -2,8 +2,9 @@
 date = "2016-09-17T15:49:38+02:00"
 draft = false
 tags = []
-title = "A npm Story"
+title = "An npm Story"
 topics = []
+aliases = ["a-npm-story"]
 
 +++
 
