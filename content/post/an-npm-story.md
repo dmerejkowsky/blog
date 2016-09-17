@@ -4,7 +4,7 @@ draft = false
 tags = []
 title = "An npm Story"
 topics = []
-aliases = ["a-npm-story"]
+aliases = ["post/a-npm-story"]
 
 +++
 
