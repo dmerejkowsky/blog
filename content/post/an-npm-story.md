@@ -1,12 +1,15 @@
-+++
-date = "2016-09-17T15:49:38+02:00"
-draft = false
-tags = []
-title = "An npm Story"
-topics = []
-aliases = ["post/a-npm-story"]
+---
+date: "2016-09-17T15:49:38+02:00"
+draft: false
+summary: |
+  What happens when you use `npm` in a cross-platform environment?
 
-+++
+  Let's find out in this short story, based on actual events...
+
+title: "An npm Story"
+topics:
+aliases: ["post/a-npm-story"]
+---
 
 Let's say you have a cross-platform `C++` application (Linux, Mac, Windows).
 
