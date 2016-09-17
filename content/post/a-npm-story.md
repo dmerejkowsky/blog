@@ -32,7 +32,7 @@ Obviously, this means you end up with quite a few `javascript` dependencies,
 so you write a `package.json` and start using [npm](https://www.npmjs.com)
 to fetch them.
 
-You also read about [why we should stoup using grunt](
+You also read about [why we should stop using grunt](
 https://www.keithcirkel.co.uk/why-we-should-stop-using-grunt/), so
 you patch the `package.json` to have something like
 
