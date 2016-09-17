@@ -7,7 +7,6 @@ summary: |
   Let's find out in this short story, based on actual events...
 
 title: "An npm Story"
-topics:
 aliases: ["post/a-npm-story"]
 ---
 
