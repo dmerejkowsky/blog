@@ -322,7 +322,7 @@ Note: there's also other projects like [clik](http://click.pocoo.org) that do
 things differently, but:
 
 * I never used it.
-* I've been told [not to used it](http://xion.io/post/programming/python-dont-use-click.html)
+* I've been told [not to use it](http://xion.io/post/programming/python-dont-use-click.html)
 * This article is already quite long ...
 
 ### Where docopt is better
