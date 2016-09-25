@@ -28,6 +28,9 @@ implement command line parsing?
 
 <!--more-->
 
+_Update_: seems like `docopt` is no longer maintained (no release since 2014),
+and that `click` "won the war". I don't know enough about `click`, but I may
+have a look at it later and post the results on this blog on day ...
 
 ## An history of command line parsing in Python
 
