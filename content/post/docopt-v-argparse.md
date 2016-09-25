@@ -257,9 +257,9 @@ is now part of Python standard library since Python 2.7.
 The official Python documentation for `getopt` and `optparse` both suggest to
 use `argparse` instead.
 
-### docpot
+### docopt
 
-`docpot` came with a quite interesting new idea. What if, instead of generating
+`docopt` came with a quite interesting new idea. What if, instead of generating
 the help message automatically, we *parsed* directly the usage string?
 
 After all, the string usage does have a pretty normalized format.
