@@ -718,7 +718,7 @@ As always, feedback is welcomed.
 
 See [the dedicated page]({{< ref "pages/feedback.md" >}}) on how to reach me.
 
-That you for reading thus far, see you next time!
+Thank you for reading thus far, see you next time!
 
 
 [^1]: Stolen from the [Python UK 2012 conference on docopt](https://www.youtube.com/watch?v=pXhcPJK5cMc)
