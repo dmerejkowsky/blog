@@ -487,6 +487,27 @@ around this topic.
 
 But this is a bit philosophical, let's get to more concrete stuff.
 
+
+#### Error messages
+
+
+`docopt` will *always* print the usage if it can't parse the command line, with
+no explanation.
+
+`argparse` will generate much more information:
+
+```console
+$ naval_fate move
+invalid choice: 'move' (choose from 'ship', 'mine')
+$ naval_fate ship new
+the following arguments are required: names
+$ naval_fate ship move bounty 5 fortytwo
+argument y: invalid float value: 'fortytwo'
+```
+
+There's a [Pull Request](https://github.com/docopt/docopt/pull/63) to fix this,
+though.
+
 #### Options that only make sense for one operating system
 
 Yes, this is a contrived example:
@@ -690,6 +711,9 @@ I talk more about why `argparse` may be a better choice for this particular
 example.
 
 Go read it, it's complementary to this article.
+
+There's a bit of duplication, and I apologize for that, but it was hard to
+avoid.
 
 
 ## Conclusion
