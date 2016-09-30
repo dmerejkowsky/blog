@@ -150,7 +150,7 @@ parser.add_option("-o", "--output", help="path to the output file")
 opts, args = parser.parse_args()
 
 if len(args) != 1:
-    sys.exit("Missing one required argument)
+    sys.exit("Missing one required argument")
 
 input_file = args[0]
 
