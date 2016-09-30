@@ -153,7 +153,7 @@ https://dmerej.info/links.atom)!
 * [Charles Leifer](http://charlesleifer.com/)
 * [Clever Cloud](https://www.clever-cloud.com/blog)
 * [Coding Horror](http://blog.codinghorror.com)
-* [Coding Is Like Cooking](http://coding-is-like-cooking.info/)
+* [Code Without Rules](https://codewithoutrules.com/2016/07/31/verified-fakes)
 * [Design is Refactoring](http://designisrefactoring.com/)
 * [Dotclear](https://fr.dotclear.org/blog/)
 * [Drew DeVault's Blog](https://drewdevault.com/)
