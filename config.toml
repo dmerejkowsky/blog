@@ -4,6 +4,7 @@ author = "Dimitri Merejkowsky"
 # baseurl = "http://dmerej.info/blog/"
 languageCode = "en-us"
 canonifyurls = true
+cacheDir = "cache"
 
 theme = "blackburn"
 
