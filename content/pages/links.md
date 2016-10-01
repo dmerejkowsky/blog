@@ -54,6 +54,7 @@ https://dmerej.info/links.atom)!
   http://jvns.ca/blog/2016/06/12/a-weird-system-call-process-vm-readv)
 * [Magic Ink: Information Software and the Graphical Interface](
   http://worrydream.com/MagicInk/)
+* [Keep a CHANGELOG](http://keepachangelog.com/en)
 * [Maintairers Matter](http://kmkeen.com/maintainers-matter)
 * [Sakaki's EFI Install Guide](https://wiki.gentoo.org/wiki/Sakaki%27s_EFI_Install_Guide)
 * [Open Your Source, More](
