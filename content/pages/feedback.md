@@ -24,10 +24,10 @@ q.zrerw@tznvy.pbz
 
 I also have a twitter account at [@d_merej](https://twitter.com/d_merej)
 
-<div class="note">
+{{< note >}}
 You do not need to follow me to send me a private
 message.
-</div>
+{{< /note >}}
 
 ## IRC
 

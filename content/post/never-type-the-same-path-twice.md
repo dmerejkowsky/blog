@@ -35,10 +35,10 @@ You don't want to type `~/src/dmerej/blog/content/post/` again.
 
 A solution is to use `vim --remote hello.md` from the terminal on the left.
 
-<div class="note">
+{{< note >}}
 This only works if the first `vim` instance was started using the `--servername`
 option
-</div>
+{{< /note >}}
 
 ### Neovim
 
