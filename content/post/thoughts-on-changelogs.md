@@ -7,7 +7,7 @@ title: Thoughts on Changelogs
 Some time ago at work someone suggested we start using a template for our `git`
 commit messages, based on what the [Angular project](https://angularjs.org/) does.
 
-The rules are here documented in the [CONTIRBUTING.md page](
+The rules are documented in the [CONTIRBUTING.md page](
 https://github.com/angular/angular.js/blob/master/CONTRIBUTING.md#commit-message-format)
 on github.
 
