@@ -302,6 +302,12 @@ that's a completely different story!
 
 # Links
 
+* [Wasting Time TDDing The Wrong Things](
+  http://www.rubypigeon.com/posts/wasting-time-tdd-the-wrong-things/)
+  Where you learn how to avoid "bottom-up" design, and use "top-down" design
+  instead. I realized TDD worked really well for me when I was doing exactly
+  that :)
+
 * An other explanation about how TDD works and why by someone much smarter and
   experienced than me, Robert C. Martin, aka "Uncle Bob":
   [The True Rules of TDD](http://butunclebob.com/ArticleS.UncleBob.TheThreeRulesOfTdd)
