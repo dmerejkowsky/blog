@@ -82,6 +82,7 @@ https://dmerej.info/links.atom)!
   http://journal.stuffwithstuff.com/2015/02/01/what-color-is-your-function/)
 * [Where automated testing should (and shouldn't) fit in your strategy](
   http://lifeimitatescode.com/automated-testing-strategy)
+* [XY problem](http://xyproblem.info)
 
 ## Alex's soapbox
 
