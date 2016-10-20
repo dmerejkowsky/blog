@@ -341,6 +341,22 @@ def get_pylint_args():
     yield "-j%i" % num_cpus
 ```
 
+## Shorter version
+
+You can also _not_ do all of the above and just fire up `pylint` like so:
+
+```
+$ pylint -E *.py
+```
+
+It will only show errors, (`-E` is short for `--errors-only`), and will
+have a good enough output.
+
+* Pros: you don't have to write any `pylintrc` file
+* Cons: you may hide serious bugs
+
+
+
 
 That's all for today, see you next time!
 
