@@ -11,6 +11,11 @@ topics = []
 I've been using [pylint](https://www.pylint.org) for quite some time now, so
 today I'd like to share a few tips with you.
 
+*Update: Itamar Turner-Trauring also wrote a nice article about pylint,
+you should read it too:*
+[Why Pylint is both useful and unusable, and how you can actually use it](
+https://codewithoutrules.com/2016/10/19/pylint/)
+
 <!--more-->
 
 ## What is pylint?
