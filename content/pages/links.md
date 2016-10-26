@@ -74,6 +74,7 @@ https://dmerej.info/links.atom)!
   https://medium.com/@billjordan1/the-quiet-crisis-unfolding-in-software-development-cffbdafbf450#.y0v0uk1oo)
 * [The Six Dumbest Ideas in Computer Security](
   http://www.ranum.com/security/computer_security/editorials/dumb)
+* [The tale of "aux.c"](http://heirloom.sourceforge.net/mailx_aux_c.html)
 * [Uncle Bob: Giving up on TDD](
   http://blog.cleancoder.com/uncle-bob/2016/03/19/GivingUpOnTDD.html)
 * [Web Design in 4 minutes](
