@@ -32,7 +32,7 @@ http://keepachangelog.com/en")
 
 Feel free to read the page, there's tons of helpful advice.
 
-Here's what the authors say about just using git log`messages:
+Here's what the authors say about just using git log messages:
 
 > _Why can’t people just use a git log diff?_
 
@@ -84,8 +84,8 @@ _inside_ a section, you may want to sort them in a different order, like so:
 ```
 
 That's an other good reason why you can't directly use git log messages for this.
-(I'm not a big fan of sections named "added", "remooved", "changed", "fixed", but your
-mileage may vary)
+(I'm not a big fan of sections named "added", "removed", "changed", "fixed", but
+your mileage may vary)
 
 ### When to update the Changelog
 
