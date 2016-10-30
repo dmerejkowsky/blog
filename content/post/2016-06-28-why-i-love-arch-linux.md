@@ -1,4 +1,5 @@
 +++
+slug = "why-i-love-arch-linux"
 date = "2016-06-28T21:13:29+02:00"
 description = ""
 draft = false

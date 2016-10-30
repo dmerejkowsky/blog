@@ -1,4 +1,5 @@
 +++
+slug = "jenkins-gitlab"
 date = "2016-06-14T19:38:03+02:00"
 description = ""
 draft = true

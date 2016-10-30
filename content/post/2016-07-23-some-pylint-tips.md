@@ -1,4 +1,5 @@
 +++
+slug = "some-pylint-tips"
 date = "2016-07-23T17:49:04+02:00"
 description = ""
 draft = false

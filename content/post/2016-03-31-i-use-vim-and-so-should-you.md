@@ -1,4 +1,5 @@
 +++
+slug = "i-use-vim-and-so-should-you"
 date = "2016-03-31T16:10:06+00:00"
 draft = false
 title = "I Use Vim, And So Should You"

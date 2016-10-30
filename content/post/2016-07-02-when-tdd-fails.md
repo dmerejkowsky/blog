@@ -1,4 +1,5 @@
 +++
+slug = "when-tdd-fails"
 date = "2016-07-02T16:14:52+02:00"
 description = ""
 draft = false
@@ -11,7 +12,7 @@ topics = []
 Some random thoughts about TDD ...
 
 If you already know about TDD, feel free to skip the introduction and go
-directly to the <a href="{{< relref "when-tdd-fails.md#when-tdd-fails-main" >}}">main section</a>
+directly to the <a href="{{< relref "2016-07-02-when-tdd-fails.md#when-tdd-fails-main" >}}">main section</a>
 
 <!--more-->
 

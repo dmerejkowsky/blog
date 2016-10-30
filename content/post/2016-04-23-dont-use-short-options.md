@@ -1,4 +1,5 @@
 +++
+slug = "dont-use-short-options"
 date = "2016-04-23T14:19:33+00:00"
 draft = false
 title = "Don't Use Short Options!"
