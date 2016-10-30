@@ -77,6 +77,7 @@ https://dmerej.info/links.atom)!
 * [The tale of "aux.c"](http://heirloom.sourceforge.net/mailx_aux_c.html)
 * [Uncle Bob: Giving up on TDD](
   http://blog.cleancoder.com/uncle-bob/2016/03/19/GivingUpOnTDD.html)
+* [UTF-8 Everywhere](http://utf8everywhere.org/)
 * [Web Design in 4 minutes](
   http://jgthms.com/web-design-in-4-minutes/)
 * [What Color is Your Function](
