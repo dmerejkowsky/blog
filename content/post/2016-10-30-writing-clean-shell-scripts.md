@@ -40,6 +40,9 @@ switching distributions, _or_ prove yourself that the code you wrote is indeed "
 I find it much easier to just stick a `#/bin/bash` shebang and call it a
 day.
 
+_Update: It seems bash will still do The Right Thing (tm) if it detects
+that argv[0] is /bin/sh_
+
 
 ## Enable nice options
 
@@ -63,7 +66,7 @@ to do the trick:
 
 ```bash
 #!/bin/bash
-set -o errfail
+set -o errexit
 
 cd path/to/foo
 command-that-may-fail || true
@@ -88,6 +91,9 @@ echo $my_optoin
 $ bash foo.sh
 foo.sh: line 4: my_optoin: unbound variable
 ```
+
+_Update: By the way, you should really use `printf '%s\n' "$my_option"`
+instead to avoid problems if for instance `my_option` is `-e`_
 
 
 ### `shopt -s failglob`
@@ -227,6 +233,7 @@ code that "feels" like shell script but is not:
 # In Bash:
 for project in */ ; do
   (
+    cd "${project}"
     git clean --force
     git reset --hard
     make
