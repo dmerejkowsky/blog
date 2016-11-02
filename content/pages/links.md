@@ -230,6 +230,8 @@ https://dmerej.info/links.atom)!
 * [colout: Color up commands output](https://nojhan.github.io/colout/)
 * [cpp-dependencies: Creates #include dependency information](
   https://github.com/tomtom-international/cpp-dependencies)
+* [Darling: macOS translation layer for Linux](
+  https://www.darlinghq.org/)
 * [DevAssistant](http://devassistant.org/)
 * [Disk2vhd: convert Windows installation to virtual image](
   https://technet.microsoft.com/en-us/sysinternals/ee656415.aspx)
