@@ -11,4 +11,8 @@ your comments are stored (hopefully safely) on my own server.
 Enjoy, and if things do not work, don't hesitate to
 [contact me]({{< ref "pages/feedback.md" >}}) :)
 
+Note: you can format your comments using
+[markdown](http://daringfireball.net/projects/markdown)
+syntax.
+
 <!--more-->
