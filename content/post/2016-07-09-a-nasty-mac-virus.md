@@ -203,7 +203,7 @@ $ dscl . -list /Users UniqueID
   or not: the names change, but the user numeric ID is hard-coded and is always
   401 ...
 
-* Using random names from `/usr/share/dict/words` to name things make them really
+* Using random names from `/usr/share/dict/words` to name things make it really
   hard to find clues using a search engine. (And this file is guaranteed to
   exist on any Mac version!)
 
