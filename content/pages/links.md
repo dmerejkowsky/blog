@@ -419,6 +419,8 @@ https://dmerej.info/links.atom)!
 
 # Humour
 
+* [A Brief, Incomplete and Mostly Wrong History of Programming Languages](
+  http://james-iry.blogspot.fr/2009/05/brief-incomplete-and-mostly-wrong.html)
 * [CommitStrip](http://www.commitstrip.com)
 * [Daily WTF](http://thedailywtf.com)
 * [Fizz Buzz in Tensorflow](http://joelgrus.com/2016/05/23/fizz-buzz-in-tensorflow)
