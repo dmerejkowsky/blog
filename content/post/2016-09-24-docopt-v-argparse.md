@@ -749,10 +749,6 @@ _Update_: seems like `docopt` is no longer maintained (no release since 2014),
 and that `click` "won the war". I don't know enough about `click`, but I may
 have a look at it later and post the results on this blog on day ...
 
-_Second update:_ My friend guyzmo wrote an [answer to this very post](
-http://i.got.nothing.to/code/on/docopt:_An_elegant_way_to_build_CLI/).
-Go check it out, it contains interesting thoughts on the subject
-
 [^1]: Stolen from the [Python UK 2012 conference on docopt](https://www.youtube.com/watch?v=pXhcPJK5cMc)
 
 [^2]: We're using [types.SimpleNamespace](https://docs.python.org/3/library/types.html#types.SimpleNamespace) which is available since Python 3.3
