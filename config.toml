@@ -13,6 +13,9 @@ pygmentsCodeFences = true
 
 buildDrafts = false
 
+[params]
+description="Dimitri Merejkowsky's blog"
+
 [menu]
 
 [[menu.main]]
