@@ -108,6 +108,7 @@ https://dmerej.info/links.atom)!
 ## Coding Horror
 
 * [The rule of three](https://blog.codinghorror.com/rule-of-three/)
+* [Code smells](https://blog.codinghorror.com/code-smells/)
 
 ## Eric S. Raymond
 
