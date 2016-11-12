@@ -1,7 +1,5 @@
 title = "dmerej blog"
 author = "Dimitri Merejkowsky"
-# Do not hit production while developping
-# baseurl = "http://dmerej.info/blog/"
 languageCode = "en-us"
 canonifyurls = true
 cacheDir = "cache"
