@@ -206,7 +206,7 @@ my_cmd *
 ```
 
 The best thing about `shellcheck` is that each error message leads you to a
-detail pages explaining the issue.
+detailed page explaining the issue.
 
 
 ## Be careful with coreutils
