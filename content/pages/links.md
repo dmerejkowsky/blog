@@ -85,6 +85,8 @@ https://dmerej.info/links.atom)!
 * [Where automated testing should (and shouldn't) fit in your strategy](
   http://lifeimitatescode.com/automated-testing-strategy)
 * [XY problem](http://xyproblem.info)
+* [You Are Not Paid to Write Code](
+  http://bravenewgeek.com/you-are-not-paid-to-write-code/)
 
 ## Alex's soapbox
 
