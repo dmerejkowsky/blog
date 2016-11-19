@@ -45,6 +45,8 @@ https://dmerej.info/links.atom)!
 * [Dark Scrum](http://ronjeffries.com/articles/016-09ff/defense)
 * [Dealing with Legacy Code for Developers: Managing your Manager](
   http://www.daedtech.com/dealing-legacy-code-developers-managing-manager)
+* [Developer Driven Developemnt](
+  https://dev.to/isaacandsuch/developer-driven-development)
 * [Graphite, Grafana and statsd gotchas](
   http://dieter.plaetinck.be/post/25-graphite-grafana-statsd-gotchas/)
 * [How Microsoft dragged its development practices into the 21st century](
