@@ -12,7 +12,7 @@ topics = []
 I'm going to compare two programming languages which is something
 really silly to do (or is it?)
 
-You should now I've only used Ruby a few times: I followed a `Rails` tutorial
+You should know I've only used Ruby a few times: I followed a `Rails` tutorial
 once, and  I also wrote a small web app with [Sinatra](http://www.sinatrarb.com) in about 1500 lines of code. (nice framework, by the way)
 
 On the other hand, I've been writing Python code for several years,
