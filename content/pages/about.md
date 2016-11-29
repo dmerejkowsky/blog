@@ -13,7 +13,13 @@ the same name :)
 I'm a French software engineer, and I like sharing knowledge and learn from
 others, hence this blog.
 
-See also the [feedback page]({{< ref "pages/feedback.md" >}})
+My twitter bio reads:
+
+> #ResponsibleCoder. Part-time Scrum Master. Buildfarm guru. #TDD fan.
+
+'nuff said ...
+
+If you want to get in touch, please see the [feedback page]({{< ref "pages/feedback.md" >}})
 
 # Mentions légales
 
