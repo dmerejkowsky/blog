@@ -7,7 +7,7 @@ title = "Links"
 This page contains a list of links I find interesting or that I want
 to keep easily available.
 
-It gets updated frequently, feel free to [subscribe](
+It gets updated somewhat frequently, feel free to [subscribe](
 https://dmerej.info/links.atom)!
 
 
