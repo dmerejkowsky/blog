@@ -293,6 +293,7 @@ https://dmerej.info/links.atom)!
 * [fips](https://github.com/floooh/fips)
 * [GYP](https://gyp.gsrc.io/)
 * [hunter](https://github.com/ruslo/hunter)
+* [llbuild](https://github.com/apple/swift-llbuild)
 * [Meson](http://mesonbuild.com)
 * [Ninja](https://ninja-build.org/)
 * [premake](https://premake.github.io/)
