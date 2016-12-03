@@ -21,7 +21,7 @@ http://www.slideshare.net/diffuzed/python-application-packaging-meilleursagents)
 
 Let's say you are building a [flask](http://flask.pocoo.org) application
 powered by [uwsgi](https://uwsgi-docs.readthedocs.io/en/latest/) and you
-want to deploy it to your servers.
+want to deploy it to your server.
 
 Here, I'm going to assume you are not using a service like
 [heroku](https://www.heroku.com/) or any kind of [Platform-as-a-Service](
