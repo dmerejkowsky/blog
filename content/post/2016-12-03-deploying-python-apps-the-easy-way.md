@@ -242,6 +242,20 @@ The deployment phase can be managed by a tool like
 that's an exercise left to the reader :)
 
 
+## An other solution
+
+I've also stumbled upon an other article on the same topic:
+[How We Deploy Python Code](
+https://nylas.com/blog/packaging-deploying-python), by
+[@nylas](https://twitter.com/nylas).
+
+You might prefer this one.
+
+Personally, I'm still using the "really easy" method for my pet
+projects, so, as always, try and experiment for yourself before trusting a
+random stranger on the Internet :)
+
+
 [^1]: For more about this, feel free to read [Release Management Done Right]([http://thedailywtf.com/articles/Release-Management-Done-Right), by Alex Papdimoulis
 
 [^2]: Using a tool like [ansible](https://www.ansible.com/) might help.
