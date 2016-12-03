@@ -62,6 +62,8 @@ https://dmerej.info/links.atom)!
 * [Sakaki's EFI Install Guide](https://wiki.gentoo.org/wiki/Sakaki%27s_EFI_Install_Guide)
 * [Open Your Source, More](
   https://rhettinger.wordpress.com/2011/01/28/open-your-source-more)
+* [Quit Social Media. Your Career May Depend on It](
+  http://mobile.nytimes.com/2016/11/20/jobs/quit-social-media-your-career-may-depend-on-it.html)
 * [So a product manager asks you to fix a bug…](
   https://medium.freecodecamp.com/youre-asked-to-make-a-fix-e156b802ad92)
 * [Short, Self Contained, Correct (Compilable), Example](
