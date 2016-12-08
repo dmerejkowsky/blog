@@ -256,7 +256,7 @@ projects, so, as always, try and experiment for yourself before trusting a
 random stranger on the Internet :)
 
 
-[^1]: For more about this, feel free to read [Release Management Done Right]([http://thedailywtf.com/articles/Release-Management-Done-Right), by Alex Papdimoulis
+[^1]: For more about this, feel free to read [Release Management Done Right](http://thedailywtf.com/articles/Release-Management-Done-Right), by Alex Papdimoulis
 
 [^2]: Using a tool like [ansible](https://www.ansible.com/) might help.
 
