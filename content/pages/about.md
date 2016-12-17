@@ -31,9 +31,15 @@ gratuitement selon les termes de la
 [Licence Creative Commons Attribution 3.0 France](
 http://creativecommons.org/licenses/by/3.0/fr)
 
-Il ne collecte aucune donnée personnelle (pas de cookies!), n'a aucun rapport
-avec une quelconque activité professionnelle et je n'en tire aucun revenu.
+Le blog n'a aucun rapport avec une quelconque activité professionnelle et je
+n'en tire aucun revenu.
 
 Le serveur est hébergé chez [Gandi](https://www.gandi.net/whowe/?lang=fr#legal).
 
-En cas de demande, Gandi pourra vous transmettre mes coordonnées.
+Gandi pourra vous transmettre mes coordonnées si nécessaire.
+
+Le service de commentaires utilise des cookies pour vous permettre d'éditer vos
+commentaires et est capable de stocker votre e-mail si vous le lui donnez.
+
+En cas de besoin, ces informations peuvent être modifiées ou supprimées sur
+simple demande.
