@@ -218,6 +218,9 @@ endfunction
 command! CdTop call CdTop()
 ```
 
+Or, if you use [vim-fugitive](https://github.com/tpope/vim-fugitive),
+you can use `:Gcd` or `:Glcd`
+
 By the way, I have the same kind of function in my `zshrc`:
 
 
