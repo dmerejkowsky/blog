@@ -74,6 +74,8 @@ https://dmerej.info/links.atom)!
   https://eev.ee/blog/2016/08/22/testing-for-people-who-hate-testing/)
 * [The 100% correct way to validate email addresses](
   https://hackernoon.com/the-100-correct-way-to-validate-email-addresses-7c4818f24643)
+* [The Open/Closed Principle](
+  http://patrick.louys.ch/2016/12/11/open-closed-principle/)
 * [The Quiet Crisis unfolding in Software Development](
   https://medium.com/@billjordan1/the-quiet-crisis-unfolding-in-software-development-cffbdafbf450#.y0v0uk1oo)
 * [The Six Dumbest Ideas in Computer Security](
