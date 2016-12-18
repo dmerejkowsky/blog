@@ -374,6 +374,7 @@ https://dmerej.info/links.atom)!
   https://www.youtube.com/watch?v=MCs5OvhV9S4)
 * [David Beazley: Generators: The Final Frontier](https://www.youtube.com/watch?v=5-qadlG7tWo)
 * [David Bruant: ECMAScript Regrets](https://www.youtube.com/watch?v=7eNFQqMSxtU)
+* [David Heinemeier Hansson: Writing Software](https://www.youtube.com/watch?v=9LfmrkyP81M)
 * [Gary Bernhardt: Boundaries](https://destroyallsoftware-talks.s3.amazonaws.com/boundaries.mp4)
 * [Gary Bernhardt: Fast Test, Slow Test](https://www.youtube.com/watch?v=RAxiiRPHS9k)
 * [How to Speed up a Python Program 114,000 times](https://www.youtube.com/watch?v=e08kOj2kISU)
