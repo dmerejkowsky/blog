@@ -34,10 +34,10 @@ identifier = "About"
 url = "/pages/about/index.html"
 
 [[menu.main]]
-name = "Posts"
+name = "Archives"
 pre = "<i class='fa fa-list fa-fw'></i>"
 weight = 2
-identifier = "post"
+identifier = "archives"
 url = "/post/"
 
 [[menu.main]]
