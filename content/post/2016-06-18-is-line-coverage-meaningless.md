@@ -3,10 +3,7 @@ slug = "is-line-coverage-meaningless"
 date = "2016-06-18T13:24:56+02:00"
 description = ""
 draft = false
-tags = []
 title = "Is Line Coverage Meaningless?"
-topics = []
-
 +++
 
 Today I'd like to share some thoughts about line coverage.

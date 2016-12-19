@@ -3,10 +3,8 @@ slug = "python3-is-awesome"
 date = "2016-08-03T20:05:54+02:00"
 description = ""
 draft = true
-tags = []
+tags = ["python"]
 title = "python3 is awesome"
-topics = []
-
 +++
 
 Python2:

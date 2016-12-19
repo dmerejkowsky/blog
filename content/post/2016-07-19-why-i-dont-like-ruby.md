@@ -3,10 +3,7 @@ slug = "why-i-dont-like-ruby"
 date = "2016-07-19T21:21:32+02:00"
 description = ""
 draft = false
-tags = []
 title = "Why I Don't Like Ruby"
-topics = []
-
 +++
 
 I'm going to compare two programming languages which is something

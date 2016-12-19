@@ -3,9 +3,8 @@ slug: "docopt-v-argparse"
 date: 2016-09-24T13:53:16+02:00
 description: ""
 draft: false
-tags: []
+tags: ["python"]
 title: docopt v argparse
-topics: []
 ---
 
 Say you have a program named `foo` that is supposed to be used from the command

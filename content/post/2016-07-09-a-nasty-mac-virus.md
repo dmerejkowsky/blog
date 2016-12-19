@@ -3,10 +3,7 @@ slug = "a-nasty-mac-virus"
 date = "2016-07-09T15:36:52+02:00"
 description = ""
 draft = false
-tags = []
 title = "A Nasty Mac Virus, or How I Learned To Love the App Store"
-topics = []
-
 +++
 
 Some time ago my little sister complained that her MacBook was getting slow,

@@ -3,6 +3,7 @@ slug = "pytest-rocks"
 date = "2016-04-16T13:53:51+00:00"
 draft = false
 title = "pytest Rocks"
+tags = ["python"]
 +++
 
 Today I thought I'd share my experience with various test tools for the Python

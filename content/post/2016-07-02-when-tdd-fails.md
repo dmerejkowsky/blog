@@ -3,10 +3,7 @@ slug = "when-tdd-fails"
 date = "2016-07-02T16:14:52+02:00"
 description = ""
 draft = false
-tags = []
 title = "When TDD Fails"
-topics = []
-
 +++
 
 Some random thoughts about TDD ...

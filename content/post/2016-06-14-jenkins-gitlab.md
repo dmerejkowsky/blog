@@ -3,10 +3,7 @@ slug = "jenkins-gitlab"
 date = "2016-06-14T19:38:03+02:00"
 description = ""
 draft = true
-tags = []
 title = "Connecting Jenkins to Gitlab"
-topics = []
-
 +++
 
 This is *not* a tutorial, it's the story of how I managed to do it.

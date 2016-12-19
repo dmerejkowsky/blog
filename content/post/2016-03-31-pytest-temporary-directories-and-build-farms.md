@@ -3,6 +3,7 @@ slug = "pytest-temporary-directories-and-build-farms"
 date = "2016-03-31T23:52:39+00:00"
 draft = true
 title = "pytest, Temporary Directories and Build Farms"
+tags = ["python"]
 +++
 
 For this post, I'd like to tell a short story that happened to me a while age

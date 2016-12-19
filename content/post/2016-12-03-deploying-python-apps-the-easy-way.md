@@ -3,7 +3,7 @@ slug: deploying-python-apps-the-easy-way
 date: 2016-12-03T15:22:59.032027+00:00
 draft: false
 title: Deploying Python Apps The Easy Way
-
+tags: ["python"]
 ---
 
 This post is heavily inspired by a presentation I saw at the

@@ -3,10 +3,8 @@ slug = "some-pylint-tips"
 date = "2016-07-23T17:49:04+02:00"
 description = ""
 draft = false
-tags = []
+tags = ["python"]
 title = "Some pylint tips"
-topics = []
-
 +++
 
 I've been using [pylint](https://www.pylint.org) for quite some time now, so
