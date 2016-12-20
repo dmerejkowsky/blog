@@ -293,6 +293,7 @@ https://dmerej.info/links.atom)!
 * [catkin](http://wiki.ros.org/catkin)
 * [CMake](https://cmake.org/)
 * [Conan](https://conan.io)
+* [concourse](https://concourse.ci)
 * [fbuild](https://github.com/felix-lang/fbuild)
 * [fips](https://github.com/floooh/fips)
 * [GYP](https://gyp.gsrc.io/)
