@@ -343,6 +343,7 @@ https://dmerej.info/links.atom)!
 * [ruaml: YAML parser/emitter](https://pypi.python.org/pypi/ruamel.yaml)
 * [sidomo: Simple Docker Module](https://github.com/deepgram/sidomo)
 * [Sorted Collections](https://pythontips.com/2016/04/24/python-sorted-collections/)
+* [try](https://github.com/timofurrer/try)
 * [xml2dict: Parsing XML like JSON](https://github.com/martinblech/xmltodict)
 
 ## Software distribution on linux
