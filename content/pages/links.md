@@ -81,6 +81,8 @@ https://dmerej.info/links.atom)!
 * [The Six Dumbest Ideas in Computer Security](
   http://www.ranum.com/security/computer_security/editorials/dumb)
 * [The tale of "aux.c"](http://heirloom.sourceforge.net/mailx_aux_c.html)
+* [Towards a Galvanizing Definition of Technical Debt](
+  https://michaelfeathers.silvrback.com/toward-a-galvanizing-definition-of-technical-debt)
 * [Uncle Bob: Giving up on TDD](
   http://blog.cleancoder.com/uncle-bob/2016/03/19/GivingUpOnTDD.html)
 * [UTF-8 Everywhere](http://utf8everywhere.org/)
