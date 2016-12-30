@@ -134,6 +134,8 @@ https://dmerej.info/links.atom)!
 
 ## Joel On Software
 
+* [Making Wrong Code Look Wrong](
+  https://www.joelonsoftware.com/2005/05/11/making-wrong-code-look-wrong/)
 * [The Absolute Minimum Every Software Developer Absolutely,
   Positively Must Know About Unicode and Character Sets (No Excuses!)](
   http://www.joelonsoftware.com/articles/Unicode.html)
@@ -141,6 +143,9 @@ https://dmerej.info/links.atom)!
   http://www.joelonsoftware.com/articles/GuerrillaInterviewing3.html)
 * [The Joel Test: 12 Steps to Better Code](
   http://www.joelonsoftware.com/articles/fog0000000043.html)
+* [The Law of Leaky Abstractions](
+  https://www.joelonsoftware.com/2002/11/11/the-law-of-leaky-abstractions/)
+
 
 ## Python
 
