@@ -80,6 +80,8 @@ https://dmerej.info/links.atom)!
   https://medium.com/@billjordan1/the-quiet-crisis-unfolding-in-software-development-cffbdafbf450#.y0v0uk1oo)
 * [The Six Dumbest Ideas in Computer Security](
   http://www.ranum.com/security/computer_security/editorials/dumb)
+* [There are two types of engineers. Be both](
+  https://dev.to/anotherdevblog/there-are-two-types-of-engineers-be-both)
 * [The tale of "aux.c"](http://heirloom.sourceforge.net/mailx_aux_c.html)
 * [Towards a Galvanizing Definition of Technical Debt](
   https://michaelfeathers.silvrback.com/toward-a-galvanizing-definition-of-technical-debt)
