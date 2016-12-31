@@ -34,7 +34,8 @@ Here are a few things you need to know:
 * When you leave a comment, you have the choice to fill the 'e-mail' field.
   I won't share it with anyone, and I'll use it to contact you directly if
   needed. But please note that you *won't* get automatic notifications by mail.
-
+* After you submit your comment, you'll have 15 minutes to edit or delete it
+  (If you are wondering, this works with a secret token stored in a cookie).
 
 
 ## twitter
