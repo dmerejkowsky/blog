@@ -225,7 +225,7 @@ By the way, I have the same kind of function in my `zshrc`:
 
 
 ```bash
-function gitcd() {
+function gcd() {
   topdir=$(git rev-parse --show-toplevel)
   if [[ $? -ne 0 ]]; then
     return 1
