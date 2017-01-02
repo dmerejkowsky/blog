@@ -26,6 +26,8 @@ https://dmerej.info/links.atom)!
 
 * [10 HTML Entity Crimes You Really Shouldn't Commit](
   http://line25.com/articles/10-html-entity-crimes-you-really-shouldnt-commit)
+* [10 things I learned making the fastest site in the world](
+  https://hackernoon.com/10-things-i-learned-making-the-fastest-site-in-the-world-18a0e1cdf4a7)
 * [A Great Old-Timey Game-Programming Hack](
   http://blog.moertel.com/posts/2013-12-14-great-old-timey-game-programming-hack.html)
 * [Allow installing modules from a vcs subdirectory in non-editable mode](
