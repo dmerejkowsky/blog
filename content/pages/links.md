@@ -49,6 +49,9 @@ https://dmerej.info/links.atom)!
   https://dev.to/isaacandsuch/developer-driven-development)
 * [Graphite, Grafana and statsd gotchas](
   http://dieter.plaetinck.be/post/25-graphite-grafana-statsd-gotchas/)
+* [How I converted my React app to VanillaJS](
+  https://hackernoon.com/how-i-converted-my-react-app-to-vanillajs-and-whether-or-not-it-was-a-terrible-idea-4b14b1b2faff)
+  (and whether or not it was a terrible idea)
 * [How Microsoft dragged its development practices into the 21st century](
   http://arstechnica.com/information-technology/2014/08/how-microsoft-dragged-its-development-practices-into-the-21st-century/)
 * [How to be a desirable developer](
