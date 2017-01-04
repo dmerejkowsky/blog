@@ -41,7 +41,7 @@ So how much was it? One thousand lines of code, one hundred, ten?
 I know you are going to say it depends on the language you are using, but in
 reality it does not.
 
-The number of line of codes you need to write does not depend on the language
+The number of line of code you need to write does not depend on the language
 you are using because the answer is zero.
 
 {{< spoiler >}}
