@@ -65,12 +65,12 @@ This has several problems:
 
 * How do you make sure all tests have been run and that they pass?
 
-There has to be a better way!
+There has to be a better way! [^1]
 
 ## Separate build and deployment
 
 A good idea would be to separate building and testing the application and its
-deployment. [^1]
+deployment. [^2]
 
 If you think about it, you can separate the files used by your code in two
 parts:
@@ -87,11 +87,11 @@ on the other.
 
 In the worst case scenario, you'll build a `postgresql` `C` extension, which
 will crash if the `postgresql` libraries are not installed, but this is easy to
-fix and should not happen too often. [^2]
+fix and should not happen too often. [^3]
 
 Of course, you could imagine using some container *ala* [docker](
 https://www.docker.com/), but this goes beyond the scope of this article.
-[^3]
+[^4]
 
 So, to build the application package, we have to:
 
@@ -212,7 +212,7 @@ graft vendors
 ```
 
 Here we make sure the configuration file for the application and the whole `vendors`
-directory are included in the final package. [^4]
+directory are included in the final package. [^5]
 
 With this in place, you can now build the package like this:
 
@@ -255,11 +255,11 @@ Personally, I'm still using the "really easy" method for my pet
 projects, so, as always, try and experiment for yourself before trusting a
 random stranger on the Internet :)
 
+[^1]: Famous quote from Raymond Hettinger, I suggest you got watch his many Python talks.
+[^2]: For more about this, feel free to read [Release Management Done Right](http://thedailywtf.com/articles/Release-Management-Done-Right), by Alex Papdimoulis
 
-[^1]: For more about this, feel free to read [Release Management Done Right](http://thedailywtf.com/articles/Release-Management-Done-Right), by Alex Papdimoulis
+[^3]: Using a tool like [ansible](https://www.ansible.com/) might help.
 
-[^2]: Using a tool like [ansible](https://www.ansible.com/) might help.
+[^4]: IMHO, using docker for simple Python applications is overkill anyway, and [may not work in production as well as you'd think](https://thehftguy.com/2016/11/01/docker-in-production-an-history-of-failure/)
 
-[^3]: IMHO, using docker for simple Python applications is overkill anyway, and [may not work in production as well as you'd think](https://thehftguy.com/2016/11/01/docker-in-production-an-history-of-failure/)
-
-[^4]: `graft` is one of the many [available commands](https://docs.python.org/3/distutils/commandref.html#sdist-cmd) in a `MANIFEST.in` file.
+[^5]: `graft` is one of the many [available commands](https://docs.python.org/3/distutils/commandref.html#sdist-cmd) in a `MANIFEST.in` file.
