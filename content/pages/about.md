@@ -18,7 +18,8 @@ My twitter bio reads:
 
 'nuff said ...
 
-If you want to get in touch, please see the [feedback page]({{< ref "pages/feedback.md" >}})
+If you want to get in touch, please see the
+[feedback page]({{< ref "pages/feedback.md" >}})
 
 # Mentions légales
 
