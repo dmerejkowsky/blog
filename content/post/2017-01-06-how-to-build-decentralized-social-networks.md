@@ -48,10 +48,10 @@ Yup, the fact there can't be more than 300 users is a _feature_.
 
 *Note*: this is a copy of an abstract I've submitted to
 [FOSDEM](https://fosdem.org/2017/) for a lighting
-talk.
+talk, but I since realized I've missed the deadline.
 
-* If the talk is accepted, I'll let you know so you can when and where
-  on this very page
+* It's possible I'll be able to give the talk anyway, but I won't know the date
+  in advance, sorry.
 * Whatever happens, I'll publish the rest of the post somewhere in the second
   week of February 2017, but not before.
 
