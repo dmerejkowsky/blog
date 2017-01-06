@@ -10,11 +10,15 @@ to keep easily available.
 It gets updated somewhat frequently, feel free to [subscribe](
 https://dmerej.info/links.atom)!
 
+You can also suggest new links in the
+[comments section]({{< relref "#comments" >}}) below.
+
 
 ### Table Of Contents
 
 * [Articles]({{< relref "#articles" >}})
 * [Blogs and feeds]({{< relref "#blogs-and-feeds" >}})
+* [Mailing lists]({{< relref "#mailing-lists" >}})
 * [Books]({{< relref "#books" >}})
 * [Software]({{< relref "#software" >}})
 * [Talks]({{< relref "#talks" >}})
@@ -212,6 +216,12 @@ https://dmerej.info/links.atom)!
 * [WTF](http://syndication.thedailywtf.com/TheDailyWtf)
 * [Zach Holman](http://zachholman.com/)
 * [Zythom](http://zythom.blogspot.com)
+
+# Mailing lists
+
+* [Software Clown](https://softwareclown.com/)
+* [SIGAVDI](http://www.virtuouscode.com/newsletter/)
+* [Import Python](http://importpython.com/newsletter/)
 
 # Books
 
