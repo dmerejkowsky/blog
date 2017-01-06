@@ -464,3 +464,11 @@ https://dmerej.info/links.atom)!
 * [glibc uninstall HOWTO](http://www.pafoo.net/uninstallglibc/uninstglibc.html)
 * [Les Joies Du Code](http://lesjoiesducode.tumblr.com/)
 * [La page Wikipédia de Paf le chien](https://fr.wikipedia.org/wiki/Paf_le_chien)
+
+## Comments
+
+<script data-isso="//dmerej.info/isso/"
+        src="//dmerej.info/isso/js/embed.min.js">
+</script>
+<section id="isso-thread">
+</section>
