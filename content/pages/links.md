@@ -467,6 +467,32 @@ https://dmerej.info/links.atom)!
 
 ## Comments
 
+Post an interesting comment containing just the title and the link. Nothing more,
+nothing less, like so:
+
+```markdown
+[About stuff](http://some.site/somestuff)
+```
+
+If:
+
+* You don't follow the first rule
+* Your link is not interesting
+* _And_ your did not give a valid e-mail
+
+Your comment will be deleted.
+
+Note that you do not have to give any e-mail at all if you are sure you comment
+won't be deleted.
+But if you do so, you can't complain if it does happen.
+
+If you follow the rules and the link is _really_ interesting, it will
+be added in the list above, and your will be listed as a contributor of
+this page.
+
+Play nice :)
+
+
 <script data-isso="//dmerej.info/isso/"
         src="//dmerej.info/isso/js/embed.min.js">
 </script>
