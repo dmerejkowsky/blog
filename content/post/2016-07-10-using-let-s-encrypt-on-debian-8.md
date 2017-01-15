@@ -1,10 +1,11 @@
-+++
-slug = "using-let-s-encrypt-on-debian-8"
-date = "2016-07-10T11:44:10+02:00"
-description = ""
-draft = true
-title = "Using Let's Encrypt on Debian 8"
-+++
+---
+slug: "using-let-s-encrypt-on-debian-8"
+date: "2016-07-10T11:44:10+02:00"
+description: ""
+draft: true
+title: "Using Let's Encrypt on Debian 8"
+tags: ["misc"]
+---
 
 Short guide for installing Let's Encrypt on Debian 8, and get an 'A'
 on SSL Labs.

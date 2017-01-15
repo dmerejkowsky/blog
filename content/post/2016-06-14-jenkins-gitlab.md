@@ -1,10 +1,11 @@
-+++
-slug = "jenkins-gitlab"
-date = "2016-06-14T19:38:03+02:00"
-description = ""
-draft = true
-title = "Connecting Jenkins to Gitlab"
-+++
+---
+slug: "jenkins-gitlab"
+date: "2016-06-14T19:38:03+02:00"
+description: ""
+draft: true
+title: "Connecting Jenkins to Gitlab"
+tags: ["misc"]
+---
 
 This is *not* a tutorial, it's the story of how I managed to do it.
 Hopefully at the end you'll learn a few things that will be useful

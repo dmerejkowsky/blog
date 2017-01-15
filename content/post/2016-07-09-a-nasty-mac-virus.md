@@ -1,10 +1,11 @@
-+++
-slug = "a-nasty-mac-virus"
-date = "2016-07-09T15:36:52+02:00"
-description = ""
-draft = false
-title = "A Nasty Mac Virus, or How I Learned To Love the App Store"
-+++
+---
+slug: "a-nasty-mac-virus"
+date: "2016-07-09T15:36:52+02:00"
+description: ""
+draft: false
+title: "A Nasty Mac Virus, or How I Learned To Love the App Store"
+tags: ["misc"]
+---
 
 Some time ago my little sister complained that her MacBook was getting slow,
 and had frequent freezes, to the point it was barely usable any more.

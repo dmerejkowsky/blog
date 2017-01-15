@@ -1,10 +1,10 @@
-+++
-slug = "never-type-the-same-path-twice"
-date = "2016-05-28T17:29:24+02:00"
-draft = false
-title = "Never Type the Same Path Twice"
-tags = ["vim"]
-+++
+---
+slug: "never-type-the-same-path-twice"
+date: "2016-05-28T17:29:24+02:00"
+draft: false
+title: "Never Type the Same Path Twice"
+tags: ["vim"]
+---
 
 This is a follow-up of my [previous post]({{< ref "post/2016-04-30-vim-cwd-and-neovim.md"
 >}}) on Vim and `cwd`, so I suggest you go read it first.

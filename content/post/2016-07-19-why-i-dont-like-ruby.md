@@ -1,10 +1,11 @@
-+++
-slug = "why-i-dont-like-ruby"
-date = "2016-07-19T21:21:32+02:00"
-description = ""
-draft = false
-title = "Why I Don't Like Ruby"
-+++
+---
+slug: "why-i-dont-like-ruby"
+date: "2016-07-19T21:21:32+02:00"
+description: ""
+draft: false
+title: "Why I Don't Like Ruby"
+tags: ["misc"]
+---
 
 I'm going to compare two programming languages which is something
 really silly to do (or is it?)

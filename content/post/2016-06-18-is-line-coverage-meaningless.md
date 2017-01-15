@@ -1,10 +1,11 @@
-+++
-slug = "is-line-coverage-meaningless"
-date = "2016-06-18T13:24:56+02:00"
-description = ""
-draft = false
-title = "Is Line Coverage Meaningless?"
-+++
+---
+slug: "is-line-coverage-meaningless"
+date: "2016-06-18T13:24:56+02:00"
+description: ""
+draft: false
+title: "Is Line Coverage Meaningless?"
+tags: ["misc"]
+---
 
 Today I'd like to share some thoughts about line coverage.
 

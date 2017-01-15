@@ -3,6 +3,7 @@ slug: a-simple-problem
 date: 2016-11-20T14:54:11.710423+00:00
 draft: false
 title: A Simple Problem
+tags: ["misc"]
 ---
 
 Let's say that at your work, you have daily meetings every day at 10.

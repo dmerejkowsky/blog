@@ -9,6 +9,7 @@ summary: |
 
 title: "An npm Story"
 aliases: ["post/a-npm-story"]
+tags: ["misc"]
 ---
 
 Let's say you have a cross-platform `C++` application (Linux, Mac, Windows).

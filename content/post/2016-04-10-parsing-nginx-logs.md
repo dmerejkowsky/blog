@@ -1,9 +1,10 @@
-+++
-slug = "parsing-nginx-logs"
-date = "2016-04-10T13:29:51+00:00"
-draft = false
-title = "Parsing nginx Logs"
-+++
+---
+slug: "parsing-nginx-logs"
+date: "2016-04-10T13:29:51+00:00"
+draft: false
+title: "Parsing nginx Logs"
+tags: ["misc"]
+---
 
 This article is a comment on an article I read some time ago.
 

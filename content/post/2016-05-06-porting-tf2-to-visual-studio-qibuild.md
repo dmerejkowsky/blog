@@ -1,9 +1,10 @@
-+++
-slug = "porting-tf2-to-visual-studio-qibuild"
-date = "2016-05-06T14:40:56+00:00"
-draft = true
-title = "Porting tf2 to Visual Studio / qibuild"
-+++
+---
+slug: "porting-tf2-to-visual-studio-qibuild"
+date: "2016-05-06T14:40:56+00:00"
+draft: true
+title: "Porting tf2 to Visual Studio / qibuild"
+tags: ["misc"]
+---
 
 My journey to compile tf2 for Visual Sutdio
 

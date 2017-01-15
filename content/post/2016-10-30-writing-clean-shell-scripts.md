@@ -3,6 +3,7 @@ slug: writing-clean-shell-scripts
 date: 2016-10-30T16:04:30.528337+00:00
 draft: false
 title: Writing Clean Shell Scripts
+tags: ["misc"]
 ---
 
 I don't enjoy writing such code that much.
