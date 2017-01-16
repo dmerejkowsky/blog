@@ -51,3 +51,7 @@ message.
 
 You can also find me on freenode, and `irc.mozilla.org`.
 On both servers my nick is `dmerejkowsky`
+
+## github
+
+You can also fork the sources of this blog on [github](https://github.com/dmerejkowsky/blog)
