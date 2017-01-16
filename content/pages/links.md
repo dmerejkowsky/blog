@@ -508,8 +508,4 @@ use the [feedback page]({{< ref "pages/feedback.md" >}}) instead.
 Play nice :)
 
 
-<script data-isso="//dmerej.info/isso/"
-        src="//dmerej.info/isso/js/embed.min.js">
-</script>
-<section id="isso-thread">
-</section>
+{{< isso_comments >}}
