@@ -1,9 +1,8 @@
-+++
-date = "2016-05-21T23:55:04+02:00"
-draft = false
-title = "Giving Feedback"
-
-+++
+---
+date: "2016-05-21T23:55:04+02:00"
+draft: false
+title: "Giving Feedback"
+---
 
 Feedback is more than welcome :)
 

@@ -1,8 +1,8 @@
-+++
-date = "2016-05-21T23:55:04+02:00"
-draft = false
-title = "About"
-+++
+---
+date: "2016-05-21T23:55:04+02:00"
+draft: false
+title: "About"
+---
 
 # About me
 
