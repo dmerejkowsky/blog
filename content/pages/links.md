@@ -269,7 +269,7 @@ You can also suggest new links in the
 * [Disk2vhd: convert Windows installation to virtual image](
   https://technet.microsoft.com/en-us/sysinternals/ee656415.aspx)
 * [ffind: A sane replacement for find](https://github.com/jaimebuelta/ffind)
-* [Generate online forms](https://www.fourmilieres.net/)
+* [Kinto formbuilder: Generate online forms](https://www.fourmilieres.net/)
 * [gien: export Github issue tracker contents to local email storage](https://github.com/2ion/gien)
 * [git-repo: CLI utility to manage git services from your workspace](
   https://github.com/guyzmo/git-repo)
