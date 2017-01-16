@@ -4,7 +4,7 @@ date: "2016-06-18T13:24:56+02:00"
 description: ""
 draft: false
 title: "Is Line Coverage Meaningless?"
-tags: ["misc"]
+tags: ["testing"]
 ---
 
 Today I'd like to share some thoughts about line coverage.

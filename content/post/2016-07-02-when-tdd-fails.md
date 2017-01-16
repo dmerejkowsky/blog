@@ -4,7 +4,7 @@ date: "2016-07-02T16:14:52+02:00"
 description: ""
 draft: false
 title: "When TDD Fails"
-tags: ["misc"]
+tags: ["testing"]
 ---
 
 Some random thoughts about TDD ...
