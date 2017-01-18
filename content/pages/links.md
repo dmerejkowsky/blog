@@ -64,9 +64,11 @@ You can also suggest new links in the
   https://medium.com/@julienjorge/how-to-be-a-desirable-developer-be-a-leader-not-a-hero-fd6fca7dc4bd)
 * [How to spy on a Ruby program](
   http://jvns.ca/blog/2016/06/12/a-weird-system-call-process-vm-readv)
+* [Keep a CHANGELOG](http://keepachangelog.com/en)
+* [I don't like computers](
+  https://www.happyassassin.net/2016/11/04/i-dont-like-computers)
 * [Magic Ink: Information Software and the Graphical Interface](
   http://worrydream.com/MagicInk/)
-* [Keep a CHANGELOG](http://keepachangelog.com/en)
 * [Maintairers Matter](http://kmkeen.com/maintainers-matter)
 * [Sakaki's EFI Install Guide](https://wiki.gentoo.org/wiki/Sakaki%27s_EFI_Install_Guide)
 * [Open Your Source, More](
