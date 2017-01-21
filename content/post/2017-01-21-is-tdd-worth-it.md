@@ -313,6 +313,10 @@ def test_edit_foo(browser):
     assert "Hello, world" in browser.read("/foo")
 ```
 
+### Writing Software
+
+{{< youtube 9LfmrkyP81M >}}
+
 ### The 'what', the 'how' and the 'why'
 
 [^1]: "Toc means Obvious Compilation". Yes, it was a silly name.
