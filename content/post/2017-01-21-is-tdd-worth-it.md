@@ -65,9 +65,10 @@ branch, and told them they should instead use the "latest stable release" [^2].
 
 Testing was complicated: the code base was already quite large, and the safest
 way to make sure I did not break anything was to re-compile everything from
-scratch, and perform a few basic checks such as:
+scratch (that alone took something like 15 minutes), and then perform a few basic
+checks such as:
 
-* Did the newly-compiled binaries ran? [^3]
+* Did the newly-compiled binaries run? [^3]
 * Was incremental build working?
 
 ### Making testing easier
@@ -149,7 +150,7 @@ Few things to note here:
 * If something goes wrong, it's hard to know exactly why because we don't
   know which build directories are "fresh"
 * It's not clear where the installed files go ...
-* Tests are slow because `hello` and `world` get compiled a lot of time.
+* Tests are slow because `hello` and `world` get compiled a lot of times.
 
 At the time, that's all the tests I had.
 
@@ -172,7 +173,7 @@ to upgrade.
 ![A light at the end of a tunnel](/pics/light-at-the-end-of-a-tunnel.jpg)
 
 The decision to try TDD came from several sources, I'm not sure which was the
-decisive one at moment, but here are a few of them:
+decisive one at moment, but here are two of them:
 
 * [Robert Martin: What Killed Smalltalk Could Kill Ruby, Too](
   https://www.youtube.com/watch?v=YX3iRjKj7C0)
@@ -198,12 +199,12 @@ def test_running_after_install(qibuild_action, tmpdir):
     qibuild_action("install", "hello", tmpdir)
 
     hello = qibuild.find.find_bin(tmpdir, "hello")
-    qisys.command.call([hello])
+    subprocess.run([hello])
 ```
 
 ### Turning into a TDD zealot
 
-So, now I had finally solved that xkcd puzzle: [^7]
+So, now I had finally solved that [xkcd puzzle](https://xkcd.com/844/): [^7]
 
 ![Good Code](/pics/xkcd_good_code_tdd.png)
 
@@ -274,6 +275,7 @@ Maybe TDD was working for me just because:
   once, and the whole idea of the 'red', 'green', 'refactor' cycle helps me
   focusing on just the right stuff at the right time.
 * I suck at doing tests manually.
+* I produce a lot of typos.
 * I used a language where tests are _required_ to find problems. (The type
   system and the linters can only catch so much when you're using a
   "dynamic" language such as Python)
@@ -349,9 +351,9 @@ before running:
 
 ```python
 @pytest.fixture(autouse=True, scope="session")
-def build_and_run(request, free_port):
+def build_and_run():
     subprocess.check_call(["go", "build"])
-    process = subprocess.Popen(["./server", str(free_port)])
+    process = subprocess.Popen(["./server"])
     yield process
     process.kill()
 ```
@@ -425,7 +427,7 @@ Anyway, the talk gave me a lot to think about.
 [^4]: At the time, I thought it was a good idea to measure test coverage. <br /> I've [changed my mind]({{< ref "post/2016-06-18-is-line-coverage-meaningless.md" >}}) since
 [^5]: By that I mean that I started having just a few tests failures that pointed me directly to the bug I just introduced.
 [^6]: Using [pytest]({{< ref "post/2016-04-16-pytest-rocks.md" >}}) of course!
-[^7]: Randall, if you see this, I'm so sorry.
+[^7]: [Randall](https://en.wikipedia.org/wiki/Randall_Munroe), if you see this, I'm so sorry.
 [^8]: Fifty shades of testing?
 [^9]: I used stuff I learned from [Uncle Bob's videos on the subject](https://cleancoders.com/videos/clean-code/advanced-tdd)
 [^10]: We use [gometalinter](https://github.com/alecthomas/gometalinter) by the way.
