@@ -179,6 +179,8 @@ decisive one at moment, but here are two of them:
   https://www.youtube.com/watch?v=YX3iRjKj7C0)
 * [Destroy All Software](https://www.destroyallsoftware.com/screencasts):
   "classic" seasons 1 to 5.
+* [Boundaries](https://destroyallsoftware-talks.s3.amazonaws.com/boundaries.mp4), a talk
+  by the same previous guy.
 
 So there, I started using TDD for all the new developments, and I kept doing
 that for several years.
