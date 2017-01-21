@@ -100,7 +100,7 @@ and also to generate the help message and usage automatically.
 To use `optparse` you create a *parser*, then call the `add_option` method for
 each pair of long and short options you want to support.
 
-Then you invoke the `parse_args()` method and it returns a tuple of two items..
+Then you invoke the `parse_args()` method and it returns a tuple of two items:
 
 The first item is a class (`optparse.Values`) that contains the values of the
 options as attributes.
