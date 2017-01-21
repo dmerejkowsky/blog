@@ -32,7 +32,7 @@ The story begins during my first "real" job.
 I was working in a team that had already written quite a few lines of
 `C++` code. We were using `CMake` and had several `git` repositories.
 
-So I wrote a command-line tool in Python named `toc`[1] that would:
+So I wrote a command-line tool in Python named `toc`[^1] that would:
 
 * Allow developers to fetch all the git repositories into a common "workspace"
 * Run `CMake` with the correct options to configure and build all the
@@ -50,6 +50,7 @@ command line API was nice and easy to remember.
 $ cd workspace
 $ toc configure
 $ toc build
+$ toc install /path/to/dest
 ```
 
 It also became to be used on the buildfarm, both for continuous integration
@@ -58,16 +59,28 @@ and release scripts.
 So I had to add new features to the tools, but without breaking the workflow of
 my fellow developers.
 
-Testing by hand was tedious, so I started writing tests.
+I decided to advise my co-workers to _not_ use the latest commit on the `master`
+branch, and told them they should instead use the "latest stable release" [^2].
 
-### Dark days: bad tests
+Testing was complicated: the code base was already quite large, and the safest
+way to make sure I did not break anything was to re-compile everything from
+scratch, and perform a few basic checks such as:
 
-The first test I wrote were not very good.
+* Did the newly-compiled binaries ran? [^3]
+* Was incremental build working?
 
-Basically, I had a bunch of "example" code, like this:
+### Making testing easier
+
+My first idea was to write a bunch a "example" code.
+
+Instead of having to compile hundreds of source code files spread across
+several projects, I could use just two projects with very few source code in
+them.
+
+So I wrote code for two new projects, like so:
+
 
 ```text
-
 test
   world
     CMakeLists.txt
@@ -82,10 +95,200 @@ The `world` project contained source code for a shared library,
 (`libworld.so`), and the `hello` project contained source code for an
 executable (`hello-bin`) that was using `libworld.so`.
 
+Compiling `world` and `hello` from scratch just took a few seconds, so testing
+manually was easy.
+
+But I was not very good at testing manually. Quite often I forgot to test some
+corner cases, and so many bugs were introduced without me noticing.
+
+So I decided to start writing automated tests.
+
+
+### First tests
+
+![I find your lack of tests disturbing](/pics/lack_of_tests.jpg)
+
 The tests looked like:
 
 ```python
-class
+class ConfigureTestCase(TocTestCase):
+
+    def setUp(self):
+        pass
+
+    def test_configure(self):
+        self.run(["toc", "configure", "hello"])
+
+    def test_build(self):
+        # We need to configure before we can build:
+        self.run(["toc", "configure", "hello"])
+        self.run(["toc", "build", "hello"])
+
+    def test_install(self):
+        # We need to configure and build before we can install:
+        self.run(["toc", "configure", "hello"])
+        self.run(["toc", "build", "hello"])
+        self.run(["toc", "install", "hello", self.test_dest])
+        # do something with self.test_dest
+
+    def tearDown(self):
+        # Clean the build directories:
+        super().clean_build()
+        # Clean the destination directory for install testing:
+        if os.path.exists(self.test_dest):
+            shutil.rmtree(self.test_dest)
+```
+
+
+Few things to note here:
+
+* No asserts
+* The code to run the `toc` commands and cleaning the build directories
+  is in a `TocTestCase` base class
+* If something goes wrong, it's hard to know exactly why because we don't
+  know which build directories are "fresh"
+* It's not clear where the installed files go ...
+* Tests are slow because `hello` and `world` get compiled a lot of time.
+
+At the time, that's all the tests I had.
+
+That meant I could do refactoring without fearing regressions to much, but
+I still had to run *the entire test suite* to be a little more confident about
+any change I just made.
+
+I also started measuring test coverage [^4] and was unhappy with the results.
+(60% if I recall correctly)
+
+I also noticed that even though I was very careful, every release I made had
+some serious regressions, and so members of my team started to get reluctant to
+the idea of upgrading.
+
+Code was clearly becoming cleaner, but this was not a good enough reason for them
+to upgrade.
+
+### The Light At The End of the Tunnel
+
+![A light at the end of a tunnel](/pics/light-at-the-end-of-a-tunnel.jpg)
+
+The decision to try TDD came from several sources, I'm not sure which was the
+decisive one at moment, but here are a few of them:
+
+* [Robert Martin: What Killed Smalltalk Could Kill Ruby, Too](
+  https://www.youtube.com/watch?v=YX3iRjKj7C0)
+* [Destroy All Software](https://www.destroyallsoftware.com/screencasts):
+  "classic" seasons 1 to 5.
+
+So there, I started using TDD for all the new developments, and I kept doing
+that for several years.
+
+The tool became known as `qibuild`, coverage went up, tests became more reliable
+and useful [^5], regressions became more and more uncommon, adding new features became simpler and easier, and overall everyone was happy with the tool.
+
+For the curious, here what the tests looked like: [^6]
+
+```python
+def test_running_after_install(qibuild_action, tmpdir):
+    qibuild_action.add_test_project("world")
+    qibuild_action.add_test_project("hello")
+
+    qibuild_action("configure", "hello")
+    qibuild_action("make", "hello")
+    qibuild_action("install", "hello", tmpdir)
+
+    hello = qibuild.find.find_bin(tmpdir, "hello")
+    qisys.command.call([hello])
+```
+
+### Turning into a TDD zealot
+
+So, now I had finally solved that xkcd puzzle: [^7]
+
+![Good Code](/pics/xkcd_good_code_tdd.png)
+
+All I had to do was to write tests first, and everything would be OK!
+
+But no-one around me believed me.
+
+A few of them tried, but they gave up soon.
+
+Many of them were working with "legacy" code and just making sure the _old_
+tests still pass was challenging enough.
+
+I tried to told them about the [classical beginners mistakes](
+http://blog.cleancoder.com/uncle-bob/2016/03/19/GivingUpOnTDD.html) but it did
+not work.
+
+But I was right! I had seen the light! It did not matter if I did not manage to
+convince anyone, I was right, and they were wrong.
+
+### The expert beginner
+
+I began realizing how little I knew about testing thanks to this very blog.
+
+You can read more about this in ["My Thoughts on: 'Why Most Unit Testing is Waste'"](
+{{< ref "post/2016-06-04-my-thoughts-on-why-most-unit-testing-is-waste.md" >}}).
+
+It was then I understood that maybe things were not that simple.
+
+I wrote two more articles to remember myself that my thoughts on TDD were not
+completely black and white: [^8]
+
+* [Is Line Coverage Meaningless?](
+{{< ref "post/2016-06-18-is-line-coverage-meaningless.md" >}})
+* [When TDD Fails](
+{{< ref "post/2016-07-02-when-tdd-fails.md" >}})
+
+
+
+
+### Realizing the truth
+
+![There is no spoon](/pics/there-is-no-spoon.jpg)
+
+This happened after I took a new job in an other company.
+
+People there were ready to try, and I was lucky enough when two new projects
+started.
+
+* One of them was some `C++` code to read and write large encrypted files.
+* The other was a small piece of server written in `Go`.
+
+Surely this time, people willing to try would have no excuse (no legacy code
+this time!), and I even gave a talk to the whole team about TDD [^9]
+
+But nope, it did go as I expected:
+
+* For the `C++` part, they used TDD until they started working on a small
+  binary, that would crypt and encrypt files from `stdin` to `stdout`.
+  "We'll use the binary during QA, surely we don't need to use TDD just
+  to _write_ source code of the binary.", they say. "Plus, we already have tests
+  where we mock the `Encryptor` class, no need to write and run the same tests
+  with the 'real' encryptor class, bugs will be caught during QA anyway".
+
+* And in `Go`, they wrote a few tests, but not that much, and many issues were
+  caught by the compiler and the various linters they used anyway.[^10]
+
+Maybe TDD was working for me just because:
+
+* It suited the way my brain work. (I have a hard time doing several tasks at
+  once)
+* I suck at doing tests manually.
+* I used a language where tests are _required_ to find problems. (The type
+  system and the linters only catch so few things when you're using a language
+  like Python)
+* I had a very good test framework, and writing clean test code was easy after
+  the 3rd refactoring or so...
+
+### The 'what', the 'how' and the 'why'
 
 
 [^1]: "Toc means Obvious Compilation". Yes, it was a silly name.
+[^2]: That's where I realized how important [changelogs]({{< ref "post/2016-10-01-thoughts-on-changelogs.md" >}}) were.
+[^3]: It's not that obvious when your binaries are built for Linux, macOS and Windows, and there are `.so`, `.dylib` and `.dll` files involved.
+[^4]: At the time, I thought it was a good idea to measure test coverage. <br /> I've [changed my mind]({{< ref "post/2016-06-18-is-line-coverage-meaningless.md" >}}) since
+[^5]: By that I mean that I started having just a few tests failures that pointed me directly to the bug I just introduced.
+[^6]: Using [pytest]({{< ref "post/2016-04-16-pytest-rocks.md" >}}) of course!
+[^7]: Randall, if you see this, I'm so sorry.
+[^8]: Fifty shades of testing?
+[^9]: I used stuff I learned from [Uncle Bob's videos on the subject](https://cleancoders.com/videos/clean-code/advanced-tdd)
+[^10]: We use [gometalinter](https://github.com/alecthomas/gometalinter) by the way.
