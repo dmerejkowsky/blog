@@ -280,8 +280,40 @@ Maybe TDD was working for me just because:
 * I had a very good test framework, and writing clean test code was easy after
   the 3rd refactoring or so...
 
-### The 'what', the 'how' and the 'why'
 
+
+### Applying TDD for a web application
+
+
+```python
+#dev.py
+
+print(":: Starting loop")
+print("> Will stop as soon as the build fails")
+print("> To restart the server, press CTRL-C")
+
+while True:
+    cmd = ["go", "build", "server.go"]
+    subprocess.check_call(cmd)
+    try:
+        cmd = ["./server"]
+        subprocess.check_call(cmd)
+    except KeyboardInterrupt:
+        pass
+
+    except subprocess.CalledProcessError:
+        sys.exit(1)
+```
+
+```python
+def test_edit_foo(browser):
+    browser.read("/foo/edit")
+    browser.fill_text("input-area", "Hello, world")
+    browser.click_button("submit-button")
+    assert "Hello, world" in browser.read("/foo")
+```
+
+### The 'what', the 'how' and the 'why'
 
 [^1]: "Toc means Obvious Compilation". Yes, it was a silly name.
 [^2]: That's where I realized how important [changelogs]({{< ref "post/2016-10-01-thoughts-on-changelogs.md" >}}) were.
