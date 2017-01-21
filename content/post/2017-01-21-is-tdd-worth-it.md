@@ -183,7 +183,8 @@ So there, I started using TDD for all the new developments, and I kept doing
 that for several years.
 
 The tool became known as `qibuild`, coverage went up, tests became more reliable
-and useful [^5], regressions became more and more uncommon, adding new features became simpler and easier, and overall everyone was happy with the tool.
+and useful [^5], regressions became more and more uncommon, adding new features
+became simpler and easier, and overall everyone was happy with the tool.
 
 For the curious, here what the tests looked like: [^6]
 
@@ -240,16 +241,14 @@ completely black and white: [^8]
 {{< ref "post/2016-07-02-when-tdd-fails.md" >}})
 
 
-
-
 ### Realizing the truth
 
 ![There is no spoon](/pics/there-is-no-spoon.jpg)
 
 This happened after I took a new job in an other company.
 
-People there were ready to try, and I was lucky enough when two new projects
-started.
+People there were ready to try, and I was lucky enough to be there
+when two new projects started.
 
 * One of them was some `C++` code to read and write large encrypted files.
 * The other was a small piece of server written in `Go`.
@@ -271,19 +270,40 @@ But nope, it did not go as I expected:
 
 Maybe TDD was working for me just because:
 
-* It suited the way my brain work. (I have a hard time doing several tasks at
-  once)
+* It suits the way my brain work. I have a hard time doing several tasks at
+  once, and the whole idea of the 'red', 'green', 'refactor' cycle helps me
+  focusing on just the right stuff at the right time.
 * I suck at doing tests manually.
 * I used a language where tests are _required_ to find problems. (The type
-  system and the linters only catch so few things when you're using a language
-  like Python)
+  system and the linters can only catch so much when you're using a
+  "dynamic" language such as Python)
 * I had a very good test framework, and writing clean test code was easy after
-  the 3rd refactoring or so...
-
+  the 3rd refactoring or so :)
 
 
 ### Applying TDD for a web application
 
+One day, I wondered how hard it would be to implement a wiki from scratch.
+
+The basic stuff seemed easy enough:
+
+* The server known how to map the `/foo` URL and a `foo.html` file written on
+  disk.
+* When a user visits `/foo/edit`, he gets a form where he can type some
+  Markdown code.
+* Then, when he its the `submit` button, both `foo.md` and `foo.html` are
+  generated.
+
+#### Compiling
+
+
+I decided to write the server in `Go`.
+
+This was new to me, because it was the first time I was working with a language
+with such a short compilation time.
+
+I found myself forgetting to type `go build` before restarting the server, so
+I wrote this short script:
 
 ```python
 #dev.py
@@ -300,10 +320,63 @@ while True:
         subprocess.check_call(cmd)
     except KeyboardInterrupt:
         pass
-
-    except subprocess.CalledProcessError:
-        sys.exit(1)
 ```
+
+Here's how the script works, assuming the `dev.py` script is running
+and you are in a state where the server is running with the latest version of
+the source code.
+
+* You write some `Go` code
+* You press `CTRL-C`:
+  * If the code compiles, the server is restarted with the latest changes
+  * If not, the script crashes, and you have to fix the build before
+    re-running it.
+
+Most of the time (especially when you get better at mastering the `Go`
+language), you get the new version of code running very shortly after
+saving the `.go` source file you were working on. [^11]
+
+#### Testing
+
+After a while, I started having the server generating `HTML` forms, and I
+found myself filling the same form and hitting the `submit` button over and
+over again.
+
+So I started automating, using `py.test` and [selenium](http://www.seleniumhq.org/)
+
+First, I wrote a fixture so that the server source code will always get built
+before running:
+
+```python
+@pytest.fixture(autouse=True, scope="session")
+def build_and_run(request, free_port):
+    subprocess.check_call(["go", "build"])
+    process = subprocess.Popen(["./server", str(free_port)])
+    yield process
+    process.kill()
+```
+
+Then I wrote my own `browser` fixture, using the "facade" design pattern to
+hide the `selenium` API:
+
+
+```python
+
+class Browser():
+    def __init__(self):
+        self._driver = webdriver.Chrome()
+
+    def click_button(self, button_id):
+        button = self._driver.find_element_by_id(button_id)
+        button.click()
+
+    def read(self, path):
+        full_url = "http://localhost:1234/%s" % path
+        self._driver.get(full_url)
+        return self._driver.page_source
+```
+
+This allowed me to write things like this:
 
 ```python
 def test_edit_foo(browser):
@@ -313,11 +386,38 @@ def test_edit_foo(browser):
     assert "Hello, world" in browser.read("/foo")
 ```
 
+
+That turned out to be a very nice experience.
+
+I could:
+
+* Insert a breakpoint using `pdb`
+* Start the test I wanted with `pytest -k edit_foo`
+* And when the code was paused, interact with the browser and experiment in
+  Python's REPL to write the rest of the tests and the assertions, without first
+  learning the entire `selenium` API by heart.
+
+Then again, the feedback look was very short. I could edit the `HTML` to add
+the proper `id` attribute, and then re-run the tests to check if the generated
+HTML looked good in a web browser.
+
+So, was I writing tests before or after? And did it matter?
+
 ### Writing Software
 
-{{< youtube 9LfmrkyP81M >}}
+Around the same time, I watch *Writing Software*, a talk David Heinemeier Hansson
+gave in RailsConf 2014 Keynote.
+
+You can watch the talk on [youtube](https://youtu.be/9LfmrkyP81M).
+
+In it, David talks about TDD, but it's only a small fraction of his talk, and I
+highly recommend you listen to the whole talk and not focus on the most
+controversial parts.
+
+Anyway, the talk gave me a lot to think about.
 
 ### The 'what', the 'how' and the 'why'
+
 
 [^1]: "Toc means Obvious Compilation". Yes, it was a silly name.
 [^2]: That's where I realized how important [changelogs]({{< ref "post/2016-10-01-thoughts-on-changelogs.md" >}}) were.
@@ -329,3 +429,4 @@ def test_edit_foo(browser):
 [^8]: Fifty shades of testing?
 [^9]: I used stuff I learned from [Uncle Bob's videos on the subject](https://cleancoders.com/videos/clean-code/advanced-tdd)
 [^10]: We use [gometalinter](https://github.com/alecthomas/gometalinter) by the way.
+[^11]: You may wonder how I managed to write the contents of the `dev.py` file itself. Short answer: I used `CTRL-\`, which makes Python exit with a core dump and effectively exit the `while True` loop even though the code compiles.
