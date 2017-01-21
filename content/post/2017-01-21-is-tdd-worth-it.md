@@ -2,6 +2,7 @@
 slug: is-tdd-worth-it
 date: 2017-01-21T12:52:53.361088+00:00
 draft: false
+tags: ["testing"]
 title: Is TDD Worth It?
 ---
 
@@ -230,7 +231,7 @@ You can read more about this in ["My Thoughts on: 'Why Most Unit Testing is Wast
 
 It was then I understood that maybe things were not that simple.
 
-I wrote two more articles to remember myself that my thoughts on TDD were not
+I wrote two more articles to remember myself that my thoughts on testing were not
 completely black and white: [^8]
 
 * [Is Line Coverage Meaningless?](
@@ -256,7 +257,7 @@ started.
 Surely this time, people willing to try would have no excuse (no legacy code
 this time!), and I even gave a talk to the whole team about TDD [^9]
 
-But nope, it did go as I expected:
+But nope, it did not go as I expected:
 
 * For the `C++` part, they used TDD until they started working on a small
   binary, that would crypt and encrypt files from `stdin` to `stdout`.
