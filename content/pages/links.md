@@ -304,8 +304,8 @@ You can also suggest new links in the
 * [thor: Benchmarking WebSockets](https://github.com/observing/thor)
 * [translate-shell: translations from the command line](
   https://www.soimort.org/translate-shell/)
-* [http://twtxt.readthedocs.io/en/latest/](
-  decentralised, minimalist microblogging service for hackers)
+* [twtxt: decentralised, minimalist microblogging service for hackers](
+  http://twtxt.readthedocs.io/en/latest/)
 * [Windows Server Core: Windows with just the command line](
   https://msdn.microsoft.com/en-us/library/dd184075.aspx)
 * [youtube-dl: download videos from Youtube (and some other sites)](
