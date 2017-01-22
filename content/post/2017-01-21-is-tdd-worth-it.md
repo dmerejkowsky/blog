@@ -22,6 +22,8 @@ Still, I guess you want me to elaborate a tad more, so here goes ...
 
 ## My testing story
 
+![Lack of tests](/pics/lack_of_tests.jpg)
+
 I'll start by describing my own experience with testing in general, and TDD more
 specifically. Hopefully it will help you understand how I came to the above
 answer. It's a long story, so if you prefer, you can jump directly to the
@@ -487,7 +489,7 @@ times.
 
 Also, [you are not paid to write code](
 http://bravenewgeek.com/you-are-not-paid-to-write-code/]). What matters is that
-the features are implemented and that the bugs are fixed.
+the features that need to be implemented are done and that the bugs are fixed.
 
 
 Thanks for reading!
