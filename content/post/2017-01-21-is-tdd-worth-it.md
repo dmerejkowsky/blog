@@ -33,35 +33,39 @@ The story begins during my first "real" job.
 I was working in a team that had already written quite a few lines of
 `C++` code. We were using `CMake` and had several `git` repositories.
 
-So I wrote a command-line tool in Python named `toc`[^1] that would:
+So I wrote a command-line tool in Python named `qibuild`[^1] that would:
 
 * Allow developers to fetch all the git repositories into a common "workspace"
 * Run `CMake` with the correct options to configure and build all the
   projects.
 
 The idea was to abstract away the nasty details of cross-platform `C++`
-compilation, so that developers could concentrate on how implement the
+compilation, so that developers could concentrate on how to implement the
 algorithms and features they were thinking about, without having to care
 on such low-level details such as the build system.
 
-The tool quickly became widely used by members of my team, because the
+The tool quickly became widely used by the members of the team, because the
 command line API was nice and easy to remember.
 
 ```console
 $ cd workspace
-$ toc configure
-$ toc build
-$ toc install /path/to/dest
+$ qibuild configure
+$ qibuild make
+$ qibuild install /path/to/dest
 ```
 
-It also became to be used on the buildfarm, both for continuous integration
+It also began to be used on the build farms, both for continuous integration
 and release scripts.
 
-So I had to add new features to the tools, but without breaking the workflow of
+Soon, I had to add new features to the tool, but without breaking the workflow of
 my fellow developers.
 
 I decided to advise my co-workers to _not_ use the latest commit on the `master`
-branch, and told them they should instead use the "latest stable release" [^2].
+branch, as they did for the rest of the company's source code,
+and instead, I started to make frequent releases.
+
+So instead of running `git pull`, they could just use: `pip install -U qibuild`
+and get the latest stable release. [^2]
 
 Testing was complicated: the code base was already quite large, and the safest
 way to make sure I did not break anything was to re-compile everything from
@@ -76,11 +80,8 @@ checks such as:
 My first idea was to write a bunch a "example" code.
 
 Instead of having to compile hundreds of source code files spread across
-several projects, I could use just two projects with very few source code in
-them.
-
-So I wrote code for two new projects, like so:
-
+several projects, I could use just two projects with just two or three source
+files:
 
 ```text
 test
@@ -98,7 +99,7 @@ The `world` project contained source code for a shared library,
 executable (`hello-bin`) that was using `libworld.so`.
 
 Compiling `world` and `hello` from scratch just took a few seconds, so testing
-manually was easy.
+manually was doable.
 
 But I was not very good at testing manually. Quite often I forgot to test some
 corner cases, and so many bugs were introduced without me noticing.
@@ -108,29 +109,27 @@ So I decided to start writing automated tests.
 
 ### First tests
 
-![I find your lack of tests disturbing](/pics/lack_of_tests.jpg)
-
 The tests looked like:
 
 ```python
-class ConfigureTestCase(TocTestCase):
+class ConfigureTestCase(QiBuilTestCase):
 
     def setUp(self):
         pass
 
     def test_configure(self):
-        self.run(["toc", "configure", "hello"])
+        self.run(["qibuild", "configure", "hello"])
 
     def test_build(self):
         # We need to configure before we can build:
-        self.run(["toc", "configure", "hello"])
-        self.run(["toc", "build", "hello"])
+        self.run(["qibuild", "configure", "hello"])
+        self.run(["qibuild", "build", "hello"])
 
     def test_install(self):
         # We need to configure and build before we can install:
-        self.run(["toc", "configure", "hello"])
-        self.run(["toc", "build", "hello"])
-        self.run(["toc", "install", "hello", self.test_dest])
+        self.run(["qibuild", "configure", "hello"])
+        self.run(["qibuild", "build", "hello"])
+        self.run(["qibuild", "install", "hello", self.test_dest])
         # do something with self.test_dest
 
     def tearDown(self):
@@ -145,8 +144,8 @@ class ConfigureTestCase(TocTestCase):
 Few things to note here:
 
 * No asserts
-* The code to run the `toc` commands and cleaning the build directories
-  is in a `TocTestCase` base class
+* The code to run the `qibuild` commands and cleaning the build directories
+  is in a `QiBuilTestCase` base class
 * If something goes wrong, it's hard to know exactly why because we don't
   know which build directories are "fresh"
 * It's not clear where the installed files go ...
@@ -179,15 +178,15 @@ decisive one at moment, but here are two of them:
   https://www.youtube.com/watch?v=YX3iRjKj7C0)
 * [Destroy All Software](https://www.destroyallsoftware.com/screencasts):
   "classic" seasons 1 to 5.
-* [Boundaries](https://destroyallsoftware-talks.s3.amazonaws.com/boundaries.mp4), a talk
-  by the same previous guy.
+* [Boundaries](https://destroyallsoftware-talks.s3.amazonaws.com/boundaries.mp4),
+  by Gary Bernhardt
 
 So there, I started using TDD for all the new developments, and I kept doing
 that for several years.
 
-The tool became known as `qibuild`, coverage went up, tests became more reliable
-and useful [^5], regressions became more and more uncommon, adding new features
-became simpler and easier, and overall everyone was happy with the tool.
+Coverage went up, tests became more reliable and useful [^5], regressions became
+more and more uncommon, adding new features became simpler and easier, and
+overall everyone was happy with the tool.
 
 For the curious, here what the tests looked like: [^6]
 
@@ -250,7 +249,7 @@ completely black and white: [^8]
 
 This happened after I took a new job in an other company.
 
-People there were ready to try, and I was lucky enough to be there
+People there were ready to try TDD, and I was lucky enough to be there
 when two new projects started.
 
 * One of them was some `C++` code to read and write large encrypted files.
@@ -262,7 +261,7 @@ this time!), and I even gave a talk to the whole team about TDD [^9]
 But nope, it did not go as I expected:
 
 * For the `C++` part, they used TDD until they started working on a small
-  binary, that would crypt and encrypt files from `stdin` to `stdout`.
+  binary, that would encrypt and decrypt files from the command line.
   "We'll use the binary during QA, surely we don't need to use TDD just
   to _write_ source code of the binary.", they say. "Plus, we already have tests
   where we mock the `Encryptor` class, no need to write and run the same tests
@@ -291,11 +290,11 @@ One day, I wondered how hard it would be to implement a wiki from scratch.
 
 The basic stuff seemed easy enough:
 
-* The server known how to map the `/foo` URL and a `foo.html` file written on
+* The server knows how to map the `/foo` URL and a `foo.html` file written on
   disk.
 * When a user visits `/foo/edit`, he gets a form where he can type some
   Markdown code.
-* Then, when he its the `submit` button, both `foo.md` and `foo.html` are
+* Then, when he clicks the `submit` button, both `foo.md` and `foo.html` are
   generated.
 
 #### Compiling
@@ -314,7 +313,7 @@ wrote this short script:
 
 
 ```python
-#dev.py
+# dev.py
 
 print(":: Starting loop")
 print("> Will stop as soon as the build fails")
@@ -405,7 +404,7 @@ I could:
   Python's REPL to write the rest of the tests and the assertions, without first
   learning the entire `selenium` API by heart.
 
-Then again, the feedback look was very short. I could edit the `HTML` to add
+Then again, the feedback loop was very short. I could edit the `HTML` to add
 the proper `id` attribute, and then re-run the tests to check if the generated
 HTML looked good in a web browser.
 
@@ -419,7 +418,7 @@ gave in RailsConf 2014 Keynote.
 You can watch the talk on [youtube](https://youtu.be/9LfmrkyP81M).
 
 In it, David talks about TDD, but it's only a small fraction of his talk, and I
-highly recommend you listen to the whole talk and not focus on the most
+highly recommend you listen all it has to say and not focus on the most
 controversial parts.
 
 Anyway, the talk gave me a lot to think about.
@@ -459,7 +458,7 @@ convince anyone to try because they did not really care about the *what* and the
 
 I kept telling them they should try to write tests first, that TDD was not
 something you can learn in one week, that they should try it and stick to it for
-several weeks before "getting" TDD.
+several weeks before "getting" it.
 
 But that's not what they wanted to hear, they wanted to know *why* TDD was worth trying,
 and the answer: "Because it worked really well for me and my project" was not
@@ -467,16 +466,16 @@ good enough.
 
 So here goes: why do we do TDD?
 
-I think TDD is just a _framework_. It's a set of tools, rules and conventions,
+I think TDD is just a _framework_. It's a set of tools, rules and conventions
 you can use to write better tests and better production code.
 
 But what are "good tests" and "good production code"?
 
 * Good tests are tests that read like a well-written specification. When they
-  fail, give you a lot of details and clues about the location of the bug in your
-  production code.
+  fail, they give you a lot of details and clues about the location of the bug
+  in your production code.
 
-* Good production code is code that is easy to read. It's not your first draft.
+* Good production code is code that is easy to read and is *not your first draft*.
   As a software writer, it's the result of many iterations so that your fellow
   team mates can read and modify it with confidence. It's code that is easy to
   *change*.
@@ -494,10 +493,10 @@ the features are implemented and that the bugs are fixed.
 Thanks for reading!
 
 
-[^1]: "Toc means Obvious Compilation". Yes, it was a silly name.
+[^1]: Source code is still on [github](https://github.com/aldebaran/qibuild)
 [^2]: That's where I realized how important [changelogs]({{< ref "post/2016-10-01-thoughts-on-changelogs.md" >}}) were.
 [^3]: It's not that obvious when your binaries are built for Linux, macOS and Windows, and there are `.so`, `.dylib` and `.dll` files involved.
-[^4]: At the time, I thought it was a good idea to measure test coverage. <br /> I've [changed my mind]({{< ref "post/2016-06-18-is-line-coverage-meaningless.md" >}}) since
+[^4]: At the time, I thought it was a good idea to measure test coverage. <br /> I'm [not so sure anymore]({{< ref "post/2016-06-18-is-line-coverage-meaningless.md" >}}).
 [^5]: By that I mean that I started having just a few tests failures that pointed me directly to the bug I just introduced.
 [^6]: Using [pytest]({{< ref "post/2016-04-16-pytest-rocks.md" >}}) of course!
 [^7]: [Randall](https://en.wikipedia.org/wiki/Randall_Munroe), if you see this, I'm so sorry.
