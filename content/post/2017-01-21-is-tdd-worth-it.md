@@ -25,7 +25,7 @@ Still, I guess you want me to elaborate a tad more, so here goes ...
 I'll start by describing my own experience with testing in general, and TDD more
 specifically. Hopefully it will help you understand how I came to the above
 answer. It's a long story, so if you prefer, you can jump directly to the
-conclusion.
+[so what?]({{< relref "#so-what" >}}) section.
 
 ### Shipping software
 
@@ -306,8 +306,12 @@ I decided to write the server in `Go`.
 This was new to me, because it was the first time I was working with a language
 with such a short compilation time.
 
-I found myself forgetting to type `go build` before restarting the server, so
-I wrote this short script:
+
+##### Creating the loop
+
+I found myself forgetting to type `go build` before restarting the server, so I
+wrote this short script:
+
 
 ```python
 #dev.py
@@ -420,7 +424,74 @@ controversial parts.
 
 Anyway, the talk gave me a lot to think about.
 
+## So what?
+
+For me, TDD worked really well for several years for one of the projects I've
+been working on.
+
+I liked the fast feedback loop, the fact I could refactor with confidence
+thanks to well-written and fast tests, and how I could just type one command
+and have an answer to the eternal question: "Did I just break something?".
+
+But, when I started working on a Web application written in `Go`,
+it turned out I could get the same feeling and the same kind of loop
+without doing TDD at all. All it took was a
+[10 lines Python script]({{< relref "#creating-the-loop" >}}).
+
+
 ### The 'what', the 'how' and the 'why'
+
+
+To say it differently, I think I was too obsessed with the *what* and the *how*
+and forgot about the *why*, something I feel happens far too often when it comes
+to new technologies.
+
+Let me explain:
+
+For me, the *what* of TDD is just one sentence: "Write your tests firsts,
+_before_ the production code".
+
+The *how* is: "Follow the rules: it's *red*, *green*, *refactor*".
+
+Those are very easy to remember and explain, but I think I did not manage to
+convince anyone to try because they did not really care about the *what* and the
+*how*. They wanted to know *why*.
+
+I kept telling them they should try to write tests first, that TDD was not
+something you can learn in one week, that they should try it and stick to it for
+several weeks before "getting" TDD.
+
+But that's not what they wanted to hear, they wanted to know *why* TDD was worth trying,
+and the answer: "Because it worked really well for me and my project" was not
+good enough.
+
+So here goes: why do we do TDD?
+
+I think TDD is just a _framework_. It's a set of tools, rules and conventions,
+you can use to write better tests and better production code.
+
+But what are "good tests" and "good production code"?
+
+* Good tests are tests that read like a well-written specification. When they
+  fail, give you a lot of details and clues about the location of the bug in your
+  production code.
+
+* Good production code is code that is easy to read. It's not your first draft.
+  As a software writer, it's the result of many iterations so that your fellow
+  team mates can read and modify it with confidence. It's code that is easy to
+  *change*.
+
+
+So, write your tests first, write them last, or don't write any, but please
+remember what really matters: your code will be written once, and read many
+times.
+
+Also, [you are not paid to write code](
+http://bravenewgeek.com/you-are-not-paid-to-write-code/]). What matters is that
+the features are implemented and that the bugs are fixed.
+
+
+Thanks for reading!
 
 
 [^1]: "Toc means Obvious Compilation". Yes, it was a silly name.
