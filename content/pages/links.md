@@ -501,7 +501,7 @@ won't be deleted.
 But if you do so, you can't complain if it does happen.
 
 If you follow the rules and the link is _really_ interesting, it will
-be added in the list above, and your will be listed as a contributor of
+be added in the list above, and you will be listed as a contributor of
 this page.
 
 If you don't like the rules, don't leave a comment and
