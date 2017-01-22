@@ -7,6 +7,8 @@ title: Introducing dmerej's newsletter
 
 Quick post to let you know I've created a newsletter.
 
+<!--more-->
+
 ## Subscribing
 
 [Contact me]({{< ref "pages/feedback.md" >}}) and send me your e-mail.
@@ -16,8 +18,6 @@ Quick post to let you know I've created a newsletter.
 * You'll be notified of every new blog post by e-mail.
 * Every week end or so, you'll get a list of interesting links I found while
   browsing.
-
-<!--more-->
 
 ## Notes
 
