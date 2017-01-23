@@ -20,6 +20,11 @@ Still, I guess you want me to elaborate a tad more, so here goes ...
 
 <!--more-->
 
+{{< note >}}
+If you don't know TDD at all, you can read the introduction
+[here]({{< relref "post/2016-07-02-when-tdd-fails.md#introduction-what-is-tdd" >}})
+{{< /note >}}
+
 ## My testing story
 
 ![Lack of tests](/pics/lack_of_tests.jpg)
