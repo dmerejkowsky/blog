@@ -23,7 +23,7 @@ To cope with this, we tend to try and replicate their functionality, but
 because we believe in a open and neutral internet, we always seek to
 build software that is "decentralized".
 
-This has given a some great open-source projects such has
+This has given a some great open-source projects such as
 diaspora or the whole framasoft project, but let's face it,
 it's still hard to explain to our friends and family why they should
 go away from the corporate giants...
