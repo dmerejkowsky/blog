@@ -44,7 +44,7 @@ So I wrote a command-line tool in Python named `qibuild`[^1] that would:
 The idea was to abstract away the nasty details of cross-platform `C++`
 compilation, so that developers could concentrate on how to implement the
 algorithms and features they were thinking about, without having to care
-on such low-level details such as the build system.
+about "low-level" details such as the build system.
 
 The tool quickly became widely used by the members of the team, because the
 command line API was nice and easy to remember.
@@ -82,7 +82,7 @@ checks such as:
 My first idea was to write a bunch a "example" code.
 
 Instead of having to compile hundreds of source code files spread across
-several projects, I could use just two projects with just two or three source
+several projects, I could use two projects with just two or three source
 files:
 
 ```text
@@ -174,12 +174,13 @@ to upgrade.
 ![A light at the end of a tunnel](/pics/light-at-the-end-of-a-tunnel.jpg)
 
 The decision to try TDD came from several sources, I'm not sure which was the
-decisive one at moment, but here are two of them:
+decisive one at moment, but here are a few of them:
 
 * [Robert Martin: What Killed Smalltalk Could Kill Ruby, Too](
   https://www.youtube.com/watch?v=YX3iRjKj7C0)
-* [Destroy All Software](https://www.destroyallsoftware.com/screencasts):
-  "classic" seasons 1 to 5.
+* [Destroy All Software](
+  https://www.destroyallsoftware.com/screencasts/catalog): "classic" seasons 1
+  to 5.
 * [Boundaries](https://destroyallsoftware-talks.s3.amazonaws.com/boundaries.mp4),
   by Gary Bernhardt
 
@@ -333,7 +334,7 @@ while True:
 
 Here's how the script works, assuming the `dev.py` script is running
 and you are in a state where the server is running with the latest version of
-the source code.
+the source code:
 
 * You write some `Go` code
 * You press `CTRL-C`:
@@ -414,7 +415,7 @@ So, was I writing tests before or after? And did it matter?
 
 ### Writing Software
 
-Around the same time, I watch *Writing Software*, a talk David Heinemeier Hansson
+Around the same time, I watched *Writing Software*, a talk David Heinemeier Hansson
 gave in RailsConf 2014 Keynote.
 
 You can watch the talk on [youtube](https://youtu.be/9LfmrkyP81M).
@@ -458,9 +459,9 @@ Those are very easy to remember and explain, but I think I did not manage to
 convince anyone to try because they did not really care about the *what* and the
 *how*. They wanted to know *why*.
 
-I kept telling them they should try to write tests first, that TDD was not
-something you can learn in one week, that they should try it and stick to it for
-several weeks before "getting" it.
+I kept telling them they should always write their tests first, that they
+should try and stick to it for several weeks before "getting" it, TDD
+not being something you could "learn in one week-end".
 
 But that's not what they wanted to hear, they wanted to know *why* TDD was worth trying,
 and the answer: "Because it worked really well for me and my project" was not
