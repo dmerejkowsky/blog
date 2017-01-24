@@ -103,6 +103,8 @@ You can also suggest new links in the
   http://jgthms.com/web-design-in-4-minutes/)
 * [What Color is Your Function](
   http://journal.stuffwithstuff.com/2015/02/01/what-color-is-your-function/)
+* [What does it take to be a good programmer?](
+  https://dimitrov2k.wordpress.com/2017/01/22/what-does-it-take-to-be-a-good-programmer/)
 * [Where automated testing should (and shouldn't) fit in your strategy](
   http://lifeimitatescode.com/automated-testing-strategy)
 * [XY problem](http://xyproblem.info)
@@ -324,6 +326,7 @@ You can also suggest new links in the
 * [concourse](https://concourse.ci)
 * [fbuild](https://github.com/felix-lang/fbuild)
 * [fips](https://github.com/floooh/fips)
+* [godep](https://github.com/tools/godep)
 * [GYP](https://gyp.gsrc.io/)
 * [hunter](https://github.com/ruslo/hunter)
 * [llbuild](https://github.com/apple/swift-llbuild)
