@@ -69,7 +69,9 @@ You can also suggest new links in the
   https://www.happyassassin.net/2016/11/04/i-dont-like-computers)
 * [Magic Ink: Information Software and the Graphical Interface](
   http://worrydream.com/MagicInk/)
-* [Maintairers Matter](http://kmkeen.com/maintainers-matter)
+* [Maintainers Matter](http://kmkeen.com/maintainers-matter)
+* [Maslow’s pyramid of code review](
+  http://blog.d3in.org/post/111338685456/maslows-pyramid-of-code-review)
 * [Sakaki's EFI Install Guide](https://wiki.gentoo.org/wiki/Sakaki%27s_EFI_Install_Guide)
 * [Open Your Source, More](
   https://rhettinger.wordpress.com/2011/01/28/open-your-source-more)
