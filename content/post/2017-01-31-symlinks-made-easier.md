@@ -101,8 +101,8 @@ as the names in the `ln` man page ...
 My first idea was to have two ways to call my `ln` wrapper, with names that
 remembered me about the direction of the arrow.
 
-So something like `ln-lt` (for the lesser than sign, aka `<`) and `ln-gt`
-(for the greater than sign, aka `>`).
+So something like `ln-lt` (for the lesser than sign, aka&nbsp;`<`) and `ln-gt`
+(for the greater than sign, aka&nbsp;`>`).
 
 But that was confusing, and the code was not very readable:
 
