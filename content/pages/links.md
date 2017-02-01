@@ -335,6 +335,7 @@ You can also suggest new links in the
 * [Meson](http://mesonbuild.com)
 * [Ninja](https://ninja-build.org/)
 * [premake](https://premake.github.io/)
+* [QuickBuild](https://www.pmease.com/quickbuild)
 * [redo](https://github.com/apenwarr/redo)
 * [SCons](http://scons.org)
 * [Tup](http://gittup.org/tup/)
