@@ -201,6 +201,8 @@ tweak your tools to have an API and UI that matches how *your* brain works.
 
 Plus it's a nice way to show you how Python3 is awesome :P
 
+*Update*: someone had the same kind of idea for implementing a safer
+`rm`. You can read more on [github](https://github.com/alanzchen/rm-protection)
 
 
 [^1]: Old habit. This one is not likely to go away ...
