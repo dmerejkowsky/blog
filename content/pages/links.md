@@ -296,6 +296,7 @@ You can also suggest new links in the
 * [pycp: cp and mv with a progress bar](https://pypi.python.org/pypi/pycp)
 * [replacer: replace text in files](https://pypi.python.org/pypi/replacer)
 * [rkt: App container runtime for Linux](https://github.com/coreos/rkt)
+* [rm-protection](https://github.com/alanzchen/rm-protection)
 * [rr: lightweight recording & deterministic debugging](http://rr-project.org/)
 * [Serverless Decentralized Editing of Encrypted Stuff](
   https://github.com/schollz/sdees)
