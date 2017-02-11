@@ -89,7 +89,7 @@ SPEAKER: Who here is using TDD?
 
 SPEAKER: Who here has been doing that for more than five years?
 
-*Me and an other guy raise our hands*
+*An other guy and I raise our hands*
 
 *I feel old*
 {{< /scene >}}
