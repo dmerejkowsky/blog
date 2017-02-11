@@ -191,3 +191,5 @@ TRISTAN NITOT: The room is full at 9 AM on a Sunday morning after a short night,
 a long evening and probably too many beers. Thanks for coming!
 
 {{< /scene >}}
+
+See you next year!
