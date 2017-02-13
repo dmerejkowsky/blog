@@ -346,6 +346,7 @@ You can also suggest new links in the
 
 ## Git
 
+* [ghq](https://github.com/motemen/ghq)
 * [git-repo](https://github.com/guyzmo/git-repo)
 * [git subtree](
   https://developer.atlassian.com/blog/2015/05/the-power-of-git-subtree)
