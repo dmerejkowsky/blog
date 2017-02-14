@@ -51,6 +51,8 @@ You can also suggest new links in the
 * [Dark Scrum](http://ronjeffries.com/articles/016-09ff/defense)
 * [Dealing with Legacy Code for Developers: Managing your Manager](
   http://www.daedtech.com/dealing-legacy-code-developers-managing-manager)
+* [Design for experts; accomodate beginners](
+  https://pchiusano.github.io/2016-02-25/tech-adoption.html)
 * [Developer Driven Developemnt](
   https://dev.to/isaacandsuch/developer-driven-development)
 * [Graphite, Grafana and statsd gotchas](
