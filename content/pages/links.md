@@ -21,8 +21,7 @@ You can also suggest new links in the
 * [Mailing lists]({{< relref "#mailing-lists" >}})
 * [Books]({{< relref "#books" >}})
 * [Software]({{< relref "#software" >}})
-* [Talks]({{< relref "#talks" >}})
-* [Video series]({{< relref "#video-series" >}})
+* [Videos]({{< relref "#videos" >}})
 * [Misc]({{< relref "#misc" >}})
 * [Humour]({{< relref "#humour" >}})
 
@@ -402,7 +401,7 @@ You can also suggest new links in the
 * [visual-star-search](https://github.com/nelstrom/vim-visual-star-search)
 * [insertlessly](https://github.com/dahu/Insertlessly/blob/master/plugin/insertlessly.vim)
 
-# Talks
+# Videos
 
 * [Boris Kolpackov: New Build System for New C++](https://www.youtube.com/watch?v=HxYFSlDdl0c)
 * [Bradley M. Kuhn: Considering the Future of Copyleft](https://www.youtube.com/watch?v=Fox1CuoP2DQ)
@@ -426,6 +425,8 @@ You can also suggest new links in the
   http://developers.slashdot.org/story/15/12/01/2114251/software-engineer-liz-bennett-talks-about-being-a-woman-in-a-nearly-all-male-workplace-video)
 * [Luciano Ramalho: Iteration & Generators: the Python Way](https://www.youtube.com/watch?v=z4P6hSa6K9g)
 * [Mark Lavin: Maintaining Your Sanity While Maintaining Your Open Source App](https://www.youtube.com/watch?v=xgWFTrXn0_U)
+* [Mary livecodes  drum machine](
+  https://www.youtube.com/watch?v=jB219tQWjEg)
 * [Metaprogramming Python for Big Data](https://www.youtube.com/watch?v=rXj5nayS7Yg)
 * [Mike Monteiro: How Designers Destroyed the World](https://vimeo.com/68470326)
 * [MIT: Structure and Interpretation of Computer Programs](https://www.youtube.com/watch?v=ymsbTVLbyN4)
@@ -445,7 +446,7 @@ You can also suggest new links in the
 * [Web Languages and VMs: Fast Code is Always in Fashion](http://www.youtube.com/watch?v=huawCRlo9H4)
 * [Why Google Stores Billions of Lines of Code in a Single Repository](https://www.youtube.com/watch?v=W71BTkUbdqE&feature=youtu.be)
 
-# Video series
+## Video series
 
 * [Clean Coders](https://cleancoders.com/videos/clean-code)
 * [TheHappieCat](https://www.youtube.com/user/TheHappieCat/videos)
