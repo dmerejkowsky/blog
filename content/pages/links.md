@@ -425,7 +425,7 @@ You can also suggest new links in the
   http://developers.slashdot.org/story/15/12/01/2114251/software-engineer-liz-bennett-talks-about-being-a-woman-in-a-nearly-all-male-workplace-video)
 * [Luciano Ramalho: Iteration & Generators: the Python Way](https://www.youtube.com/watch?v=z4P6hSa6K9g)
 * [Mark Lavin: Maintaining Your Sanity While Maintaining Your Open Source App](https://www.youtube.com/watch?v=xgWFTrXn0_U)
-* [Mary livecodes  drum machine](
+* [Mary livecodes a drum machine](
   https://www.youtube.com/watch?v=jB219tQWjEg)
 * [Metaprogramming Python for Big Data](https://www.youtube.com/watch?v=rXj5nayS7Yg)
 * [Mike Monteiro: How Designers Destroyed the World](https://vimeo.com/68470326)
