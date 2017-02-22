@@ -480,6 +480,7 @@ You can also suggest new links in the
 * [Geek And Poke](http://geek-and-poke.com)
 * [HTTP Status Cats](
   https://www.flickr.com/photos/girliemac/sets/72157628409467125/)
+* [Special sysadmin tools](http://www.brendangregg.com/specials.html)
 * ["Yoda conditions", "Pokemon Exception Handling", and other
    programming classics](
   http://www.dodgycoder.net/2011/11/yoda-conditions-pokemon-exception.html)
