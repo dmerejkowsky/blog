@@ -94,6 +94,8 @@ You can also suggest new links in the
   https://medium.com/@billjordan1/the-quiet-crisis-unfolding-in-software-development-cffbdafbf450#.y0v0uk1oo)
 * [The Six Dumbest Ideas in Computer Security](
   http://www.ranum.com/security/computer_security/editorials/dumb)
+* [The Vietnam of Computer Science](
+  http://blogs.tedneward.com/post/the-vietnam-of-computer-science/)
 * [There are two types of engineers. Be both](
   https://dev.to/anotherdevblog/there-are-two-types-of-engineers-be-both)
 * [The tale of "aux.c"](http://heirloom.sourceforge.net/mailx_aux_c.html)
