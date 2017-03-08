@@ -347,6 +347,7 @@ You can also suggest new links in the
   http://landinghub.visualstudio.com/visual-cpp-build-tools)
 * [waf](http://waf.io)
 
+
 ## Git
 
 * [ghq](https://github.com/motemen/ghq)
@@ -466,6 +467,23 @@ You can also suggest new links in the
 * [CodeKata](http://codekata.com/)
 * [Podcast: Python and the people who make it great](http://podcastinit.podbean.com/e/episode-54-pip-and-the-python-package-authority-with-donald-stufft/)
 * [Talk Python To Me](https://talkpython.fm/)
+
+## Decentralized Internet
+
+* [C.H.A.T.O.N.S](https://chatons.org)
+* [cozy](https://cozy.io/en/)
+* [de-Google-ify](https://degooglisons-internet.org/?l=en)
+* [Diaspora](https://diasporafoundation.org/)
+* [FreedomBox](https://wiki.debian.org/FreedomBox/)
+* [gail.com](https://gail.com)
+* [guifi.net](https://guifi.net/)
+* [La Brique Internet](https://labriqueinter.net/)
+* [libre.sh](https://github.com/indiehosters/libre.sh)
+* [matrix](http://matrix.org/)
+* [Nextcloud](https://nextcloud.com/)
+* [puffin](http://puffin.rocks/)
+* [yunohost](https://yunohost.org)
+
 
 ## Today I learned:
 
