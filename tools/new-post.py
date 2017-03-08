@@ -37,7 +37,6 @@ def main():
         fp.write(to_write)
     to_run = [
         ("git" , "add", post_path),
-        ("git" , "commit", "--message", "New post: %s" % title),
         ("nvim", post_path),
     ]
     for cmd in to_run:
