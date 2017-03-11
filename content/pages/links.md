@@ -379,6 +379,8 @@ You can also suggest new links in the
 * [pies: polyglot Python](https://github.com/timothycrosley/deprecated.pies)
 * [pdbpp: Improved debugger](https://pypi.python.org/pypi/pdbpp/)
 * [pyotp: One-Time Password library](https://github.com/pyotp/pyotp)
+* [pyrasite: Tools for injecting code into running Python processes](
+  http://pyrasite.com/)
 * [QPython: Python on Android](http://qpython.com/)
 * [ruaml: YAML parser/emitter](https://pypi.python.org/pypi/ruamel.yaml)
 * [sidomo: Simple Docker Module](https://github.com/deepgram/sidomo)
