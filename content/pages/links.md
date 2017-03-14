@@ -74,6 +74,8 @@ You can also suggest new links in the
 * [Maslow’s pyramid of code review](
   http://blog.d3in.org/post/111338685456/maslows-pyramid-of-code-review)
 * [Sakaki's EFI Install Guide](https://wiki.gentoo.org/wiki/Sakaki%27s_EFI_Install_Guide)
+* [Onboarding New Developers](
+  http://www.indeliblebluepen.com/onboarding-new-developers/)
 * [Open Your Source, More](
   https://rhettinger.wordpress.com/2011/01/28/open-your-source-more)
 * [Quit Social Media. Your Career May Depend on It](
