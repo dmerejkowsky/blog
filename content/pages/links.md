@@ -90,6 +90,8 @@ You can also suggest new links in the
   https://eev.ee/blog/2016/08/22/testing-for-people-who-hate-testing/)
 * [The 100% correct way to validate email addresses](
   https://hackernoon.com/the-100-correct-way-to-validate-email-addresses-7c4818f24643)
+* [The Like Button Ruined the Internet](
+  https://www.theatlantic.com/technology/archive/2017/03/how-the-like-button-ruined-the-internet/519795/?single_page=true)
 * [The Open/Closed Principle](
   http://patrick.louys.ch/2016/12/11/open-closed-principle/)
 * [The Quiet Crisis unfolding in Software Development](
