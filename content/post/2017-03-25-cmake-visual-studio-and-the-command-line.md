@@ -8,7 +8,7 @@ title: CMake, Visual Studio, and the Command Line
 For quite some time now I've been working inside teams who were
 using Visual Studio to build complex `C++` projects.
 
-Because I've often be the "buildfarm guy" and because I don't like GUIs [^1]
+Because I've often been the "buildfarm guy" and because I don't like GUIs [^1]
 that much, I had to find ways to build Visual Studio projects from the command
 line.
 
@@ -18,14 +18,14 @@ This is the story of everything I've tried.
 
 Quick note before we begin: throughout this article, I will be using Visual
 Studio 2015 on Windows 10 to build the source code of CMake itself. If's a nice
-project to do benchmarks, since it's neither too big nor two small, and has no
+project to do benchmarks, since it's neither too big nor too small, and has no
 dependencies to worry about (and of course, it uses CMake to build itself :)
 
 ## Using `devenv`
 
-The most obvious way If found was to use a tool called `devenv`. In fact, that's the
-probably the answer you'll find if you look up "Building Visual Studio projects
-from the command line" on an internet search engine.
+The most obvious way I found was to use a tool called `devenv`. In fact, that's
+the probably the answer you'll find if you look up "Building Visual Studio
+projects from the command line" on an internet search engine.
 
 But, bad luck, if you try to run `devenv` directly from `cmd.exe`, you'll the
 famous error message:
@@ -39,15 +39,15 @@ The trick is to use a "Developer Command Prompt" you'll find in the start menu:
 
 ![Visual Studio command prompts in start menu](/pics/start-menu-visual-command-prompts.png)
 
-For now, let's use the first one, and try running `devenv`:
+So I opened the first command prompt, and tried running `devenv`:
 
 ```bat
 cd c:\User\dmerej\src\cmake\build-vs
 devenv CMake.sln
 ```
 
-Visual Studio opens. Hum, that's not what we want. Turns out, if we make _any_
-mistake in the command line prompt, Visual Studio will open.
+Visual Studio opened. Hum, that's not what I wanted. Turns out, if you make
+_any_ mistake in the command line prompt, Visual Studio will open.
 
 The correct way is to use something like:
 
@@ -141,7 +141,7 @@ So you can describe the name of the targets, the include directories and the
 dependencies only once for all the platforms.
 
 Also, we were using Jenkins to do continuous integration, so we had to write
-build scripts that would run on the nodes.
+build scripts that would run on the nodes as soon as any developer would make a merge request.
 
 On Linux and macOS, the default generator is "Unix Makefiles", so the code was
 straightforward. We used bash and thus the code looked like this:
@@ -158,7 +158,7 @@ mkdir -p build
 )
 ```
 
-On Windows, the scripts were written in `.bat` and looked like this
+On Windows, the scripts were Batch files and looked like this:
 
 ```bat
 git pull
@@ -191,9 +191,9 @@ Visual Studio 14 2015       140
 
 ## Using Python
 
-But, as time went by, we wanted to rewrite all the build scripts in Python (a
+But, as time went by, we wanted to rewrite all the build scripts in Python -- a
 nice language that runs quite nicely on a number of various platforms, maybe
-you've heard about it), so that we could factorize some of the code.
+you've heard about it -- so that we could factorize some of the code.
 (For instance, running `git pull` to update the sources before building)
 
 On Linux and macOS it was easy:
@@ -219,7 +219,7 @@ It looks something like this:
 
 ```python
 def source_bat(bat_file):
-  interesting = set(("INCLUDE", "LIB", "LIBPATH", "PATH"))
+  interesting = {"INCLUDE", "LIB", "LIBPATH", "PATH"}
   result = {}
 
   process = subprocess.Popen('"%s"& set' % (bat_file),
@@ -236,7 +236,7 @@ def source_bat(bat_file):
     return result
 ```
 
-The idea is to run a bat script (that's why we are using `shell=True`) that will:
+The idea is to run a batch script (that's why we are using `shell=True`) that will:
 
 * Call the `.bat` file we need
 * Run the built-in `set` command.
@@ -245,7 +245,7 @@ Yup, for those who don't know, there are several ways to use `set` on `cmd.exe`:
 
 * To set an environment variable: `set FOO=BAR`
 * To unset an environment variable: `set FOO=`
-* To see all the environment variable whose name start with `<prefix>` `set
+* To see all the environment variable whose name start with `<prefix>`: `set
   <prefix>`
 * To dump _all_ the environment variables: `set`
 
@@ -267,10 +267,10 @@ but I digress.
 There was an other problem, though. On Linux and macOS, the command to build is
 always `make`.
 
-But on Windows, I had to carefully craft the `devenv` command, and this means
+But on Windows, I had to carefully craft the `devenv` command, and this meant
 specifying the path to the `.sln` file.
 
-At the time, I only had a few bad solutions:
+At first, I only had a few bad solutions:
 
 * Hard-code the name of the `.sln` file
 * Parse the top `CMakeLists` to find the `project()` call, `project()` being the
@@ -318,7 +318,7 @@ def build():
 ```
 
 (The `--` argument is here to separate arguments parsed by `cmake` binary from
-the one sent to the underlying build command. It's pretty standard)
+the one sent to the underlying build command. It's a common practice for command-line tools)
 
 
 ## Performance issues
@@ -402,13 +402,13 @@ all the CPU power:
 
 So I tried to find a `CMake` generator that would generate simpler code.
 
-During my research, I found out that Microsoft has their own implementation of
+During my research, I found out that Microsoft had their own implementation of
 the `Make` program called `NMake`, so I decided to use the `NMake Makefile`
 generator, this time from the "VS2015 Native Tools Command Prompt".
 
-It's a _different_ `.bat` file because this time we will be invoking the
-compiler, the linker and their friends directly. (`cl.exe`, and `link.exe`
-respectively)
+Yup, it's a _different_ `.bat` file because this time we will be invoking the
+compiler, the linker and their friends directly. (`cl.exe`, and `link.exe`,
+respectively), and won't be using `devenv` or `MSBuild` at all.
 
 Here's what I ran:
 
@@ -480,6 +480,14 @@ steady line around 100% for all cores:
 
 ![Building with Ninja](/pics/building-ninja.png)
 
+I also got the terse output that gave `ninja` its name. [^5]
+
+```bat
+cmake -GNinja ..
+cmake --build .
+[11/11] Linking CXX executable Tests\CMakeLib\CMakeLibTests.exe
+```
+
 ## Cross-compiling
 
 TODO: why were we cross-compiling ?
@@ -502,3 +510,4 @@ Am I doing it right?
 [^2]: David, if you read this, thank you _so_ much!
 [^3]: Sorry, Microsoft fans who are ready this. I was a bit stupid back then.
 [^4]: More info in the [cmake documentation](https://cmake.org/cmake/help/latest/command/project.html)
+[^5]: It's just one line of output that disappears quiclky after the build is done, do you get it?
