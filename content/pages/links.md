@@ -114,6 +114,8 @@ You can also suggest new links in the
   http://journal.stuffwithstuff.com/2015/02/01/what-color-is-your-function/)
 * [What does it take to be a good programmer?](
   https://dimitrov2k.wordpress.com/2017/01/22/what-does-it-take-to-be-a-good-programmer/)
+* [When Machines Go Rogue](
+  https://theoutline.com/post/1228/when-machines-go-rogue)
 * [Where automated testing should (and shouldn't) fit in your strategy](
   http://lifeimitatescode.com/automated-testing-strategy)
 * [XY problem](http://xyproblem.info)
