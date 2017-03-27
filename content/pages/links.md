@@ -54,6 +54,8 @@ You can also suggest new links in the
   https://pchiusano.github.io/2016-02-25/tech-adoption.html)
 * [Developer Driven Developemnt](
   https://dev.to/isaacandsuch/developer-driven-development)
+* [Execution in the Kingdom of Nouns (a Java rant)](
+  http://steve-yegge.blogspot.fr/2006/03/execution-in-kingdom-of-nouns.html)
 * [Graphite, Grafana and statsd gotchas](
   http://dieter.plaetinck.be/post/25-graphite-grafana-statsd-gotchas/)
 * [How I converted my React app to VanillaJS](
