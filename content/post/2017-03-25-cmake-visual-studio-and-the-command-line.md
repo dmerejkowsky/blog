@@ -488,18 +488,33 @@ cmake --build .
 [11/11] Linking CXX executable Tests\CMakeLib\CMakeLibTests.exe
 ```
 
-## Cross-compiling
+## A story of cross-compiling
 
-TODO: why were we cross-compiling ?
+Then one day, during CI builds:
+
+```text
+Linker fatal error: LNK1102: out of memory
+```
+
+Googling the error leads to: https://support.microsoft.com/en-us/help/2891057/linker-fatal-error-lnk1102-out-of-memory
+
+And so we discovered we could pass an 'arch' argument to the `.bat` script ;)
+
 
 ## Code signing breakage
 
   - installed WDK (to sign code)
-  - corecrt.h not found!
-  - aftewrards, realized that it does _not_ break if you un-check the box about
-    installing headers :)
+
+  - `corecrt.h` not found!
+
+```
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\INCLUDE\crtdefs.h(10): fatal error C1083: Cannot open include file: 'corecrt.h': No such file or directory
+```
+
   - dig everywhere
   - ugly patch to set INCLUDE and LIB
+  - afterwards, realized that it does _not_ break if you un-check the box about
+    installing headers :)
 
 ## Conclusion
 
