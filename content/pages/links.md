@@ -376,6 +376,8 @@ You can also suggest new links in the
   https://pypi.python.org/pypi/colorama )
 * [deco: Decorated Concurrency](https://github.com/alex-sherman/deco)
 * [docopt: Pythonic argument parser](https://pypi.python.org/pypi/docopt)
+* [dsert: Library to test all fields of a python dictionary](
+  https://github.com/paxos-bankchain/dsert)
 * [ecoutils: Python ecosystem management](http://sedimental.org/managing_python_ecosystems.html)
 * [hug: Embrace the APIs of the future](http://www.hug.rest/website/latest)
 * [invoke: Pythonic task execution](http://www.pyinvoke.org)
