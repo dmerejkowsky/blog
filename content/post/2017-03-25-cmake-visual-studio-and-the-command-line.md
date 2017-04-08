@@ -490,15 +490,17 @@ cmake --build .
 
 ## A story of cross-compiling
 
-Then one day, during CI builds:
+After several years of using the `CMake` + `Ninja` combination, I got
+an error message during one of our CI builds:
 
 ```text
 Linker fatal error: LNK1102: out of memory
 ```
 
-Googling the error leads to: https://support.microsoft.com/en-us/help/2891057/linker-fatal-error-lnk1102-out-of-memory
+Googling the error leads to:
+https://support.microsoft.com/en-us/help/2891057/linker-fatal-error-lnk1102-out-of-memory
 
-And so we discovered we could pass an 'arch' argument to the `.bat` script ;)
+So we tried to follow the advice in the "Resolution" section and discr
 
 
 ## Code signing breakage
