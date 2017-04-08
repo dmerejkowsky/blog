@@ -616,7 +616,7 @@ Notice the `amd64_x86` subfolder.
 Everything was OK for a while, until we decided we wanted to sign the executables before shipping them.
 
 It seemed the most obvious way was to use `signtool.exe`, so I proceeded to
-instal the `Windows Driver Kit`,
+install the `Windows Driver Kit`,
 as instructed [on the Windows Dev Center](
 https://msdn.microsoft.com/en-us/library/windows/desktop/aa387764.aspx) [^4]
 
