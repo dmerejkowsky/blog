@@ -667,6 +667,11 @@ get easier, who knows?
 
 Until then, may the Build be with you!
 
+*Update: I've decided to cross-post this article on
+[dev.to](
+https://dev.to/dmerejkowsky/cmake-visual-studio-and-the-command-line).
+Let's see how it goes!*
+
 
 [^1]: David, if you read this, thank you _so_ much!
 [^2]: More info in the [CMake documentation](https://cmake.org/cmake/help/latest/command/project.html)
