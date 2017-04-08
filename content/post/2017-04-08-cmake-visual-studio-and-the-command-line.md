@@ -1,6 +1,6 @@
 ---
 slug: cmake-visual-studio-and-the-command-line
-date: 2017-04-08:46:33.915792+00:00
+date: 2017-04-08T15:46:33.915792+00:00
 draft: false
 title: CMake, Visual Studio, and the Command Line
 ---
