@@ -497,7 +497,7 @@ called "NMake Makefiles JOM"
 
 [Jom](http://wiki.qt.io/Jom) is a tool made by `Qt` folks. It's a
 re-implementation of the `nmake` command, but with support for multiple jobs.
-Te command line switch to build with multiple CPU is also called `-j`, which is
+The command line switch to build with multiple CPU is also called `-j`, which is
 nice because it meant the build script code would get simpler.
 
 That gave quite some good results, but the build was still slower than on Linux
