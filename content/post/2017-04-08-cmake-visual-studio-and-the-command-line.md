@@ -42,7 +42,7 @@ the probably the answer you'll find if you look up "Building Visual Studio
 projects from the command line" on an internet search engine. You'll also find
 places where they suggest you use `MSBuild.exe`.
 
-But, bad luck, if you try to run `devenv` directly from `cmd.exe`, you'll the
+But, bad luck, if you try to run `devenv` directly from `cmd.exe`, you'll get the
 famous error message:
 
 ```text
