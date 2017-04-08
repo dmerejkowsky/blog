@@ -669,6 +669,6 @@ Until then, may the Build be with you!
 
 
 [^1]: David, if you read this, thank you _so_ much!
-[^2]: More info in the [cmake documentation](https://cmake.org/cmake/help/latest/command/project.html)
+[^2]: More info in the [CMake documentation](https://cmake.org/cmake/help/latest/command/project.html)
 [^3]: It's just one line of output that disappears quiclky after the build is done, do you get it?
 [^4]: Turned out I somehow missed [this page](https://msdn.microsoft.com/en-us/library/8s9b9yaz.aspx) telling me `signtool.exe` was already installed when I set up Visual Studio on the node ...
