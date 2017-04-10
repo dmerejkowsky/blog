@@ -122,12 +122,12 @@ Note how the user is stuck in a loop until he enters a valid answer,
 and how the first item is selected by default:
 
 ```python
->>> choices = ["apples", "oranges", "bananas"]
+>>> choices = ["apple", "orange", "banana"]
 >>> answer = ui.ask_choice("Select a fruit:", choices)
 > Select a fruit:
-1. apples (default)
-2. oranges
-3. bananas
+1. apple (default)
+2. orange
+3. banana
 > foobar
 Please enter a number between 1 and 3
 > 4
