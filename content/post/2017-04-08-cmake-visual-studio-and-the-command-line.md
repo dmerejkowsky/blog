@@ -634,7 +634,7 @@ Well, I already had Python code computing the environment variables, so the fix 
 
 ```python
 def get_build_env(arch):
-    vs_comntool_path = os.environ["VS140COMNTOOLS"[
+    vs_comntool_path = os.environ["VS140COMNTOOLS"]
     bat_file = find_bat_file(vs_comntool_path)
     env = source_bat(bat_file, env)
 
