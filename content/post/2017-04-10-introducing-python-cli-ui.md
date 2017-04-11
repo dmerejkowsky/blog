@@ -12,6 +12,8 @@ Since I believe in the [rule of
 three](https://blog.codinghorror.com/rule-of-three/) and I already have three
 different projects using it, I've decided to share it to the world.
 
+Feel free to take a look at the [github page](https://github.com/dmerejkowsky/python-cli-ui).
+
 <!--more-->
 
 # What it does
@@ -63,7 +65,7 @@ USA
 >>> ui.info("People")
 >>> ui.info(ui.tabs(1), first_name, last_name)
 >>> ui.info(ui.tabs(1), "Adress:")
->>> ui.info(ui.indent(2), adress)
+>>> ui.info(ui.indent(2, adress))
 People:
   John Doe
   Adress:
@@ -73,13 +75,39 @@ People:
 ```
 
 
-## Meaningful semantics
+## Semantics
 
-Also, so that your messages are consistent, the API provides "higher levels"
-functions such as `info_1`, `info_2`, `info_3` (same idea as HTML tags `h1` to
-`h3`), `error`, `warning`, `debug`.
+If you let people use color the way they want, you may end up with an
+inconsistent UI.
 
-There's also a `fatal` method that will call `sys.exit()`
+To prevent this, the module also contains "high-level" methods such as
+`info_1`, `info_2`, `info_3`, so that you can write:
+
+```python
+ui.info_1("Make some tea")
+
+...
+
+ui.info_2("Boiling water")
+
+...
+ui.info_3("Turning kettle on")
+
+...
+```
+
+In the same vein, `warning`, `error` and `fatal` methods are provided for when
+things go wrong. (The last one calls `sys.exit()`, hence the name)
+
+There's also a `debug` function.
+
+You can control the verbosity using the `CONFIG` global dictionary.
+
+```python
+ui.CONFIG['quiet'] = True
+
+ui.info("this is some info") # won't get print
+```
 
 ## Interaction
 
@@ -139,7 +167,6 @@ oranges
 
 
 
-
 ## Other goodies
 
 ### A timer
@@ -173,3 +200,28 @@ intall
 No such command.
 Did you mean: install?
 ```
+
+### A pytest fixture
+
+You can also write tests to assert that a certain message matching a regexp was
+emitted.
+
+```python
+def say_hello(name):
+    ui.info("Hello", name)
+
+def test_say_hello(messages):
+    say_hello("John")
+    assert messages.find(r"Hello\w+John")
+```
+
+# Parting words
+
+Well, I hope you'll find this module useful.
+
+As explained in the [github
+README](https://github.com/dmerejkowsky/python-cli-ui/blob/master/README.md)
+I have no plans on making a proper `pypi` release just yet, but I'm will to
+accept pull requests or any other kind of feedback :)
+
+Cheers!
