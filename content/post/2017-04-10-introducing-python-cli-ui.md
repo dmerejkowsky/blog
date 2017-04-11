@@ -18,6 +18,11 @@ Feel free to take a look at the [github page](https://github.com/dmerejkowsky/py
 
 # What it does
 
+Let's start with a screen shot:
+
+![ui demo](/pics/python-cli-ui-demo.png)
+
+
 ## Coloring
 
 It's a module to write colorful command line interfaces in Python.
@@ -35,6 +40,10 @@ ui.info(ui.red, "Error", ui.reset, ui.bold, file_path, ui.reset, "not found")
 This will print the word 'Error' in red, the file path in bold, and the
 'not found' normally.
 
+The API follows the behavior of the `print()` function: by default, tokens
+are separated by spaces, `\n` is added at the end, and you can specify
+your own `sep` and `end` keywords if you need to.
+
 ## Displaying enumerations
 
 It also allows to display items of a list, taking care of
@@ -43,8 +52,8 @@ leading space for ` 1/12`)
 
 ```python
 >>> months = ["January", "February", ..., "December"]
->>> for i, month in enumerate(mounths):
->>>     ui.info_count(i, 12, mount)
+>>> for i, month in enumerate(months):
+>>>     ui.info_count(i, 12, month)
 * ( 1/12) January
 * ( 2/12) February
 ...
@@ -74,39 +83,65 @@ People:
     USA
 ```
 
+## Unicode goodness
+
+You can define your own suite of characters, which will get a color, a
+unicode and an ASCII representation (so that it works on Windows too.)
+
+For instance:
+
+```python
+check  = _Characters(green, "✓", "ok")
+
+ui.info("Success!", ui.check)
+```
+
+On Linux:
+
+![unicode check](/pics/python-cli-ui-check-unicode.png)
+
+On Windows:
+
+![ascii check](/pics/python-cli-ui-check-ascii.png)
+
 
 ## Semantics
 
-If you let people use color the way they want, you may end up with an
-inconsistent UI.
-
-To prevent this, the module also contains "high-level" methods such as
+The module also contains "high-level" methods such as
 `info_1`, `info_2`, `info_3`, so that you can write:
 
 ```python
-ui.info_1("Make some tea")
-
+ui.info_1("Making some tea")
 ...
-
 ui.info_2("Boiling water")
-
 ...
 ui.info_3("Turning kettle on")
-
 ...
+ui.info_1("Done")
 ```
+
+Which will be rendered as:
+
+![python ui cli example](/pics/python-cli-ui.png)
+
+This allows you to insert to group your messages in a coherent way.
+Here the main message is 'Making some tea'. 'Boiling water' is a sub-task
+of making the tead, and 'Turning the kettle on' is a sub-task of the
+boiling water process.
 
 In the same vein, `warning`, `error` and `fatal` methods are provided for when
 things go wrong. (The last one calls `sys.exit()`, hence the name)
 
-There's also a `debug` function.
-
-You can control the verbosity using the `CONFIG` global dictionary.
+There's also a `debug` function, for messages you are only interested when
+debugging: you can control the verbosity using the `CONFIG` global dictionary.
 
 ```python
 ui.CONFIG['quiet'] = True
 
-ui.info("this is some info") # won't get print
+ui.info("this is some info") # won't get printed
+
+ui.CONFIG['verbose'] = True
+ui.debug("A debug message") # will get printed
 ```
 
 ## Interaction
