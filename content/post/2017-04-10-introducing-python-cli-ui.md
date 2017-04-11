@@ -257,7 +257,7 @@ Well, I hope you'll find this module useful.
 
 As explained in the [github
 README](https://github.com/dmerejkowsky/python-cli-ui/blob/master/README.md)
-I have no plans on making a proper `pypi` release just yet, but I'm will to
+I have no plans on making a proper `pypi` release just yet, but I'm willing to
 accept pull requests or any other kind of feedback :)
 
 Cheers!
