@@ -124,9 +124,9 @@ Which will be rendered as:
 
 ![python ui cli example](/pics/python-cli-ui.png)
 
-This allows you to insert to group your messages in a coherent way.
+This allows you to group your messages in a coherent way.
 Here the main message is 'Making some tea'. 'Boiling water' is a sub-task
-of making the tead, and 'Turning the kettle on' is a sub-task of the
+of making the tea, and 'Turning the kettle on' is a sub-task of the
 boiling water process.
 
 In the same vein, `warning`, `error` and `fatal` methods are provided for when
@@ -137,9 +137,10 @@ debugging: you can control the verbosity using the `CONFIG` global dictionary.
 
 ```python
 ui.CONFIG['quiet'] = True
-
 ui.info("this is some info") # won't get printed
+```
 
+```python
 ui.CONFIG['verbose'] = True
 ui.debug("A debug message") # will get printed
 ```
