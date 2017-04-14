@@ -66,7 +66,7 @@ which allows to ignore some of the files.
 
 import subprocess
 
-from .utils impor collect_sources
+from .utils import collect_sources
 
 def ignore(p):
     """ Ignore hidden and test files """
