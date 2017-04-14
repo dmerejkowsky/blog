@@ -14,7 +14,7 @@ bit of scripting code.
 
 # What is linting?
 
-Linting is the process of running a program that will analyse code for potential
+Linting is the process of running a program that will analyze code for potential
 errors.
 
 You give it the path of your sources, and it outputs a list of messages.
