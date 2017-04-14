@@ -21,8 +21,9 @@ You give it the path of your sources, and it outputs a list of messages.
 
 # What's wrong with linting in an IDE?
 
-Nothing! It's just that I prefer having the liberty to run them only when I need
-them, and that having scripts is useful when you do continuous integration.
+Nothing! It's just that I prefer having the liberty to run the linters only when
+I need them, and that having scripts is useful when you do continuous
+integration.
 
 # The linters I use
 
