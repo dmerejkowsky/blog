@@ -3,6 +3,7 @@ slug: introducing-python-cli-ui
 date: 2017-04-10T19:50:46.740920+00:00
 draft: false
 title: Introducing python-cli-ui
+tags: ["python"]
 ---
 
 For quite some time I've been adding a file called `ui.py` in some
