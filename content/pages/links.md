@@ -31,6 +31,8 @@ You can also suggest new links in the
   http://line25.com/articles/10-html-entity-crimes-you-really-shouldnt-commit)
 * [10 things I learned making the fastest site in the world](
   https://hackernoon.com/10-things-i-learned-making-the-fastest-site-in-the-world-18a0e1cdf4a7)
+* [12 Signs You’re Working in a Feature Factory](
+  https://hackernoon.com/12-signs-youre-working-in-a-feature-factory-44a5b938d6a2)
 * [A Great Old-Timey Game-Programming Hack](
   http://blog.moertel.com/posts/2013-12-14-great-old-timey-game-programming-hack.html)
 * [Allow installing modules from a vcs subdirectory in non-editable mode](
