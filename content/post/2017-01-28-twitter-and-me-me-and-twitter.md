@@ -181,7 +181,7 @@ spending more and more time reading my timeline.
 
 The "signal v noise" ratio was very low.
 
-For instance, I used to follow the [parodic Bill Mur Murray account](https://twitter.com/BiIIMurray).
+For instance, I used to follow the [parodic Bill Murray account](https://twitter.com/BiIIMurray).
 
 There was a few of his tweets that made me laugh, such as:
 
