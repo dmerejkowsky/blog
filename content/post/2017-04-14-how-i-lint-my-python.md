@@ -167,7 +167,7 @@ Well, `flake8` does not run `pylint`.
 of all the other linters, and is not so easy to configure. Plus, I discovered
 its existence only *after* writing the script :)
 
-Also, I've stopped tyring to use tools such as `tox` or `invoke`. I don't need
+Also, I've stopped trying to use tools such as `tox` or `invoke`. I don't need
 to test for several Python versions, (that's the main reason to use `tox`),
 and the additional complexity of specifying commands in `invoke` is just not worth it.
 
