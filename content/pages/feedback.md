@@ -36,6 +36,10 @@ Here are a few things you need to know:
 * After you submit your comment, you'll have 15 minutes to edit or delete it
   (If you are wondering, this works with a secret token stored in a cookie).
 
+## mastodon
+
+I have a [mastodon](https://mastodon.social/about) account:
+`dmerej@mamot.fr`
 
 ## twitter
 
