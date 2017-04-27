@@ -98,6 +98,8 @@ You can also suggest new links in the
   https://www.theatlantic.com/technology/archive/2017/03/how-the-like-button-ruined-the-internet/519795/?single_page=true)
 * [The Open/Closed Principle](
   http://patrick.louys.ch/2016/12/11/open-closed-principle/)
+* [The Problem With Heroes In Software Development](
+  https://dev.to/pbeekums/the-problem-with-heroes-in-software-development)
 * [The Quiet Crisis unfolding in Software Development](
   https://medium.com/@billjordan1/the-quiet-crisis-unfolding-in-software-development-cffbdafbf450#.y0v0uk1oo)
 * [The Six Dumbest Ideas in Computer Security](
