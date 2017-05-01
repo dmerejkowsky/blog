@@ -107,6 +107,9 @@ resources, most of them naturally refuse to host too many accounts.
 I encourage you to give mastodon a try. After you've chosen your instance, using
 the website is not very difficult if you already know how to use Twitter.
 
+You can use [mastodon-bridge](http://mastodon-bridge.herokuapp.com/) or the
+search bar at the top left to find friends.
+
 There are also some nice features:
 
 * The 500 characters limit makes it easier to have meaningful conversation.
