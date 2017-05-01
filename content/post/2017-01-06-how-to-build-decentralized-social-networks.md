@@ -56,6 +56,10 @@ talk, but I since realized I've missed the deadline.
 * Whatever happens, I'll publish the rest of the post somewhere in the second
   week of February 2017, but not before.
 
+#### Update
+
+Here's the promised article (better late than never, right?):
+[Why Mastodon]({{< ref "post/2017-05-01-why-mastodon.md" >}})
 
 
 [^1]: [the name does not matter]({{< ref "post/2016-04-07-finding-a-good-project-name.md" >}})
