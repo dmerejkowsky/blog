@@ -495,6 +495,7 @@ You can also suggest new links in the
 * [guifi.net](https://guifi.net/)
 * [La Brique Internet](https://labriqueinter.net/)
 * [libre.sh](https://github.com/indiehosters/libre.sh)
+* [Mastodon](https://mastodon.social). See also: [mastodon-bridge](https://mastodon-bridge.herokuapp.com/)
 * [matrix](http://matrix.org/)
 * [Nextcloud](https://nextcloud.com/)
 * [puffin](http://puffin.rocks/)
