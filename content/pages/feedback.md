@@ -39,7 +39,7 @@ Here are a few things you need to know:
 ## mastodon
 
 I have a [mastodon](https://mastodon.social/about) account:
-`dmerej@mamot.fr`
+`@dmerej@mamot.fr`
 
 ## twitter
 
