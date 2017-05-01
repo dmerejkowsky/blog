@@ -22,44 +22,42 @@ tag = "tags"
 [[menu.main]]
 name = "Home"
 pre = "<i class='fa fa-home fa-fw'></i>"
-weight = 0
+weight = 1
 identifier = "home"
 url = "/"
 
 [[menu.main]]
 name = "About"
 pre = "<i class='fa fa-user fa-fw'></i>"
-weight = 1
+weight = 2
 identifier = "About"
 url = "/pages/about/"
 
 [[menu.main]]
 name = "Archives"
 pre = "<i class='fa fa-list fa-fw'></i>"
-weight = 2
+weight = 3
 identifier = "archives"
 url = "/post/"
 
 [[menu.main]]
 name = "Links"
 pre = "<i class='fa fa-link fa-fw'></i>"
-weight = 3
+weight = 4
 identifier = "links"
 url = "/pages/links/"
-
 
 [[menu.main]]
 name = "Feedback"
 pre = "<i class='fa fa-commenting fa-fw'></i>"
-weight = 4
+weight = 5
 identifier = "feedback"
 url = "/pages/feedback/"
-
 
 [[menu.main]]
 name = "Subscribe"
 pre = "<i class='fa fa-rss fa-fw'></i>"
-weight = 5
+weight = 6
 identifier = "rss"
 url = "/index.xml"
 
