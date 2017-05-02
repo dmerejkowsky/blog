@@ -340,6 +340,7 @@ You can also suggest new links in the
 * [build2](https://build2.org)
 * [catkin](http://wiki.ros.org/catkin)
 * [CMake](https://cmake.org/)
+* [cget](https://github.com/pfultz2/cget/)
 * [Conan](https://conan.io)
 * [concourse](https://concourse.ci)
 * [fbuild](https://github.com/felix-lang/fbuild)
