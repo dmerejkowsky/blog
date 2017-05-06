@@ -77,6 +77,7 @@ SQLRepository classes.
 
 This is where interfaces come in.
 
+
 ## Introducing an interface
 
 We are going to "decouple" the Controller and the SQLRepository by introducing
@@ -171,6 +172,11 @@ public class ControllerTest extends TestCase {
 
 }
 ```
+
+{{< note >}}
+Interfaces in Java have other use than just dependency inversion, the example is
+mostly here for the sake of what's coming next.
+{{</ note >}}
 
 # Same thing, with Python
 
