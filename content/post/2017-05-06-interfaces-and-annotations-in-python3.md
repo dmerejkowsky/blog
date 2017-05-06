@@ -79,8 +79,8 @@ This is where interfaces come in.
 
 ## Introducing an interface
 
-We are going to "decouple" the Controller and the SQLRepository by introducing a
-interface:
+We are going to "decouple" the Controller and the SQLRepository by introducing
+an interface:
 
 
 ```java
@@ -100,7 +100,7 @@ Then, we tell `SQLRepository` to implement the interface:
 
 ```
 
-And finally we pass the repository as an argument of the
+And finally we pass the repository as an argument to the
 Controller constructor:
 
 
@@ -273,7 +273,7 @@ we'll a compilation error.
 ```text
 SQLRepository.java:[6,8]
 mypackage.repository.SQLRepository is not abstract and does not override
-abstract method getEmployeeByID(int) in mypackage.repository.Repositoryo
+abstract method getEmployeeByID(int) in mypackage.repository.Repository
 ```
 
 In fact, we'll get all kind of errors until we also change the `Repository` interface,
@@ -292,9 +292,9 @@ AttributeError: 'SQLRepository' object has no attribute 'get_employee_by_id'
 There are many ways to tackle this problem:
 
 * Write integration tests that will check what happens when boundaries are crossed.
-* Using `mock.MagicMock(SQLRepository)` in order to make sure `FakeRepository`
+* Use `mock.MagicMock(SQLRepository)` in order to make sure `FakeRepository`
   has the same methods as `SQLRepository`
-* Using static analysis provided by a linter
+* Use static analysis provided by a linter
 * Take inspiration from statically typed languages and write an explicit `Repository` interface.
 
 In this article we'll only talk about the last one, but please bear in mind that
@@ -316,8 +316,8 @@ class Repository:
         raise NotImplementedError()
 ```
 
-That way, if you forget to override the `get_employee` method, you'll get a
-`NotImplementedError` when the method is called.
+That way, if you forget to override the `get_employee` method, you get a
+`NotImplementedError` exception when the method is called.
 
 But sometimes you _do_ have some code that is not implemented yet, and you want
 to use `NotImplementedError` to signal this to the callers of your function.
@@ -377,7 +377,6 @@ types:
 
 ```python
 # Numpy style
-
 def get_employee(self, company_name, id):
     """ Fetch an employee from the database
 
