@@ -67,6 +67,8 @@ You can also suggest new links in the
   http://arstechnica.com/information-technology/2014/08/how-microsoft-dragged-its-development-practices-into-the-21st-century/)
 * [How to be a desirable developer](
   https://medium.com/@julienjorge/how-to-be-a-desirable-developer-be-a-leader-not-a-hero-fd6fca7dc4bd)
+* [How to Set the Technical Direction for Your Team](
+  https://dev.to/jlhcoder/how-to-set-the-technical-direction-for-your-team)
 * [How to spy on a Ruby program](
   http://jvns.ca/blog/2016/06/12/a-weird-system-call-process-vm-readv)
 * [Keep a CHANGELOG](http://keepachangelog.com/en)
