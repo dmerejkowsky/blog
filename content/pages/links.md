@@ -345,6 +345,7 @@ You can also suggest new links in the
 * [cget](https://github.com/pfultz2/cget/)
 * [Conan](https://conan.io)
 * [concourse](https://concourse.ci)
+* [fastlane Automation done right for mobile devs](https://fastlane.tools/)
 * [fbuild](https://github.com/felix-lang/fbuild)
 * [fips](https://github.com/floooh/fips)
 * [godep](https://github.com/tools/godep)
