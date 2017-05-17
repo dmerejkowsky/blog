@@ -68,7 +68,7 @@ $ ls bar
 $ ssh server2
 ```
 
-I could press `CTRL-P` three times to get `ssh server1`, and then it
+I could press `CTRL-P` three times to get `ssh server1`, and then hit
 `CTRL-N` to get `ls bar`.
 
 ### Using the arrow keys
@@ -393,7 +393,7 @@ So that's my story about `fzf`. It boils down to quite a simple process:
 
 * Find patterns and frictions in the usage of your tools
 * Find a generic solution to tackle the pattern you've found
-* Try to get consistent configuration and mapping everywhere so that
+* Try to get consistent configuration and mappings everywhere so that
   things are easier for you to type and remember.
 
 By the way, if this reminds you of the famous [Seven habits of effective text
