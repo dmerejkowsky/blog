@@ -15,7 +15,7 @@ on github.
 
 In a nutshell, here's what the commit messages look like:
 
-```
+```text
 * feat($anchorScroll): convert numeric hash targets to string
 * docs(ngCsp): fix "directive"'s `restrict` and hide comment from output
 * refactor($resource): use `route.defaults` (already merged `provider.defaults` + `options`)

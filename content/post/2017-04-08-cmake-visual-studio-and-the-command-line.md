@@ -153,7 +153,7 @@ mkdir -p build
 )
 ```
 
-On Windows, we use Batch files:
+On Windows, we used Batch files:
 
 ```bat
 git pull

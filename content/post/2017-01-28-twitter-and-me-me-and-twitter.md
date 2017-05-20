@@ -134,7 +134,7 @@ It's called *pyfortunes*, and you can find the source on
 Around the same time I started this blog, I decided to create a twitter account,
 with the goal of trying to publish at least one tweet per day.
 
-I failed at keeping my "one tweet per day" rules, but I still tweet about:
+I failed at keeping my "one tweet per day" rule, but I still tweet about:
 
 * Links I find and end up on the https://dmerej.info/links page
 * Every new blog post
