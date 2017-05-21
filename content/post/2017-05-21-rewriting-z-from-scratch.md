@@ -249,7 +249,7 @@ autocmd VimLeave * silent call WriteCWD()
 ```
 
 And then, I wrap the call to `neovim` in a function that reads the content of
-the file and then calls `cd`, but only if `neovim` exited sucessfuly.
+the file and then calls `cd`, but only if `neovim` exited successfully.
 
 ```bash
 # Change working dir when Vim exits
