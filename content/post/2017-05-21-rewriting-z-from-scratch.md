@@ -226,7 +226,7 @@ Notes:
 
 # Step six: from the shell to neovim and vice-versa
 
-One last thing. Since I do most of my editing in nevim, I'm always looking for
+One last thing. Since I do most of my editing in neovim, I'm always looking for
 ways to achieve similar behaviors in my shell and in my editor.
 
 So let's see how we can transfer information about visited directories from one
