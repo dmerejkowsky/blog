@@ -11,7 +11,7 @@ time.
 Today, it has become one of my favorite tools and I can no longer imagine
 working on a computer without it installed.
 
-Let me tell you how and why this happened.
+Let me tell you what happened.
 
 <!--more-->
 
