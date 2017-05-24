@@ -90,6 +90,8 @@ You can also suggest new links in the
   https://medium.freecodecamp.com/youre-asked-to-make-a-fix-e156b802ad92)
 * [Short, Self Contained, Correct (Compilable), Example](
     http://sscce.org/)
+* [Some Lessons Learned On Mentoring](
+  https://dev.to/pbeekums/some-lessons-learned-on-mentoring)
 * [Stop Working So Hard](
   https://glyph.twistedmatrix.com/2016/01/stop-working-so-hard.html)
 * [Testing, for people who hate testing](
