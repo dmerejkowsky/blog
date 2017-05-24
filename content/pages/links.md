@@ -433,6 +433,8 @@ You can also suggest new links in the
 * [Bradley M. Kuhn: Considering the Future of Copyleft](https://www.youtube.com/watch?v=Fox1CuoP2DQ)
 * [Bradley M. Kuhn: Fighting a GPL Violation By Coding Instead](https://www.youtube.com/watch?v=WteChXNaU0I)
 * [Brian Kernighan on successful language design](https://www.youtube.com/watch?v=Sg4U4r_AgJU)
+* [Cory Benfield: Requests Under the Hood](
+  https://www.youtube.com/watch?v=ptbCIvve6-k)
 * [C++ on Mars](https://www.youtube.com/watch?v=3SdSKZFoUa8)
 * [Creative Coding with C++](https://www.youtube.com/watch?v=ndUtK5IZslc)
 * [Damian Conway: More Instantly Better Vim](https://www.youtube.com/watch?v=aHm36-na4-4)
