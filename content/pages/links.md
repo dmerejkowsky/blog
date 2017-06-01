@@ -379,6 +379,8 @@ You can also suggest new links in the
 
 ## Python
 
+* [apistar: smart Web API framework, designed for Python 3](
+  https://github.com/tomchristie/apistar)
 * [argh: unobtrusive argparse wrapper with natural syntax](
   https://pypi.python.org/pypi/argh)
 * [clint: Command line tools](https://pypi.python.org/pypi/clint/)
