@@ -128,6 +128,9 @@ You can also suggest new links in the
   https://theoutline.com/post/1228/when-machines-go-rogue)
 * [Where automated testing should (and shouldn't) fit in your strategy](
   http://lifeimitatescode.com/automated-testing-strategy)
+* [Why Most Unit Testing Is Waste](
+  http://rbcs-us.com/documents/Why-Most-Unit-Testing-is-Waste.pdf)
+  and the [follow-up](http://rbcs-us.com/documents/Segue.pdf)
 * [XY problem](http://xyproblem.info)
 * [You Are Not Paid to Write Code](
   http://bravenewgeek.com/you-are-not-paid-to-write-code/)
