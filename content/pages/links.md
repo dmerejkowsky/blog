@@ -532,6 +532,7 @@ You can also suggest new links in the
 
 * [A Brief, Incomplete and Mostly Wrong History of Programming Languages](
   http://james-iry.blogspot.fr/2009/05/brief-incomplete-and-mostly-wrong.html)
+* [Apple Wheel™](https://lordphoenix.tuxfamily.org/apple_wheel/en/)
 * [CommitStrip](http://www.commitstrip.com)
 * [Daily WTF](http://thedailywtf.com)
 * [Fizz Buzz in Tensorflow](http://joelgrus.com/2016/05/23/fizz-buzz-in-tensorflow)
