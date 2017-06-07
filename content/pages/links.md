@@ -43,6 +43,8 @@ You can also suggest new links in the
 * [Capitaine Train:  Building our web-app on GitLab-CI (coming from Jenkins)](
   https://blog.captaintrain.com/12703-building-on-gitlab-ci)
 * [Code is Suffering](https://dev.to/ben/code-is-suffering)
+* [Coding is not 'fun'](
+  https://aeon.co/ideas/coding-is-not-fun-it-s-technically-and-ethically-complex)
 * [Command line tools can be 253 times faster than your Hadoop cluster](
   http://aadrake.com/command-line-tools-can-be-235x-faster-than-your-hadoop-cluster.html)
 * [Confused by testing terminology?](
