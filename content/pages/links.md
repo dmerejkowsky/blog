@@ -402,6 +402,8 @@ You can also suggest new links in the
 * [hug: Embrace the APIs of the future](http://www.hug.rest/website/latest)
 * [invoke: Pythonic task execution](http://www.pyinvoke.org)
 * [pip-tools](https://github.com/nvie/pip-tools)
+* [pydantic: Data validation using Python3 type hints](
+  https://pydantic-docs.helpmanual.io/)
 * [python-future: Easy, clean, reliable Python 2/3 compatibility](
   http://python-future.org/)
 * [Hypothesis: test framework](https://hypothesis.readthedocs.org/en/master/)
