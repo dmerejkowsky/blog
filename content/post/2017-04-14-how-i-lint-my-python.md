@@ -34,6 +34,7 @@ I use several of them, because they all complement each other nicely:
 * `mccabe` to find code that is too complex and needs refactoring
 * `pylint` for everything else.
 
+
 # Finding the sources
 
 The first thing you need to take care of is getting the list of files you want
@@ -60,6 +61,29 @@ def collect_sources(ignore_func):
 
 The `collect_sources` function takes a callback as parameter,
 which allows to ignore some of the files.
+
+# Running pycodestyle
+
+In reality, you probably won't need the `collect_sources` function to run
+`pycodestyle`. Just run:
+
+```console
+$ pycodestyle .
+```
+
+from the root of the project.
+
+It will find each and every `.py` file in the project and check the style for
+each of them.
+
+If you need to exclude directories, you can add a `[pycodestyle]` section
+in either the `setup.cfg` or `tox.ini` configuration files:
+
+```ini
+[pycodestyle]
+exclude=<some directory>
+```
+
 
 # Running pyflakes
 
