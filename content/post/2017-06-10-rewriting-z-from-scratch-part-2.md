@@ -3,6 +3,7 @@ slug: rewriting-z-from-scratch-part-2
 date: 2017-06-10T11:39:51.948731+00:00
 draft: false
 title: Rewriting z from scratch, part 2
+tags: ['python', 'zsh']
 ---
 
 [Last month]({{< ref "post/2017-05-21-rewriting-z-from-scratch.md" >}}) I
