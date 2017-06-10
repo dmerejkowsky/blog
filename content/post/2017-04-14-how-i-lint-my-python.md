@@ -120,8 +120,10 @@ get confused by `pytest` fixtures magic.
 
 # Running mccabe
 
-For `mccabe` it's the same thing, except I had to write a little bit of code
-to make sure I get a nice, machine-readable output:
+`mccabe` comes with a `main()` function, but it can only be run on one file.
+
+So I had to rewrite the main function leveraging the `collect_sources` written
+earlier. While I was at it, I tweaked the output a bit.
 
 ```python
 # In ci/run-mccabe.py
@@ -145,7 +147,7 @@ def process(py_source, max_complexity):
 def main():
     max_complexity = int(sys.argv[1])
     ok = True
-    for py_source in yield_sources():
+    for py_source in collect_sources():
         error = process(py_source, max_complexity)
         if error:
             ok = False
@@ -162,6 +164,16 @@ Note how the complexity threshold is passed directly as a command line argument.
 
 It will allow you to fine-tune this parameter. For me, 10 is a good value, but
 depending on your code base, you may need to lower or increase it.
+
+```console
+# before
+$ python -m mccabe foo/bar.py -m 10
+4:0: 'complex_fun' 12
+
+# after
+$ ./ci/lint.sh
+$ bad.py:4:0 complex_fun 12
+```
 
 # Running pylint
 
