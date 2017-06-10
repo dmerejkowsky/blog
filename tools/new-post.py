@@ -35,12 +35,7 @@ def main():
     to_write = TEMPLATE.format(**locals())
     with open(post_path, "w") as fp:
         fp.write(to_write)
-    to_run = [
-        ("git" , "add", post_path),
-        ("nvim", post_path),
-    ]
-    for cmd in to_run:
-        subprocess.check_call(cmd)
+    subprocess.call(["nvim", post_path])
 
 
 if __name__ == "__main__":
