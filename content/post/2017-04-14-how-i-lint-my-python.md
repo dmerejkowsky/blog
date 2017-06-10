@@ -29,7 +29,7 @@ integration.
 
 I use several of them, because they all complement each other nicely:
 
-* `pycodestyle` for checking the style
+* `pycodestyle` for checking the style [^1]
 * `pyflakes` for fast static analysis.
 * `mccabe` to find code that is too complex and needs refactoring
 * `pylint` for everything else.
@@ -215,3 +215,5 @@ so I'm OK with the linters being run synchronously, but I you need, there's
 problably a plugin you can use for this.
 
 Cheers!
+
+[^1]: This tool used to be called `pep8`. It got renamed after [an issue](https://github.com/PyCQA/pycodestyle/issues/466) opened by Guido himself.
