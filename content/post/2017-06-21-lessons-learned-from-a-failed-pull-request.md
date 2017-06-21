@@ -3,6 +3,7 @@ slug: lessons-learned-from-a-failed-pull-request
 date: 2017-06-21T17:01:45.570165+00:00
 draft: false
 title: Lessons Learned From A Failed Pull Request
+tags: ['python']
 summary: |
          How I failed to make my first contribution to the Python programming
          language, and what I learned from it.
