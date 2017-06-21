@@ -11,6 +11,7 @@ slug: {slug}
 date: {full_date}
 draft: false
 title: {title}
+tags:
 summary: |
 
 ---
