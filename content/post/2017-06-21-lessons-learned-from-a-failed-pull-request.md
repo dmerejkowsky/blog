@@ -11,8 +11,8 @@ summary: |
 
 # Intro: The netrc file
 
-_If you already know all about the `~/.netrc`, feel free to skip directly to the
-[next section](#the-bug)_
+_If you already know all about the `~/.netrc` file, feel free to skip directly
+to the [next section](#the-bug)_
 
 
 But for those who don't let's take a closer look at the filename and see if we
