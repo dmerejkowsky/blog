@@ -110,7 +110,7 @@ set.
 
 # The "fix"
 
-I happen to know[^2] that in the Python stdlib, there is a function called
+I happen to know[^3] that in the Python stdlib, there is a function called
 `os.path.expanduser` that works very well, even on Windows, and even when `HOME`
 is not set.
 
