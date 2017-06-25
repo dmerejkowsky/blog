@@ -6,7 +6,7 @@ title: Test Driving a GitLab Helper, Part One
 tags: ['python', 'test']
 summary: |
          How to use TDD when writing a command line tool
-         using the GitLab web API.
+         using the GitLab web API, part one.
 
 ---
 
@@ -532,7 +532,8 @@ def main():
 
 # Dangers of mocks
 
-OK, so we did everything right but the code is completely broken.
+OK, so we wrote quite a lot of code and tests, but the main script is completely
+broken.
 
 If we try to run `gl-push` we get:
 
@@ -542,3 +543,8 @@ AttributeError: module 'gl_push.gitlab' has no attribute 'ensure_merge_request'
 
 That's because we were so focused on the mock that we completely forgot about
 the production code.
+
+But how can we write tests for the `gitlab.py` module without hitting the real
+GitLab API?
+
+Answer in the next blog post, stay tuned!
