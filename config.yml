@@ -9,7 +9,7 @@ theme: "blackburn"
 pygmentsStyle: "colorful"
 pygmentsCodeFences: true
 
-buildDrafts: false
+buildDrafts: true
 
 params:
   description: "Dimitri Merejkowsky's blog"
