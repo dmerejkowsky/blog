@@ -336,6 +336,8 @@ You can also suggest new links in the
   https://www.soimort.org/translate-shell/)
 * [twtxt: decentralised, minimalist microblogging service for hackers](
   http://twtxt.readthedocs.io/en/latest/)
+* [umonitor: Manage monitor configuration automatically](
+  https://github.com/rliou92/umonitor)
 * [Windows Server Core: Windows with just the command line](
   https://msdn.microsoft.com/en-us/library/dd184075.aspx)
 * [youtube-dl: download videos from Youtube (and some other sites)](
