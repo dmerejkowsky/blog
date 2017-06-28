@@ -299,6 +299,8 @@ You can also suggest new links in the
 * [DevAssistant](http://devassistant.org/)
 * [Disk2vhd: convert Windows installation to virtual image](
   https://technet.microsoft.com/en-us/sysinternals/ee656415.aspx)
+* [Elixr: browsing source code online](
+  https://github.com/free-electrons/elixir)
 * [ffind: A sane replacement for find](https://github.com/jaimebuelta/ffind)
 * [Kinto formbuilder: Generate online forms](https://www.fourmilieres.net/)
 * [gien: export Github issue tracker contents to local email storage](https://github.com/2ion/gien)
