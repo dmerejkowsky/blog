@@ -7,10 +7,7 @@ title: "Links"
 This page contains a list of links I find interesting or that I want
 to keep easily available.
 
-It gets updated somewhat frequently, feel free to [subscribe](
-https://dmerej.info/links.atom)!
-
-You can also suggest new links in the
+If you wish you can suggest new links in the
 [comments section]({{< relref "#comments" >}}) below.
 
 
