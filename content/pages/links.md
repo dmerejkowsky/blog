@@ -402,6 +402,8 @@ If you wish you can suggest new links in the
 * [ecoutils: Python ecosystem management](http://sedimental.org/managing_python_ecosystems.html)
 * [hug: Embrace the APIs of the future](http://www.hug.rest/website/latest)
 * [invoke: Pythonic task execution](http://www.pyinvoke.org)
+* [logzero: Python logging made easy](
+  https://logzero.readthedocs.io/en/latest/)
 * [pip-tools](https://github.com/nvie/pip-tools)
 * [pydantic: Data validation using Python3 type hints](
   https://pydantic-docs.helpmanual.io/)
