@@ -339,8 +339,7 @@ function! ale#handlers#python#HandlePyCodeStyle(buffer, lines) abort
     " <file>:<line>:<col>: <code> <detailed text>
     let l:pattern = '\v^[a-zA-Z]?:?[^:]+:(\d+):?(\d+)?: \[?([[:alnum:]]+)\]? (.*)$'
 
-    " For each match, check if it's a warning or an error, and
-    " update the l:output list:
+    " For each match, update the l:output list:
     let l:output = []
     for l:match in ale#util#GetMatches(a:lines, l:pattern)
         let l:code = l:match[3]
@@ -361,7 +360,7 @@ You'll note it's done by writing "real" code (it's still `vimscript`, though)
 with helpers functions, instead of trying to set a weird `errorformat` option,
 with hard to read syntax.
 
-And that's all there is to it. All I had to do was set the `ale_linters`
+And that's all there is to it. All I had to do was to set the `ale_linters`
 dictionary to only run `pycodestyle`:
 
 ```vim
