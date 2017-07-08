@@ -7,8 +7,10 @@ title: Let's have a pint of (vim) ale!
 tags: ["neovim"]
 summary: |
          Some tips on how to use and customize vim-ale,
-         an asynchronous lint engine for Neovim (and Vim 8)
+         an asynchronous lint engine for Neovim and Vim&nbsp;8
 ---
+
+TL;DR: [vim-ale](https://github.com/w0rp/ale) is awesome and you should give a try!
 
 # Introduction: the rise of linters
 
@@ -70,12 +72,11 @@ that is in `node_modules/.bin`
 
 ## Learning the style convention
 
-Our `eslint` configuration is _very_ strict. (It's based on the one from
-[Air B&B](https://www.npmjs.com/package/eslint-config-airbnb), and I'm not
-used to Javascript yet, so I constantly had style issues and it was frustrating
-to have my merge requests blocked refused because I forgot to run
+Our `eslint` configuration is quite strict. (It's based on the one from
+[Air B&B](https://www.npmjs.com/package/eslint-config-airbnb) if you're curious),
+and I'm not used to Javascript yet, so I constantly had style issues and it was
+frustrating to have my merge requests blocked because I forgot to run
 `:make`  and had a bunch of style problems.
-
 
 ## The errorformat
 
@@ -96,7 +97,7 @@ $ eslint foo.js
 ```
 
 It's very pretty (and I did not even show you the nice colors!), but you can see
-it's a bit hard to parse for an other programs. [^1]
+it's a bit hard to parse for other programs. [^1]
 
 The solution is to use the `--format` option like this:
 
@@ -109,7 +110,7 @@ $ eslint --format compact foo.js
 3 problems
 ```
 
-By default `Neovim` expects an output exactly like gcc[^2]
+But by default Neovim expects an output exactly like gcc[^2]
 ```console
 $ gcc foo.c
 foo.c:3:3: error: ‘a’ undeclared (first use in this function)
@@ -118,7 +119,7 @@ foo.c:4:3: warning: implicit declaration of function ‘foo’ [-Wimplicit-funct
 
 (No 'line' and 'col' , and no commas)
 
-So in order for the line number and columns to be parsed correctly you gave to
+So in order for the line numbers and columns to be parsed correctly you have to
 use a variable called `errorformat`
 
 ```vim
@@ -141,9 +142,9 @@ took for all the linters to run.
 
 # Switching to vim-ale
 
-After hearing good things about vim-ale, I decided to give it a try, and I was
-*very* pleased to notice it was able to run `eslint` and `flow` in our
-`Javascript` project with *zero* configuration!
+After hearing good things about [vim-ale](https://github.com/w0rp/ale),
+I decided to give it a try, and I was *very* pleased to notice it was able to
+run `eslint` and `flow` in our Javascript project with *zero* configuration!
 
 This is how `vim-ale` works by default:
 
@@ -154,9 +155,13 @@ This is how `vim-ale` works by default:
   potential linters.
 * Then, after a small time of inactivity (200ms by default), run all the linters
   found in the previous step, concurrently and in the background.
-* Use the *sign gutter* to display problematic lines, like this:
+* Then, parse the output of all of them and use the *sign gutter* to display
+  problematic lines, like this:
 
 ![vim-ale gutter signs](/pics/vim-ale-gutter.png)
+
+(Notice the red angle brackets in the column on the left, and the detailed
+message on the bottom)
 
 ## Simple customization
 
@@ -182,7 +187,7 @@ let g:ale_lint_on_enter = 0
 By default, `vim-ale` uses the so called *location list*. It looks like pretty
 much like the *quickfix window*, but:
 
-* There's one location list per window, where as the *quickfix* is global.
+* There's one location list per window, whereas the *quickfix* is global.
 * The location list is destroyed as soon as the window is closed
 * You can use the same bindings to navigate the location list, using a `l`
   prefix instead of a `c`. (For instance `lprevious` and `lnext` instead of
@@ -193,9 +198,9 @@ At first I was tempted to configure `vim-ale` to use the quickfix window instead
 for Python, but I've decided to try and let `vim-ale` use the location list for
 several reasons:
 
-* I've heard about the location list for quite some time, but I never actually
+* I've heard about the location list for quite some time, but I'd never actually
   use it, so I was curious and wanted to know if it could fit in my workflow.
-* I already use the quickfix window with `:grep` and other tools and I did not
+* I already used the quickfix window with `:grep` and other tools and I did not
   like having it replaced by `vim-ale` all the time.
 
 ## Custom mappings
@@ -206,7 +211,9 @@ to use their location list counterparts:
 
 * `:ln` cannot be used for `:lnext` because it actually is used as a shortcut
   for `:lnoremap`
-* Typing `ln`, `lp` or `lr` is much harder to type on Dvorak than `cn` or `cp`
+* I use the [Dvorak layout](https://www.dvorak-keyboard.com/) on my keyboard,
+  and typing `ln`, `lp` or `lr` is much harder to type than `cn`, `cp` or `cr`
+  there.
 
 Now, Neovim has this concept of "leader" key you can use to prefix all your
 custom mappings.
@@ -226,7 +233,7 @@ nnoremap <space>p :lprevious<CR>
 nnoremap <space>r :lrewind<CR>
 ```
 
-Note: this means I can no longer use the space bar in normal mode, but by
+Note: this means I can no longer easily use the space bar in normal mode, but by
 default all the space key does in move the cursor forward, so it's not a big
 deal.
 
@@ -248,7 +255,7 @@ let g:ale_linters = {
 ```
 
 (Configuration of the `ale_linters` dictionary is a bit weird: it assumes you
-want to run *all* the linters for *every* filetype, so you have to some kind of
+want to run *all* the linters for *every* filetype, so you have to define some kind of
 "blacklist" to turn off the linters you don't want to run)
 
 But by then I started to miss having the style being checked after each save.
@@ -284,24 +291,26 @@ let g:ale_python_pycodestyle_executable =
 " Look for pycodestyle in the virtualenv, and only if not found
 " in it, default to the previously set pycodestyle executable:
 function! ale_linters#python#pycodestyle#GetExecutable(buffer) abort
-    ...
-    if !ale#Var(a:buffer, 'python_pycodestyle_use_global')
-        let l:virtualenv = ale#python#FindVirtualenv(a:buffer)
+  ...
+  if !ale#Var(a:buffer, 'python_pycodestyle_use_global')
+    let l:virtualenv = ale#python#FindVirtualenv(a:buffer)
 
-        if !empty(l:virtualenv)
-            let l:ve_pycodestyle = l:virtualenv . '/bin/pycodestyle'
+    if !empty(l:virtualenv)
+      let l:ve_pycodestyle = l:virtualenv . '/bin/pycodestyle'
 
-            if executable(l:ve_pycodestyle)
-                return l:ve_pycodestyle
-            endif
-        endif
+      if executable(l:ve_pycodestyle)
+        return l:ve_pycodestyle
+      endif
     endif
 
-    return ale#Var(a:buffer, 'python_pycodestyle_executable')
+  endif
+
+  return ale#Var(a:buffer, 'python_pycodestyle_executable')
+
 endfunction
 
-" Get the full command line to run (just append contents from the
-" python_pycodestyle_options variable if it exists)
+" Get the full command line to run: append contents from the
+" python_pycodestyle_options variable if it exists:
 function! ale_linters#python#pycodestyle#GetCommand(buffer) abort
     return fnameescape(ale_linters#python#pycodestyle#GetExecutable(a:buffer))
     \   . ' ' . ale#Var(a:buffer, 'python_pycodestyle_options')
@@ -328,13 +337,11 @@ function! ale#handlers#python#HandlePyCodeStyle(buffer, lines) abort
     " Regular expression to match messages:
     " They look like:
     " <file>:<line>:<col>: <code> <detailed text>
-
     let l:pattern = '\v^[a-zA-Z]?:?[^:]+:(\d+):?(\d+)?: \[?([[:alnum:]]+)\]? (.*)$'
 
-
-    let l:output = []
     " For each match, check if it's a warning or an error, and
     " update the l:output list:
+    let l:output = []
     for l:match in ale#util#GetMatches(a:lines, l:pattern)
         let l:code = l:match[3]
 
@@ -351,10 +358,10 @@ endfunction
 
 
 You'll note it's done by writing "real" code (it's still `vimscript`, though)
-with helpers function, instead of trying to set a weird `errorformat` option,
+with helpers functions, instead of trying to set a weird `errorformat` option,
 with hard to read syntax.
 
-An that's all there is to it. All I had to do was set the `ale_linters`
+And that's all there is to it. All I had to do was set the `ale_linters`
 dictionary to only run `pycodestyle`:
 
 ```vim
@@ -378,7 +385,7 @@ I highly recommend  you give it a try.
 Cheers!
 
 
-[^1]: There's a whole rant to be written about the output of Javascript tools, but let's save that for another day ...
+[^1]: There's a whole rant to be written about the console output of Javascript tools, but let's save that for another day ...
 [^2]: There's a bunch of code in Vim that assumes you are writing C code, even today (historical reasons, as they say)
 [^3]: It's done in [2793 lines of vim script](https://github.com/neovim/neovim/blob/master/runtime/filetype.vim)
 [^4]: Regular readers of this blog will notice this is exactly what happened to me with `fzf`
