@@ -83,6 +83,8 @@ If you wish you can suggest new links in the
   http://www.indeliblebluepen.com/onboarding-new-developers/)
 * [Open Your Source, More](
   https://rhettinger.wordpress.com/2011/01/28/open-your-source-more)
+* [Programming languages aren’t a zero sum game](
+  https://m.signalvnoise.com/programming-languages-arent-a-zero-sum-game-5fe811f7b76e)
 * [Quit Social Media. Your Career May Depend on It](
   http://mobile.nytimes.com/2016/11/20/jobs/quit-social-media-your-career-may-depend-on-it.html)
 * [So a product manager asks you to fix a bug…](
