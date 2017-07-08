@@ -160,8 +160,8 @@ This is how `vim-ale` works by default:
 
 ![vim-ale gutter signs](/pics/vim-ale-gutter.png)
 
-(Notice the red angle brackets in the column on the left, and the detailed
-message on the bottom).
+Notice the red angle brackets in the column on the left, and the detailed
+message on the bottom.
 
 Also, by default the whole gutter will disappear when there's nothing found by
 the linters, which allows you to instantly know you're done fixing lint errors.
