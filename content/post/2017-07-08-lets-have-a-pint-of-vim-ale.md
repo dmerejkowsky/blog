@@ -184,7 +184,7 @@ let g:ale_lint_on_enter = 0
 
 ## The location list
 
-By default, `vim-ale` uses the so called *location list*. It looks like pretty
+By default, `vim-ale` uses the so called *location list*. It looks pretty
 much like the *quickfix window*, but:
 
 * There's one location list per window, whereas the *quickfix* is global.
