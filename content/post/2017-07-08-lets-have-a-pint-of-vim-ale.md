@@ -218,7 +218,7 @@ to use their location list counterparts:
 Now, Neovim has this concept of "leader" key you can use to prefix all your
 custom mappings.
 
-I'm using "coma" for this, instead of the default (backslash), that I find hard
+I'm using "comma" for this, instead of the default (backslash), that I find hard
 to type.
 
 So of course I could have used a `<leader>` mapping for the location list
