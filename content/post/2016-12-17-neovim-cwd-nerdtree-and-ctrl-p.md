@@ -3,7 +3,7 @@ slug: neovim-cwd-nerdtree-and-ctrl-p
 date: 2016-12-17T12:27:56.733729+00:00
 draft: false
 title: Neovim, cwd, NERDTree and CtrlP
-tags: [vim]
+tags: [neovim]
 ---
 
 A follow-up to my [latest article](

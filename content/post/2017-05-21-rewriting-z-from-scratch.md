@@ -3,7 +3,7 @@ slug: rewriting-z-from-scratch
 date: 2017-05-21T12:54:02.249830+00:00
 draft: false
 title: Rewriting z from scratch
-tags: ['python', 'vim', 'zsh']
+tags: ['python', 'neovim', 'zsh']
 ---
 
 [z](https://github.com/rupa/z) is a tool that will remember all the directories

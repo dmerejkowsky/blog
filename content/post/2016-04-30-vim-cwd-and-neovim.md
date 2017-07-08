@@ -3,7 +3,7 @@ slug: "vim-cwd-and-neovim"
 date: "2016-04-30T12:38:17+00:00"
 draft: false
 title: "Vim, cwd, and Neovim"
-tags: ["vim"]
+tags: ["neovim"]
 ---
 
 This is quite a long post on the topic of working directory and (Neo)vim.

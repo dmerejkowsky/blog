@@ -3,7 +3,7 @@ slug: how-i-lint
 date: 2017-04-14T10:34:55.624890+00:00
 draft: false
 title: How I Lint My Python
-tags: ["python", "vim"]
+tags: ["python", "neovim"]
 ---
 
 This is a short post describing how I lint my Python code. You'll see it's
