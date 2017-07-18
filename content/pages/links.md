@@ -36,6 +36,7 @@ If you wish you can suggest new links in the
   https://reviewable.io/reviews/pypa/pip/3466)
 * [An Inside Look at IBM Watson and How it Works](
   http://www.redbooks.ibm.com/abstracts/redp4955.html)
+* [Automation is not DevOps](https://dev.to/liquid_chickens/automation-is-not-devops)
 * [Becoming a CTO](https://juokaz.com/blog/becoming-a-cto)
 * [Capitaine Train:  Building our web-app on GitLab-CI (coming from Jenkins)](
   https://blog.captaintrain.com/12703-building-on-gitlab-ci)
