@@ -262,7 +262,7 @@ I use `KDiff3` mainly because I'm too used to it to change. Some facts:
   * It is able to solves conflict that git does note handle automatically, which
     is nice, but sometimes this goes wrong. (it's pretty rare though)
   * It lets select you to choose 'A', 'B' or 'C' for the conflicts, but
-    sometimes you want to *edit* the line directly in 'D', but the
+    sometimes you want to *edit* the line directly in 'D', and the
     the editor is painful to use.
 * Pros:
   * It shows you four windows: 'A', the common ancestor, 'B', the file from your
