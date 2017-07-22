@@ -259,7 +259,7 @@ I use `KDiff3` mainly because I'm too used to it to change. Some facts:
   * It's big and slow and depends on `KDE4`
   * It makes annoying sounds (which is the cause for the huge dependency on
     `KDE4` ...)
-  * It is able to solves conflict that git does note handle automatically, which
+  * It is able to solve conflicts that git does note handle automatically, which
     is nice, but sometimes this goes wrong. (it's pretty rare though)
   * It lets select you to choose 'A', 'B' or 'C' for the conflicts, but
     sometimes you want to *edit* the line directly in 'D', and the
