@@ -284,8 +284,8 @@ keepBackup = false
 ```
 
 It took me a while to figure this out, but KDiff3 *also* writes a `.orig` file
-when it's done, so you have to untick a box in  `KDiff3` settings window, too
-for the `.orig` file to really be gone.
+when it's done, so you have to untick a box in `KDiff3` settings window for the
+`.orig` file to really be gone.
 
 ## Aliases
 
