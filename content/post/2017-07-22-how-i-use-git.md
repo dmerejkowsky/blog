@@ -409,7 +409,7 @@ prune-merged = !git branch --merged | grep dm/ | grep -v "\\*" | xargs -n1 git b
 At work we all prefix our dev branches with our initials, but I often forget to
 delete them when I'm done.
 
-This alias looks for all the local branches that are fully merged and starting
+This alias looks for all the local branches that are fully merged and start
 with `dm/` and deletes them.
 
 Note how we use `xargs -n1` to by-pass the fact that `git branch -d` only takes
