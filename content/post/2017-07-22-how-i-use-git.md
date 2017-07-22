@@ -233,7 +233,7 @@ Or (and this is quicker), make sure your last commit starts with
 Then set:
 
 ```ini
-[rebased]
+[rebase]
 autosquash = true
 ```
 
