@@ -297,7 +297,7 @@ co = checkout
 ```
 
 Since I never managed to remember how many *m* there are in
-*ammend*, I have:
+*amend*, I have:
 
 ```ini
 mend = commit --amend
