@@ -90,6 +90,8 @@ If you wish you can suggest new links in the
   http://mobile.nytimes.com/2016/11/20/jobs/quit-social-media-your-career-may-depend-on-it.html)
 * [So a product manager asks you to fix a bug…](
   https://medium.freecodecamp.com/youre-asked-to-make-a-fix-e156b802ad92)
+* [So you want to write a package manager](
+  https://medium.com/@sdboyer/so-you-want-to-write-a-package-manager-4ae9c17d9527)
 * [Short, Self Contained, Correct (Compilable), Example](
     http://sscce.org/)
 * [Some Lessons Learned On Mentoring](
