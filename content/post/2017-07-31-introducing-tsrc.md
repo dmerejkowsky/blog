@@ -151,6 +151,13 @@ bad code from landing into `master`, thus we make sure you cannot by-pass the CI
 
 ## Other goodies
 
+### tsrc status
+
+You can use `tsrc status` to quickly get an overview of the status of your
+workspace:
+
+![tsrc status](/pics/tsrc-status.png)
+
 ### tsrc foreach
 
 Sometimes you just want to run the same command on every repositories.
@@ -179,12 +186,6 @@ color options and present you a summary:
 
 ![tsrc log](/pics/tsrc-log.png)
 
-### tsrc status
-
-You can use `tsrc status` to quickly get an overview of the status of your
-workspace:
-
-![tsrc status](/pics/tsrc-status.png)
 
 # Conclusion
 
