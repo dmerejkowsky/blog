@@ -45,12 +45,20 @@ state, we could simply push the same tag on several repositories.
 # tsrc
 
 Enter [tsrc](https://github.com/TankerApp/tsrc). We use it everyday
-to manage our sources at [Tanker](https://tanker.io)
+at [Tanker](https://tanker.io) to manage our sources.
 
-It has a nice and intuitive user interface that takes care on running
-`git` commands for you.
+It has a nice and intuitive user interface that takes care of running
+`git` commands for you in multiple repositories.
+
+It also features (optional) commands to interact with GitLab.
 
 Let's see how it works.
+
+{{<note>}}
+We will only be showing the basic usage of some tsrc commands.
+You can use `--help` to discover all the available options.
+{{</note>}}
+
 
 # Installation
 
@@ -66,7 +74,7 @@ $ pip3 install tsrc --user
 $ Add ~/Library/Python/3.x/bin to PATH
 
 # Windows
-$ pip3 install tsr
+$ pip3 install tsrc
 # PATH is already correct, set by Windows at installation
 ```
 
@@ -82,22 +90,19 @@ repositories to clone.
 It uses the `YAML` syntax and looks like:
 
 ```yaml
-format: 1
-
 gitlab:
   url: http://10.100.0.1:8000
 
-clone_prefix: git@gitlab.local
-
 repos:
   - src: foo
-    name: acme/foo
+    url: git@gitlab.local:acme/foo
 
   - src: bar
-    name: acme/bar
+    url: git@gitlab.local:acme/bar
 ```
 
-The manifest must be put in a git repository too. And then you can use:
+The manifest must be put in a git repository too. You can then use the following
+commands to create a new workspace:
 
 ```console
 $ mkdir ~/work
@@ -114,32 +119,43 @@ In this example:
 
 You can update all the repositories by using `tsrc sync`.
 
-The manifest itself will be updated first.
+* The manifest itself will be updated first.
+* If a new repository has been added to the manifest, it will be cloned.
+* Lastly, the other repositories will be updated.
 
-If a new repository has been added to the manifest, it will be cloned.
+Note that `tsrc sync` only updates the repositories if the changes are trivial:
 
-Lastly, if there are no risk of ambiguity[^1], the other repositories will be
-updated.
+* If the branch has diverged, `tsrc` will do nothing. It's up to you to use
+  `rebase` or `merge`
+* Ditto if there is no remote tracking branch
 
-`tsrc sync` will also display a summary of errors at the end:
+This way, there is no risk of data loss or sudden conflicts to appear.
+
+(By the way, this is a good example on how to implement this directive
+from the Zen of Python: **"In the face of ambiguity, refuse the temptation to guess"**.)
+
+So that you know where manual intervention is required, `tsrc sync` will also
+display a summary of errors at the end:
 
 ![tsrc sync](/pics/tsrc-sync.png)
+
 
 ## Managing merge requests
 
 Since we do most of our operations from the command line, it's convenient to be
 able to do GitLab operations from the shell too.
 
-To do this, we leverage the GitLab REST API.
+We leverage the GitLab REST API to create and accept merge requests.
 
-For instance, here is how you can create the pull request:
+For instance, here is how you can create and assign a merge request:
 
 ```console
 # start working on your branch
 $ tsrc push --assignee <an active user>
 ```
 
-When the review is done,  you can tell GitLab to merge it once the CI passes
+When the review is done, you can accept it and let GitLab
+merge the branch once the CI passes with the following command:
 
 ```console
 $ tsrc push --accept
@@ -189,8 +205,6 @@ color options and present you a summary:
 
 # Conclusion
 
-I hope you'll find this tool handy for your own projects.
+We hope you'll find this tool handy for your own projects.
 
-Feel free to contribute, or try it and tell us what you think!
-
-[^1]: Among other things, we only update the repository if the branch can be fast-forwarded, and a remote tracking branch is configured.
+Feel free to try it, contribute, and give us feedback.
