@@ -12,38 +12,70 @@ summary:
 
 # Introduction
 
-When you are working in a software company, you have two choices for how you
-organize your sources.
+Handling source code versioning in a software company is challenging. You have to decide
+how to organize your sources.
 
-The first method is to put everything in a giant repository, that keeps getting
-bigger and bigger.
+The first method is to put everything in a giant repository.
 
 The second method is to split the sources across multiple repositories.
 
-Both methods have their pros and cons. With the "giant repository" approach you
-cannot use popular DVCS like git (it just does not scale).
-With multiple repositories you can use git, but you need a tool on top of
-it so that working with multiple repositories is easier.
+Both methods have their pros and cons.
 
-A popular solution for the second case is to use git submobules, but
-the UI of `git submobule` is not very nice and it's easy to make mistakes.
+With the "giant repository" approach you sometimes cannot use existing source
+control software like git, because they do not scale enough for very large
+projects, or you have to make your own patches, like
+[facebook does with Mercurial](
+https://code.facebook.com/posts/218678814984400/scaling-mercurial-at-facebook/).
+
+With multiple repositories it gets easier to just use git as usual,
+but you'll likely need a tool on top of it so that working with multiple
+repositories is easier.
+
+A popular solution for the second case is to use git submobules, but:
+
+ * You need a 'master' repository on top of the workspace
+
+ * When you update a submobule, you have to make a commit in the parent
+   repository too, and this step is easy to skip.
+
+Also, we found out that to make sure all the repositories are in a consistent
+state, we could simply push the same tag on several repositories.
+
 
 # tsrc
 
 Enter [tsrc](https://github.com/TankerApp/tsrc). We use it everyday
-to manage our sources at [Tanker](https://tanker.io)
+at [Tanker](https://tanker.io) to manage our sources.
 
-At is core, all it does is parse configuration files and running appropriate git
-commands.
+It has a nice and intuitive user interface that takes care of running
+`git` commands for you in multiple repositories.
+
+It also features (optional) commands to interact with GitLab.
 
 Let's see how it works.
+
+{{<note>}}
+We will only be showing the basic usage of some tsrc commands.
+You can use `--help` to discover all the available options.
+{{</note>}}
+
 
 # Installation
 
 `tsrc` is written in Python3 and can be installed with `pip`:
 
 ```console
+# Linux
 $ pip3 install tsrc --user
+$ Add ~/.local/bin to PATH
+
+# macOS
+$ pip3 install tsrc --user
+$ Add ~/Library/Python/3.x/bin to PATH
+
+# Windows
+$ pip3 install tsrc
+# PATH is already correct, set by Windows at installation
 ```
 
 You can find the sources on [github](https://github.com/TankerApp/tsrc).
@@ -52,29 +84,25 @@ You can find the sources on [github](https://github.com/TankerApp/tsrc).
 
 ## Cloning the repositories
 
-To know the URLs and paths of the repositories to clone, `tsrc` reads a
-**manifest** file. It uses the `YAML` syntax and looks like:
+`tsrc` is driven by a **manifest** file that contains the names and paths of
+repositories to clone.
+
+It uses the `YAML` syntax and looks like:
 
 ```yaml
-format: 1
-
 gitlab:
   url: http://10.100.0.1:8000
 
-clone_prefix: git@gitlab.local
-
 repos:
   - src: foo
-    name: acme/foo
-    copy:
-      - src: bar.txt
-        dest: top.txt
+    url: git@gitlab.local:acme/foo
 
   - src: bar
-    name: acme/bar
+    url: git@gitlab.local:acme/bar
 ```
 
-The manifest should be put in a git repository too. And then you can use:
+The manifest must be put in a git repository too. You can then use the following
+commands to create a new workspace:
 
 ```console
 $ mkdir ~/work
@@ -82,78 +110,52 @@ $ cd work
 $ tsrc init git@gitlab.local:acme/manifest.git
 ```
 
-In this example,
+In this example:
 
 * `foo` will be cloned in `<work>/foo` using `git@gitlab.com/acme/foo.git` origin url.
 * Similarly, `bar` will be cloned in `<work>/bar` using `git@gitlab.com:acme/bar.git`
-* The file ``bar.txt`` will be copied from the `bar` repository to the
-  top of the workspace, in `<work>/top.txt`
 
 ## Making sure all the repositories are up to date
 
 You can update all the repositories by using `tsrc sync`.
 
-The manifest itself will be updated first.
+* The manifest itself will be updated first.
+* If a new repository has been added to the manifest, it will be cloned.
+* Lastly, the other repositories will be updated.
 
-If a new repository has been added to the manifest, it will be cloned.
-
-Then the following commands will be run for each repository:
-
-```console
-$ git fetch --tags --prune origin
-$ git merge --ff-only @{u}
-```
-
-Those two commands:
-
-* Make sure all the tags are fetched
-* Prune the branches that have been removed from the remote
-* Only update the branches if they are fast-forward.
-  (That's what `--ff-only` and `@{u}` are about)
-
-That way `tsrc sync` only updates the repositories if the changes are trivial:
+Note that `tsrc sync` only updates the repositories if the changes are trivial:
 
 * If the branch has diverged, `tsrc` will do nothing. It's up to you to use
   `rebase` or `merge`
-* Ditto if there is no remote tracking branch (when `@{u}` does not match
-  anything)
+* Ditto if there is no remote tracking branch
 
-Note this is a good example on how to implement this directive
-from the Zen of Python: **"In the face of ambiguity, refuse the temptation to guess"**.
+This way, there is no risk of data loss or sudden conflicts to appear.
 
-`tsrc sync` will also display a summary of errors at the end:
+(By the way, this is a good example on how to implement this directive
+from the Zen of Python: **"In the face of ambiguity, refuse the temptation to guess"**.)
+
+So that you know where manual intervention is required, `tsrc sync` will also
+display a summary of errors at the end:
 
 ![tsrc sync](/pics/tsrc-sync.png)
 
+
 ## Managing merge requests
 
-* Generate a token from GitLab
+Since we do most of our operations from the command line, it's convenient to be
+able to do GitLab operations from the shell too.
 
-* Add the *http* url to the manifest:
+We leverage the GitLab REST API to create and accept merge requests.
 
-```yaml
-gitlab:
-  url: http://gitlab.local
-```
-
-* Create a `~/.config/tsrc.yml` looking like:
-
-```yaml
-auth:
-  gitlab:
-    token: <YOUR TOKEN>
-```
-
-
-* Start working on your branch
-
-* Create the pull request
+For instance, here is how you can create and assign a merge request:
 
 ```console
+# start working on your branch
 $ tsrc push --assignee <an active user>
 ```
 
-* When the review is done, tell GitLab to merge it once the CI passes
+When the review is done, you can accept it and let GitLab
+merge the branch once the CI passes with the following command:
 
 ```console
 $ tsrc push --accept
@@ -165,11 +167,18 @@ bad code from landing into `master`, thus we make sure you cannot by-pass the CI
 
 ## Other goodies
 
+### tsrc status
+
+You can use `tsrc status` to quickly get an overview of the status of your
+workspace:
+
+![tsrc status](/pics/tsrc-status.png)
+
 ### tsrc foreach
 
-Sometimes you may want to run the same command on every repositories.
+Sometimes you just want to run the same command on every repositories.
 
-There are two ways to do that:
+`tsrc` has you covered:
 
 ```console
 $ tsrc foreach -- some-command --some-opts
@@ -178,28 +187,6 @@ $ tsrc foreach -- some-command --some-opts
 (Note the `--` token that separates the options of `some-command` from the
 options of `tsrc`)
 
-In this form, we will use something like this:
-
-```python
-for repo in workspace.enumerate_repos():
-    subprocess.run(["some-command", "--some-opts"], cwd=repo)
-```
-
-For this to work, `some-command` should be a "real binary".
-
-The other way is to use the `-c` option, which will run the command as a string
-into a shell. (Bash on Linux and macOS, cmd.exe on Windows), for instance:
-
-```console
-$ tsrc foreach -c "cd src && touch some-file"
-```
-
-In this form, we'll use:
-
-```python
-for repo in workspace.enumerate_repos():
-    subprocess.run("cd src && touch some-file", cwd=repo, shell=True)
-```
 
 ### tsrc log
 
@@ -215,13 +202,9 @@ color options and present you a summary:
 
 ![tsrc log](/pics/tsrc-log.png)
 
-### tsrc status
-
-You can use `tsrc status` to quickly get an overview of the status of your
-workspace:
-
-![tsrc status](/pics/tsrc-status.png)
 
 # Conclusion
 
-I hope you'll find this tool handy for your own projects.
+We hope you'll find this tool handy for your own projects.
+
+Feel free to try it, contribute, and give us feedback.
