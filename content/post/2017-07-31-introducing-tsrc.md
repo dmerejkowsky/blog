@@ -90,9 +90,6 @@ repositories to clone.
 It uses the `YAML` syntax and looks like:
 
 ```yaml
-gitlab:
-  url: http://10.100.0.1:8000
-
 repos:
   - src: foo
     url: git@gitlab.local:acme/foo
