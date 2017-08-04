@@ -205,3 +205,7 @@ color options and present you a summary:
 We hope you'll find this tool handy for your own projects.
 
 Feel free to try it, contribute, and give us feedback.
+
+
+*Update: The project now has a [documentation](https://tankerapp.github.io/tsrc/)
+and a [FAQ](https://tankerapp.github.io/tsrc/faq/)!*
