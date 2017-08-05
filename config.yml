@@ -13,6 +13,7 @@ buildDrafts: true
 
 params:
   description: "Dimitri Merejkowsky's blog"
+  subtitle: "Personal blog of Dimitri Merejkowsky"
 
 taxonomies:
   tag: "tags"
