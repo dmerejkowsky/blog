@@ -4,7 +4,9 @@ date: 2017-08-05T13:48:21.878603+00:00
 draft: false
 title: Non isomorphic C++ refactoring
 tags: ["c++"]
-summary: A small example of a innocent-looking C++ refactoring going terribly wrong.
+summary:
+ |
+ A small example of a innocent-looking C++ refactoring going terribly wrong and how to fix it.
 ---
 
 # Introduction
@@ -13,8 +15,6 @@ Let me tell you a story about a C++  refactoring, based on real events.
 
 The example is a little bit contrived, but the code is actually quite close to
 what it really looked like.
-
-Also, note that I'm no C++ expert, so pardon my mistakes.
 
 # The problem
 
