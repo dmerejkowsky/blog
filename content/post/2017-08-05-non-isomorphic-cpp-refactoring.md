@@ -283,22 +283,22 @@ forward the calls:
 ```cpp
 class Safe() {
   public:
-  Safe(): door_(Door()) {}
+  Safe(): _door(Door()) {}
 
   void enterDoorCombination(std::string const& combination) {
-    door_.enterCombination(combination);
+    _door.enterCombination(combination);
   }
 
   void unlockDoor(Key key) {
-    door_.unlock(key);
+    _door.unlock(key);
   }
 
   void openDoor() {
-    door_.open();
+    _door.open();
   }
 
   private:
-  Door door_;
+  Door _door;
 };
 ```
 
@@ -333,9 +333,9 @@ But we can do better! Let's introduce a more generic `open` method to the safe:
 class Safe() {
   // ...
   void open(std::string const& combination, const Key& key) {
-    door_.enterCombination(combination);
-    door_.unlock(key);
-    door_.open();
+    _door.enterCombination(combination);
+    _door.unlock(key);
+    _door.open();
   }
 }
 ```
