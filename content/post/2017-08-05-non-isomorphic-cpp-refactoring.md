@@ -423,7 +423,7 @@ the documents).
 
 Lastly, `main()` is now only concerned about gathering the various element it needs,
 and only calls "high level" methods of the safe. It knows nothing about how the
-safe door, or where the key and combination are coming from.
+safe door works, or where the key and combination are coming from.
 
 I think it's a much better design.
 
