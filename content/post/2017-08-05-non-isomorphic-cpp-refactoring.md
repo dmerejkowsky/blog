@@ -74,7 +74,7 @@ void doSomething() {
 ```
 
 Here you know that the lock will be acquired right before `updateCounter()`  is
-called, and then release right after.
+called, and then released right after.
 
 So you decide to implement the same pattern for the safe's door:
 
