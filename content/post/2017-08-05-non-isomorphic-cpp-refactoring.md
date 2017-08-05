@@ -385,7 +385,7 @@ class Safe() {
 }
 
 Key getKey() {
-  Pocket correctPocket = findCorrectPocket();
+  auto correctPocket = findCorrectPocket();
   return correctPocket.key();
 }
 
