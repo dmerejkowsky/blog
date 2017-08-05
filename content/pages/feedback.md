@@ -57,4 +57,9 @@ On both servers my nick is `dmerejkowsky`
 
 ## github
 
-You can also fork the sources of this blog on [github](https://github.com/dmerejkowsky/blog)
+You can also fork the sources of this blog on [github](https://github.com/dmerejkowsky/blog).
+
+## dev.to
+
+I cross-post most of my blog posts to [dev.to](https://dev.to/dmerejkowsky)
+so you can also follow me there if you like.
