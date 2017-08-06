@@ -32,7 +32,7 @@ int main() {
   Safe safe;
   Document passport("passport");
   Document idCard("ID card");
-  std::list<Document> documents{passport, idCard};
+  std::vector<Document> documents{passport, idCard};
 
   safelyStoreDocuments(safe, documents);
   return 0;
@@ -53,21 +53,20 @@ It can be used to implement a lock, like so:
 ```cpp
 class Lock {
   public:
-  Lock() {
+  Lock(Mutex mutex): _mutex(mutex) {
     _mutex.acquire();
   }
   ~Lock() {
     _mutex.release();
   }
 
-  private: {
-    Mutex _mutex;
-  }
+  private:
+  Mutex _mutex;
 }:
 
 void doSomething() {
   {
-    Lock lock;
+    Lock lock(mutex);
     updateCounter();
   }
 };
@@ -93,7 +92,7 @@ class Door {
 Thus you can start implementing the `safelyStoreDocuments` function:
 
 ```cpp
-void safelyStoreDocuments(Safe& safe, std::list<Document> const& documents) {
+void safelyStoreDocuments(Safe& safe, std::vector<Document> const& documents) {
   Door door;
 
   // TODO: open the door and store documents
@@ -110,7 +109,7 @@ have to think really hard first:
 
 
 ```cpp
-void safelyStoreDocuments(Safe& safe, std::list<Document> const& documents) {
+void safelyStoreDocuments(Safe& safe, std::vector<Document> const& documents) {
   Door door;
 
   // Find and enter combination:
@@ -141,7 +140,7 @@ Pocket findCorrectPocket() {
   }
 }
 
-void safelyStoreDocuments() {
+void safelyStoreDocuments(Safe& safe, std::vector<Document> const& documents) {
   Door door;
 
   // Find and enter combination:
@@ -171,7 +170,7 @@ There's already a `safe.isFull()` method you can call.
 So you are finally able to implement the TODO:
 
 ```cpp
-void safelyStoreDocuments() {
+void safelyStoreDocuments(Safe& safe, std::vector<Document> const& documents) {
   Door door;
 
   // Find and enter combination:
@@ -237,7 +236,7 @@ void openSafeDoor() {
   door.open();
 }
 
-void putDocumentsIntoSafe(Safe& safe, std::list<Document> const& documents) {
+void putDocumentsIntoSafe(Safe& safe, std::vector<Document> const& documents) {
   for(auto document: documents) {
     if (!safe.isFull()) {
       safe.putDocument(document);
@@ -245,7 +244,7 @@ void putDocumentsIntoSafe(Safe& safe, std::list<Document> const& documents) {
   }
 }
 
-void safelyStoreDocuments(Safe& safe, std::list<Document> const& documents) {
+void safelyStoreDocuments(Safe& safe, std::vector<Document> const& documents) {
   openSafeDoor();
   putDocumentsIntoSafe(safe, documents);
 }
@@ -264,6 +263,15 @@ When we split the function in two, we moved the instantiation of the Door
 class in the `openSafeDoor()` function, which means the door will be _closed_
 by the time we try to put the documents in the safe!
 
+```console
+$ g++ -Wall safe.cpp -o safe && ./safe
+Unlock door
+Opening door
+Closing door
+Putting passport in safe
+Putting ID card in safe
+```
+
 
 # How did it happen
 
@@ -272,7 +280,7 @@ That's a question I always asked myself when I write a patch for a bug fix.
 Why did the bug appear, and what can we do to not let it happen again?
 
 I found that simply asking the question often leads to interesting discoveries,
-and sometimes triggers a change in the process, tools our refactoring habits.
+and sometimes triggers a change in the process, tools or refactoring habits.
 
 In our case, I think the main problem is that we had an *implicit dependency*
 between the safe and the door.
@@ -321,7 +329,7 @@ void openSafeDoor(Safe& safe) {
   safe.openDoor();
 }
 
-void safelyStoreDocuments(Safe& safe, std::list<Document> const& documents) {
+void safelyStoreDocuments(Safe& safe, std::vector<Document> const& documents) {
   openSafeDoor(safe);
 
   putDocumentsIntoSafe(safe, documents);
@@ -377,7 +385,7 @@ class Safe() {
   // same as before
   }
 
-  void putDocuments(std::list<Document> const& documents) {
+  void putDocuments(std::vector<Document> const& documents) {
     for(auto const& document: documents) {
       if (!_full) {
         putDocument(document);
@@ -402,7 +410,7 @@ const std::string getCombination() {
 int main() {
   Document passport("passport");
   Document idCard("ID card");
-  std::list<Document> documents{passport, idCard};
+  std::vector<Document> documents{passport, idCard};
 
   auto key = getKey();
   auto combination = getCombination();
@@ -460,7 +468,7 @@ Closing door
 Something is wrong here. The door is closed *after* the call to `dust()`. And
 you don't want the housekeeper to see the contents of the safe, right?
 
-To fix this, we can remove the `~Door` desctructor completely, and
+To fix this, we can remove the `~Door` destructor completely, and
 introduce an explicit `close()` method in the `Safe` class:
 
 ```cpp
@@ -491,8 +499,11 @@ Now the `main` becomes:
 ```cpp
 int main() {
   Safe safe;
+  auto combination = getCombination();
+  auto key = getKey();
   safe.open(combination, key);
   safe.putDocuments(documents);
+  safe.close();
   safe.dust();
 }
 ```
