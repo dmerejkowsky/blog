@@ -432,6 +432,78 @@ safe door works, or where the key and combination are coming from.
 
 I think it's a much better design.
 
+# One last thing
+
+Our refactoring moved the `Door` inside the `Safe` class, and now the
+lifetime of the door is the same as its containing object.
+
+But this is not always the case. For instance, after storing the documents in
+the safe, you may want remove the dust that's been accumulated on top of it:
+
+```cpp
+int main() {
+  Safe safe;
+  safe.open(combination, key);
+  safe.putDocuments(documents);
+  safe.dust();
+}
+```
+
+```console
+$ g++ -Wall safe.cpp -o safe && ./safe
+Putting passport in safe
+Putting ID card in safe
+Removing dust from the safe
+Closing door
+```
+
+Something is wrong here. The door is closed *after* the call to `dust()`. And
+you don't want the housekeeper to see the contents of the safe, right?
+
+To fix this, we can remove the `~Door` desctructor completely, and
+introduce an explicit `close()` method in the `Safe` class:
+
+```cpp
+class Safe {
+  // ...
+  void close() {
+    if (_opened) {
+      _door.close();
+      _opened = false;
+    }
+  }
+
+  // ..
+  ~Safe() {
+    close();
+  }
+
+  private:
+  bool _opened;
+}
+```
+
+We store the state of the safe in a `_opened` boolean member just so that we
+don't try to close the door twice.
+
+Now the `main` becomes:
+
+```cpp
+int main() {
+  Safe safe;
+  safe.open(combination, key);
+  safe.putDocuments(documents);
+  safe.dust();
+}
+```
+
+And everything is good.
+
+This illustrates an interesting issue. We did not really care about the lifetime
+of the door (which is just an implementation detail), what we really cared about
+was the lifetime of the *safe*, and that's why closing the door in its own
+destructor was a bad idea.
+
 # Conclusion
 
 Object-oriented programming is hard, C++ is hard, naming things are
