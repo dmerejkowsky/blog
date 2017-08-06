@@ -166,6 +166,8 @@ void safelyStoreDocuments() {
 Storing documents is quite easy: you just have to loop, checking that
 there is enough room in the safe.
 
+There's already a `safe.isFull()` method you can call.
+
 So you are finally able to implement the TODO:
 
 ```cpp
@@ -187,10 +189,10 @@ void safelyStoreDocuments() {
 
   // Put documents in the safe:
   for(auto const& document: documents) {
-    safe.checkAvailableRoom();
-    safe.putDocument(document);
+    if (!safe.isFull()) {
+      safe.putDocument(document);
+    }
   }
-
 }
 ```
 
@@ -237,8 +239,9 @@ void openSafeDoor() {
 
 void putDocumentsIntoSafe(Safe& safe, std::list<Document> const& documents) {
   for(auto document: documents) {
-    safe.checkAvailableRoom();
-    safe.putDocument(document);
+    if (!safe.isFull()) {
+      safe.putDocument(document);
+    }
   }
 }
 
@@ -376,8 +379,9 @@ class Safe() {
 
   void putDocuments(std::list<Document> const& documents) {
     for(auto const& document: documents) {
-      checkAvailableRoom();
-      putDocument(document);
+      if (!_full) {
+        putDocument(document);
+      }
     }
   }
 
@@ -419,14 +423,14 @@ Those names were a clue that those functions actually belonged to the
 
 The `Safe` class itself has grown and is now responsible of maintaining invariants
 (making sure the door is open and closed, and that there's enough room for all
-the documents).
+the documents). Note also how the `_full`  private member no longer
+needs to be exposed.
 
 Lastly, `main()` is now only concerned about gathering the various element it needs,
 and only calls "high level" methods of the safe. It knows nothing about how the
 safe door works, or where the key and combination are coming from.
 
 I think it's a much better design.
-
 
 # Conclusion
 
