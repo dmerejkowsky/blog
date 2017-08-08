@@ -511,6 +511,7 @@ If you wish you can suggest new links in the
 * [Avdi Grimm - Your Passion Is Yours and Yours Alone](http://developeronfire.com/episode-108-avdi-grimm-your-passion-is-yours-and-yours-alone)
 * [CodeKata](http://codekata.com/)
 * [Podcast: Python and the people who make it great](http://podcastinit.podbean.com/e/episode-54-pip-and-the-python-package-authority-with-donald-stufft/)
+* [Principles Wiki](http://principles-wiki.net/)
 * [Talk Python To Me](https://talkpython.fm/)
 
 ## Decentralized Internet
