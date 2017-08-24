@@ -624,7 +624,7 @@ The last piece of the puzzle is the interaction with Neovim.
 
 I use Tim Pope's [vim-fugitive](https://github.com/tpope/vim-fugitive) for this.
 
-It has *tons* of feature.
+It has *tons* of features.
 
 I use it to display a current branch in my status line:
 
