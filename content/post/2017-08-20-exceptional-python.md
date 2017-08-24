@@ -549,8 +549,7 @@ It also means that if an error that does _not_ inherit from `tscr.Error` is rais
 
 ## The main() wrapper
 
-The distinction between "expected" and "unexpected" errors is made clear in the
-`main()` entry point of `tsrc`:
+The distinction between "expected" and "unexpected" errors is made clear in the `main()` entry point of `tsrc`:
 
 ```python
 def main_func():
