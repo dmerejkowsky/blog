@@ -13,7 +13,7 @@ Since I believe in the [rule of
 three](https://blog.codinghorror.com/rule-of-three/) and I already have three
 different projects using it, I've decided to share it to the world.
 
-Feel free to take a look at the [github page](https://github.com/dmerejkowsky/python-cli-ui).
+Feel free to take a look at the [github page](https://github.com/TankerApp/python-cli-ui).
 
 <!--more-->
 
@@ -257,7 +257,7 @@ def test_say_hello(messages):
 Well, I hope you'll find this module useful.
 
 As explained in the [github
-README](https://github.com/dmerejkowsky/python-cli-ui/blob/master/README.md)
+README](https://github.com/TankerApp/python-cli-ui/blob/master/README.md)
 I have no plans on making a proper `pypi` release just yet, but I'm willing to
 accept pull requests or any other kind of feedback :)
 
