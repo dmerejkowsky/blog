@@ -51,7 +51,7 @@ First, using `JSON` for configuration files may not be such a good idea. So we'r
 
 * Like JSON, we can map directly to "plain old data" Python types (lists, dictionaries, integers, floats, strings and booleans)
 
-* Syntax is well-defined and all implementations behave the same. (It's _not_ the case for JSON, see [Parsing JSON is a Minefeild](http://seriot.ch/parsing_json.php) for the details
+* Syntax is well-defined and all implementations behave the same. (It's _not_ the case for JSON, see [Parsing JSON is a Minefield](http://seriot.ch/parsing_json.php) for the details
 
 * We can have comments in the configuration file.
 
