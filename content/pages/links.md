@@ -110,6 +110,7 @@ If you wish you can suggest new links in the
   https://dev.to/pbeekums/the-problem-with-heroes-in-software-development)
 * [The Quiet Crisis unfolding in Software Development](
   https://medium.com/@billjordan1/the-quiet-crisis-unfolding-in-software-development-cffbdafbf450#.y0v0uk1oo)
+* [The Salami Method](http://videocortex.io/2017/salami-method/)
 * [The Six Dumbest Ideas in Computer Security](
   http://www.ranum.com/security/computer_security/editorials/dumb)
 * [The Vietnam of Computer Science](
@@ -308,6 +309,7 @@ If you wish you can suggest new links in the
 * [gien: export Github issue tracker contents to local email storage](https://github.com/2ion/gien)
 * [git-repo: CLI utility to manage git services from your workspace](
   https://github.com/guyzmo/git-repo)
+* [goreplay: capture and replay HTTP traffic](https://github.com/buger/goreplay)
 * [Kite - Programming copilot](https://kite.com/)
 * [Knox: Secret management service](https://github.com/pinterest/knox)
 * [Lektor: Static File Content Management System](https://www.getlektor.com)
