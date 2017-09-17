@@ -55,7 +55,7 @@ Usually a test is made of three parts:
 
 * Arrange: initialize resources or objects required by the test
 * Act: exercise the production code
-* Assert: examine the results of the previous action and check it matches what was expected.
+* Assert: examine the actual results of the previous action and check they match what was expected
 
 Again, by focusing on each part of the tests, you'll get specific skills.
 
@@ -115,39 +115,48 @@ At the beginning, you'll be tempted to only use assertions provided by your test
 
 Let's take an example.
 
-When you run `tsrc init -g foo`, `tsrc` will parse a 'manifest' file, look for the group named `foo`, and for each project of the 'foo' group, will look for its URL and path, and clone it inside the workspace.
+When you run `tsrc init -g foo`, `tsrc` will parse a 'manifest' file, look for the group named 'foo', and for each project of the 'foo' group, will look for its URL and path, and clone it inside the workspace.
 
-Here's what the tests looked like:
+Here's what the test could look like:
 
 ```python
 def test_init(tsrc_cli, git_server, workspace):
-    git_server.add_repo("foo/bar")
-    git_server.add_repo("spam/eggs")
+    git_server.add_group("foo", ["bar", "baz"])
+    git_server.add_repo("other")
     manifest_url = git_server.manifest_url
 
-    tsrc_cli.run("init", manifest_url)
+    tsrc_cli.run("init", manifest_url, "--group", "foo")
 
-    assert workspace.root_path.joinpath("foo/bar").exists()
-    assert workspace.root_path.joinpath("spam/eggs").exists()
+    assert workspace.root_path.joinpath("bar").exists()
+    assert not workspace.root_path.joinpath("other").exists()
 ```
 
 I won't explain here how the `tsrc_cli`, `git_server` and `workspace` arguments work here [^1], my point is to make you realize the test will be a bit more readable if written like this:
 
 
 ```python
+
+def repo_exists(workspace, repo_path):
+    return workspace.root_path.joinpath(repo_path).exists()
+
+
 def assert_cloned(workspace, repo_path):
-    assert workspace.root_path.joinpath(repo_path).exists()
+    assert repo_exists(workspace, repo_path)
+
+
+def assert_not_cloned(workspace, repo_path):
+    assert not repo_exists(workspace, repo_path)
 
 
 def test_init(tsrc_cli, git_server, workspace):
-    git_server.add_repo("foo/bar")
-    git_server.add_repo("spam/eggs")
-
+    git_server.add_group("foo", ["bar", "baz"])
+    git_server.add_repo("other")
     manifest_url = git_server.manifest_url
+
     tsrc_cli.run("init", manifest_url)
 
-    assert_cloned(workspace, "foo/bar")
-    assert_cloned(workspace, "spam/eggs")
+    assert_cloned(workspace, "bar")
+    assert_not_cloned(workspace, "other")
 ```
 
 Some say: *You should write tests that read like a well-written specification*. So, by practicing the "Assert" part of your tests, you will get better at expressing specifications in code, which is a very useful skill.
@@ -228,11 +237,11 @@ class Workspace:
         ...
 
     def _save_manifest_config(self, url, branch, tag, groups):
-        """ Dump manifest config in self.manifest_config_path """
+        """ Dump the manifest config to self.manifest_config_path """
         ...
 
     def _load_manifest_config(self):
-        """ Load manifest config in self.manifest_config_path """
+        """ Load the manifest config from self.manifest_config_path """
         ...
 
     def get_repos(self):
@@ -246,7 +255,7 @@ And here's a *code smell*. You'll notice that the word "manifest" is all over th
 
 The code is telling us there's a class missing somewhere.
 
-And indeed, look how we can delegate everything to a 'LocalManifest' class:
+And indeed, look how we can introduce a new 'LocalManifest' class:
 
 
 ```python
@@ -296,14 +305,14 @@ Doing TDD does not only improve your skill, it also changes the way you work.
 
 ## Less fear
 
-By practicing TDD, you'll be writing and running tests a *lot*. So, if you do it well, you'll end up with a nice suite of test you can trust, and you will feel much more confident when refactoring or adding new features.
+By practicing TDD, you'll be writing and running tests *a lot*. So, if you do it well, you'll end up with a nice suite of test you can trust, and you will feel much more confident when refactoring or adding new features.
 
 ## Less time spend debugging
 
 Let's see how debugging works depending on the phase you are on:
 
 * red phase: it's very unlikely you are going to introduce bugs *just by writing a new test*. It does happen though. For instance, your new test may be changing the global state in an non obvious way and trigger other test failures. But I'm not sure how you could introduce a bug into the *production code*.
-* green phase: since all you care about is making the test pass, usually you'll try to *modify* the production code as less as possible, and instead try to only *add*  new code. If you do this, it's not likely bugs will appear.
+
 * refactor phase: that's when bugs are most likely to appear. After all, you are *changing code that already works*. But, if you have a well-written test suite, depending on which tests fail and how, you should get a pretty good idea about where the bug is.
 
 Bottom-line is: the more you practice TDD and the more you improve your refactoring skills, the less time you will spend debugging.
@@ -425,7 +434,7 @@ Getting 'done' sooner than you expect is a pretty nice feeling to have, trust me
 
 ## Don't Give Up
 
-My main advice here is to not give up too soon. The only way to get good at TDD is by practicing. It will take you quite some time before you experience all the nice things I talked about in the previous paragraphs, so *please* don't give up too soon.
+The only way to get good at TDD is by practicing. It will take you quite some time before you experience all the nice things I talked about in the previous paragraphs, but I'm convinced they are worth it. So *please* don't give up too soon.
 
 ## Beware of caveats
 
