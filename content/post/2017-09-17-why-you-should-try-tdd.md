@@ -412,7 +412,7 @@ class GroupList:
             self._rec_get_elements(res, group.includes)
 ```
 
-After which I was concerned that there may be non-existing groups inside the `include`, so I wrote a test I thought would fail:
+After which I was concerned that there may be non-existing groups inside the `includes`, so I wrote a test I thought would fail:
 
 ```python
 def test_unknown_include():
