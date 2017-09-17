@@ -10,6 +10,8 @@ TL;DR: You should try using Test Driven Development because it will turn you int
 
 Not convinced? Let me elaborate.
 
+<!--more-->
+
 # Introduction
 
 Throughout this article, I'll be using code taken from a project I'm currently working on: [tsrc](https://github.com/tankerapp/tsrc)
