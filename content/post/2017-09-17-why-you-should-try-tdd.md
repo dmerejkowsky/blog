@@ -312,7 +312,7 @@ By practicing TDD, you'll be writing and running tests *a lot*. So, if you do it
 Let's see how debugging works depending on the phase you are on:
 
 * red phase: it's very unlikely you are going to introduce bugs *just by writing a new test*. It does happen though. For instance, your new test may be changing the global state in an non obvious way and trigger other test failures. But I'm not sure how you could introduce a bug into the *production code*.
-
+* green phase: since all you care about is making the test pass, usually you'll try to *modify* the production code as less as possible, and instead try to only *add*  new code. If you do this, it's not likely bugs will appear.
 * refactor phase: that's when bugs are most likely to appear. After all, you are *changing code that already works*. But, if you have a well-written test suite, depending on which tests fail and how, you should get a pretty good idea about where the bug is.
 
 Bottom-line is: the more you practice TDD and the more you improve your refactoring skills, the less time you will spend debugging.
