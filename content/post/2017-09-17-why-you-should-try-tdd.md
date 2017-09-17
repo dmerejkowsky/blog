@@ -324,7 +324,7 @@ We all know it's hard to get back to work right after a meeting.
 If you practice TDD and always make a commit at the end of the refactoring phase, you can know very quickly where you were when you go back to work:
 
 * No git diff: last bug fix of feature is done, you can start working on the new stuff.
-* There's a git diff;
+* There's a git diff:
   * The tests pass: it's time to refactor
   * The tests fail: it's time to write production code
 
