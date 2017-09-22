@@ -554,6 +554,7 @@ If you wish you can suggest new links in the
 * [HTTP Status Cats](
   https://www.flickr.com/photos/girliemac/sets/72157628409467125/)
 * [js2js](https://eleks.github.io/js2js/)
+* [Standard Disclaimer](http://idiot-dog.com/disclaimer.html)
 * [Special sysadmin tools](http://www.brendangregg.com/specials.html)
 * ["Yoda conditions", "Pokemon Exception Handling", and other
    programming classics](
