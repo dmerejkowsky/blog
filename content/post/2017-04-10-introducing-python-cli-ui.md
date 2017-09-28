@@ -92,7 +92,7 @@ unicode and an ASCII representation (so that it works on Windows too.)
 For instance:
 
 ```python
-check  = _Characters(green, "✓", "ok")
+check  = UnicodeSequence(green, "✓", "ok")
 
 ui.info("Success!", ui.check)
 ```
@@ -256,9 +256,6 @@ def test_say_hello(messages):
 
 Well, I hope you'll find this module useful.
 
-As explained in the [github
-README](https://github.com/TankerApp/python-cli-ui/blob/master/README.md)
-I have no plans on making a proper `pypi` release just yet, but I'm willing to
-accept pull requests or any other kind of feedback :)
+The module is available as `python-cli-ui` on [pypi](https://pypi.org/project/python-cli-ui/)
 
 Cheers!
