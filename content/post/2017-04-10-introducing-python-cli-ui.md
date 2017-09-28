@@ -256,6 +256,6 @@ def test_say_hello(messages):
 
 Well, I hope you'll find this module useful.
 
-The module is available as `python-cli-ui` on [pypi](https://pypi.org/project/python-cli-ui/)
+It is available as `python-cli-ui` on [pypi](https://pypi.org/project/python-cli-ui/)
 
 Cheers!
