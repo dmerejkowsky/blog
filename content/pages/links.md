@@ -302,6 +302,7 @@ If you wish you can suggest new links in the
 * [DevAssistant](http://devassistant.org/)
 * [Disk2vhd: convert Windows installation to virtual image](
   https://technet.microsoft.com/en-us/sysinternals/ee656415.aspx)
+* [doitlive](https://doitlive.readthedocs.io/en/latest/)
 * [Elixr: browsing source code online](
   https://github.com/free-electrons/elixir)
 * [ffind: A sane replacement for find](https://github.com/jaimebuelta/ffind)
