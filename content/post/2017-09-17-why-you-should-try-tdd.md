@@ -133,7 +133,7 @@ def test_init(tsrc_cli, git_server, workspace):
     assert not workspace.root_path.joinpath("other").exists()
 ```
 
-I won't explain here how the `tsrc_cli`, `git_server` and `workspace` arguments work here [^1], my point is to make you realize the test will be a bit more readable if written like this:
+I won't explain how the `tsrc_cli`, `git_server` and `workspace` arguments work here [^1], my point is to make you realize the test will be a bit more readable if written like this:
 
 
 ```python
