@@ -4,9 +4,9 @@ languageCode: "en-us"
 canonifyurls: true
 cacheDir: "cache"
 
-theme: "blackburn"
+theme: "minimo"
 
-pygmentsStyle: "colorful"
+pygmentsStyle: "native"
 pygmentsCodeFences: true
 
 buildDrafts: true
