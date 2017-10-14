@@ -1,33 +1,33 @@
-title: "dmerej blog"
-author: "Dimitri Merejkowsky"
-languageCode: "en-us"
+title: dmerej blog
+author: Dimitri Merejkowsky
+languageCode: en-us
 canonifyurls: true
-cacheDir: "cache"
+cacheDir: cache
 
-theme: "minimo"
+theme: minimo
 
-pygmentsStyle: "native"
+pygmentsStyle: native
 pygmentsCodeFences: true
 
 buildDrafts: true
 
 params:
   info:
-    description: "Personal blog of Dimitri Merejkowsky"
+    description: Personal blog of Dimitri Merejkowsky
   assets:
-    customJS: ["js/custom.js"]
+    customJS: [js/custom.js]
   social:
-    twitter: "d_merej"
-    github: "dmerejkowsky"
-    linkedin: "dimitri-merejkowsky-28a3302b"
-    stackoverflow: "6010239/dimitri-merejkowsky"
+    twitter: d_merej
+    github: dmerejkowsky
+    linkedin: dimitri-merejkowsky-28a3302b
+    stackoverflow: 6010239/dimitri-merejkowsky
     config:
-      platforms: ["twitter", "github", "linkedin", "stackoverflow"]
+      platforms: [twitter, github, linkedin]
   settings:
     showReadingTime: true
 
 taxonomies:
-  tag: "tags"
+  tag: tags
 
 menu:
   main:
