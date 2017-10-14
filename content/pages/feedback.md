@@ -1,7 +1,9 @@
 ---
 date: "2016-05-21T23:55:04+02:00"
 draft: false
-title: "Giving Feedback"
+title: "Feedback"
+menu: main
+comments: false
 ---
 
 Feedback is more than welcome :)

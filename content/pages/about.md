@@ -2,6 +2,8 @@
 date: "2016-05-21T23:55:04+02:00"
 draft: false
 title: "About"
+menu: main
+comments: false
 ---
 
 # About me
