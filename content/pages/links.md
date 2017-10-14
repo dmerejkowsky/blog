@@ -3,6 +3,7 @@ date: "2016-05-21T23:55:04+02:00"
 draft: false
 title: "Links"
 menu: main
+meta: false
 ---
 
 This page contains a list of links I find interesting or that I want

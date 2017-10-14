@@ -4,6 +4,7 @@ draft: false
 title: "Feedback"
 menu: main
 comments: false
+meta: false
 ---
 
 Feedback is more than welcome :)
