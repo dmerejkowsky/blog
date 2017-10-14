@@ -23,6 +23,8 @@ params:
     stackoverflow: "6010239/dimitri-merejkowsky"
     config:
       platforms: ["twitter", "github", "linkedin", "stackoverflow"]
+  settings:
+    showReadingTime: true
 
 taxonomies:
   tag: "tags"
