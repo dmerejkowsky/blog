@@ -9,7 +9,7 @@ tags: ["python"]
 This post is heavily inspired by a presentation I saw at the
 last [Paris.py meetup](https://www.meetup.com/Paris-py-Python-Django-friends/).
 
-The speaker (Nicolas Mussat, CTO at [MeilleursAgent.com](http://meilleursagents.com)),
+The speaker (Nicolas Mussat, CTO at [MeilleursAgents.com](http://meilleursagents.com)),
 was kind enough to allow me to publish this on my blog.
 
 You can find the original slides (in French) [on slideshare](
