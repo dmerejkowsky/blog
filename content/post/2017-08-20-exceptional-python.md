@@ -555,7 +555,7 @@ The distinction between "expected" and "unexpected" errors is made clear in the 
 def main_func():
     """ Deals with command-line arguments
     and calls appropriate functions
-    """"
+    """
 
 def main():
     try:
