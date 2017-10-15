@@ -330,7 +330,7 @@ If you practice TDD and always make a commit at the end of the refactoring phase
   * The tests pass: it's time to refactor
   * The tests fail: it's time to write production code
 
-You can also make a temporary commit like 'Add failing test for feature #3' at the end of the red phase if you like, but I'd would rather not make it part of the public git history. (Meaning you should squash it with the following commits)
+You can also make a temporary commit like 'Add failing test for feature #3' at the end of the red phase if you like, but I would rather not make it part of the public git history. (Meaning you should squash it with the following commits)
 
 ## Getting done faster
 
