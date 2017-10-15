@@ -98,14 +98,13 @@ Then, we tell `SQLRepository` to implement the interface:
 
 -public class SQLRepository {
 +public class SQLRepository implements Repository {
-
 ```
 
 And finally we pass the repository as an argument to the
 Controller constructor:
 
 
-```diff
+```text
 -import mypackage.repository.SQLRepository;
 +import mypackage.repository.Repository;
  import mypackage.renderer.Renderer;
@@ -205,7 +204,7 @@ Same thing, we have a source code dependency between `controller.py` and
 
 Now, let's invert the dependency:
 
-```diff
+```text
 -from repository import SQLRepository
 
  class Controller:
