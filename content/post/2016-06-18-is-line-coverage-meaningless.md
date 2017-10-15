@@ -174,7 +174,7 @@ that will never be executed, and can safely be removed.
 # Other coverage measurements
 
 The [Wikipedia page](https://en.wikipedia.org/wiki/Code_coverage) on code
-coverage contains many useful information, so go read it :)
+coverage contains many useful information, so go read it&nbsp;:)
 
 You'll learn about other coverage measurements, such as "branch coverage",
 "condition coverage", or "parameter value coverage".
