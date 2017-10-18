@@ -62,6 +62,7 @@ If you wish you can suggest new links in the
   http://steve-yegge.blogspot.fr/2006/03/execution-in-kingdom-of-nouns.html)
 * [Graphite, Grafana and statsd gotchas](
   http://dieter.plaetinck.be/post/25-graphite-grafana-statsd-gotchas/)
+* [Hype isn't a use case](https://dev.to/liquid_chickens/hype-isnt-a-use-case-3a7)
 * [How I converted my React app to VanillaJS](
   https://hackernoon.com/how-i-converted-my-react-app-to-vanillajs-and-whether-or-not-it-was-a-terrible-idea-4b14b1b2faff)
   (and whether or not it was a terrible idea)
