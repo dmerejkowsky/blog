@@ -6,7 +6,7 @@ title: My Javascript Workflow
 tags: [javascript, neovim]
 ---
 
-Following the (relative) success of [How I lint My Python]({{< relref "post/2017-04-14-how-i-lint-my-python.md" >}}), today I'd like to talk about the tools and technique I use while writing Javascript at work.
+Following the (relative) success of [How I lint My Python]({{< relref "post/2017-04-14-how-i-lint-my-python.md" >}}), today I'd like to talk about the tools and techniques I use while writing Javascript at work.
 
 <!-- more -->
 
@@ -16,7 +16,7 @@ Regular readers of this blog won't be surprised by the fact I'm using <abbr titl
 
 What I like about TDD is that each of the phases has a very precise goal and a specific way of thinking about the code:
 
-* *red*: think about APIs and architecture: what the production code would look like
+* *red*: think about API and architecture: what the production code would look like
 * *green*: just get the tests to pass, write the feature as quickly and as simply as possible
 * *refactor*: consider the mess you've made, and clean it up.
 
@@ -26,21 +26,21 @@ My cycle when developing Javascript encapsulates this workflow:
 2. Write tests or production code
 3. Run the tests
 4. Back to step 2 until I'm done with the feature or bug
-5. Add flow annotations
-6. Rewrite history and
+5. Add `flow` annotations
+6. Rewrite history
 7. Create merge request
 8. Go back to step 6 if required
 9. Tell GitLab to merge the changes when the CI passes
 
 {{< note >}}
-I'm adding flow annotations *after* the whole TDD cycle. This is probably because I'm used to work with dynamically typed languages, so I'm still not used to static typing. Thus, I deal with types in a separate phase. If you come to "flowed" Javascript from a C++ background, you may prefer adding types first. I've also found that, when you don't have any tests, flow can be of great help during refactoring.
+I'm adding `flow` annotations *after* the whole TDD cycle. This is probably because I'm used to work with dynamically typed languages, so I'm still not used to static typing. Thus, I deal with types in a separate phase. If you come to "flowed" Javascript from a C++ background, you may prefer adding types first. I've also found that, when you don't have any tests, `flow` can be of great help during refactoring.
 {{</ note >}}
 
-Anyway, I'm going to go through this steps one by one, and you'll see how the tools I use are tailored for the specific case.
+Anyway, let's go through this steps one by one. You will see how the tools I use are tailored for the specific task.
 
 # Writing code
 
-We use [eslint]() to check coding style violations and other things like this.
+We use [eslint](https://eslint.org/) to check coding style violations or problematic patterns of code.
 
 For instance:
 
@@ -65,19 +65,25 @@ src/foo.js
 
 I want to know immediately when I've mistyped an import or a variable name, and `eslint` helps catching a lot of errors like this.
 
-So, I'm using [vim-ale]() inside neovim to have eslint run as soon as I save.
+So, I'm using [vim-ale]({{< relref "post/2017-07-08-lets-have-a-pint-of-vim-ale.md" >}}) inside neovim to have `eslint` run as soon as I save.
 
 (I could make it run continuously, but I find it too distracting).
 
-I use the gutter so that as soon as it's gone I know all lint errors are fixed.
+I use the gutter so that as soon as it's gone I know all lint errors are fixed, as shown on these screenshots:
 
-<!-- todo
- screenshot with and without the gutter
--->
+With the gutter:
+
+![neovim with gutter](/pics/lint-gutter.png)
+
+Without:
+
+![neovim without gutter](/pics/lint-no-gutter.png)
+
+
 
 # Running the tests
 
-For the tests we use [mocha]() and [chai]().
+For the tests we use [mocha](https://mochajs.org/) and [chai](http://chaijs.com/).
 
 Here's what the tests look like [^1]:
 
@@ -162,7 +168,7 @@ The nice thing is that we have a `eslint` rule that prevents us to ever merge co
 
 # Running flow
 
-We also use [flow]() and type annotations to check for a whole bunch of errors during static analysis (which means checks are run _without_ the code running):
+We also use [flow](https://flow.org/) and type annotations to check for a whole bunch of errors during static analysis (which means checks that are done _without_ the code running):
 
 ```javascript
 import { fromBase64 } from './utils';
@@ -183,11 +189,11 @@ export class Tanker {
 }
 ```
 
-You may be wondering why the user secret is a `Uint8Array` inside the Tanker class, but a base64 string in the `OpenOptions`.
+You may be wondering why the user secret is a `Uint8Array` inside the Tanker class, but a base 64 string in the `OpenOptions`.
 
-The reason is that almost all cryptographic operations need `Uint8Array`, but as a convenience for the users of our SDK we let them use base64-encoded strings.
+The reason is that almost all cryptographic operations need `Uint8Array`, but as a convenience for the users of our SDK we let them use base 64 encoded strings.
 
-Thus, if in a test you do something like:
+Thus, if you pass an incorrect type:
 
 ```javascript
 import { randomBytes } from './utils';
@@ -198,7 +204,7 @@ const secret = createUserSecret(userId);
 tanker.open(userId, secret);
 ```
 
-flow will warn with a message like this:
+`flow` will warn with a message like this:
 
 ```console
 597: const tanker = new Tanker( { url: 42 });
@@ -214,11 +220,11 @@ flow will warn with a message like this:
 Found 7 errors
 ```
 
-As you can see the message spawns on several lines, and you often need all the information flow gives you to understand what's wrong.
+As you can see the message spawns on several lines, and you often need all the information `flow` gives you to understand what's wrong.
 
 Thus, it's not very practical to have it run as a `vim-ale` linter (although it's doable).
 
-Also note I want to run `flow` not as often as the tests or eslint. It takes quite a while to think about the correct annotation to use, and it's a completely different mind process than writing new tests, refactoring code or implementing features.
+Also note I want to run `flow` not as often as the tests or `eslint`. It takes quite a while to think about the correct annotation to use, and it's a completely different mind process than writing new tests, refactoring code or implementing features.
 
 So, with that in mind, here's the solution I've found.
 
@@ -256,19 +262,19 @@ From Neovim, all what's left is to run:
 Let's break this command into parts:
 
 * `nnoremap <cr>`: tells Neovim we want to  map the pressing of 'Enter' in normal mode to a new chain of commands.
-* The first command is `:wa` (write all)
-* The second command (separated with an esacped pipe, `\|`), is calling the `rpcnotify` function which will trigger the `refresh` event
+* The first command is `:wa` (write all).
+* The second command (separated with an escaped pipe, `\|`), is calling the `rpcnotify` function which will trigger the `refresh` event.
 * Finally, we end the chain of commands with `<cr>` so that there's no need to press 'Enter' a second time.
 
-And so, all I want to do when I'm pondering how to use types properly is to go to `normal` mode, press enter, look at the end of the flow output and check if the number of errors is decreasing.
+And so, all I have to do when I'm pondering how to use types properly is to go to `normal` mode, press enter, look at the end of the `flow` output and check if the number of errors is decreasing.
 
-If I got an error that I don't understand, all I have to do is scroll up a little bit to get the full message associated with this error.
+If I get an error I don't understand, I can scroll up a little bit to get the full message associated with this error.
 
 # Rewrite history
 
 ## Making the git commit
 
-Once all the tests pass and flow no longer find errors, it's time to make a git commit.
+Once all the tests pass and `flow` no longer find errors, it's time to make a git commit.
 
 For this, I'm using `git gui`. It's ugly but:
 
@@ -300,12 +306,14 @@ For this I use my custom `git alias` and `neovim` (again) to edit the "rebase to
 
 ```console
 $ git ro
-...
+pick 6558885f less babel cruft
+pick 8c2b1c3f FIXME: revocation tests to be written
+pick 1b36450f fix revocation bug
 ```
 
 # Creating the merge request
 
-Finally it's time to create a merge request. For this I use [tsrc]() which is the tool we use to help us manage several git repositories and contains some nice features leveraging the GitLab API:
+Finally it's time to create a merge request. For this I use [tsrc](https://github.com/TankerApp/tsrc) which is the tool we use to help us manage several git repositories and contains some nice features leveraging the GitLab API:
 
 ```console
 $ tsrc push -a theo
@@ -339,4 +347,4 @@ This is also the long-version answer to "Why do you not use an IDE ?". As I expl
 Cheers!
 
 
-[^1]: In case you're wondering, those tests are taken from the real test suite of the SDK we make at tanker.io, just simplified a bit for the purpose of this article.
+[^1]: In case you're wondering, those tests are taken from the real test suite of the SDK we make at [tanker.io](https://tanker.io), just simplified a bit for the purpose of this article.
