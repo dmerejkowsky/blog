@@ -22,7 +22,6 @@ What I like about TDD is that each of the phases has a very precise goal and a s
 
 My cycle when developing Javascript encapsulates this workflow:
 
-
 1. Select a feature or a bug fix to implement
 2. Write tests or production code
 3. Run the tests
@@ -33,9 +32,11 @@ My cycle when developing Javascript encapsulates this workflow:
 8. Go back to step 6 if required
 9. Tell GitLab to merge the changes when the CI passes
 
-I'm going to go through this steps one by one, and you'll see how the tools I use are tailored for the specific
-case.
+{{< note >}}
+I'm adding flow annotations *after* the whole TDD cycle. This is probably because I'm used to work with dynamically typed languages, so I'm still not used to static typing. Thus, I deal with types in a separate phase. If you come to "flowed" Javascript from a C++ background, you may prefer adding types first. I've also found that, when you don't have any tests, flow can be of great help during refactoring.
+{{</ note >}}
 
+Anyway, I'm going to go through this steps one by one, and you'll see how the tools I use are tailored for the specific case.
 
 # Writing code
 
