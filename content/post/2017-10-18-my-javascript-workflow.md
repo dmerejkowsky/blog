@@ -36,7 +36,7 @@ My cycle when developing Javascript encapsulates this workflow:
 I'm adding `flow` annotations *after* the whole TDD cycle. This is probably because I'm used to work with dynamically typed languages, so I'm still not used to static typing. Thus, I deal with types in a separate phase. If you come to "flowed" Javascript from a C++ background, you may prefer adding types first. I've also found that, when you don't have any tests, `flow` can be of great help during refactoring.
 {{</ note >}}
 
-Anyway, let's go through this steps one by one. You will see how the tools I use are tailored for the specific task.
+Anyway, let's go through these steps one by one. You will see how the tools I use are tailored for each specific task.
 
 # Writing code
 
