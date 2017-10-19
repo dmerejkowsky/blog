@@ -12,7 +12,7 @@ Following the (relative) success of [How I lint My Python]({{< relref "post/2017
 
 # The cycle
 
-Regular readers of this blog wont' be surprised by the fact I'm using <abbr title="Test Driven Development">TDD</abbr> and thus that I already have a "red", "green", "refactor" cycle.
+Regular readers of this blog won't be surprised by the fact I'm using <abbr title="Test Driven Development">TDD</abbr> and thus that I already have a "red", "green", "refactor" cycle.
 
 What I like about TDD is that each of the phases has a very precise goal and a specific way of thinking about the code:
 
@@ -139,7 +139,7 @@ describe('revocation', () => {
 
 ```
 
-The whole test suite takes a few minutes to run (we have a pretty big suite of integration tests)
+The whole test suite takes a few minutes to run (we have a pretty big suite of integration tests).
 
 In order to keep the TDD cycle short, and assuming I'm working on something related to the revocation, I'll start by  adding a `.only` after the `describe`, like this:
 
@@ -157,7 +157,7 @@ $ yarn test:tanker --watch
 
 So, as soon as I save the production or the test code, the tests I'm interested in will run.
 
-The nice thing is that we have a `eslint` rule that prevent us to ever merge code that contains a call to `.only`, so as long as there's a gutter in the tests files I know I have to remove the `.only` and run the whole test suite.
+The nice thing is that we have a `eslint` rule that prevents us to ever merge code that contains a call to `.only`, so as long as there's a gutter in the tests files I know I have to remove the `.only` and run the whole test suite.
 
 # Running flow
 
@@ -305,7 +305,7 @@ $ git ro
 
 # Creating the merge request
 
-Finally it's time to create a merge request. For this I use [tsrc]() which is the tool we use to help us manage several git repositories and contains some nice features levaring the GitLab API:
+Finally it's time to create a merge request. For this I use [tsrc]() which is the tool we use to help us manage several git repositories and contains some nice features leveraging the GitLab API:
 
 ```console
 $ tsrc push -a theo
