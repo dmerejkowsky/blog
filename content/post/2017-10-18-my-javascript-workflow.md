@@ -162,8 +162,7 @@ The nice thing is that we have a `eslint` rule that prevents us to ever merge co
 
 # Running flow
 
-We also use [flow]() and type annotations to check for a whole bunch of errors during static analysis
-(which means checks are run _without_ the code running):
+We also use [flow]() and type annotations to check for a whole bunch of errors during static analysis (which means checks are run _without_ the code running):
 
 ```javascript
 import { fromBase64 } from './utils';
