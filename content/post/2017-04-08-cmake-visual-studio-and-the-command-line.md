@@ -159,9 +159,9 @@ On Windows, we used Batch files:
 git pull
 @call "%VS140COMNTOOLS%VsDevCmd.bat"
 mkdir build
-d build
+cd build
 cmake ..
-devenv c:\Users\dmerej\src\cmake-3.7.2\build-vs\CMake.sln /build
+devenv foo.sln /build
 ```
 
 You may wonder where the weird `@call "%VS140COMNTOOLS%VsDevCmd.bat"` line comes from.
