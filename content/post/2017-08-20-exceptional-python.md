@@ -148,7 +148,7 @@ file, _ := os.Open("foo.cfg");
 
 but there are linters which will forbid you to do that.
 
-Unlike C, you can add all sorts of metada to your error.
+Unlike C, you can add all sorts of metadata to your error.
 
 All you need is to declare a custom struct and implement an `Error` method:
 
