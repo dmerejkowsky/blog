@@ -3,7 +3,7 @@ slug: "pytest-rocks"
 date: "2016-04-16T13:53:51+00:00"
 draft: false
 title: "pytest Rocks"
-tags: ["python"]
+tags: [python, testing]
 ---
 
 Today I thought I'd share my experience with various test tools for the Python
@@ -80,10 +80,10 @@ So in the end there was a lot of code duplication among tests...
 
 * A  **lot** of boilerplate.
 * The API is taken from `JUnit`, a framework written for the Java programming
-  language
-* The setup and the tear down of the test are in two different places, so it's
+  language and it just does not feel like "pythonic".
+* The setup and the tear down of the tests are in two different places, so it's
   easy to forget to cleanup the temp directory in the `tearDown()` method
-* The code is not PEP8
+* The API does not conform to the PEP8 style
 * There's no way to skip tests (This was fixed in Python 3.1)
 * There's now way to discover tests (fixed in Python 3.2)
 
@@ -96,6 +96,10 @@ Yes, I know `unittest2` exists, but if you're going to use an external package
 to run the tests, why stick with `unittest`?
 
 # Switching to pytest
+
+Before diving into `pytest` specific features, let me point out that **pytest is
++fully compatible with unittest**, so if you want to switch, you don't have to rewrite
++all your tests right away :)
 
 ## Basic test
 
@@ -117,7 +121,7 @@ Well, that's nicer isn't it?
   `assertContains` and the like are all replaced by a simple `assert`. But then
   `pytest` does some black magic and you still get nice error messages:
 
-<pre>
+```text
 file test_foo.py, line 1
     def test_foo():
         actual = "foo" + "bar"
@@ -130,9 +134,9 @@ E         + fooBar
 E         ?    ^
 
 test_foo.py:4: AssertionError
-</pre>
+```
 
-* `tmpdir` is already a predifined _fixture_. The whole list is
+* `tmpdir` is already a predefined _fixture_. The whole list is
   [here](https://pytest.org/latest/builtin.html#builtin-fixtures-function-arguments)
 
 ## Sharing fixtures
@@ -142,7 +146,7 @@ tear down) is completely separated from the code that exercise the production
 code.
 
 `pytest` encourages you to write them in a special file called `conftest.py`.
-Sharing fixture is then as easy as writing a function, decorate it with
+Sharing fixtures is then as easy as writing a function, decorate it with
 `@pytest.fixture` and then pass it as parameter to whatever function needs it.
 
 Here's an example:
@@ -153,12 +157,10 @@ Here's an example:
 import pytest
 
 @pytest.fixture
-def db(request):
+def db():
     connection = DataBaseConnection("...")
-    @request.addfinalizer
-    def disconnect():
-         connection.close()
-    return connection
+    yield connection
+    connection.close()
 
 # in test_one
 
@@ -173,10 +175,11 @@ def test_two(db):
 ```
 
 Note how the code that deals with closing the connection to the database is
-right next to the code that opens it.
+right next to the code that opens it, and how `pytest` uses the `yield` keyword
+to stop executing the fixture code while the test is running.
 
 Also note how the tests do not care where the database come from: they just use
-it as a parameter.
+it as a parameter. (This is Dependency Injection at its finest)
 
 Finally, by default fixtures have a scope of "function" (meaning the database
 will be opened and then closed for each test function), but you can chose to
