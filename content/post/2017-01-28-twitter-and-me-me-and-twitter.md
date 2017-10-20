@@ -40,7 +40,7 @@ For those who do not know, Eurovision is a song contest that happens every year.
 
 For French people, it's fun to watch because:
 
-* we know we'll never win again, an
+* we know we'll never win again, and
 * it's so "kitsch" it's impossible to take it seriously.
 
 I remember following the `#LTEV` hash tag, before it was "official".
