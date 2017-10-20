@@ -368,7 +368,7 @@ dictionary to only run `pycodestyle`:
 
 ```vim
 let g:ale_linters = {
-  \ 'python': [] ,
+  \ 'python': ['pycodestyle'] ,
   \ }
 ```
 
