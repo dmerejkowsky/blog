@@ -75,7 +75,7 @@ $ Add ~/Library/Python/3.x/bin to PATH
 
 # Windows
 $ pip3 install tsrc
-# PATH is already correct, set by Windows at installation
+# PATH is already correct: it is set by the Windows installer
 ```
 
 You can find the sources on [github](https://github.com/TankerApp/tsrc).
