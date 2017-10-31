@@ -524,6 +524,7 @@ If you wish you can suggest new links in the
 
 * [C.H.A.T.O.N.S](https://chatons.org)
 * [cozy](https://cozy.io/en/)
+* [Daplie](https://daplie.com/)
 * [de-Google-ify](https://degooglisons-internet.org/?l=en)
 * [Diaspora](https://diasporafoundation.org/)
 * [FreedomBox](https://wiki.debian.org/FreedomBox/)
