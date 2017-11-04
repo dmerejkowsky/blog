@@ -534,6 +534,7 @@ If you wish you can suggest new links in the
 * [libre.sh](https://github.com/indiehosters/libre.sh)
 * [matrix](http://matrix.org/)
 * [Nextcloud](https://nextcloud.com/)
+* [peertube](https://github.com/Chocobozzz/PeerTube)
 * [puffin](http://puffin.rocks/)
 * [yunohost](https://yunohost.org)
 
