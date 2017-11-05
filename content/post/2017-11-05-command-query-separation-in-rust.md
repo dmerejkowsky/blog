@@ -1,7 +1,7 @@
 ---
 slug: command-query-separation-in-rust
 date: 2017-11-05T13:02:15.483612+00:00
-draft: false
+draft: true
 title: Command Query Separation in Rust
 tags: ["rust"]
 ---
