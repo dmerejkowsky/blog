@@ -555,8 +555,7 @@ to keep easily available.
 * [Daily WTF](http://thedailywtf.com)
 * [Fizz Buzz in Tensorflow](http://joelgrus.com/2016/05/23/fizz-buzz-in-tensorflow)
 * [Geek And Poke](http://geek-and-poke.com)
-* [HTTP Status Cats](
-  https://www.flickr.com/photos/girliemac/sets/72157628409467125/)
+* [HTTP Status Cats](https://http.cat)
 * [js2js](https://eleks.github.io/js2js/)
 * [Standard Disclaimer](http://idiot-dog.com/disclaimer.html)
 * [Special sysadmin tools](http://www.brendangregg.com/specials.html)
