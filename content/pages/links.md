@@ -497,6 +497,7 @@ If you wish you can suggest new links in the
 * [The Adventures of printf: A Short Story](https://www.youtube.com/watch?v=EWdqtMdcNkE&feature=youtu.be)
 * [The Care and Feeding of C++’s Dragons](http://channel9.msdn.com/Events/GoingNative/2013/The-Care-and-Feeding-of-C-s-Dragons)
 * [tpope's Vim Config and Plugins](https://www.youtube.com/watch?v=MGmIJyTf8pg)
+* [We're building a dystopia just to make people click on ads](https://www.ted.com/talks/zeynep_tufekci_we_re_building_a_dystopia_just_to_make_people_click_on_ads#t-1363337)
 * [Web Languages and VMs: Fast Code is Always in Fashion](http://www.youtube.com/watch?v=huawCRlo9H4)
 * [Why Google Stores Billions of Lines of Code in a Single Repository](https://www.youtube.com/watch?v=W71BTkUbdqE&feature=youtu.be)
 
