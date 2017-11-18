@@ -10,7 +10,7 @@ meta: false
 My name is Dimitri Merejkowsky (not to be confused with the Russian author with
 the same name :)
 
-I'm a French software engineer, and I like sharing knowledge and learn from
+I'm a French software writer [^1], and I like sharing knowledge and learn from
 others, hence this blog.
 
 My twitter bio reads:
@@ -44,3 +44,5 @@ commentaires et est capable de stocker votre e-mail si vous le lui donnez.
 
 En cas de besoin, ces informations peuvent être modifiées ou supprimées sur
 simple demande.
+
+[^1]: I prefer the term "software writer" to the more conventional "software engineer" phrasing. Go watch the talk [Writing Software](https://www.youtube.com/watch?v=9LfmrkyP81M) by David Heinemeier Hansson to learn why.
