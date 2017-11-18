@@ -439,6 +439,7 @@ to keep easily available.
 * [Flatpak](http://flatpak.org)
 * [Glick2](https://people.gnome.org/~alexl/glick2/)
 * [Limba](https://people.freedesktop.org/~mak/limba/)
+* [linuxdeployqt](https://github.com/probonopd/linuxdeployqt)
 * [Listaller](http://listaller.tenstral.net/)
 * [snapcraft.io](https://build.snapcraft.io/)
 * [Snappy (Ubuntu)](https://developer.ubuntu.com/en/snappy/)
