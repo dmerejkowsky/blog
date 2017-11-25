@@ -216,7 +216,7 @@ Also, I invite you to watch the [Request Under the
 Hood](https://www.youtube.com/watch?v=ptbCIvve6-k) presentation from PyCon 2017
 which is about a similar topic.
 
-# Update
+# Update (2017-11-25)
 
 Well, turned out Berker Peksag, one of Python maintainers, actually cared enough to finish up my pull request and the bug *will* be fixed for the next Python release. That's quite a nice happy end.
 
