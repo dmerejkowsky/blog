@@ -96,6 +96,8 @@ to keep easily available.
     http://sscce.org/)
 * [Some Lessons Learned On Mentoring](
   https://dev.to/pbeekums/some-lessons-learned-on-mentoring)
+* [Something is wrong on the internet](
+  https://medium.com/@jamesbridle/something-is-wrong-on-the-internet-c39c471271d2)
 * [Stop Working So Hard](
   https://glyph.twistedmatrix.com/2016/01/stop-working-so-hard.html)
 * [Testing, for people who hate testing](
