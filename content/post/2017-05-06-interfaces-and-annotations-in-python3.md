@@ -104,7 +104,7 @@ And finally we pass the repository as an argument to the
 Controller constructor:
 
 
-```text
+```diff
 -import mypackage.repository.SQLRepository;
 +import mypackage.repository.Repository;
  import mypackage.renderer.Renderer;
