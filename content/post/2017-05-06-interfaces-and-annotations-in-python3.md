@@ -204,7 +204,7 @@ Same thing, we have a source code dependency between `controller.py` and
 
 Now, let's invert the dependency:
 
-```text
+```diff
 -from repository import SQLRepository
 
  class Controller:
