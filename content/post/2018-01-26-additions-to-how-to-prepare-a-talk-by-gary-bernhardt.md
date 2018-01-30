@@ -11,7 +11,7 @@ Recently, Gary Bernhardt, from [destroyallsoftware](https://www.destroyallsoftwa
 
 I highly recommend you read it, it contains lots of good advice.
 
-I've myself have given quite a few talks, but in a slightly different context: I was sent by my company.
+I myself have given quite a few talks, but in a slightly different context: I was sent by my company.
 
 This changes a couple of minor things, so I though I could add a few points to the original article.
 
@@ -30,7 +30,7 @@ By using this, you won't have to point to things at the screen with your hand, a
 
 # Rehearsal
 
-After you've done enough repetitions to have a talk _you_ like, and before the actual event, I suggest you do at leas two rehearsals with some team mates.
+After you've done enough repetitions to have a talk _you_ like, and before the actual event, I suggest you do at least two rehearsals with some team mates.
 
 ## First rehearsal
 
@@ -44,7 +44,7 @@ After you've done enough repetitions to have a talk _you_ like, and before the a
 
 Give the talk as you would in front of a live audience. Assume your team mates know almost nothing about what you are talking about and who you are.
 
-Ask one of theme to time the rehearsal so that know if you still need to cut something.
+Ask one of them to time the rehearsal so that know if you still need to cut something.
 
 If your talk contains jokes, questions, or any other interaction with the audience, it's a good way to make sure they work.
 
@@ -71,7 +71,7 @@ The second rehearsal is a way for you to reflect on the feedback, do more work b
 
 For the second run, invite a mix of people who:
 
-* Were there the first time, so they can see the progress from the last run)
+* Were there the first time, so they can see the progress from the last run.
 * and were not there the first time, so they can bring a fresh perspective.
 
 Resist the urge to change too much things after this point. It's probably too late and further changes will only confuse you.
@@ -86,7 +86,9 @@ Of course, you don't want to be late, so you should plan your travel accordingly
 
 But it's even better if you are on location *before* any talk.
 
-If you can, plug your laptop to the screen and make sure everything is OK, but the best thing to do is to take the opportunity to make friends with some of the tech people and organizers before they get very busy, and it's always good to have them on your side :)
+If you can, plug your laptop to the screen and make sure everything is OK, but really the best thing to do is to take the opportunity to make friends with some of the tech people and organizers.
+
+They should not be too busy at this point, and it's always good to have them on your side :)
 
 
 Speaking of friends:
@@ -117,7 +119,7 @@ This is a live performance, so do _something_ live.
 
 Here are some ideas:
 
-* At the beginning of the talk, tell people they can interrupt you any time they have questions. This work well if your main goal is to *teach* something to your audience.
+* At the beginning of the talk, tell people they can interrupt you any time if they have questions. This work well if your main goal is to *teach* something to your audience.
 * If you are talking about a product, do a live demo about it.
 * Do some live coding (people seem to love those)
 
@@ -129,13 +131,13 @@ Note that it really helps if you memorize any setup or cleanup you may have to d
 
 Last but not least, have a backup plan in case there's no Internet connection. It happens more often than you think, especially if WIFI is involved[^1]. So, prepare something like a pre-recorded video, screen shots, or something else to talk about.
 
-By the way, if your command line session involves typing things in a terminal, you may want to try using the aptly named [doitlive](https://doitlive.readthedocs.io/en/latest/) tool, and if you want to publish a recording of your command line session, [asciinema](https://asciinema.org/) works great.
+By the way, if your live demo involves typing things in a terminal, you may want to try using the aptly named [doitlive](https://doitlive.readthedocs.io/en/latest/) tool, and if you want to publish a recording of your command line session, [asciinema](https://asciinema.org/) works great.
 
 # Conclusion
 
 I hope you'll find some of this advice useful. I too learned quite a lot from Gary's article, so naturally I wanted to share some of my experience with you.
 
-Before I go, one last "meta" advice. If you want to get better at giving talks, just do one as soon as you have an opportunity, especially at work. You can start by talking about technical stuff to the rest of your team and in a place you know well, and then move on to bigger events and broader audiences later.
+Before I go, one last "meta" advice. If you want to get better at giving talks, just do one as soon as you have an opportunity, especially at work. You can start by talking about technical stuff to the rest of your team and in a place you know well, and move on to bigger events and broader audiences later.
 
 Cheers!
 
