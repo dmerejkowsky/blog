@@ -3,11 +3,11 @@ slug: additions-to-how-to-prepare-a-talk-by-gary-bernhardt
 date: 2018-01-26T13:08:59.210468+00:00
 draft: false
 title: |
-  Additions to: "How To Prepare A Talk", by Gary Bernhardt
+  Additions to: "How to Prepare a Talk", by Gary Bernhardt
 tags: [talk]
 ---
 
-Recently, Gary Bernhardt, from [destroyallsoftware](https://www.destroyallsoftware.com/), posted an article entitled [How To Prepare A Talk](https://www.deconstructconf.com/blog/how-to-prepare-a-talk).
+Recently, Gary Bernhardt, from [destroyallsoftware](https://www.destroyallsoftware.com/), posted an article entitled [How to Prepare a Talk](https://www.deconstructconf.com/blog/how-to-prepare-a-talk).
 
 I highly recommend you read it, it contains lots of good advice.
 
