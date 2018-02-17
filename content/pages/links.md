@@ -299,6 +299,7 @@ to keep easily available.
 * [colout: Color up commands output](https://nojhan.github.io/colout/)
 * [cpp-dependencies: Creates #include dependency information](
   https://github.com/tomtom-international/cpp-dependencies)
+* [Danger: Stop saying "You Forgot To ..." in code review](http://danger.systems/)
 * [Darling: macOS translation layer for Linux](
   https://www.darlinghq.org/)
 * [DevAssistant](http://devassistant.org/)
@@ -318,6 +319,7 @@ to keep easily available.
 * [Lektor: Static File Content Management System](https://www.getlektor.com)
 * [MachoView: Visual Mach-O file browser](https://sourceforge.net/projects/machoview)
 * [Mail-in-a-box](https://mailinabox.email/)
+* [mas - Apple Store Automation](https://github.com/mas-cli/mas)
 * [NixOS](http://nixos.org)
 * [nsntrace: Network trace of a single process](
   https://github.com/jonasdn/nsntrace)
