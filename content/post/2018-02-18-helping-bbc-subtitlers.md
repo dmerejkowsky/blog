@@ -6,6 +6,8 @@ title: Helping BBC subtitlers
 tags: [ideas]
 ---
 
+_Note: this the first post in the [Quantum of Ideas]({{< ref "post/2018-02-18-introducing-quantom-of-ideas.md" >}}) series._
+
 # Introduction
 
 The other day I stumbled upon an article called [Why subtitlers have one of the hardest jobs in TV](http://www.radiotimes.com/news/tv/2018-01-24/how-do-tv-subtitles-work/). Go read it now, I'll wait.
