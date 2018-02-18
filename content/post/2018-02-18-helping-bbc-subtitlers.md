@@ -50,6 +50,6 @@ This seems to be already working just fine! Note how the names of the person spe
 
 There's a tiny issue because speech to text reporters have both their hands busy all the time, which means it would be hard for them to modify the position of the subtitles in real-time. But I believe the task of finding a 'text-free' zone in the image and automatically move the subtitles could quite easily be done automatically by a small piece of software.
 
-So the question become: what was the reason for the BBC not to hire STTRs for the purpose of subtitling all their programs?
+So the question becomes: what was the reason for the BBC not to hire STTRs for the purpose of subtitling all their programs?
 
 I don't have the answer, but if you ever need real-time speech to text conversion, please consider using a different technique than "respeaking".
