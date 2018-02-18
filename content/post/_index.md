@@ -1,6 +1,6 @@
 ---
 title: "Archives"
 menu: main
-comments: false
+feedback: false
 meta: false
 ---

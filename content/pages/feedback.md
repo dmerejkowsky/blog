@@ -3,7 +3,7 @@ date: "2016-05-21T23:55:04+02:00"
 draft: false
 title: "Feedback"
 menu: main
-comments: false
+feedback: false
 meta: false
 ---
 
