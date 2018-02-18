@@ -25,7 +25,7 @@ Heres's what *stenography* looks like using the French "Prévost-Delaunay" techn
 
 In the same vein, converting human hand-writing to text is also a well-known problem. Just take a look at [OCR history](https://en.wikipedia.org/wiki/Timeline_of_optical_character_recognition).
 
-Speech recognition is quite new in comparison, and even if it has improved in the last decades, it's still not entirely reliable, as the radiotimes article shows.
+Speech recognition is quite new in comparison, and even if it has improved in the last decades, it's still not entirely reliable, as the RadioTimes article shows.
 
 So here's the idea:
 
