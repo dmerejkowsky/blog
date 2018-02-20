@@ -466,6 +466,7 @@ to keep easily available.
 * [C++ on Mars](https://www.youtube.com/watch?v=3SdSKZFoUa8)
 * [Creative Coding with C++](https://www.youtube.com/watch?v=ndUtK5IZslc)
 * [Damian Conway: More Instantly Better Vim](https://www.youtube.com/watch?v=aHm36-na4-4)
+* [Dave Thomas: Agile is Dead](https://www.youtube.com/watch?v=a-BOSpxYJ9M)
 * [David Beazley: Python Concurrency From the Ground Up: LIVE!](
   https://www.youtube.com/watch?v=MCs5OvhV9S4)
 * [David Beazley: Generators: The Final Frontier](https://www.youtube.com/watch?v=5-qadlG7tWo)
