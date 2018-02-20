@@ -4,6 +4,12 @@ date: 2018-02-18T13:52:40.203284+00:00
 draft: false
 title: Helping BBC subtitlers
 tags: [ideas]
+summary: |
+  What if there was a better way to transcribe what is said on TV into proper
+  text, without having humans trying to repeat what they heard in a robotic
+  voice, and then not-so-good "speech to text" programs converting robotic
+  human voices to words?
+
 ---
 
 _Note: this the first post in the [Quantum of Ideas]({{< ref "post/2018-02-18-introducing-quantom-of-ideas.md" >}}) series._
