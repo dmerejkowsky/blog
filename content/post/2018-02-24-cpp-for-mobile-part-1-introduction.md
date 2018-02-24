@@ -151,3 +151,49 @@ std::string ChuckNorris::getFact()
 ```
 
 Note: error handling omitted for brevity
+
+
+# Note: recompile with -fPIC
+
+Alas ...
+
+```console
+$ cmake -DBUILD_SHARED_LIBS=ON ../..
+$ ninja
+/bin/ld: .../libsqlite3.a(sqlite3.o): relocation R_X86_64_PC32
+against symbol `sqlite3_version' can not be used when making
+a shared object; recompile with -fPIC
+```
+
+
+* Fork uspstream recipe
+
+
+```console
+$ mkdir -p conan-recipes/sqlite3
+$ cd conan-recipes/sqlite3
+$ conan copy sqlite3/3.21.0@bincrafters/stable dmerej/test
+$ cp -r ~/.conan/data/sqlite3/3.21.0/dmerej/test/export/ sqlite3
+$ cp -r ~/.conan/data/sqlite3/3.21.0/dmerej/test/export_sources/* sqlite3
+$ conan create . dmerej/test
+```
+
+* Patch `CMakeLists.txt` in `conan-recipes/sqlite3/CMakeLists.txt`:
+
+```cmake
+project(cmake_wrapper)
+set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
+
+...
+```
+
+* Patch `conanfile.txt`
+```cfg
+[requires]
+sqlite3/3.21.0@dmerej/test
+```
+
+Decentralized ftw !
+
+
+PS: there's a reason to have `sqlite.a` *without* position independent code, ...
