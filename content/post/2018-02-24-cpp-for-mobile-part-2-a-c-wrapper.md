@@ -183,10 +183,21 @@ _ZTVN10__cxxabiv117__class_type_infoE
 Fixed by adding `stdc++` to the list of libs:
 
 ```python
-    extra_objects=libs,
-    libraries=["stdc++"], # <- here
-    include_dirs=["../cpp/include"],
+additional_libs = list()
+if sys.platform == "linux":
+    additional_libs.append("stdc++")
 
+
+ffibuilder.set_source(
+    "_chucknorris",
+    """
+    #include <chucknorris.h>
+
+    """,
+    extra_objects=libs,
+    libraries=additional_libs,
+    include_dirs=["../cpp/include"],
+)
 ```
 
 
