@@ -174,6 +174,22 @@ ImportError: dlopen(_chucknorris.abi3.so):
   Symbol not found: _sqlite3_close
 ```
 
+On linux:
+
+```
+_ZTVN10__cxxabiv117__class_type_infoE
+```
+
+Fixed by adding `stdc++` to the list of libs:
+
+```python
+    extra_objects=libs,
+    libraries=["stdc++"], # <- here
+    include_dirs=["../cpp/include"],
+
+```
+
+
 # Asking conan for the .a path
 
 * [Add a json generator](https://github.com/conan-io/conan/pull/2515)
