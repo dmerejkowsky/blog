@@ -22,6 +22,8 @@ summary: |
 
 
 def slugify(text):
+    # Make sure 'C++ stuff" is replaced by 'cpp-stuff', not 'c-stuff'
+    text = text.replace("C++", "cpp")
     res = re.sub('[^\w\s-]', '', text).strip().lower()
     return re.sub('[-\s]+', '-', res)
 
