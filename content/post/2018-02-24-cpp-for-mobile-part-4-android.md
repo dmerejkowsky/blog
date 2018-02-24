@@ -26,9 +26,11 @@ $ gradlew init --type java-library
 
 ```java
 public class ChuckNorrisLib {
+	private Pointer ckPointer;
 
     public interface CLibrary extends Library {
-        CLibrary INSTANCE = (CLibrary) Native.loadLibrary("chucknorris", CLibrary.class);
+        CLibrary INSTANCE = (CLibrary)
+            Native.loadLibrary("chucknorris", CLibrary.class);
 
         Pointer chuck_norris_init();
         String chuck_norris_get_fact(Pointer pointer);
@@ -61,4 +63,27 @@ def cppBuildPath = new File(projectPath, "cpp/build/java/lib")
 test {
     systemProperty 'jna.library.path', cppBuildPath
 }
+```
+
+# Android
+
+Using the Android helper.
+
+(Trust me on this)
+
+## Tips
+
+* Make sure to create a device with:
+
+    * a x86_64 CUP (faster!)
+    * lots of RAM and disk space (it's hidden in the "advanced" menu ..)
+
+
+* If emulator does not start, use:
+
+```console
+$ cd ~/Android/Sdk/
+$ ./tools/emulitors -list-avds
+# to get your AVD name
+$ ./tools/emulator -use-system-libs -avd <name>
 ```
