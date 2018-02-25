@@ -296,13 +296,32 @@ TODO: had to patch the conanfile.py to have:
         # TODO: ask theo why
         # taken fro sqlite3 recipe
         del self.settings.compiler.libcxx
-        del self.settings.compiler.libcxx
 ```
+
+# Running cross-compiled code
+
+
+```console
+$ cd build/android/x86_64
+$ adb push lib/libchucknorris.-o /data/local/tmp/
+$ adb pusd bin/cpp-demo /data/local/tmp
+$ adb shell
+$ cd /data/local/tmp
+$ LD_LIBRARY_PATH=. ./cpp-demo
+# oups
+CANNOT LINK EXECUTABLE "./cpp_demo": library "libc++_shared.so" not found
+S adb push android-toolchain/x86_64-linux-android/lib64/libc++_shared.so /data/local/tmp/
+$ LD_LIBRARY_PATH=. ./cpp-demo
+# Success !
+```
+
+
+# New symlinks
 
 Now we can create a symlink to `cpp/build/android/x86_64/lib/libchucknorris.so` in
 `android/app/src/main/jniLibs/x86_64/`
 
-... and a symlink to `/android-x86_64-api-27-toolchain/x86_64-linux-android/lib64/libc++_shared.so`
+and a symlink to `/android-x86_64-api-27-toolchain/x86_64-linux-android/lib64/libc++_shared.so`
 
 And the test pass!
 
