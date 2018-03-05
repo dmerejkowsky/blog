@@ -259,38 +259,70 @@ def test_past_question(self):
 
 ```
 
-Now look at what happens when we adapt the next tests:
+While we're at it, we can introduce small helper functions to make the tests easier to read:
+
+
+For instance, the string `No polls are available` is hard-coded twice in the tests. Let's introduce a `assert_no_polls` helper:
 
 ```python
-def test_future_question(self):
-    """
-    Questions with a pub_date in the future aren't displayed on
-    the index page.
-    """
-    )
+def assert_no_polls(text):
+    assert "No polls are available" in text
 ```
 
-So, we can write something more simple, and also get rid of the duplication:
+```patch
+- assert "No polls are available." in response.rendered_content
++ assert_no_polls(response.rendered_content)
+```
+
+An other hard-coded string is `polls:index`, so let's introduce `get_latest_list`:
 
 ```python
-def get_latest_questions_list(client):
+def get_latest_list(client):
     response = client.get(reverse('polls:index'))
-    return response.context['latest_question_list']
 
-
-def test_past_question(self):
-    create_question(question_text="Past question.", days=-30)
-    actual_questions = get_latest_questions_list(self.client)
-    assert len(actual_questions) == 1
-
-
-def test_future_question(self):
-    create_question(question_text="Future question.", days=30)
-    actual_questions = get_latest_questions_list(self.client)
-    assert not actual_questions == 1
 ```
 
-# Move code out of classes
+That way, if the name of the route ('polls:index') changes and becomes `polls:list` for instance, we'll just need to update the code in one place.
+
+Ditto if the `latest_question_list` context key changes inside the `polls/index.html` template.
+
+
+Then, we can further simplify our assertions:
+
+```python
+def assert_question_list_equals(actual_questions, expected_texts):
+    assert len(actual_questions) == len(expected_texts)
+    for actual_question, expected_text in zip(actual_questions, expected_texts):
+        assert actual_question.question_text == expected_text
+
+    def test_past_question(self):
+        ...
+        create_question(question_text="Past question.", days=-30)
+        latest_list = get_latest_list(self.client)
+        assert_question_list_equals(latest_list, ["Past question."])
+```
+
+
+# Step three: move code out of classes
+
+The nice thing about `pytest` is that you don't need to put your tests as methods of a class, you can just write
+test functions directly.
+
+So we just remove the `self` parameter, indent back all the code, and we are (almost) good to go.
+
+We don't need the `self.assert*` methods, and we can pass the Django test client as a parameter instead of using `self.client`. (That's how [pytest fixtures]() work):
+
+```patch
+-    def test_two_past_questions(self):
+-        ...
+-        latest_list = get_latest_list(self.client)
+
++ def test_no_questions(client):
++    latest_list = get_latest_list(client)
+
+```
+
+But then we encounter an unexpected failure:
 
 ```
 Polls/tests.py:34: in create_question
@@ -301,3 +333,272 @@ Polls/tests.py:34: in create_question
 >       self.ensure_connection()
 E       Failed: Database access not allowed, use the "django_db" mark, or the "db" or "transactional_db" fixtures to enable it.
 ```
+
+Back when we used `python manage.py test`, django's `manage.py` script was implicitly creating a test database for us.
+
+When we use `pytest`, we have to be explicit about it and add a special marker:
+
+```python
+import pytest
+
+# No change here, no need for a DB
+def test_was_published_recently_with_old_question():
+    ...
+
+# We use create_question, which in turn calls Question.objects.create(),
+# so we need a database here:
+@pytest.mark.django_db
+def test_no_questions(client):
+    ...
+```
+
+True, this is a bit annoying, but note that if we only want to test the models themselves (like the `was_published_recently()` method), we can just use:
+
+```console
+$ pytest -k was_published_recently
+```
+
+and no database will be created *at all*.
+
+# Step four: Get rid of doc strings
+
+I don't like doc strings, *except* when I'm implementing a very public API. There, I've said it.
+
+I very much prefer when the code is "self-documenting", *especially* when it's test code.
+
+As [Uncle Bob](http://blog.cleancoder.com) said, "tests should read like well-written specifications". Let's try to achieve that by adding an other set of small helper functions.
+
+We can start with more meaningful variable names, and have more fun with the examples:
+
+```patch
+def test_was_published_recently_with_old_question():
+-   time = timezone.now() - datetime.timedelta(days=1, seconds=1)
+-   old_question = Question(pub_date=time)
++   last_year = timezone.now() - datetime.timedelta(days=365)
++   old_question = Question('Where is there something instead of nothing', pub_date=last_year)
+    assert not old_question.was_published_recently()
+
+def test_was_published_recently_with_recent_question():
+-   time = timezone.now() - datetime.timedelta(days=1, seconds=1)
+-   recent_question = Question(pub_date=time)
++   last_night = timezone.now() - datetime.timedelta(hours=10)
++   recent_question = Question('Dude, where is my car?', pub_date=last_night)
+
+```
+
+Time and date code is always tricky, and a negative number of days does not really make sense, so let's make things easier to reason about:
+
+```python
+def n_days_ago(n):
+    return timezone.now() - datetime.timedelta(days=n)
+
+
+def n_days_later(n):
+    return timezone.now() + datetime.timedelta(days=n)
+
+```
+
+Also `create_question` is coupled with the `Question` model, so let's use the same names for the parameter names and the model's attributes.
+
+And since we may want to create question without caring about the publication date, let's make it an optional parameter:
+
+```python
+def create_question(question_text, *, pub_date=None):
+    if not pub_date:
+        pub_date = timezone.now()
+    ...
+```
+
+Code becomes:
+
+```patch
+-    create_question(question_text="Past question.", days=-30)
++    create_question(question_text="Past question.", pub_date=n_days_ago(30))
+```
+
+Finally, let's add a new test to see if our helpers really work:
+
+```python
+
+@pytest.mark.django_db
+def test_latest_five(client):
+    for i in range(0, 10):
+        pub_date = n_days_ago(i)
+        create_question("Question #%s" % i, pub_date=pub_date)
+    latest_list = get_latest_list(client)
+    assert len(actual_list) == 5
+```
+
+Do you still think this test needs a docstring ?
+
+
+# Step five: fun with selenium
+
+## Selenium basics
+
+[Selenium](https://www.seleniumhq.org/) deals with browser automation.
+
+Here we are going to use the Python bindings, which allow us to start `Firefox` (actually, `geckodriver`), and control it with code.
+
+Here's how you can use `selenium` do visit a web page and click the first link:
+
+```python
+import selenium.webdriver
+
+driver = selenium.webdriver.Firefox()
+driver.get("http://example.com")
+link = driver.find_element_by_tag_name('a')
+link.click()
+```
+
+## The Live Server Test Case
+
+Django exposes a `LiveServerTestCase`, but no `LiveServer` object or similar.
+
+The code is a bit tricky because it needs to spawn a "real" server in a separate thread, make sure it uses a free port,  and then tell the selenium driver to use an URL like `http://localhost:32456`
+
+Fear not, `pytest` also works fine in this case. We just have to be careful to use `super()` in the set up and tear down methods so that the code from `LiveServerTestCase` gets executed properly:
+
+```python
+class TestPolls(LiveServerTestCase):
+    def setUpClass(cls):
+        super().setUpClass()
+
+    def setUp(self):
+        super().setUp()
+        # Now self.live_server_url should be set properly and we can use in the test_ methods:
+        self.driver = selenium.webdriver.Firefox()
+
+    def tearDown(self):
+        self.driver.close()
+
+    def test_home_no_polls(self):
+        url = urllib.parse.urljoin(self.live_server_url, "polls/")
+        self.driver.get(url)
+        assert_no_polls(self.browser.page_source)
+
+```
+
+## Let's build a facade
+
+The `find_element_by_*` methods of the selenium API are a bit tedious to use, so let's write a `Browser` class to hide those behind a more "Pythonic" API. (This is known as the "facade" design pattern)
+
+
+```python
+class Browser:
+    """ A nice facade on top of selenium stuff """
+    def __init__(self, driver):
+        self.driver = driver
+
+    def find_element_by(self, **kwargs):
+        assert len(kwargs) == 1   # we want exactly one named parameter here
+        name, value = list(kwargs.items())[0]
+        func_name = "find_element_by_" + name
+        func = getattr(self.driver, func_name)
+        return func(value)
+
+    def close(self):
+        self.driver.close()
+```
+
+Note how we have to convert the `items()` to a real list just to get the first element... (In Python2, `kwargs.items()[0]` would have worked just fine). Please tell me if you find a better way ...
+
+Note also how we *don't* just inherit from `selenium.webdriver.Firefox`. The goal is to expose a *different* API, so using composition here is better.
+
+If we need access to attributes of `self.driver`, we can just use a property, like this:
+
+```class Browser
+
+    ...
+
+    @property
+    def page_source(self):
+        return self.driver.page_source
+```
+
+
+We can also hide the ugly `urllib.parse.urljoin(self.live_server_url)` implementation detail:
+
+
+```python
+
+class Browser:
+    """ A nice facade on top of selenium stuff """
+    def __init__(self, driver):
+        self.driver = driver
+        self.live_server_url = None  # will be set during test set up
+
+    def get(self, url):
+        full_url = urllib.parse.urljoin(self.live_server_url, url)
+        self.driver.get(full_url)
+
+
+class TestPolls(LiveServerTestCase):
+
+    def setUp(self):
+        driver = selenium.webdriver.Firefox()
+        self.browser = Browser(driver)
+        self.browser.live_server_url = self.live_server_url
+```
+
+Now the test reads:
+
+```python
+
+    def test_home_no_polls(self):
+        self.browser.get("/polls")
+        assert_no_polls(self.browser.page_source)
+```
+
+## Launching the driver only once
+
+Last change. The `setUp()` method is called before each test, so we're going to create tons of instances of Firefox drivers.
+
+Let's fix this by using `setUpClass` (and not forgetting the `super()` call)
+
+
+```pyton
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        driver = webdriver.Chrome()
+        cls.browser = Browser(driver)
+
+    def setUp(self):
+        self.browser.base_url = self.live_server_url
+
+```
+
+Now the `browser` is a *class attribute* instead of being an *instance attribute*. So there's only one `Browser` object for the whole test suite, which is what we wanted.
+
+The rest of the code can still use `self.browser`, though.
+
+
+## Debugging tests
+
+One last thing. You may think debugging such high-level tests would be painful.
+
+But it's actually a pretty nice experience due to just one thing: the built-in Python debugger! [^1]
+
+Just add something like:
+
+```python
+
+def test_login():
+    self.browser.get("/login")
+    import pdb; pdb.set_trace()
+```
+
+and then run the tests like this:
+
+```console
+$ pytest -k login -s
+```
+
+And then, as soon as the tests reaches the line with `pdb.set_trace()` you will have:
+
+* A brand new Firefox instance running, with access to all the nice debugging tools (so you can quickly find out things like ids or CSS class names)
+* ... and a nice REPL where you'll be able to try out the code using `self.browser`
+
+By the way, the REPL will be even nicer if you use [ipdb](https://pypi.python.org/pypi/ipdb) or [pdbpp](https://pypi.python.org/pypi/pdbpp/) and enjoy auto-completion and syntax coloring right from the REPL :)
