@@ -184,7 +184,9 @@ Destroying test database for alias 'default'...
 ```
 
 
-OK, tests do path. Let's try and improve them.
+OK, tests do pass. Let's try and improve them.
+
+I've set up [a GitHub repository](https://github.com/dmerejkowsky/django-polls) where you can follow the following steps commit by commit if you wish.
 
 # Step one: setup pytest
 
