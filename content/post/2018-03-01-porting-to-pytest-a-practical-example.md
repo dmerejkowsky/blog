@@ -25,7 +25,7 @@ There's a view that shows a list of questions as links. Each link, when clicked 
 The code is pretty straightforward:
 
 ```python
-# pools/models.py
+# polls/models.py
 class Question(models.Model):
     question_text = models.CharField(max_length=200)
     pub_date = models.DateTimeField('date published')
@@ -223,8 +223,7 @@ polls/tests.py ........   [100%]
 
 # Step two: rewrite assertions
 
-We can now use `pytest` magic to rewrite all "easy" assertions such as `assertFalse` or
-``assertEquals``:
+We can now use `pytest` magic to rewrite all "easy" assertions such as `assertFalse` or `assertEquals`:
 
 ```patch
 - self.assertFalse(future_question.was_published_recently())
@@ -521,7 +520,7 @@ class TestPolls(LiveServerTestCase):
 
 ```
 
-If you're wondering why we need `serialized_rollback=True`, the answer is in [the documentation](https://docs.djangoproject.com/en/2.0/topics/testing/tools/#transactiontestcase). Without it we may have weird Database errors during tests.
+If you're wondering why we need `serialized_rollback=True`, the answer is in [the documentation](https://docs.djangoproject.com/en/2.0/topics/testing/tools/#transactiontestcase). Without it we may have weird database errors during tests.
 
 Our first test is pretty basic: we ask the browser to visit the `'polls/` URL and check no polls are shown, re-using our `assert_no_polls` helper function from before.
 
