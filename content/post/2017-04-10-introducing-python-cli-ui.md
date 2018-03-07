@@ -171,12 +171,12 @@ depending on the default value:
 
 ```python
 >>> with_sugar = ui.ask_yes_no("With sugar?", default=True)
-> "With sugar ? (Y/n)
+> "With sugar ? (Y/n)"
 n
 > False
 
 >>> with_cream = ui.ask_yes_no("With cream?", default=False)
-> "With cream? (y/N)
+> "With cream? (y/N)"
 (nothing)
 > False
 ```
