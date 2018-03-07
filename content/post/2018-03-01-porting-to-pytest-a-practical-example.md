@@ -3,7 +3,7 @@ slug: porting-to-pytest-a-practical-example
 date: 2018-03-01T16:34:19.584239+00:00
 draft: true
 title: "Porting to pytest: a practical example"
-tags: [python, test]
+tags: [python, testing]
 ---
 
 # Introduction
@@ -14,7 +14,7 @@ If you never read the tutorial, or don't want to, here's what you need to know:
 
 We have a django project containing an application called `polls`.
 
-We have two model objects representing question and choice.
+We have two model objects representing questions and choice.
 
 Each question has a publication date, a text, and a list of choices.
 
@@ -25,7 +25,7 @@ There's a view that shows a list of questions as links. Each link, when clicked 
 The code is pretty straightforward:
 
 ```python
-# models
+# pools/models.py
 class Question(models.Model):
     question_text = models.CharField(max_length=200)
     pub_date = models.DateTimeField('date published')
@@ -39,6 +39,7 @@ class Question(models.Model):
 class Choice(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     choice_text = models.CharField(max_length=200)
+
 ```
 
 Everything went smoothly until I arrived at the [part 5](https://docs.djangoproject.com/en/2.0/intro/tutorial05/), about automated testing, where I read the following:
@@ -101,74 +102,89 @@ def create_question(question_text, days):
     return Question.objects.create(question_text=question_text, pub_date=time)
 
 
-    class QuestionIndexViewTests(TestCase):
-        def test_no_questions(self):
-            """
-            If no questions exist, an appropriate message is displayed.
-            """
-            response = self.client.get(reverse('polls:index'))
-            self.assertEqual(response.status_code, 200)
-            self.assertContains(response, "No polls are available.")
-            self.assertQuerysetEqual(
-                response.context['latest_question_list'],
-                []
-            )
+class QuestionIndexViewTests(TestCase):
+    def test_no_questions(self):
+        """
+        If no questions exist, an appropriate message is displayed.
+        """
+        response = self.client.get(reverse('polls:index'))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "No polls are available.")
+        self.assertQuerysetEqual(
+            response.context['latest_question_list'],
+            []
+        )
 
-        def test_past_question(self):
-            """
-            Questions with a pub_date in the past are displayed on the
-            index page.
-            """
-            create_question(question_text="Past question.", days=-30)
-            response = self.client.get(reverse('polls:index'))
-            self.assertQuerysetEqual(
-                response.context['latest_question_list'],
-                ['<Question: Past question.>']
-            )
+    def test_past_question(self):
+        """
+        Questions with a pub_date in the past are displayed on the
+        index page.
+        """
+        create_question(question_text="Past question.", days=-30)
+        response = self.client.get(reverse('polls:index'))
+        self.assertQuerysetEqual(
+            response.context['latest_question_list'],
+            ['<Question: Past question.>']
+        )
 
-        def test_future_question(self):
-            """
-            Questions with a pub_date in the future aren't displayed on
-            the index page.
-            """
-            create_question(question_text="Future question.", days=30)
-            response = self.client.get(reverse('polls:index'))
-            self.assertContains(response, "No polls are available.")
-            self.assertQuerysetEqual(
-                response.context['latest_question_list'],
-                []
-            )
+    def test_future_question(self):
+        """
+        Questions with a pub_date in the future aren't displayed on
+        the index page.
+        """
+        create_question(question_text="Future question.", days=30)
+        response = self.client.get(reverse('polls:index'))
+        self.assertContains(response, "No polls are available.")
+        self.assertQuerysetEqual(
+            response.context['latest_question_list'],
+            []
+        )
 
-        def test_future_question_and_past_question(self):
-            """
-            Even if both past and future questions exist, only past questions
-            are displayed.
-            """
-            create_question(question_text="Past question.", days=-30)
-            create_question(question_text="Future question.", days=30)
-            response = self.client.get(reverse('polls:index'))
-            self.assertQuerysetEqual(
-                response.context['latest_question_list'],
-                ['<Question: Past question.>']
-            )
+    def test_future_question_and_past_question(self):
+        """
+        Even if both past and future questions exist, only past questions
+        are displayed.
+        """
+        create_question(question_text="Past question.", days=-30)
+        create_question(question_text="Future question.", days=30)
+        response = self.client.get(reverse('polls:index'))
+        self.assertQuerysetEqual(
+            response.context['latest_question_list'],
+            ['<Question: Past question.>']
+        )
 
-        def test_two_past_questions(self):
-            """
-            The questions index page may display multiple questions.
-            """
-            create_question(question_text="Past question 1.", days=-30)
-            create_question(question_text="Past question 2.", days=-5)
-            response = self.client.get(reverse('polls:index'))
-            self.assertQuerysetEqual(
-                response.context['latest_question_list'],
-                [
-                  '<Question: Past question 2.>',
-                  '<Question: Past question 1.>'
-                ]
-            )
+    def test_two_past_questions(self):
+        """
+        The questions index page may display multiple questions.
+        """
+        create_question(question_text="Past question 1.", days=-30)
+        create_question(question_text="Past question 2.", days=-5)
+        response = self.client.get(reverse('polls:index'))
+        self.assertQuerysetEqual(
+            response.context['latest_question_list'],
+            [
+                '<Question: Past question 2.>',
+                '<Question: Past question 1.>'
+            ]
+        )
 ```
 
-Let's try and improve those tests.
+We can run them using the `manage.py` script and check they all pass:
+
+```console
+$ python manage.py test polls
+Creating test database for alias 'default'...
+System check identified no issues (0 silenced).
+........
+----------------------------------------------------------------------
+Ran 8 tests in 0.017s
+
+OK
+Destroying test database for alias 'default'...
+```
+
+
+OK, tests do path. Let's try and improve them.
 
 # Step one: setup pytest
 
@@ -185,6 +201,22 @@ $ pip install pytest pytest-django
 [pytest]
 DJANGO_SETTINGS_MODULE=mysite.settings
 python_files = tests.py test_*.py
+```
+
+We can now run tests using `pytest` directly:
+
+```console
+$ pytest
+========== test session starts ========
+platform linux -- Python 3.5.3, pytest-3.3.1, py-1.5.2, pluggy-0.6.0
+Django settings: mysite.settings (from ini file)
+rootdir: /home/dmerej/src/dmerej/django-polls, inifile: pytest.ini
+plugins: django-3.1.2
+collected 8 items
+
+polls/tests.py ........   [100%]
+
+======== 8 passed in 0.18 seconds =======
 ```
 
 # Step two: rewrite assertions
@@ -279,13 +311,12 @@ An other hard-coded string is `polls:index`, so let's introduce `get_latest_list
 ```python
 def get_latest_list(client):
     response = client.get(reverse('polls:index'))
-
+    assert response.status_code == 200
+    return response.context['latest_question_list']
 ```
+Note how we embedded the status code check directly in our helper, so we don't have to repeat the check in each test.
 
-That way, if the name of the route ('polls:index') changes and becomes `polls:list` for instance, we'll just need to update the code in one place.
-
-Ditto if the `latest_question_list` context key changes inside the `polls/index.html` template.
-
+Also, note that if the name of the route (`polls:index`) or the  name of the context key used in the template (`latest_question_list`) ever changes, we'll just need to update the test code in one place.
 
 Then, we can further simplify our assertions:
 
@@ -310,7 +341,7 @@ test functions directly.
 
 So we just remove the `self` parameter, indent back all the code, and we are (almost) good to go.
 
-We don't need the `self.assert*` methods, and we can pass the Django test client as a parameter instead of using `self.client`. (That's how [pytest fixtures]() work):
+We already got rid of all the `self.assert*` methods, so the last thing to do is pass the Django test client as a parameter instead of using `self.client`. (That's how [pytest fixtures](https://docs.pytest.org/en/latest/fixture.html) work):
 
 ```patch
 -    def test_two_past_questions(self):
@@ -366,7 +397,7 @@ I don't like doc strings, *except* when I'm implementing a very public API. Ther
 
 I very much prefer when the code is "self-documenting", *especially* when it's test code.
 
-As [Uncle Bob](http://blog.cleancoder.com) said, "tests should read like well-written specifications". Let's try to achieve that by adding an other set of small helper functions.
+As [Uncle Bob](http://blog.cleancoder.com) said, "tests should read like well-written specifications". So let's try some refactoring.
 
 We can start with more meaningful variable names, and have more fun with the examples:
 
@@ -375,7 +406,8 @@ def test_was_published_recently_with_old_question():
 -   time = timezone.now() - datetime.timedelta(days=1, seconds=1)
 -   old_question = Question(pub_date=time)
 +   last_year = timezone.now() - datetime.timedelta(days=365)
-+   old_question = Question('Where is there something instead of nothing', pub_date=last_year)
++   old_question = Question('Why is there something instead of nothing?',
++                            pub_date=last_year)
     assert not old_question.was_published_recently()
 
 def test_was_published_recently_with_recent_question():
@@ -438,7 +470,10 @@ Do you still think this test needs a docstring ?
 
 [Selenium](https://www.seleniumhq.org/) deals with browser automation.
 
-Here we are going to use the Python bindings, which allow us to start `Firefox` (actually, `geckodriver`), and control it with code.
+Here we are going to use the Python bindings, which allow us to start `Firefox` or `Chrome` and control them with code.
+
+(In both cases, you'll need to install a separate binary: `geckodriver` or `chromdriver` respectively)
+
 
 Here's how you can use `selenium` do visit a web page and click the first link:
 
@@ -446,42 +481,83 @@ Here's how you can use `selenium` do visit a web page and click the first link:
 import selenium.webdriver
 
 driver = selenium.webdriver.Firefox()
+# or
+driver = selenium.webdriver.Chrome()
 driver.get("http://example.com")
 link = driver.find_element_by_tag_name('a')
 link.click()
 ```
 
+
 ## The Live Server Test Case
 
 Django exposes a `LiveServerTestCase`, but no `LiveServer` object or similar.
 
-The code is a bit tricky because it needs to spawn a "real" server in a separate thread, make sure it uses a free port,  and then tell the selenium driver to use an URL like `http://localhost:32456`
+The code is a bit tricky because it needs to spawn a "real" server in a separate thread, make sure it uses a free port,  and tell the selenium driver to use an URL like `http://localhost:32456`
 
 Fear not, `pytest` also works fine in this case. We just have to be careful to use `super()` in the set up and tear down methods so that the code from `LiveServerTestCase` gets executed properly:
 
 ```python
+import urllib.parse
+
+
 class TestPolls(LiveServerTestCase):
-    def setUpClass(cls):
-        super().setUpClass()
+    serialized_rollback = True
 
     def setUp(self):
         super().setUp()
-        # Now self.live_server_url should be set properly and we can use in the test_ methods:
         self.driver = selenium.webdriver.Firefox()
 
     def tearDown(self):
         self.driver.close()
+        super().tearDown()
 
     def test_home_no_polls(self):
-        url = urllib.parse.urljoin(self.live_server_url, "polls/")
+        url = urllib.parse.urljoin(self.live_server_url, "/polls")
         self.driver.get(url)
         assert_no_polls(self.browser.page_source)
 
 ```
 
+If you're wondering why we need `serialized_rollback=True`, the answer is in [the documentation](https://docs.djangoproject.com/en/2.0/topics/testing/tools/#transactiontestcase). Without it we may have weird Database errors during tests.
+
+Our first test is pretty basic: we ask the browser to visit the `'polls/` URL and check no polls are shown, re-using our `assert_no_polls` helper function from before.
+
+Let's also check we are shown links to the questions if they are some, and can click on them:
+
+
+```python
+class TestPolls(LiveServerTestCase):
+    ...
+    def test_home_list_polls(self):
+        create_question("One?")
+        create_question("Two?")
+        create_question("Three?")
+        url = urllib.parse.urljoin(self.live_server_url, "polls/")
+        self.driver.get(url)
+        first_link = self.driver.find_element_by_tag_name("a")
+        first_link.click()
+        assert "Three?" in self.driver.page_source
+```
+
+
 ## Let's build a facade
 
-The `find_element_by_*` methods of the selenium API are a bit tedious to use, so let's write a `Browser` class to hide those behind a more "Pythonic" API. (This is known as the "facade" design pattern)
+The `find_element_by_*` methods of the selenium API are a bit tedious to use: thery are called `find_element_by_tag_name`, `find_element_by_class_name`, `find_element_by_id` and so on
+
+So let's write a `Browser` class to hide those behind a more "Pythonic" API:
+
+```python
+# old
+link = driver.find_element_by_tag_name("link")
+form = driver.find_element_by_id("form-id")
+
+# new
+link = driver.find_element(tag_name="link")
+form = driver.find_element(id="form-id")
+```
+
+(This is known as the "facade" design attern)
 
 
 ```python
@@ -490,15 +566,13 @@ class Browser:
     def __init__(self, driver):
         self.driver = driver
 
-    def find_element_by(self, **kwargs):
+    def find_element(self, **kwargs):
         assert len(kwargs) == 1   # we want exactly one named parameter here
         name, value = list(kwargs.items())[0]
         func_name = "find_element_by_" + name
         func = getattr(self.driver, func_name)
         return func(value)
 
-    def close(self):
-        self.driver.close()
 ```
 
 Note how we have to convert the `items()` to a real list just to get the first element... (In Python2, `kwargs.items()[0]` would have worked just fine). Please tell me if you find a better way ...
@@ -507,13 +581,21 @@ Note also how we *don't* just inherit from `selenium.webdriver.Firefox`. The goa
 
 If we need access to attributes of `self.driver`, we can just use a property, like this:
 
-```class Browser
+```python
+class Browser
 
     ...
 
     @property
     def page_source(self):
         return self.driver.page_source
+```
+
+And if we need to call a method directly to the underlying object, we can just forward tho call:
+
+```python
+    def close(self):
+        self.driver.close()
 ```
 
 
@@ -523,7 +605,6 @@ We can also hide the ugly `urllib.parse.urljoin(self.live_server_url)` implement
 ```python
 
 class Browser:
-    """ A nice facade on top of selenium stuff """
     def __init__(self, driver):
         self.driver = driver
         self.live_server_url = None  # will be set during test set up
@@ -536,6 +617,7 @@ class Browser:
 class TestPolls(LiveServerTestCase):
 
     def setUp(self):
+        super().setUp()
         driver = selenium.webdriver.Firefox()
         self.browser = Browser(driver)
         self.browser.live_server_url = self.live_server_url
@@ -550,14 +632,17 @@ Now the test reads:
         assert_no_polls(self.browser.page_source)
 ```
 
+Nice and short :)
+
 ## Launching the driver only once
 
-Last change. The `setUp()` method is called before each test, so we're going to create tons of instances of Firefox drivers.
+The `setUp()` method is called before each test, so if we add more tests we're going to create tons of instances of Firefox drivers.
 
 Let's fix this by using `setUpClass` (and not forgetting the `super()` call)
 
 
-```pyton
+```python
+class TestPolls(LiveServerTestCase):
 
     @classmethod
     def setUpClass(cls):
@@ -567,6 +652,11 @@ Let's fix this by using `setUpClass` (and not forgetting the `super()` call)
 
     def setUp(self):
         self.browser.base_url = self.live_server_url
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.browser.close()
+        super().tearDownClass()
 
 ```
 
@@ -579,7 +669,7 @@ The rest of the code can still use `self.browser`, though.
 
 One last thing. You may think debugging such high-level tests would be painful.
 
-But it's actually a pretty nice experience due to just one thing: the built-in Python debugger! [^1]
+But it's actually a pretty nice experience due to just one thing: the built-in Python debugger!
 
 Just add something like:
 
@@ -596,9 +686,17 @@ and then run the tests like this:
 $ pytest -k login -s
 ```
 
+(The `-s` is required to avoid capturing output, which `pdp` does not like)
+
 And then, as soon as the tests reaches the line with `pdb.set_trace()` you will have:
 
 * A brand new Firefox instance running, with access to all the nice debugging tools (so you can quickly find out things like ids or CSS class names)
 * ... and a nice REPL where you'll be able to try out the code using `self.browser`
 
 By the way, the REPL will be even nicer if you use [ipdb](https://pypi.python.org/pypi/ipdb) or [pdbpp](https://pypi.python.org/pypi/pdbpp/) and enjoy auto-completion and syntax coloring right from the REPL :)
+
+# Conclusion
+
+I hope I managed to show that you actually *can* get creative writing tests, and even have some fun.
+
+See you next time!
