@@ -30,6 +30,7 @@ The "Let's Build Chuck Norris!" project is a series of blog posts aiming at expl
 * Using CMake and Ninja
 * Managing third-party dependencies
 * Exposing a C API on top of C++ code
+* Using cffi to build a Python extension
 * Using C++ in an Android application
 * Using C++ in an iOS application
 
