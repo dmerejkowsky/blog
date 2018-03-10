@@ -44,7 +44,7 @@ We have a header in `include/ChuckNorris.hpp` containing the class *declaration*
 
 # The test program
 
-To make sure the library can indeed be used in other programs, let's add a `src/main.cpp` to check we manage to get hard-coded fact:
+To make sure the library can indeed be used in other programs, let's add a `src/main.cpp` to check we manage to get the hard-coded fact:
 
 _src/main.cpp_
 ```c++
