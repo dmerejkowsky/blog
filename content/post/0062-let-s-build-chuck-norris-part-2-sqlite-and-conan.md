@@ -1,8 +1,8 @@
 ---
-slug: cpp-for-mobile-part-1-introduction
-date: 2018-02-24T12:57:44.733852+00:00
+slug: chuck-norris-part-2-sqlite-conan
+date: 2018-03-10T14:22:53.387235+01:00
 draft: true
-title: "C++ for mobile part 1: Introduction"
+title: "Let's Build Chuck Norris! - Part 2: SQLite and conan"
 tags: [c++]
 ---
 
@@ -21,16 +21,16 @@ First step is to write a standalone C++ library.
 Just a class: `ChuckNorris` with a `getFact()` method.
 
 
-```cmake
-cmake_minimum_required(VERSION 3.10)
+  ```cmake
+  cmake_minimum_required(VERSION 3.10)
 set(CMAKE_CXX_STANDARD 11)
 
 project(ChuckNorris)
 
-add_library(chucknorris
-  include/chucknorris.hpp
-  src/chucknorris.cpp
-)
+  add_library(chucknorris
+      include/chucknorris.hpp
+      src/chucknorris.cpp
+      )
 ```
 
 ```cpp

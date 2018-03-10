@@ -253,7 +253,7 @@ bonus, by the way ...)
 
 Well, that's all I had to say. Hopefully now you can understand a bit better why
 I'm [trying to write a new twitter clone](
-{{< ref "post/2017-01-06-how-to-build-decentralized-social-networks.md" >}})
+{{< ref "post/0029-how-to-build-decentralized-social-networks.md" >}})
 with an hard-coded maximum of users.
 
 There's more to this "decentralized social website" of course, so stay tuned for

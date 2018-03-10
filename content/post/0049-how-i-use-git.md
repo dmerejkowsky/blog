@@ -51,7 +51,7 @@ Several reasons:
 
 * People seem to like it when I talk about theses things (as seen by the
   relative success of the [How I Lint My Python](
-  {{< ref "post/2017-04-14-how-i-lint-my-python.md" >}}) article)
+  {{< ref "post/0037-how-i-lint-my-python.md" >}}) article)
 * When describing my configuration files and work flows to others, I tend to
   find things that can be improved.
 * I always hope you can learn a few things from my experience (otherwise, why

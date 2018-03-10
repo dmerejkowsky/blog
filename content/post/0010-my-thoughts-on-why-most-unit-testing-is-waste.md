@@ -354,7 +354,7 @@ first, and then watch it pass when you do your bug fix.
 *Update: two things here:*
 
 *One, using TDD to fix bugs may not be a good idea (see [my post "When TDD
-Fails"]({{< ref "post/2016-07-02-when-tdd-fails.md" >}}) for more)*
+Fails"]({{< ref "post/0014-when-tdd-fails.md" >}}) for more)*
 
 *Two, the author is actually not talking about bug fixing: he's saying that
 when you change code, sometimes tests fail and you simply overwrite the tests

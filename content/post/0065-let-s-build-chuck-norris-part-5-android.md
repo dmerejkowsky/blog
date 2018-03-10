@@ -1,8 +1,8 @@
 ---
-slug: cpp-for-mobile-part-4-android
-date: 2018-02-24T17:18:19.722161+00:00
+slug: chuck-norris-part-5-android
+date: 2018-03-10T14:56:18.213047+01:00
 draft: true
-title: "C++ for mobile part 4: Android"
+title: "Let's Build Chuck Norris! - Part 5: Android"
 tags: [c++]
 ---
 

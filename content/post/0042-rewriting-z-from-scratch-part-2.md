@@ -6,7 +6,7 @@ title: Rewriting z from scratch, part 2
 tags: ['python', 'zsh']
 ---
 
-[Last month]({{< ref "post/2017-05-21-rewriting-z-from-scratch.md" >}}) I
+[Last month]({{< ref "post/0041-rewriting-z-from-scratch.md" >}}) I
 wrote about how I rewrote `z` from scratch after I started using `fzf`.
 
 10 days later I posted the following [toot](https://mamot.fr/@dmerej/1825106) on Mastodon:

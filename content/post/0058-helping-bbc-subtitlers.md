@@ -12,7 +12,7 @@ summary: |
 
 ---
 
-_Note: this the first post in the [Quantum of Ideas]({{< ref "post/2018-02-18-introducing-quantom-of-ideas.md" >}}) series._
+_Note: this the first post in the [Quantum of Ideas]({{< ref "post/0057-introducing-quantom-of-ideas.md" >}}) series._
 
 # Introduction
 

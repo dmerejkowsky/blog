@@ -12,11 +12,11 @@ In this article, I'd like to show you why this matters a great deal to me,
 using three articles I've already written:
 
 * [Heard and Seen at FOSDEM 2017](
-  {{< ref "post/2017-02-11-heard-and-seen-at-fosdem-2017.md" >}})
+  {{< ref "post/0034-heard-and-seen-at-fosdem-2017.md" >}})
 * [Twitter and me, me and twitter](
-  {{< ref "post/2017-01-28-twitter-and-me-me-and-twitter.md" >}})
+  {{< ref "post/0032-twitter-and-me-me-and-twitter.md" >}})
 * [How to build decentralized social networks](
-  {{< ref "post/2017-01-06-how-to-build-decentralized-social-networks.md" >}})
+  {{< ref "post/0029-how-to-build-decentralized-social-networks.md" >}})
 
 <!--more-->
 

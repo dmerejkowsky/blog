@@ -178,7 +178,7 @@ $ bad.py:4:0 complex_fun 12
 # Running pylint
 
 I've already written [a post about pylint](
-{{< ref "post/2016-07-23-some-pylint-tips.md" >}}). In a nutshell, you should
+{{< ref "post/0018-some-pylint-tips.md" >}}). In a nutshell, you should
 carefully edit your `.pylintrc` file and make sure to collect your Python
 packages correctly.
 

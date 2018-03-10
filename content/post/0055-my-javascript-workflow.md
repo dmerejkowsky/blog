@@ -6,7 +6,7 @@ title: My Javascript Workflow
 tags: [javascript, neovim]
 ---
 
-Following the (relative) success of [How I lint My Python]({{< relref "post/2017-04-14-how-i-lint-my-python.md" >}}), today I'd like to talk about the tools and techniques I use while writing Javascript at work.
+Following the (relative) success of [How I lint My Python]({{< relref "post/0037-how-i-lint-my-python.md" >}}), today I'd like to talk about the tools and techniques I use while writing Javascript at work.
 
 <!-- more -->
 
@@ -65,7 +65,7 @@ src/foo.js
 
 I want to know immediately when I've mistyped an import or a variable name, and `eslint` helps catching a lot of errors like this.
 
-So, I'm using [vim-ale]({{< relref "post/2017-07-08-lets-have-a-pint-of-vim-ale.md" >}}) inside neovim to have `eslint` run as soon as I save.
+So, I'm using [vim-ale]({{< relref "post/0047-lets-have-a-pint-of-vim-ale.md" >}}) inside neovim to have `eslint` run as soon as I save.
 
 (I could make it run continuously, but I find it too distracting).
 

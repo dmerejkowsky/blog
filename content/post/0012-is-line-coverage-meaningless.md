@@ -10,7 +10,7 @@ tags: ["testing"]
 Today I'd like to share some thoughts about line coverage.
 
 I already talked about this in a [previous post](
-{{< ref "post/2016-06-04-my-thoughts-on-why-most-unit-testing-is-waste.md" >}})
+{{< ref "post/0010-my-thoughts-on-why-most-unit-testing-is-waste.md" >}})
 but it has been pointed out that I was not very clear, so I'll try
 and write a more focused article.
 

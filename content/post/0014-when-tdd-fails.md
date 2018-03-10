@@ -10,7 +10,7 @@ tags: ["testing"]
 Some random thoughts about TDD ...
 
 If you already know about TDD, feel free to skip the introduction and go
-directly to the <a href="{{< relref "2016-07-02-when-tdd-fails.md#when-tdd-fails-main" >}}">main section</a>
+directly to the <a href="{{< relref "0014-when-tdd-fails.md#when-tdd-fails-main" >}}">main section</a>
 
 <!--more-->
 

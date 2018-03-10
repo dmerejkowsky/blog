@@ -1,8 +1,8 @@
 ---
-slug: cpp-for-mobile-part-2-a-c-wrapper
-date: 2018-02-24T15:52:12.255770+00:00
+slug: chuck-norris-part-3-a-c-wrapper
+date: 2018-03-10T14:55:20.814085+01:00
 draft: true
-title: "C++ for mobile part 2: A C wrapper"
+title: "Let's Build Chuck Norris! - Part 3: A C wrapper"
 tags: [c++]
 ---
 
