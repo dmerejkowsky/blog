@@ -166,10 +166,10 @@ So I wrote a small script that I can run frequently in a systemd timer job that:
 * Writes all the text in a *sqlite* database so that I can run full text
   searches
 
-Source code is [on github](https://github.com/dmerejkowsky/static_tl), and you
-can see it live [on my website](https://dmerej.info/tweets/d_merej/index.html).
+Source code is [on github](https://github.com/dmerejkowsky/twittback), and you
+can see it live [on my website](https://dmerej.info/twittback).
 
-There's even [an RSS feed](https://dmerej.info/tweets/d_merej/feed.atom)
+There's even [an RSS feed](https://dmerej.info/twittback/feed.atom)
 if you like old 90's tech ;)
 
 ## Twitter fatigue
