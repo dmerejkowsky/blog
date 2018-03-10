@@ -1,4 +1,5 @@
 ---
+authors: [dmerej]
 slug: writing-clean-shell-scripts
 date: 2016-10-30T16:04:30.528337+00:00
 draft: false

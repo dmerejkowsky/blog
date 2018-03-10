@@ -1,4 +1,5 @@
 ---
+authors: [dmerej]
 slug: exceptional-python
 date: 2017-08-20T08:09:38.013514+00:00
 draft: false

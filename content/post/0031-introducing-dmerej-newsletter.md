@@ -1,4 +1,5 @@
 ---
+authors: [dmerej]
 slug: introducing-dmerej-newsletter
 date: 2017-01-22T15:27:04.797920+00:00
 draft: false

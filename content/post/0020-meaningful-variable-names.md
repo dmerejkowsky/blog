@@ -1,4 +1,5 @@
 ---
+authors: [dmerej]
 slug: "meaningful-variable-names"
 date: "2016-08-27T14:49:37+02:00"
 draft: false

@@ -1,4 +1,5 @@
 ---
+authors: [dmerej]
 slug: is-tdd-worth-it
 date: 2017-01-23T12:52:53.361088+00:00
 draft: false

@@ -1,4 +1,5 @@
 ---
+authors: [dmerej]
 slug: "using-let-s-encrypt-on-debian-8"
 date: "2016-07-10T11:44:10+02:00"
 description: ""

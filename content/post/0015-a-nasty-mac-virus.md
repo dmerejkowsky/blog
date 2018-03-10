@@ -1,4 +1,5 @@
 ---
+authors: [dmerej]
 slug: "a-nasty-mac-virus"
 date: "2016-07-09T15:36:52+02:00"
 description: ""

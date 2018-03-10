@@ -1,4 +1,5 @@
 ---
+authors: [dmerej]
 slug: "pytest-rocks"
 date: "2016-04-16T13:53:51+00:00"
 draft: false

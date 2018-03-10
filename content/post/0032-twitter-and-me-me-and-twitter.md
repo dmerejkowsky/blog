@@ -1,4 +1,5 @@
 ---
+authors: [dmerej]
 slug: twitter-and-me-me-and-twitter
 date: 2017-01-28T16:02:39.020363+00:00
 draft: false

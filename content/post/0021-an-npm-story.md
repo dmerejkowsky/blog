@@ -1,4 +1,5 @@
 ---
+authors: [dmerej]
 slug: "an-npm-story"
 date: "2016-09-17T15:49:38+02:00"
 draft: false

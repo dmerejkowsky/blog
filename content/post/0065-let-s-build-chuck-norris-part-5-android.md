@@ -1,4 +1,5 @@
 ---
+authors: [dmerej]
 slug: chuck-norris-part-5-android
 date: 2018-03-10T14:56:18.213047+01:00
 draft: true

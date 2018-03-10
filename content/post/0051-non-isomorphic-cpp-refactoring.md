@@ -1,4 +1,5 @@
 ---
+authors: [dmerej]
 slug: non-isomorphic-cpp-refactoring
 date: 2017-08-05T13:48:21.878603+00:00
 draft: false

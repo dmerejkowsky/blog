@@ -1,4 +1,5 @@
 ---
+authors: [dmerej]
 
 slug: lets-have-a-pint-of-vim-ale
 date: 2017-07-08T11:38:15.606610+00:00

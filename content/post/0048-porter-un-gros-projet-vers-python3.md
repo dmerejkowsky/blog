@@ -1,4 +1,5 @@
 ---
+authors: [dmerej]
 slug: porter-un-gros-projet-vers-python3
 date: 2017-07-09T11:38:15.606610+00:00
 draft: true

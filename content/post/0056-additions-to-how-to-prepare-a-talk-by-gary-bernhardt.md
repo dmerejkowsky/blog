@@ -1,4 +1,5 @@
 ---
+authors: [dmerej]
 slug: additions-to-how-to-prepare-a-talk-by-gary-bernhardt
 date: 2018-01-26T13:08:59.210468+00:00
 draft: false

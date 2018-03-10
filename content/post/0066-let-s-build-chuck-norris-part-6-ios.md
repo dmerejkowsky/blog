@@ -1,4 +1,5 @@
 ---
+authors: [dmerej]
 slug: chuck-norris-part-6-ios
 date: 2018-03-10T14:57:35.091270+01:00
 draft: true

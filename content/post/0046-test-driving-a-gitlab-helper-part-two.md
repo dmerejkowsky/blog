@@ -1,4 +1,5 @@
 ---
+authors: [dmerej]
 slug: test-driving-a-gitlab-helper-part-two
 date: 2017-06-25T15:05:35.564303+00:00
 draft: true

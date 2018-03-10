@@ -1,4 +1,5 @@
 ---
+authors: [dmerej]
 slug: rewriting-z-from-scratch
 date: 2017-05-21T12:54:02.249830+00:00
 draft: false

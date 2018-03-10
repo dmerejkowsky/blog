@@ -1,4 +1,5 @@
 ---
+authors: [dmerej]
 slug: chuck-norris-part-3-a-c-wrapper
 date: 2018-03-10T14:55:20.814085+01:00
 draft: true

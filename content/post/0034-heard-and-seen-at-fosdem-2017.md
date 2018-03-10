@@ -1,4 +1,5 @@
 ---
+authors: [dmerej]
 slug: heard-and-seen-at-fosdem-2017
 date: 2017-02-11T08:42:11.188489+00:00
 draft: false

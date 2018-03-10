@@ -1,4 +1,5 @@
 ---
+authors: [dmerej]
 tags: ["python"]
 slug: interfaces-and-annotations-in-python3
 date: 2017-05-06T12:01:19.942498+00:00

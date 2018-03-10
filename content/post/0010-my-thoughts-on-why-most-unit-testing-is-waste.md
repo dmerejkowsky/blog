@@ -1,4 +1,5 @@
 ---
+authors: [dmerej]
 slug: "my-thoughts-on-why-most-unit-testing-is-waste"
 date: "2016-06-04T18:08:42+02:00"
 draft: false

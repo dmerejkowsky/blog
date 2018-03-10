@@ -1,4 +1,5 @@
 ---
+authors: [dmerej]
 slug: introducing-quantom-of-ideas
 date: 2018-02-18T13:13:39.542293+00:00
 draft: false

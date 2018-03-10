@@ -4,6 +4,7 @@ date: "2016-04-07T18:52:42+00:00"
 draft: false
 title: "Finding a Good Project Name"
 tags: ["misc"]
+authors: [dmerej]
 ---
 
 Finding a good project name always seem a complex task.

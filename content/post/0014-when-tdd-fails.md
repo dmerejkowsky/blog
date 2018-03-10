@@ -1,4 +1,5 @@
 ---
+authors: [dmerej]
 slug: "when-tdd-fails"
 date: "2016-07-02T16:14:52+02:00"
 description: ""

@@ -1,4 +1,5 @@
 ---
+authors: [dmerej]
 slug: "thoughts-on-changelogs"
 date: 2016-10-01T15:36:12+02:00
 draft: false

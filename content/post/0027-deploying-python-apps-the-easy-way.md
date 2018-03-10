@@ -1,4 +1,5 @@
 ---
+authors: [dmerej]
 slug: deploying-python-apps-the-easy-way
 date: 2016-12-03T15:22:59.032027+00:00
 draft: false

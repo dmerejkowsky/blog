@@ -1,4 +1,5 @@
 ---
+authors: [dmerej]
 slug: "never-type-the-same-path-twice"
 date: "2016-05-28T17:29:24+02:00"
 draft: false
