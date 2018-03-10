@@ -73,21 +73,21 @@ Let's enumerate what we have to do now to build everything:
 
 We can say we have two *targets*: a library called `chucknorris`, and an executable named `cpp_demo`:
 
-Here's what the commands to build them look like on `macOS`, using `clang`:
+Here's what the commands to build them look like on Linux:
 
 ```bash
 # Compile the .cpp file into a .o
-$ clang++ -c -I include/ src/ChuckNorris.cpp -o libchucknorris.o
+$ g++ -c -I include/ src/ChuckNorris.cpp -o libchucknorris.o
 # Create an archive containing the .o
 $ ar qc libchucknorris.a libchucknorris.o
 # Run ranlib so that the archive can be used by the linker
 $ ranlib libchucknorris.a
 # Compile main.cpp into main.o
-$ clang++ -c -I include/ src/main.cpp -o main.o
+$ g++ -c -I include/ src/main.cpp -o main.o
 # Tell clang to link everything into an executable
-$ clang++ libchucknorris.a main.o -o cpp_demo
+$ g++ main.o libchucknorris.a -o cpp_demo
 # Run the executable we've just built:
-$./demo
+$./cpp_demo
 Chuck Norris can slam a revolving door.
 ```
 
