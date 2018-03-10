@@ -1,7 +1,7 @@
 ---
 slug: introducing-the-chuck-norris-project
 date: 2018-03-10T12:35:38.025713+00:00
-draft: true
+draft: false
 title: Introducing the "Let's Build Chuck Norris!" Project
 tags: [c++]
 ---
