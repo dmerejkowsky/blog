@@ -19,6 +19,11 @@ ChuckNorris chuckNorris;
 std::string fact = chuckNorris.getFact();
 ```
 
+{{< note >}}
+You will find all the source code on [GitHub](https://github.com/dmerejkowsky/chucknorris).
+{{< /note >}}
+
+
 The "Let's Build Chuck Norris!" project is a series of blog posts aiming at exploring various topics about C++ and build systems:
 
 
@@ -28,4 +33,5 @@ The "Let's Build Chuck Norris!" project is a series of blog posts aiming at expl
 * Using C++ in an Android application
 * Using C++ in an iOS application
 
-Interested? Let's start with part one:
+
+Interested? Let's start with part one: [CMake and Ninja]({{< ref "0061-let-s-build-chuck-norris-part-1-cmake-and-ninja.md" >}}).

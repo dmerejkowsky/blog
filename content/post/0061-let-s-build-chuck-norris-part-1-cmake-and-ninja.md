@@ -1,69 +1,56 @@
 ---
 slug: chuck-norris-part-1-cmake-ninja
 date: 2018-03-10T14:22:53.387235+01:00
-draft: true
+draft: false
 title: "Let's Build Chuck Norris! - Part 1: CMake and Ninja"
 tags: [c++]
 ---
 
-# Introduction
+_Note: This is part 1 of the [Let's Build Chuck Norris!]({{< ref "0060-introducing-the-chuck-norris-project.md" >}}) series._
 
-First, we are going to write a simple `C++` library with a dependency to a third-party library.
+# The core library
 
-Then, we will cross-compile that library and those dependencies for iOS and Android and use it for two mobile applications.
+We want a `ChuckNorris` class with a `getFact()` method that returns a random Chuck Norris fact.
 
-Along the way, we'll hopefully learn a few thing.
+Let's start with a hard-coded answer for now:
 
-# Getting started on desktop
+_include/ChuckNorris.hpp_:
+```c++
+#pragma once
+#include <string>
 
-First step is to write a standalone C++ library.
-
-Just a class: `ChuckNorris` with a `getFact()` method.
-
-
-  ```cmake
-  cmake_minimum_required(VERSION 3.10)
-set(CMAKE_CXX_STANDARD 11)
-
-project(ChuckNorris)
-
-  add_library(chucknorris
-      include/chucknorris.hpp
-      src/chucknorris.cpp
-      )
-```
-
-```cpp
-class ChuckNorris
-{
+class ChuckNorris {
   public:
     ChuckNorris();
     std::string getFact();
-}
+};
 ```
 
-```cpp
+_src/ChuckNorris.cpp_:
+```c++
+#include <ChuckNorris.hpp>
+
 ChuckNorris::ChuckNorris()
 {
 }
 
 std::string ChuckNorris::getFact()
 {
-  return "Chuck Norris is the best";
+  return "Chuck Norris can slam a revolving door.";
 }
 ```
 
-## Testing it works
+We have a header in `include/ChuckNorris.hpp` containing the class *declaration*, and a file in `src/ChuckNorris.cpp` containing the class *definition*.
 
-```cmake
-add_executable(demo
-  src/main.cpp
-)
+# The test program
 
-target_link_libraries(demo chucknorris)
-```
+To make sure the library can indeed be used in other programs, let's add a `src/main.cpp` to check we manage to get hard-coded fact:
 
-```cpp
+_src/main.cpp_
+```c++
+#include <ChuckNorris.hpp>
+#include <iostream>
+
 int main()
 {
   ChuckNorris chuckNorris;
@@ -73,127 +60,139 @@ int main()
 }
 ```
 
-```console
-$ mkdir -p build/desktop
-$ cd build/desktop
-$ cmake -G Ninja ../..
-$ ninja
-$ ./bin/demo
+All we have to do is run the program without arguments, and check that something gets displayed. That will probably be enough to check our library works.
+
+# Targets
+
+Let's enumerate what we have to do now to build everything:
+
+* Make sure that the `include/` directory is used when we compile code in `src/`
+* Build a library using `src/ChuckNorris.cpp`
+* Build an executable named `cpp_demo` using `src/main.cpp` that links with the above library.
+
+We can say we have two *targets*: a library called `chucknorris`, and an executable named `cpp_demo`:
+
+Here's what the commands to build them look like on `macOS`, using `clang`:
+
+```bash
+# Compile the .cpp file into a .o
+$ clang++ -c -I include/ src/ChuckNorris.cpp -o libchucknorris.o
+# Create an archive containing the .o
+$ ar qc libchucknorris.a libchucknorris.o
+# Run ranlib so that the archive can be used by the linker
+$ ranlib libchucknorris.a
+# Compile main.cpp into main.o
+$ clang++ -c -I include/ src/main.cpp -o main.o
+# Tell clang to link everything into an executable
+$ clang++ libchucknorris.a main.o -o cpp_demo
+# Run the executable we've just built:
+$./demo
+Chuck Norris can slam a revolving door.
 ```
 
-# Adding dependency to sqlite3
+Phew!
 
-* Get conan
+Keeping track of all this by hand would get tedious very soon, but fortunately there are tools that can help us.
 
-* `conanfile.txt`
+# CMake
 
-```cfg
-[requires]
-sqlite3/3.21.0@bincrafters/stable
 
-[generators]
-cmake
-```
+CMake lets us describe the targets we want to build in code:
 
-```console
-$ cd build/desktop
-$ conan install ..
-```
 
 ```cmake
+cmake_minimum_required(VERSION 3.10)
 
-include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-conan_basic_setup(TARGETS)
+project(ChuckNorris)
 
-target_link_libraries(chucknorris
-  PRIVATE
-    CONAN_PKG::sqlite3
+add_library(chucknorris
+    include/ChuckNorris.hpp
+    src/ChuckNorris.cpp
 )
+
+
+target_include_directories(
+  chucknorris
+  PUBLIC
+    "include"
+)
+
+add_executable(cpp_demo
+  src/main.cpp
+)
+
+target_link_libraries(cpp_demo chucknorris)
 ```
 
-Notes:
+The `add_library` and `add_executable` commands describe the two targets (named `chucknorris` and `cpp_demo`) and the sources used to build them, and the `target_link_libraries` command tells CMake that `cpp_demo` *depends* on `chucknorris`.
 
-* PRIVATE so that libchucknorris does not "really" depend on sqlite3
-* use TARGETS (modern build system ftw)
+The `target_include_directories` informs CMake that there are header files in the `include` directories that should be used both when builing the library itself, but also by consumers of the library. (We used the `-I include/` flag both for building `libchucknorris.o` and `main.co`)
 
+If the headers were used only to compile the library, we would have used the `PRIVATE` keyword, and if they were used only by consumers of the library, we would have used the `INTERFACE` keyword instead. You can read more about this in the [CMake documentation](https://cmake.org/cmake/help/latest/manual/cmake-buildsystem.7.html).
 
-```cpp
-ChuckNorris::ChuckNorris()
-{
-  sqlite3_open(":memory:", &_db);
+# Ninja
 
-  auto const sql = R"(
-CREATE TABLE chucknorris(id PRIMARY_KEY, fact VARCHAR(500));
-INSERT INTO chucknorris (fact) VALUES
-  ("Chuck Norris can slam a revolving door.");
-INSERT INTO chucknorris (fact) VALUES
-  ("Chuck Norris can kill two stones with one bird.");
-  ...
-  )";
+Now that we have described what we want to build and how, we still need to perform the build itself.
 
-  char* errorMessage = nullptr;
-  auto res = sqlite3_exec(db, sql, 0, 0, &errorMessage);
-}
+CMake does not know how to *actually* perform the build. Instead it generates files that will be used by an *other* tool. It's called a CMake *generator*.
 
-std::string ChuckNorris::getFact()
-{
-  sqlite3_stmt* statement;
-  int rc;
-  rc = sqlite3_prepare_v2(_db,
-      R"(SELECT fact FROM chucknorris ORDER BY RANDOM() LIMIT 1;)",
-      -1, &statement, 0);
+There are plenty of generators available, but for now we'll only talk about Ninja. I've already explain why I prefer using CMake with Ninja in an [other blog post]({{< ref "post/0035-cmake-visual-studio-and-the-command-line.md" >}}).
 
-  rc = sqlite3_step(statement);
-  auto sqlite_row = sqlite3_column_text(statement, 0);
-  auto row = reinterpret_cast<const char*>(sqlite_row);
-  return std::string(row);
-}
+In our first attempt, we generated all the binaries (`libchucknorris.a`, the `.o` files and the `cpp_demo` executable) directly in the current working directory. It's cleaner to have them put inside a dedicated *build folder* instead:
+
+* We'll only have to put the build folder into our `.gitignore` file, instead of a bunch of files
+* If we want to, we can have several build folders, all using the same sources, but using different compilers or flags without risking mixing incompatible binaries.
+
+So let's create a folder named `build/default` and call CMake, asking it to use the Ninja generator. CMake uses the current working directory as the build folder, and you must specify the path to the folder containing the `CMakeLists.txt` file as the last argument on the command line:
+
+```text
+$ mkdir -p build/default
+$ cd build/default
+$ cmake -GNinja ../..
 ```
 
-Note: error handling omitted for brevity
+And now we use ninja to build build and run our executable from the build folder:
 
-
-# Note: recompile with -fPIC
-
-Alas ...
-
-```console
-$ cmake -DBUILD_SHARED_LIBS=ON ../..
+```text
+$ cd build/default
 $ ninja
-/bin/ld: .../libsqlite3.a(sqlite3.o): relocation R_X86_64_PC32
-against symbol `sqlite3_version' can not be used when making
-a shared object; recompile with -fPIC
+[1/4] Building CXX object CMakeFiles/chucknorris.dir/src/ChuckNorris.cpp.o
+[2/4] Building CXX object CMakeFiles/cpp_demo.dir/src/main.cpp.o
+[3/4] Linking CXX static library libchucknorris.a
+[4/4] Linking CXX executable cpp_demo
+$ ./cpp_demo
+Chuck Norris can slam a revolving door.
 ```
 
+Done!
 
-* Fork uspstream recipe
+Note that CMake and Ninja cooperate so that you only rebuild what's need to be rebuilt.
 
+If we change just the `main.cpp`, we just have to rebuild `main.cpp.o` and relink the `cpp_demo`:
 
-```console
-$ mkdir -p conan-recipes/sqlite3
-$ cd conan-recipes/sqlite3
-$ conan copy sqlite3/3.21.0@bincrafters/stable dmerej/test
-$ cp -r ~/.conan/data/sqlite3/3.21.0/dmerej/test/export/ sqlite3
-$ cp -r ~/.conan/data/sqlite3/3.21.0/dmerej/test/export_sources/* sqlite3
-$ conan create . dmerej/test
+```text
+$ ninja
+[1/2] Building CXX object CMakeFiles/cpp_demo.dir/src/main.cpp.o
+[2/2] Linking CXX executable cpp_demo
 ```
 
-* Patch `CMakeLists.txt` in `conan-recipes/sqlite3/CMakeLists.txt`:
+But if we change `ChuckNorris.cpp`, everything *except* `main.cpp.o` needs to be rebuilt:
 
-```cmake
-project(cmake_wrapper)
-set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
+```text
+[1/3] Building CXX object CMakeFiles/chucknorris.dir/src/ChuckNorris.cpp.o
+[2/3] Linking CXX static library libchucknorris.a
+[3/3] Linking CXX executable cpp_demo
+```
 
+And if we change the `CMakeLists.txt` file, Ninja will re-run CMake for us:
+
+```text
+$ ninja
+[0/x] Re-running CMake...
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /path/to/build/default
 ...
 ```
 
-* Patch `conanfile.txt`
-```cfg
-[requires]
-sqlite3/3.21.0@dmerej/test
-```
-
-Decentralized ftw !
-
-
-PS: there's a reason to have `sqlite.a` *without* position independent code, ...
+That's all for the first part. Stay tuned for part 2, where we'll introduce an external dependency and get rid of the hard-coded fact.
