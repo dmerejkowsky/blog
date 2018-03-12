@@ -736,16 +736,9 @@ for your parsing, like configuring common options in one function, allow
 plug-ins to change the command line API, and so on ...
 
 
-## Feedback
+# Update
 
-As always, feedback is welcomed.
-
-See [the dedicated page]({{< ref "pages/feedback.md" >}}) on how to reach me.
-
-Thank you for reading thus far, see you next time!
-
-
-_Update_: seems like `docopt` is no longer maintained (no release since 2014),
+Seems like `docopt` is no longer maintained (no release since 2014),
 and that `click` "won the war". I don't know enough about `click`, but I may
 have a look at it later and post the results on this blog one day ...
 
