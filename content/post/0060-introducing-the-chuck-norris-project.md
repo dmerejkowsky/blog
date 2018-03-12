@@ -14,7 +14,7 @@ The Chuck Norris Project is a C++ library that contains a class able to give you
 Here's how to use it:
 
 ```c++
-#include <chucknorris.hpp>
+#include <ChuckNorris.hpp>
 
 ChuckNorris chuckNorris;
 std::string fact = chuckNorris.getFact();
