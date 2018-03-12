@@ -9,7 +9,7 @@ authors: [dmerej]
 
 # The Chuck Norris Project
 
-The Chuck Norris Project a C++ library that contains a class able to give you random Chuck Norris facts when the `getFact()` method is called:
+The Chuck Norris Project is a C++ library that contains a class able to give you random Chuck Norris facts when the `getFact()` method is called:
 
 Here's how to use it:
 
