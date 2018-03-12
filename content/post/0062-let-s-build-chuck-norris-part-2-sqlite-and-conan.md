@@ -2,85 +2,11 @@
 authors: [dmerej]
 slug: chuck-norris-part-2-sqlite-conan
 date: 2018-03-10T16:12:44.131649+01:00
-draft: true
+draft: false
 title: "Let's Build Chuck Norris! - Part 2: SQLite and conan"
 tags: [c++]
 ---
 
-# Introduction
-
-First, we are going to write a simple `C++` library with a dependency to a third-party library.
-
-Then, we will cross-compile that library and those dependencies for iOS and Android and use it for two mobile applications.
-
-Along the way, we'll hopefully learn a few thing.
-
-# Getting started on desktop
-
-First step is to write a standalone C++ library.
-
-Just a class: `ChuckNorris` with a `getFact()` method.
-
-
-  ```cmake
-  cmake_minimum_required(VERSION 3.10)
-set(CMAKE_CXX_STANDARD 11)
-
-project(ChuckNorris)
-
-  add_library(chucknorris
-      include/chucknorris.hpp
-      src/chucknorris.cpp
-      )
-```
-
-```cpp
-class ChuckNorris
-{
-  public:
-    ChuckNorris();
-    std::string getFact();
-}
-```
-
-```cpp
-ChuckNorris::ChuckNorris()
-{
-}
-
-std::string ChuckNorris::getFact()
-{
-  return "Chuck Norris is the best";
-}
-```
-
-## Testing it works
-
-```cmake
-add_executable(demo
-  src/main.cpp
-)
-
-target_link_libraries(demo chucknorris)
-```
-
-```cpp
-int main()
-{
-  ChuckNorris chuckNorris;
-  std::string fact = chuckNorris.getFact();
-  std::cout << fact << std::endl;
-  return 0;
-}
-```
-
-```console
-$ mkdir -p build/desktop
-$ cd build/desktop
-$ cmake -G Ninja ../..
-$ ninja
-$ ./bin/demo
-```
 
 # Adding dependency to sqlite3
 
