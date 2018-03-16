@@ -84,7 +84,7 @@ $ ar qc libchucknorris.a libchucknorris.o
 $ ranlib libchucknorris.a
 # Compile main.cpp into main.o
 $ g++ -c -I include/ src/main.cpp -o main.o
-# Tell clang to link everything into an executable
+# Tell g++ to link everything into an executable
 $ g++ main.o libchucknorris.a -o cpp_demo
 # Run the executable we've just built:
 $./cpp_demo
