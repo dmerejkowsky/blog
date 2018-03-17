@@ -143,7 +143,7 @@ jsonfile.writeFileSync(SHRINKWRAP_PATH, shrinkwrapContents, {
 ## And then ...
 
 Satisfied, you tell your team mate: "It's fixed!, just checkout the
-`hack-for-windows` branch and ..."
+`hack-for-windows` branch and&nbsp;..."
 
 {{< audio "it-was-at-this-moment.mp3" >}}
 
