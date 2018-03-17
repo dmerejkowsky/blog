@@ -69,8 +69,10 @@ That's what I like about this distribution:
 * It's a rolling release, so you never have to use outdated software: packages are
   available usually rather soon after their upstream release, and even when they
   don't, it's easy to update the `PKGBUILD` yourself, for two reasons:
+
   * 1/ The syntax of the `PKGBUILD` is one of the easiest I know to describe how a package
     should be built.
+
   * 2/ New versions of software tend to depend on the last stable version of their dependencies,
     which is OK when using Arch: when a new version of a library is out, Arch
     promptly updates it and rebuilds all the affected packages, without caring
