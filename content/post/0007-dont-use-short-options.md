@@ -146,7 +146,7 @@ checksums?
 So every time I had to use `rsync` I had to open the man page.
 
 Then I tried remembering the long options instead. Guess what? They are
-**much** easier to remember :)
+**much** easier to remember&nbsp;:)
 
 Recursive is `--recursive`, progress is `--progress`, itemize changes is
 `--itemize-changes` and checksums is `--checksum`.
