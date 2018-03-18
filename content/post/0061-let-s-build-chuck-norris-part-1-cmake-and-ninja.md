@@ -103,6 +103,7 @@ CMake lets us describe the targets we want to build in code:
 
 ```cmake
 cmake_minimum_required(VERSION 3.10)
+set(CMAKE_CXX_STANDARD 11)
 
 project(ChuckNorris)
 
@@ -130,6 +131,8 @@ The `add_library` and `add_executable` commands describe the two targets (named 
 The `target_include_directories` informs CMake that there are header files in the `include` directories that should be used both when builing the library itself, but also by consumers of the library. (We used the `-I include/` flag both for building `libchucknorris.o` and `main.co`)
 
 If the headers were used only to compile the library, we would have used the `PRIVATE` keyword, and if they were used only by consumers of the library, we would have used the `INTERFACE` keyword instead. You can read more about this in the [CMake documentation](https://cmake.org/cmake/help/latest/manual/cmake-buildsystem.7.html).
+
+Also note how we set the `CMAKE_CXX_STANDARD` variable. This will allow us to use modern C++ features (available in C++ 11 or later) such as the `auto` keyword or raw string literals later on.
 
 # Ninja
 
