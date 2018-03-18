@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: chuck-norris-part-5-android
-date: 2018-03-10T14:56:18.213047+01:00
+date: 2018-03-18T16:52:30.882200+00:00
 draft: true
 title: "Let's Build Chuck Norris! - Part 5: Android"
 tags: [c++]

@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: chuck-norris-part-4-python-cffi
-date: 2018-03-10T14:55:20.814085+01:00
+date: 2018-03-18T16:51:30.882200+00:00
 draft: true
 title: "Let's Build Chuck Norris! - Part 4: Python and cffi"
 tags: [c++]
