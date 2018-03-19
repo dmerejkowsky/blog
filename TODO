@@ -1,5 +1,0 @@
-* bash defaults to posix behavior if argv[0] is /bin/sh
-* fix weird 'diff' colors stuff
-* put back license
-* patch isso to have comment form at the bottom
-* patch css to no underline the '+1', '-1', 'reply' links in the form
