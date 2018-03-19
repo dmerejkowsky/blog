@@ -75,6 +75,11 @@ INSERT INTO chucknorris (fact) VALUES
   auto res = sqlite3_exec(db, sql, 0, 0, nullptr);
 }
 
+ChuckNorris::~ChuckNorris()
+{
+    sqlite3_close(_db);
+}
+
 std::string ChuckNorris::getFact()
 {
   sqlite3_stmt* statement;
