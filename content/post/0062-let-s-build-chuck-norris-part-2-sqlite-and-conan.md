@@ -23,31 +23,34 @@ First, let's adapt our class declaration:
 ```c++
 #include <string>
 
-struct sqlite3;
+#include <sqlite3.h>
 
 class ChuckNorris
 {
   public:
     ChuckNorris();
-    std::string getFact();
+    // Make sure you cannot copy Chuck Norris
+    ChuckNorris(ChuckNorris const&) = delete;
+    ChuckNorris(ChuckNorris &&) = delete;
+    ChuckNorris& operator=(ChuckNorris const&) = delete;
+    ChuckNorris& operator=(ChuckNorris &&) = delete;
+    ~ChuckNorris();
 
-    virtual ~ChuckNorris();
+    std::string getFact();
 
   private:
     sqlite3* _db;
+    // Note: in modern C++ code we would not have a raw pointer like this,
+    // and use something like unique_ptr, but this blog post is about building
+    // stuff :)
 };
 ```
 
-Note how we do *not* depend on the `sqlite3.h` file from `ChuckNorris.hpp`, instead we just tell the compiler there's a struct named `sqlite3` somewhere, and the compiler accepts this because the only usage of the `sqlite3` type is inside a pointer. (The `_db` member of the ChuckNorris class).
+Then, it's time to adapt the `ChuckNorris.cpp` file:
 
-This is called a *forward declaration*.
+In the constructor, we open an in-memory database and fill it with lots of facts.
 
-In the `ChuckNorris.cpp` file, we:
-
-* include the `sqlite3.h` header.
-* open an in-memory database in the constructor
-* fill the database with lots of facts
-* and run a simple SQL query in the `getFact()` method:
+Then, in the `getFact()` method, we run a simple SQL query:
 
 
 *src/ChuckNorris.cpp*:
@@ -69,8 +72,7 @@ INSERT INTO chucknorris (fact) VALUES
   ...
   )";
 
-  char* errorMessage = nullptr;
-  auto res = sqlite3_exec(db, sql, 0, 0, &errorMessage);
+  auto res = sqlite3_exec(db, sql, 0, 0, nullptr);
 }
 
 std::string ChuckNorris::getFact()
@@ -82,9 +84,12 @@ std::string ChuckNorris::getFact()
   rc = sqlite3_step(statement);
   auto sqlite_row = sqlite3_column_text(statement, 0);
   auto row = reinterpret_cast<const char*>(sqlite_row);
-  return std::string(row);
+  auto res = std::string(row);
+  sqlite3_finalize(statement);
+  return res;
 }
 ```
+
 
 Now let's try and compile this!
 
@@ -93,9 +98,9 @@ Now let's try and compile this!
 
 Since we are not the authors of the `sqlite` library, we say it is a *third-party* library. (As opposed to the `chucknorris` library we just wrote).
 
-There are a lot of ways of adding a third-party dependency to a C++ program, from simply adding the sources to the project files, to install them "in the system" (using `homebrew` on macOS our the package manager of your distribution on Linux).
+There are a lot of ways of adding a third-party dependency to a C++ program, from simply adding the sources to the project files, to installing them "in the system" (using `homebrew` on macOS or the package manager of your distribution on Linux).
 
-In this article we will use a package manager called [conan](https://conan.io) that will install the `sqlite3` package somewhere in the our home directory (called a *cache*).
+In this article we will use a package manager called [conan](https://conan.io) that will install the `sqlite3` package somewhere in our home directory (called a *cache*).
 
 This means we won't need any administrative privileges (as opposed to installing the `sqlite3` library in the system), but also that the library will usable from multiple C++ projects (as opposed to adding the sources of `sqlite3` inside our source folder).
 
@@ -137,10 +142,10 @@ And, just to clean things up, let's create a `lib` and `include` folder:
 ```console
 $ mkdir include lib
 $ mv libsqlite3.a lib/
-$ mv sqlite33.h lib/
+$ mv sqlite3.h include/
 ```
 
-Now we have to adapt the `CMakeLists.txt` in the Chuck Norris sources about our newly built library.
+Now we have to adapt the `CMakeLists.txt` in the Chuck Norris sources to use our newly built library.
 
 ## Finding and using the sqlite3 library
 
@@ -286,7 +291,7 @@ There's the name: `sqlite3`, the version: `3.21`, a user: `bincrafters` and a ch
 
 You can think of channels as branches: the `stable` channel indicates that the recipes and binary packages have come through at least minimal quality assurance. (This is true for any package coming from the `conan-center` remote inside the stable channel).
 
-The `cmake` generator tell conan to generate some files that contain information about the dependencies that are usable by CMake.
+The `cmake` generator tells conan to generate some files that contain information about the dependencies that are usable by CMake.
 
 Here's how to invoke conan:
 
@@ -308,7 +313,7 @@ PROJECT: Generator cmake created conanbuildinfo.cmake
 
 Several things happened here:
 
-* First conan looked for the package in the local cache and did not found it.
+* First conan looked for the package in the local cache and did not find it.
 
 * It used a *remote*  called `conan-center` and found a compatible package there with a certain ID (`6ae331b72e7e265ca2a3d1d8246faf73aa030238`).
 
@@ -344,7 +349,7 @@ We can now call `cmake` and `ninja` as we did in the end of the previous part:
 $ cmake -GNinja ../..
 ...
 -- Conan: Using cmake targets configuration
--- Library sqlite3 found //home/dmerej/.conan/data/.../lib/libsqlite3.a
+-- Library sqlite3 found /home/dmerej/.conan/data/.../lib/libsqlite3.a
 ...
 $ ninja
 [1/3] Building CXX object CMakeFiles/chucknorris.dir/src/ChuckNorris.cpp.o
