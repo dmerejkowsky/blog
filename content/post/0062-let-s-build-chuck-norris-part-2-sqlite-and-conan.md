@@ -40,9 +40,6 @@ class ChuckNorris
 
   private:
     sqlite3* _db;
-    // Note: in modern C++ code we would not have a raw pointer like this,
-    // and use something like unique_ptr, but this blog post is about building
-    // stuff :)
 };
 ```
 
