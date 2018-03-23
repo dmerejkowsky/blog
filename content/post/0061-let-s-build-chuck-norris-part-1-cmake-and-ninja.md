@@ -199,4 +199,4 @@ $ ninja
 ...
 ```
 
-That's all for the first part. Stay tuned for part 2, where we'll introduce an external dependency and get rid of the hard-coded fact.
+That's all for the first part. Stay tuned for [part 2]({{< ref "post/0062-let-s-build-chuck-norris-part-2-sqlite-and-conan.md" >}}), where we'll introduce an external dependency and get rid of the hard-coded fact.
