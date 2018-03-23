@@ -2,6 +2,7 @@ title: dmerej's blog
 author: Dimitri Merejkowsky
 languageCode: en-us
 canonifyurls: true
+baseUrl: https://dmerej.info/blog
 
 theme: minimo
 
