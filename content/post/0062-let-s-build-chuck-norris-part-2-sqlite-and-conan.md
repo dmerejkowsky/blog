@@ -367,7 +367,7 @@ himself, he'd win. Period.
 
 Seems to work!
 
-In the next article, we'll write a C wrapper on top of our C++ API and use it to implement a `chucknorris` module in Python.
+In the next articles, we'll [write a C wrapper on top of our C++ API]({{< ref "post/0063-let-s-build-chuck-norris-part-3-a-c-wrapper.md" >}}) and then use it to implement a `chucknorris` module in Python.
 
 See you soon :)
 
