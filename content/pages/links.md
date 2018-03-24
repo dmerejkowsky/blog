@@ -139,6 +139,7 @@ to keep easily available.
   http://rbcs-us.com/documents/Why-Most-Unit-Testing-is-Waste.pdf)
   and the [follow-up](http://rbcs-us.com/documents/Segue.pdf)
 * [XY problem](http://xyproblem.info)
+* [You're Doing It All Wrong™](https://dev.to/codemouse92/youre-doing-it-all-wrong-3m7c)
 * [You Are Not Google](https://blog.bradfieldcs.com/you-are-not-google-84912cf44afb)
 * [You Are Not Paid to Write Code](
   http://bravenewgeek.com/you-are-not-paid-to-write-code/)
