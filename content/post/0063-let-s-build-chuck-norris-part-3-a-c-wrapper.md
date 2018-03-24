@@ -321,8 +321,8 @@ And now the binary works:
 <pre>
 $ ninja
 $ ./bin/c_demo
-Chuck Norris will never have a heart attack.
-His heart isn't nearly foolish enough to attack him.
+Chuck Norris doesn't dial the wrong number.
+You answered the wrong phone.
 </pre>
 
 That's all for today. The C library is be the building block we'll use to write Python bindings and phone applications. Stay tuned for the rest of the story!
