@@ -586,15 +586,15 @@ available in the top menu:
 
 ```ini
 [guitool "pull-rebase"]
-	cmd = git pull --rebase
+cmd = git pull --rebase
 
 [guitool "clean"]
-	cmd = git clean -fd
-	confirm = true
+cmd = git clean -fd
+confirm = true
 
 [guitool "reset"]
-	cmd = git reset --hard
-	confirm = true
+cmd = git reset --hard
+confirm = true
 ```
 
 Note how I have `confirm = true` for the "dangerous" operations, so that
@@ -605,7 +605,7 @@ message:
 
 ```ini
 [gui]
-	spellingdictionary = en_US
+spellingdictionary = en_US
 ```
 
 I have a similar configuration for Neovim:
