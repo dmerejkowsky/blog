@@ -13,7 +13,7 @@ _Note: This is part 3 of the [Let's Build Chuck Norris!]({{< ref "0060-introduci
 
 C is kind like the lingua franca of programming languages. Many languages implementations are themselves *written* in C, and almost all of them know how to call C code. (Ofter this is called using a *Foreign Function Interface*, or FFI for short.
 
-Our goal with the Chuck Norris project is to use our library in a lot of various situations (such as in an iOS or Android application), so why did not we write the chucknorris library is C?
+Our goal with the Chuck Norris project is to use our library in a lot of various situations (such as in an iOS or Android application), so why did we not write the chucknorris library in C?
 
 Well, C++ has many advantages compared to C:
 
@@ -22,7 +22,7 @@ Well, C++ has many advantages compared to C:
 * You can use nice tools such as classes and templates
 * ... and more!
 
-C and C++ are not so far apart: For instance, there's nothing to do to call C code from C++. `sqlite3` is written in C, and in our code we just had to include `<sqlite3.h>` and everything "just worked".
+C and C++ are not so far apart: For instance, calling C from C++ works out of he box. `sqlite3` is written in C, and in our code we just had to include `<sqlite3.h>` and everything "just worked". [^1]
 
 But things get more interesting when we try to go the other way around.
 
@@ -37,18 +37,22 @@ There's a few details to get right though, so let's do this step by step.
 ## Declaring a C API
 
 
+C does not know about classes, so we cannot use the `ChuckNorris` symbol anywhere.
+
+Here's what we can do:
+
 _include/chucknorris.h:_
 ```c
-typedef struct ChuckNorris chuck_norris_t;
+typedef struct chuck_norris chuck_norris_t;
 chuck_norris_t* chuck_norris_init(void);
-char* chuck_norris_get_fact(chuck_norris_t*);
+const char* chuck_norris_get_fact(chuck_norris_t*);
 void chuck_norris_deinit(chuck_norris_t*);
 ```
 
 * Each function is prefixed with `chuck_norris_` (because there are no namespaces in C)
-* We declare a `chuck_norris_t` struct type but do not bother to describe what's inside. This works because the other functions will either return or take a parameter of the `chuck_norris_t` **pointer** type, so the compiler dos not need to know what's inside the struct. This is known as an *opaque pointer*.
-* Instead of letting the compiler handling creation and destruction of the C++ class, we have explicit functions: `chuck_norris_init` and `chuck_norris_deinit`.
-* Instead of a `getFact` method inside a class, we have a `chuck_norris_get_fact` function that takes the ChuckNorris object as first parameter.
+* We declare a `chuck_norris_t` struct type but do not bother to describe what's inside. This works because the other functions will either return or take a parameter of the `chuck_norris_t` **pointer** type, so the compiler does not need to know what's inside the struct. This is known as an *opaque pointer*. In the C++ implementation, we'll have to perform casts between the "real" `ChuckNorris*` pointers and the opaque `chuck_norris*` ones.
+* Instead of letting the compiler handle creation and destruction of the C++ class, we have explicit functions: `chuck_norris_init()` and `chuck_norris_deinit()`.
+* Instead of a `getFact()` method inside a class, we have a `chuck_norris_get_fact()` function that takes opaque `chuck_norris` pointer as first parameter.
 
 
 ## Implementing the C API
@@ -61,21 +65,26 @@ _src/c_wrapper.cpp:_
 
 chuck_norris_t* chuck_norris_init()
 {
-  return new ChuckNorris();
+  auto ck = new ChuckNorris();
+  return reinterpret_cast<chuck_norris*>(ck);
 }
 
-char* chuck_norris_get_fact(chuck_norris_t* chuck_norris)
+const char* chuck_norris_get_fact(chuck_norris_t* chuck_norris)
 {
-  std::string fact = chuck_norris->getFact();
-  char* result = fact.c_str();
+  auto ck = reinterpret_cast<ChuckNorris*>(chuck_norris);
+  std::string fact = ck->getFact();
+  const char* result = fact.c_str();
   return result;
 }
 
 void chuck_norris_deinit(chuck_norris_t* chuck_norris)
 {
-  delete chuck_norris;
+  auto ck = reinterpret_cast<ChuckNorris*>(chuck_norris);
+  delete ck;
 }
 ```
+
+The only cast we can use is `reinterpret_cast`, which basically tell the compiler "trust us, what's inside the pointer is of the right type!". This means things will go terribly wrong if callers of the C API are not careful, but don't worry, they're used to it :P
 
 To check it works, let's add an other test executable, written in C this time:
 
@@ -88,7 +97,7 @@ _src/main.c_:
 int main()
 {
   chuck_norris_t* ck = chuck_norris_init();
-  char* fact = chuck_norris_get_fact(ck);
+  const char* fact = chuck_norris_get_fact(ck);
   printf("%s\n", fact);
   chuck_norris_deinit(ck);
   return 0;
@@ -159,7 +168,7 @@ Hum. The names of the symbols do not match the ones we declared in the headers.
 
 That's because they were *mangled* by the C++ compiler. I won't detail here the reasons why the symbols have to be mangled in the first place. Let's just say it has to do with stuff like function overloading and things like that.
 
-We can check tat the `cpp_demo` binary contains a reference to the weird `getFact` symbol:
+We can check that the `cpp_demo` binary contains a reference to the weird `getFact` symbol:
 
 <pre>
 $ nm --defined-only cpp_demo
@@ -230,7 +239,7 @@ extern "C" {
 #endif
 ```
 
-Now the build passes, and we can double-check the names of symbols inside the archive:
+Now the build passes [^2], and we can double-check the names of symbols inside the archive:
 
 <pre>
 $ ninja
@@ -275,10 +284,10 @@ Hum. Something is not right.
 Let's take a look again at the `chuck_norris_get_fact` implementation:
 
 ```cpp
-char* chuck_norris_get_fact(chuck_norris_t* chuck_norris)
+const char* chuck_norris_get_fact(chuck_norris_t* chuck_norris)
 {
   std::string fact = chuck_norris->getFact();
-  char* result = fact.c_str();
+  const char* result = fact.c_str();
   return result;
 }
 ```
@@ -291,7 +300,10 @@ Here's what's happening:
 * But then the `fact` variable gets out of scope and the contents of the `std::string` are freed. Note that this is what `std::string`s are *designed* to do: they handle memory management for us. We are only having this problem because we are playing with raw C pointers!
 * Now our `char*` pointer points to uninitialized stuff and we get garbage.
 
-The solution is to call `strdup` to get a copy of the contents that we now *own* and to free it explicitly later on:
+The solution is to call `strdup` to get a copy of the contents that we now *own* and to free it explicitly later on.
+
+(Note that the returned pointer is no longer `const`.)
+
 
 _src/c_wrapper.cpp:_
 ```cpp
@@ -325,4 +337,8 @@ Chuck Norris doesn't dial the wrong number.
 You answered the wrong phone.
 </pre>
 
-That's all for today. The C library is be the building block we'll use to write Python bindings and phone applications. Stay tuned for the rest of the story!
+That's all for today. The C library is the building block we'll use to write Python bindings and phone applications. Stay tuned for the rest of the story!
+
+
+[^1]: That's a lie. There's something special in the `sqlite3.h` file to make this work. But we'll talk about that later.
+[^2]: This little trick of `#ifdef __cplusplus` and `extern "C"` is used pretty often in the wild, and you do find it in the `sqlite3.h` header. I had to lie to preserve the flow of the article, sorry.
