@@ -9,7 +9,7 @@ tags: [c++]
 
 _Note: This is part 3 of the [Let's Build Chuck Norris!]({{< ref "0060-introducing-the-chuck-norris-project.md" >}}) series._
 
-# Introduction: when languages talk together.
+# Introduction: when languages talk together
 
 C is kind like the lingua franca of programming languages. Many languages implementations are themselves *written* in C, and almost all of them know how to call C code. (Ofter this is called using a *Foreign Function Interface*, or FFI for short.
 
