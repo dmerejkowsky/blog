@@ -11,7 +11,7 @@ _Note: This is part 3 of the [Let's Build Chuck Norris!]({{< ref "0060-introduci
 
 # Introduction: when languages talk together
 
-C is kind like the lingua franca of programming languages. Many languages implementations are themselves *written* in C, and almost all of them know how to call C code. (Ofter this is called using a *Foreign Function Interface*, or FFI for short.
+C is kind like the lingua franca of programming languages. Many languages implementations are themselves *written* in C, and almost all of them know how to call C code. Often this is called using a *Foreign Function Interface*, or FFI for short.
 
 Our goal with the Chuck Norris project is to use our library in a lot of various situations (such as in an iOS or Android application), so why did we not write the chucknorris library in C?
 
@@ -194,7 +194,7 @@ $ nm --demangle --defined-only cpp_demo
 000000000000cefe T ChuckNorris::getFact[abi:cxx11]()
 </pre>
 
-When we compiled `c_demo.o`, we used a *C* compiler. (CMake saw a `.c` extension on the source files, and thus told ninja to build `main.c.o` with a C compiler)
+When we compiled `c_demo.o`, we used a *C* compiler. (CMake saw a `.c` extension on the source file, and thus told ninja to build `main.c.o` with a C compiler)
 
 Since the C compiler does *not* mangle symbols at all, the final link between `c_demo.o` and `libchucknorris.a` failed.
 
@@ -286,7 +286,8 @@ Let's take a look again at the `chuck_norris_get_fact` implementation:
 ```cpp
 const char* chuck_norris_get_fact(chuck_norris_t* chuck_norris)
 {
-  std::string fact = chuck_norris->getFact();
+  auto ck = reinterpret_cast<ChuckNorris*>(chuck_norris);
+  std::string fact = ck->getFact();
   const char* result = fact.c_str();
   return result;
 }
@@ -309,7 +310,8 @@ _src/c_wrapper.cpp:_
 ```cpp
 char* chuck_norris_get_fact(chuck_norris_t* chuck_norris)
 {
-  std::string fact = chuck_norris->getFact();
+  auto ck = reinterpret_cast<ChuckNorris*>(chuck_norris);
+  std::string fact = ck->getFact();
   char* result = strdup(fact.c_str());
   return result;
 }
