@@ -3,14 +3,14 @@ authors: [dmerej]
 slug: introducing-quantom-of-ideas
 date: 2018-02-18T13:13:39.542293+00:00
 draft: false
-title: Introducing "Quantom of Ideas"
+title: Introducing "Quantum of Ideas"
 feedback: false
 tags: [ideas]
 ---
 
 This year I've decided to try something a bit different on my blog.
 
-"Quantom of Ideas" is the title for a new series of posts. You'll find them in the [list of posts tagged with 'ideas'](/tags/ideas)
+"Quantum of Ideas" is the title for a new series of posts. You'll find them in the [list of posts tagged with 'ideas'](/tags/ideas)
 
 In each post, I will present an idea I had about a certain topic.
 
