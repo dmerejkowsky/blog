@@ -15,7 +15,7 @@ If you never read the tutorial, or don't want to, here's what you need to know:
 
 We have a django project containing an application called `polls`.
 
-We have two model objects representing questions and choice.
+We have two model objects representing questions and choices.
 
 Each question has a publication date, a text, and a list of choices.
 
@@ -233,7 +233,7 @@ We can now use `pytest` magic to rewrite all "easy" assertions such as `assertFa
 
 Already we can see several improvements:
 
-* The code is more readable and follow PEP8
+* The code is more readable and follows PEP8
 * The error messages are more detailed:
 
 ```console
@@ -328,11 +328,11 @@ def assert_question_list_equals(actual_questions, expected_texts):
     for actual_question, expected_text in zip(actual_questions, expected_texts):
         assert actual_question.question_text == expected_text
 
-    def test_past_question(self):
-        ...
-        create_question(question_text="Past question.", days=-30)
-        latest_list = get_latest_list(self.client)
-        assert_question_list_equals(latest_list, ["Past question."])
+def test_past_question(self):
+    ...
+    create_question(question_text="Past question.", days=-30)
+    latest_list = get_latest_list(self.client)
+    assert_question_list_equals(latest_list, ["Past question."])
 ```
 
 
@@ -559,7 +559,7 @@ link = driver.find_element(tag_name="link")
 form = driver.find_element(id="form-id")
 ```
 
-(This is known as the "facade" design attern)
+(This is known as the "facade" design pattern)
 
 
 ```python
