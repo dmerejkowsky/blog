@@ -339,7 +339,7 @@ Chuck Norris doesn't dial the wrong number.
 You answered the wrong phone.
 </pre>
 
-That's all for today. The C library is the building block we'll use to write Python bindings and phone applications. Stay tuned for the rest of the story!
+That's all for today. The C library is the building block we'll use to [write Python bindings]({{< ref "post/0064-let-s-build-chuck-norris-part-4-python-and-ctypes.md" >}}) and phone applications. Stay tuned for the rest of the story!
 
 
 [^1]: That's a lie. There's something special in the `sqlite3.h` file to make this work. But we'll talk about that later.

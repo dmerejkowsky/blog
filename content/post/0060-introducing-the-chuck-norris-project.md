@@ -34,6 +34,7 @@ Available:
 * [Using CMake and Ninja]({{< ref "post/0061-let-s-build-chuck-norris-part-1-cmake-and-ninja.md" >}})
 * [Managing third-party dependencies with conan]({{< ref "post/0062-let-s-build-chuck-norris-part-2-sqlite-and-conan.md" >}})
 * [Exposing a C API on top of C++ code]({{< ref "post/0063-let-s-build-chuck-norris-part-3-a-c-wrapper.md" >}})
+* [Using Python with ctypes]({{< ref "post/0064-let-s-build-chuck-norris-part-4-python-and-ctypes.md" >}})
 
 Planned for later:
 
