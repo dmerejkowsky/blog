@@ -367,7 +367,7 @@ print(fact_text)
 
 <pre>
 $ python ck.py
-'When Chuck Norris enters a rodeo the bull has to try and last 8 seconds.'
+When Chuck Norris enters a rodeo the bull has to try and last 8 seconds.
 </pre>
 
 And we're done:)
