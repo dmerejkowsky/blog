@@ -227,6 +227,9 @@ As I said at the beginning, I don't like my linters running while I'm editing,
 so I'm OK with the linters being run synchronously, but I you need, there's
 problably a plugin you can use for this.
 
+
+_Update_: I'm now using [vim-ale](https://github.com/w0rp/ale) for all linters except pylint (because it's slow). If you like you can find more information about this in [an other blog post](https://dmerej.info/blog/post/lets-have-a-pint-of-vim-ale/).
+
 Cheers!
 
 [^1]: This tool used to be called `pep8`. It got renamed after [an issue](https://github.com/PyCQA/pycodestyle/issues/466) opened by Guido himself.
