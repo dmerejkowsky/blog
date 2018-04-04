@@ -48,6 +48,7 @@ to keep easily available.
   http://www.codewithoutrules.com/2016/02/27/testing-terminology/)
 * [Cools URLs don't change](https://www.w3.org/Provider/Style/URI.html)
 * [Creating Your Code Review Checklist](http://www.daedtech.com/creating-code-review-checklist)
+* [Cryptographic Right Answers](http://latacora.singles/2018/04/03/cryptographic-right-answers.html)
 * [Dark Scrum](http://ronjeffries.com/articles/016-09ff/defense)
 * [Dealing with Legacy Code for Developers: Managing your Manager](
   http://www.daedtech.com/dealing-legacy-code-developers-managing-manager)
