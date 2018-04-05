@@ -409,6 +409,7 @@ to keep easily available.
   http://docs.openstack.org/developer/cliff/)
 * [colorama: Cross-platform colored terminal text](
   https://pypi.python.org/pypi/colorama )
+* [construct: declarative parser and builder for binary data](https://github.com/construct/construct)
 * [deco: Decorated Concurrency](https://github.com/alex-sherman/deco)
 * [docopt: Pythonic argument parser](https://pypi.python.org/pypi/docopt)
 * [dsert: Library to test all fields of a python dictionary](
