@@ -20,7 +20,7 @@ The code from a static library is **directly integrated** into the program: the 
 
 On the other hand, the code in a shared library is only **referenced by** the program. When the program is launched, the operating system will try and find the code to run in the shared library file.
 
-We says the code in the static library is used *at compiled time* whereas the code of a shared library is used *at runtime*.
+We says the code in the static library is used *at compile time* whereas the code of a shared library is used *at runtime*.
 
 For this reason, static libraries are also called *archive libraries*, and shared library are also called *dynamic libraries*.
 
@@ -292,9 +292,20 @@ $ ninja
 [7/7] Linking CXX executable bin/cpp_demo
 </pre>
 
+
 Success!
 
-We said earlier that it was the operating system that took care of loading code from the shared library at runtime. On Linux, this is done by a special shared library called `ld-linux.so`.
+Side note: specifying the option about `sqlite3` each time we call `conan` is a bit tedious, but we can just specify the option directly in the `conanfile.txt`:
+
+```ini
+[requires]
+sqlite3/3.21.0@dmerej/test
+
+[options]
+sqlite3:pic = True
+```
+
+Anyway, we said earlier that it was the operating system that took care of loading code from the shared library at runtime. On Linux, this is done by a special shared library called `ld-linux.so`.
 
 We can thus check that the `libchucknorris.so` file does get loaded when we run the `cpp_demo` executable, by asking `ld.so` to output debug information about the files it loads [^3]:
 
@@ -313,6 +324,7 @@ Chuck Norris knows Victoria's secret
 </pre>
 
 Our friends `libpthread.so` and `libdl.so` we had to take care of when we linked with `sqlite3` by hand are involved, and we can see the full path of the ChuckNorris lib inside our build folder.
+
 
 # Using ctypes
 
@@ -370,7 +382,7 @@ $ python ck.py
 When Chuck Norris enters a rodeo the bull has to try and last 8 seconds.
 </pre>
 
-And we're done:)
+And we're done
 
 In the next article, we'll show a more robust method to write our Python bindings. Stay tuned!
 
