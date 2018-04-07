@@ -171,7 +171,6 @@ gcc ...
   -c _chucknorris.c
   -o ./_chucknorris.o
 _chucknorris.c:493:14: fatal error: chucknorris.h: No such file or directory
-     #include <chucknorris.h>
 </pre>
 
 What happened?
