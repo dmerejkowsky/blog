@@ -333,7 +333,7 @@ $ cd cpp/python/build/default
 $ conan install ../..
 ...
 PROJECT: Installing /home/dmerej/src/chucknorris/cpp/ChuckNorris/conanfile.txt
-..
+...
 sqlite3/3.21.0@dmerej/test: Already installed!
 PROJECT: Generator cmake created conanbuildinfo.cmake
 PROJECT: Generator json created conanbuildinfo.json
