@@ -304,7 +304,7 @@ This one is easier: `chucknorris` depends on `libsqlite3`, so we have to link wi
 
 In the CMakeLists.txt we wrote back in [part 2]({{< ref "post/0062-let-s-build-chuck-norris-part-2-sqlite-and-conan.md" >}}), when we were building the `cpp_demo` executable, we just called `target_link_libraries(cpp_demo chucknorris)`. CMake knew about the dependency from the `chucknorris` target to the sqlite3 library and everything worked fine.
 
-But we're not using the CMake&nbsp;/&nbsp;conan build system here, we are use the Python build system. How can we make them cooperate?
+But we're not using the CMake&nbsp;/&nbsp;conan build system here, we are using the Python build system. How can we make them cooperate?
 
 # The json generator
 
