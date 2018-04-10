@@ -40,7 +40,7 @@ This means we can go back to building `chucknorris` as a static library. That wa
 
 All we have to do is re-run cmake and ninja:
 
-<pre>
+```
 $ cd cpp/ChuckNorris/build/default
 $ cmake -DBUILD_SHARED_LIBS=OFF ../..
 $ ninja
@@ -51,7 +51,7 @@ $ ninja
 [5/7] Linking CXX static library lib/libchucknorris.a
 [6/7] Linking CXX executable bin/c_demo
 [7/7] Linking CXX executable bin/cpp_demo
-</pre>
+```
 
 
 
@@ -158,7 +158,7 @@ if __name__ == "__main__":
 
 After installing the `cffi` package, we can finally try and build the code:
 
-<pre>
+```
 $ python setup.py build_ext
 running build_ext
 generating ./_chucknorris.c
@@ -171,7 +171,7 @@ gcc ...
   -c _chucknorris.c
   -o ./_chucknorris.o
 _chucknorris.c:493:14: fatal error: chucknorris.h: No such file or directory
-</pre>
+```
 
 What happened?
 
@@ -225,7 +225,7 @@ setup(name="chucknorris",
 
 Let's try to build our extension again:
 
-<pre>
+```
 $ python setup.py build_ext
 running build_ext
 generating ./_chucknorris.c
@@ -233,13 +233,13 @@ generating ./_chucknorris.c
 building '_chucknorris' extension
 gcc ... -fPIC ... -I/usr/include/python3.6m -c _chucknorris.c -o ./_chucknorris.o
 gcc ... -shared  ... -o build/lib.linux-x86_64-3.6/_chucknorris.abi3.so
-</pre>
+```
 
 OK, this works.
 
 Now let's run `python setup.py develop` so that we can import the C extension directly:
 
-<pre>
+```
 $ python setup.py develop
 ...
 generating cffi module 'build/temp.linux-x86_64-3.6/_chucknorris.c'
@@ -247,19 +247,19 @@ already up-to-date
 ...
 copying build/lib.linux-x86_64-3.6/_chucknorris.abi3.so ->
 ...
-</pre>
+```
 
 Note that `setup.py develop` takes care of building the extension for us, and is even capable to skip compilation entirely when nothing needs to be rebuilt.
 
 Now let's run the `chucknorris.py` file:
 
-<pre>
+```
 $ python chucknorris.py
 Traceback (most recent call last):
   File "chucknorris.py", line 1, in <module>
     from _chucknorris import lib, ffi
 ImportError: .../_chucknorris.abi3.so: undefined symbol: _ZNSt8ios_base4InitD1Ev
-</pre>
+```
 
 Damned!
 
@@ -269,10 +269,10 @@ Thus, the only way to make sure a shared library has been properly built is to *
 
 Again we are faced with the task of guessing the library from the symbol name. Since it looks like a mangled C++ symbol, we can using `c++filt` to get a more human-readable name:
 
-<pre>
+```
 $ c++filt _ZNSt8ios_base4InitD1Ev
 std::ios_base::Init::~Init
-</pre>
+```
 
 Here I happen to know this is a symbol that comes from the c++ *runtime library*, the library that contains things like the implementation of `std::string`.
 
@@ -294,11 +294,11 @@ Note: we could also have set the `language` parameter to `c++`, and invoke the C
 
 Let's try again:
 
-<pre>
+```
 $ python setup.py develop
 $ python chucknorris.py
 ImportError: .../_chucknorris.abi3.so: undefined symbol: sqlite3_close
-</pre>
+```
 
 This one is easier: `chucknorris` depends on `libsqlite3`, so we have to link with `sqlite3` too.
 
@@ -328,7 +328,7 @@ json
 
 Then, let's re-run `conan install`:
 
-<pre>
+```
 $ cd cpp/python/build/default
 $ conan install ../..
 ...
@@ -337,7 +337,7 @@ PROJECT: Installing /home/dmerej/src/chucknorris/cpp/ChuckNorris/conanfile.txt
 sqlite3/3.21.0@dmerej/test: Already installed!
 PROJECT: Generator cmake created conanbuildinfo.cmake
 PROJECT: Generator json created conanbuildinfo.json
-</pre>
+```
 
 This generates a `conanbuildinfo.json` file looking like this:
 
@@ -410,7 +410,7 @@ ffibuilder.set_source(
 And now everything works as expected:
 
 
-```console
+```
 $ python3 setup.py clean develop
 $ python chucknorris.py
 There are no weapons of mass destruction in Iraq, Chuck Norris lives in Oklahoma.
@@ -420,7 +420,7 @@ We can even build a pre-compiled wheel that other people can use it without need
 
 
 _On the developer machine:_
-<pre>
+```
 $ python setup.py bdist_wheel
 ...
 running build_ext
@@ -429,13 +429,13 @@ building '_chucknorris' extension
 ...
 creating 'dist/chucknorris-0.1-cp36-cp36m-linux_x86_64.whl' and adding '.' to it
 ...
-</pre>
+```
 
 _On an other machine_:
-<pre>
+```
 $ pip install chucknorris-0.1-cp36-cp36m-linux_x86_64.whl
 $ python -c 'import chucknorris; chucknorris.main()'
-</pre>
+```
 
 For this to work, the other user will need to be on Linux, have a compatible C++ library and the same version of Python, but as far as distribution of binaries on Linux usually go, isn't this nice?
 

@@ -149,7 +149,7 @@ In our first attempt, we generated all the binaries (`libchucknorris.a`, the `.o
 
 So let's create a folder named `build/default` and call CMake, asking it to use the Ninja generator. CMake uses the current working directory as the build folder, and you must specify the path to the folder containing the `CMakeLists.txt` file as the last argument on the command line:
 
-```text
+```
 $ mkdir -p build/default
 $ cd build/default
 $ cmake -GNinja ../..
@@ -157,7 +157,7 @@ $ cmake -GNinja ../..
 
 And now we use ninja to build build and run our executable from the build folder:
 
-```text
+```
 $ cd build/default
 $ ninja
 [1/4] Building CXX object CMakeFiles/chucknorris.dir/src/ChuckNorris.cpp.o
@@ -174,7 +174,7 @@ Note that CMake and Ninja cooperate so that you only rebuild what's need to be r
 
 If we change just the `main.cpp`, we just have to rebuild `main.cpp.o` and relink the `cpp_demo`:
 
-```text
+```
 $ ninja
 [1/2] Building CXX object CMakeFiles/cpp_demo.dir/src/main.cpp.o
 [2/2] Linking CXX executable cpp_demo
@@ -182,7 +182,7 @@ $ ninja
 
 But if we change `ChuckNorris.cpp`, everything *except* `main.cpp.o` needs to be rebuilt:
 
-```text
+```
 [1/3] Building CXX object CMakeFiles/chucknorris.dir/src/ChuckNorris.cpp.o
 [2/3] Linking CXX static library libchucknorris.a
 [3/3] Linking CXX executable cpp_demo
@@ -190,7 +190,7 @@ But if we change `ChuckNorris.cpp`, everything *except* `main.cpp.o` needs to be
 
 And if we change the `CMakeLists.txt` file, Ninja will re-run CMake for us:
 
-```text
+```
 $ ninja
 [0/x] Re-running CMake...
 -- Configuring done

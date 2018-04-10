@@ -50,7 +50,7 @@ When we described the chucknorris library in our CMakeList.txt earlier, we did n
 The type of the library used in this case is controlled by a variable called `BUILD_SHARED_LIBS` which is `OFF` by default. So, let's re-run CMake, setting this variable to `ON` instead.
 
 
-<pre>
+```
 $ cd build/default
 $ cmake -GNinja -DBUILD_SHARED_LIBS=ON ../..
 $ ninja
@@ -73,7 +73,7 @@ FAILED: lib/libchucknorris.so
 /bin/ld: libsqlite3.a(sqlite3.o): relocation R_X86_64_PC32
 against symbol `sqlite3_version` can not be used when making a shared object;
 recompile with -fPIC
-</pre>
+```
 
 The link fails.
 
@@ -83,10 +83,10 @@ The compiler tells us what needs to be done: we have to recompile `libsqlite3.a`
 
 Here's what `man gcc` has to say about `fpic`:
 
-<pre>
+```
 -fpic
   Generate position-independent code (PIC) suitable for use in a shared library.
-</pre>
+```
 
 
 Fair enough, let's try to rebuild `sqlite3` by generating position-independent code.
@@ -100,19 +100,19 @@ We will be using a different user name and channel. (*@dmerej/test* instead of *
 
 Let's fetch the recipe from the remote:
 
-<pre>
+```
 $ conan copy sqlite3/3.21.0@bincrafters/stable dmerej/test
 Downloading conan_sources.tgz
 [==================================================] 706B/706B
 Copied sqlite3/3.21.0@bincrafters/stable to sqlite3/3.21.0@dmerej/test
 Copied sources sqlite3/3.21.0@bincrafters/stable to sqlite3/3.21.0@dmerej/test
-</pre>
+```
 
 Here conan looked for the recipe in the remote and created a copy with a different name, but still inside the conan cache.
 
 Then we copy the sources from the cache and put them in a `conan/sqlite3` folder next to the C++ code:
 
-<pre>
+```
 $ cd ChuckNorris/cpp
 $ mkdir -p conan/sqlite3
 $ cd conan/sqlite3
@@ -120,11 +120,11 @@ $ cp -rv ~/.conan/data/sqlite3/3.21.0/bincrafters/stable/export/* .
 '../conanfile.py' -> './conanfile.py'
 '../conanmanifest.txt' -> './conanmanifest.txt'
 '../LICENSE.md' -> './LICENSE.md'
-</pre>
+```
 
 Let's try to build the package ourselves:
 
-<pre>
+```
 $ conan create . dmerej/test
 sqlite3/3.21.0@dmerej/test: Exporting package recipe
 sqlite3/3.21.0@dmerej/test: A new conanfile.py version was exported
@@ -136,19 +136,19 @@ sqlite3/3.21.0@dmerej/test: Attempting download of sources from:
 ...
 sqlite3/3.21.0@dmerej/test: Calling build()
 CMake Error: The source directory "..." does not appear to contain CMakeLists.txt.
-</pre>
+```
 
 Turns out we need to also copy some files from the `export_source` folder:
 
-<pre>
+```
 $ cp -rv ~/.conan/data/sqlite3/3.21.0/bincrafters/stable/export_source/* .
 '../CMakeLists.txt -> './CMakeLists.txt'
 '../FindSQLite3.cmake' -> './FindSQLite3.cmake'
-</pre>
+```
 
 And now we can build:
 
-<pre>
+```
 $ conan create . dmerej/test
 sqlite3/3.21.0@dmerej/test: Exporting package recipe
 sqlite3/3.21.0@dmerej/test: A new conanfile.py version was exported
@@ -163,15 +163,15 @@ sqlite3/3.21.0@dmerej/test: Calling build()
 [1/2] Building C object CMakeFiles/sqlite3.dir/sources/sqlite3.o
 [2/2] Linking C static library lib/libsqlite3.a
 ...
-sqlite3/3.21.0@dmerej/test: Package '6ae331b72e7e265ca2a3d1d8246faf73aa030238' built
+sqlite3/3.21.0@dmerej/test: Package '6ae331b7...' built
 ...
 sqlite3/3.21.0@dmerej/test: Calling package()
 sqlite3/3.21.0@dmerej/test package(): Copied 1 '.cmake' files: FindSQLite3.cmake
 sqlite3/3.21.0@dmerej/test package(): Copied 2 '.h' files: sqlite3.h, sqlite3ext.h
 sqlite3/3.21.0@dmerej/test package(): Copied 1 '.a' files: libsqlite3.a
 ...
-sqlite3/3.21.0@dmerej/test: Package '6ae331b72e7e265ca2a3d1d8246faf73aa030238' created
-</pre>
+sqlite3/3.21.0@dmerej/test: Package '6ae331b7...' created
+```
 
 Let's sum up what happened:
 
@@ -260,9 +260,9 @@ class ConanSqlite3(ConanFile):
 
 So now we can re-create the `sqlite3` package:
 
-<pre>
+```
 $ conan create --option 'pic=True' . dmerej/test
-</pre>
+```
 
 Finally, we can change the `conanfile.txt` in `cpp/ChuckNorris` to reference our newly built package:
 
@@ -278,7 +278,7 @@ Let's re-run `conan install`, using the `--option` command line flag again, and 
 
 Note that we prefix the `pic=True` option by the name of the package we want to apply the option on. If we did not do that, `conan` would have tried to set the option on *every* package.
 
-<pre>
+```
 $ cd build/default
 $ conan install ../.. --option 'sqlite3:pic=True'
 $ cmake -GNinja -DBUILD_SHARED_LIBS=ON ../..
@@ -290,7 +290,7 @@ $ ninja
 [5/7] Linking CXX shared library lib/libchucknorris.so
 [6/7] Linking C executable bin/c_demo
 [7/7] Linking CXX executable bin/cpp_demo
-</pre>
+```
 
 
 Success!
@@ -309,19 +309,19 @@ Anyway, we said earlier that it was the operating system that took care of loadi
 
 We can thus check that the `libchucknorris.so` file does get loaded when we run the `cpp_demo` executable, by asking `ld.so` to output debug information about the files it loads [^3]:
 
-<pre>
+```
 $ cd build/default
 $ export LD_TRACE_LOADED_OBJECTS=1
 $ ./bin/cpp_demo
 ./bin/cpp_demo
-	linux-vdso.so.1 (0x00007ffe07395000)
-	libchucknorris.so => .../build/default/lib/libchucknorris.so (0x00007f5f4c43e000)
+	linux-vdso.so.1 (0x00007f...)
+	libchucknorris.so => .../build/default/lib/libchucknorris.so (0x00007f...)
     ...
-	libpthread.so.0 => /usr/lib/libpthread.so.0 (0x00007f5f4c220000)
-	libdl.so.2 => /usr/lib/libdl.so.2 (0x00007f5f4c01c000)
+	libpthread.so.0 => /usr/lib/libpthread.so.0 (0x00007f...)
+	libdl.so.2 => /usr/lib/libdl.so.2 (0x00007f...)
     ...
 Chuck Norris knows Victoria's secret
-</pre>
+```
 
 Our friends `libpthread.so` and `libdl.so` we had to take care of when we linked with `sqlite3` by hand are involved, and we can see the full path of the ChuckNorris lib inside our build folder.
 
@@ -341,10 +341,10 @@ fact = handle.chuck_norris_get_fact(ck)
 print(fact)
 ```
 
-<pre>
+```
 $ python ck.py
 zsh: segmentation fault (core dumped)  python ck.py
-</pre>
+```
 
 Whoops :/
 
@@ -360,10 +360,10 @@ fact = handle.chuck_norris_get_fact(ck)
 print(fact)
 ```
 
-<pre>
+```
 $ python ck.py
 b'When Chuck Norris enters a rodeo the bull has to try and last 8 seconds.'
-</pre>
+```
 
 Almost there: we still have get rid of the `b'` prefix.
 
@@ -377,10 +377,10 @@ fact_text = fact_as_bytes.decode("UTF-8")
 print(fact_text)
 ```
 
-<pre>
+```
 $ python ck.py
 When Chuck Norris enters a rodeo the bull has to try and last 8 seconds.
-</pre>
+```
 
 And we're done.
 

@@ -13,7 +13,7 @@ tags: [c++]
 
 * Need to build a shared library (but still link with sqlite in static ...)
 
-```console
+```
 $ mkdir -p cpp/build/java
 $ cd cpp/build/java
 $ conan install ../..
@@ -21,7 +21,7 @@ $ cmake -GNinja -DBUILD_SHAREDS_LIBS=ON ../..
 $ ninja
 ```
 
-```console
+```
 $ gradlew init --type java-library
 ```
 
@@ -98,7 +98,7 @@ Using the Android helper.
 
 * If emulator does not start, use:
 
-```console
+```
 $ cd ~/Android/Sdk/
 $ ./tools/emulitors -list-avds
 # to get your AVD name
@@ -128,7 +128,7 @@ public class ChuckNorrisTest {
 
 Hu-ho:
 
-```text
+```
 java.lang.UnsatisfiedLinkError:
 Native library (com/sun/jna/android-x86-64/libjnidispatch.so)
 not found in resource path (.)
@@ -142,7 +142,7 @@ You can find the `libjnidispatch.so` lib inside the `android-x86-84.jar` folder 
 
 so that other devs can guess what to do, also add a `.gitignore` file:
 
-```console
+```
 $ cat jniLibs/.gitignore
 x86_64
 # TODO: add more Android archs here
@@ -159,7 +159,7 @@ Note: there's probably a way to do that automatically with gradle, but life is s
 
 Now the error becomes:
 
-```console
+```
 java.lang.UnsatisfiedLinkError:
 Unable to load library 'chucknorris':
 Native library (android-x86-64/libchucknorris.so)
@@ -177,14 +177,14 @@ the full path when using `conan create`.
 
 Let's cross-compile `sqlite3` for android:
 
-```console
+```
 $ cd console-recipes/sqlite3
 $ conan create . dmerej/test -p android-x86_64
 ```
 
 And then cross-compile the `chucknorris` lib:
 
-```console
+```
 $ cd cpp
 $ mkdir build/android/x86_64
 $ conan install ../../ -p android-x86_64
@@ -196,7 +196,7 @@ sqlite3/3.21.0@dmerej/test: Already installed!
 OK, now we are ready to build:
 
 
-```console
+```
 $ cd build/android/x86_64
 $ cmake -GNinja ../../..
 $ ninja
@@ -219,7 +219,7 @@ But conan knew how to cross-compile `sqlite3` for android ? Can't we tell conan 
 
 # Creating a recipe for chucknorris
 
-```console
+```
 $ conan new ChuckNorris/0.1 --source
 ```
 
@@ -259,7 +259,7 @@ Note how we use `cmake.install()` in the `package` step. More on this later.
 
 Telling conan to build our package:
 
-```console
+```
 $ cd cpp/
 $ conan build . --build-folder build/default
 Project: Running build()
@@ -285,7 +285,7 @@ Let's add `export CONAN_CMAKE_GENERATOR` in our `~/.zshrc` file so that we don't
 
 And now we can try a cross-compilation build:
 
-```console
+```
 $ conan install . --profile android-x86_64 --install-folder build/android/x86_64
 $ conan build . --build-folder build/android/x86_64
 ```
@@ -302,7 +302,7 @@ TODO: had to patch the conanfile.py to have:
 # Running cross-compiled code
 
 
-```console
+```
 $ cd build/android/x86_64
 $ adb push lib/libchucknorris.-o /data/local/tmp/
 $ adb pusd bin/cpp-demo /data/local/tmp

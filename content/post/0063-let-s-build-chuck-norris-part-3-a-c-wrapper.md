@@ -126,7 +126,7 @@ Now let's adapt the CMake code to:
 
 And let's try to compile:
 
-<pre>
+```
 $ cd build/default
 $ ninja
 [1/7] Building C object CMakeFiles/c_demo.dir/src/main.c.o
@@ -141,7 +141,7 @@ CMakeFiles/c_demo.dir/src/main.c.o: In function `main':
 main.c:(.text+0x9): undefined reference to `chuck_norris_init'
 main.c:(.text+0x19): undefined reference to `chuck_norris_get_fact'
 main.c:(.text+0x35): undefined reference to `chuck_norris_deinit'
-</pre>
+```
 
 We can see the `libchucknorris.a` library was passed to the linker, so why were the symbols not found ?
 
@@ -149,7 +149,7 @@ We can see the `libchucknorris.a` library was passed to the linker, so why were 
 
 To understand, let's look at the names of the symbols inside the `libchucknorris.a` library using a tool called `nm`:
 
-<pre>
+```
 $ nm --defined-only libchucknorris.a
 
 ChuckNorris.cpp.o:
@@ -162,7 +162,7 @@ c_wrapper.o
 0000000000000000 T _Z17chuck_norris_initv
 00000000000000ac T _Z19chuck_norris_deinitP11ChuckNorris
 000000000000003c T _Z21chuck_norris_get_factP11ChuckNorris
-</pre>
+```
 
 Hum. The names of the symbols do not match the ones we declared in the headers.
 
@@ -170,17 +170,17 @@ That's because they were *mangled* by the C++ compiler. I won't detail here the 
 
 We can check that the `cpp_demo` binary contains a reference to the weird `getFact` symbol:
 
-<pre>
+```
 $ nm --defined-only cpp_demo
 ...
 000000000000cefe T _ZN11ChuckNorris7getFactB5cxx11Ev
-</pre>
+```
 
 We can also use the `--demangle` option when calling `nm` and see the original names:
 
 (note that the C symbols were mangled too)
 
-<pre>
+```
 $ nm --demangle --defined-only libchucknorris.a
 ...
 00000000000001b0 T ChuckNorris::getFact[abi:cxx11]()
@@ -192,7 +192,7 @@ $ nm --demangle --defined-only libchucknorris.a
 $ nm --demangle --defined-only cpp_demo
 ...
 000000000000cefe T ChuckNorris::getFact[abi:cxx11]()
-</pre>
+```
 
 When we compiled `c_demo.o`, we used a *C* compiler. (CMake saw a `.c` extension on the source file, and thus told ninja to build `main.c.o` with a C compiler)
 
@@ -213,13 +213,13 @@ extern "C" {
 
 But if we do that, we now get a compile failure because the C compiler does not understand the `extern` syntax:
 
-<pre>
+```
 $ ninja
 /bin/cc  -o main.c.o -c main.c
 In file included from ../../src/main.c:1:0:
 chucknorris.h:3:8: error: expected identifier or ‘(’ before string constant
 extern "C" {
-</pre>
+```
 
 
 Fortunately, the C++ compiler sets a `__cplusplus` define for us:
@@ -241,7 +241,7 @@ extern "C" {
 
 Now the build passes [^2], and we can double-check the names of symbols inside the archive:
 
-<pre>
+```
 $ ninja
 [1/7] Building C object CMakeFiles/c_demo.dir/src/main.c.o
 [2/7] Building CXX object CMakeFiles/chucknorris.dir/src/c_wrapper.cpp.o
@@ -264,20 +264,20 @@ c_wrapper.o
 0000000000000000 T chuck_norris_init
 00000000000000ac T chuck_norris_deinit
 000000000000003c T chuck_norris_get_fact
-</pre>
+```
 
 ## The string bug
 
 Hooray, we managed to build our C code! Let's run it:
 
-<pre>
+```
 $ ./bin/c_demo
 ���rU
  ./bin/c_demo
 ����BV
 ./bin/c_demo
 `15R�U
-</pre>
+```
 
 Hum. Something is not right.
 
@@ -332,12 +332,12 @@ int main()
 
 And now the binary works:
 
-<pre>
+```
 $ ninja
 $ ./bin/c_demo
 Chuck Norris doesn't dial the wrong number.
 You answered the wrong phone.
-</pre>
+```
 
 That's all for today. The C library is the building block we'll use to [write Python bindings]({{< ref "post/0064-let-s-build-chuck-norris-part-4-python-and-ctypes.md" >}}) and phone applications. Stay tuned for the rest of the story!
 

@@ -118,7 +118,7 @@ First, we go to [the download page of the sqlite3 project](https://www.sqlite.or
 
 We then fetch the "almagation" archive, and extract it:
 
-```console
+```
 $ cd $HOME
 $ mkdir -p 3rdpart/sqlite
 $ cd 3rdpart/sqlite
@@ -133,7 +133,7 @@ OK, we just have a `sqlite3.c` to build and a `sqlite3.h` header that we can inc
 
 Let's build a static library:
 
-```console
+```
 $ gcc -c sqlite3.c -o sqlite3.o
 $ ar qf libsqlite3.a sqlite3.o
 $ ranlib libsqlite3.a
@@ -141,7 +141,7 @@ $ ranlib libsqlite3.a
 
 And, just to clean things up, let's create a `lib` and `include` folder:
 
-```console
+```
 $ mkdir include lib
 $ mv libsqlite3.a lib/
 $ mv sqlite3.h include/
@@ -180,7 +180,7 @@ target_link_libraries(chucknorris sqlite3)
 
 Let's build the ChuckNorris project again:
 
-```console
+```
 $ cd build/default
 $ cmake -GNinja ../..
 $ ninja -v
@@ -203,7 +203,7 @@ You can see that CMake added the include path of sqlite3 in a `-isystem` flag[^1
 
 On my machine, I still got a build failure:
 
-```console
+```
 Linking CXX executable cpp_demo
 FAILED: cpp_demo
 /bin/c++
@@ -235,7 +235,7 @@ if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
 endif()
 ```
 
-```console
+```
 $ ninja -v
 /bin/c++
   main.cpp.o
@@ -255,7 +255,7 @@ Let's now see how conan can help us using sqlite3 more easily.
 
 Conan is written in Python and you can install it with `pip`:
 
-```console
+```
 $ python3 -m pip install conan --user
 ```
 
@@ -297,7 +297,7 @@ The `cmake` generator tells conan to generate some files that contain informatio
 
 Here's how to invoke conan:
 
-<pre>
+```
 $ cd build/default
 $ conan install ../..
 sqlite3/3.21.0@bincrafters/stable: Not found in local cache, looking in remotes...
@@ -311,7 +311,7 @@ Packages
 PROJECT: Retrieving package 6ae331b72e7e265ca2a3d1d8246faf73aa030238
 ...
 PROJECT: Generator cmake created conanbuildinfo.cmake
-</pre>
+```
 
 Several things happened here:
 
@@ -347,7 +347,7 @@ target_link_libraries(chucknorris CONAN_PKG::sqlite3)
 
 We can now call `cmake` and `ninja` as we did in the end of the previous part:
 
-```console
+```
 $ cmake -GNinja ../..
 ...
 -- Conan: Using cmake targets configuration
