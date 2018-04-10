@@ -297,6 +297,7 @@ to keep easily available.
 * [Airtable: Modern database created for everyone](https://airtable.com/)
 * [Beekeeper: Tools for Rest API](https://beekeeper.readthedocs.org/en/latest/)
 * [BeeWare: Tools for Python](http://pybee.org/)
+* [blurb: Automatic changelog generation](https://pypi.python.org/pypi/blurb)
 * [Bootstrap](http://getbootstrap.com)
 * [Buku: Powerful command-line bookmark manager](https://github.com/jarun/Buku)
 * [colout: Color up commands output](https://nojhan.github.io/colout/)
