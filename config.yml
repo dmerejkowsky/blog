@@ -25,6 +25,6 @@ taxonomies:
 
 menu:
   main:
-    - name: Subcribe
+    - name: Subscribe
       identifier: subscribe
       url: /index.xml
