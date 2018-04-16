@@ -53,6 +53,7 @@ to keep easily available.
 * [Dark Scrum](http://ronjeffries.com/articles/016-09ff/defense)
 * [Dealing with Legacy Code for Developers: Managing your Manager](
   http://www.daedtech.com/dealing-legacy-code-developers-managing-manager)
+* [Dear Developer, The Web Isn't About You](https://sonniesedge.co.uk/talks/dear-developer)
 * [Design for experts; accomodate beginners](
   https://pchiusano.github.io/2016-02-25/tech-adoption.html)
 * [Developer Driven Developemnt](
