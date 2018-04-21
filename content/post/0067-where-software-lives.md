@@ -1,7 +1,7 @@
 ---
 slug: where-software-lives
 date: 2018-04-12T06:05:15.964719+00:00
-draft: true
+draft: false
 title: "Where Software Lives"
 tags: [misc]
 ---
