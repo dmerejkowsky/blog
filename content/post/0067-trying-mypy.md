@@ -126,9 +126,9 @@ if is_odd("this sentence contains %s"):
     print("ok")
 ```
 
-We use `is_odd`, which  is obviously a method that only works with number, with a string.
+We have a function `is_odd`, which obviously only works with numbers, and we call it with a string.
 
-But since the string contains `%s`, Python will happily assume we are trying to format it, and the bug will go un-noticed.
+But since the string contains `%s`, Python will happily assume we are trying to format it, and the bug will go unnoticed.
 `is_odd` will simply return False, because we are *also* allowed to compare strings and numbers in Python.
 
 Without type annotations, mypy detects nothing:
@@ -361,7 +361,7 @@ The problem here is that we inverted the `status_code` and `message` parameter. 
 
 The bug was not caught because the code in question was actually copy/pasted from a CI script (and you usually don't write tests for CI scripts).
 
-We actually don't need to streamed response anywhere in tsrc, so this is in fact dead code.
+We actually don't need streamed responses anywhere in tsrc, so this is in fact dead code.
 
 
 #### handle_json_errors
