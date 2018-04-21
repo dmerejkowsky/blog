@@ -10,10 +10,9 @@ Last night I had a beer with some old friends and colleagues.
 
 We were discussing a particular library and one of us explained he recently found patches from almost all of us in the git history.
 
-And the he said (I'm paraphrasing a little):
+And then he said (I'm paraphrasing a little):
 
-> Software lives in the heads of the people who wrote it. Code and documentation are nothing but
-> distant echoes of their thoughts at a given time.
+> Software lives in the minds of the people who wrote it. Code and documentation are nothing but distant echoes of their thoughts at a given time.
 
 I could not agree more.
 
