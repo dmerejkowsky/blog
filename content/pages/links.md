@@ -361,6 +361,15 @@ to keep easily available.
 * [zsh-pure-prompt: pretty, minimal and fast ZSH prompt](
   https://github.com/sindresorhus/pure)
 
+## Android
+
+
+* [Audinaut](https://github.com/nvllsvm/Audinaut), to be used with [libresonic](https://github.com/Libresonic/libresonic)
+* [ColorNote](https://play.google.com/store/apps/details?id=com.socialnmobile.dictapps.notepad.color.note&hl=en)
+* [f-droid](https://f-droid.org)
+* [MAPS.ME](https://play.google.com/store/apps/details?id=com.mapswithme.maps.pro)
+* [OneTimePass](https://f-droid.org/packages/com.github.onetimepass/)
+
 ## Building stuff
 
 * [Bazel](http://bazel.io)
