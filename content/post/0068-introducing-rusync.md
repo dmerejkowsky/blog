@@ -35,7 +35,6 @@ See the [feedback page]({{< ref "pages/feedback.md" >}}) for all the possible wa
 
 Here's a list of features I plan to implement
 
-* Symlinks handling
 * Option to delete extraneous files
 * Global progress bar
 
