@@ -6,13 +6,17 @@ title: "A boolean's story"
 tags: [rust]
 ---
 
-[Earlier this month]({{< ref "post/0068-introducing-rusync.md" >}}) I told you about my pet project in Rust.
+[Earlier this month]({{< ref "post/0068-introducing-rusync.md" >}}) I told you
+about my pet project in Rust.
 
 As a reminder, it's a tool named rusync which contains some of the
 functionality offered by the `rsync` command-line tool.
 
 Today I'd like to talk about a feature I've added recently, and take this
 opportunity to show you a few principles of good design along the way.
+
+You can find the code on [github](https://github.com/dmerejkowsky/rusync) and
+download it from [crates.io](https://crates.io/crates/rusyn://crates.io/crates/rusync).
 
 # The algorithm
 
@@ -28,11 +32,12 @@ The algorithm is pretty straightforward:
 * For each source file (for instance `src/foo/bar.txt`), check if the destination file
   (`dest/foo/bar.txt` in this case) exists. If it *does* exist, get its `mtime` (that is, the
   date it was last modified). Then, if the source is more recent than the destination, or if
-  the destination is missing, proceed and copy the whole contents of `src/foo/bar.txt` to `dest/foo/bar.txt`).
+  the destination is missing, proceed and copy the whole contents of
+  `src/foo/bar.txt` to `dest/foo/bar.txt`.
 
-One of the issues I had to deal with is the preservation of permission.
+One of the issues I had to deal with is the preservation of permissions.
 Suppose one of the files is executable, let's say `src/foo/bar.exe`, then the
-destination should be executable too.
+destination (`dest/foo/bar.exe`) should be executable too.
 
 So, after the destination file has been written, we should apply the necessary
 transformations so that the permissions of the destination file matches the
@@ -64,7 +69,6 @@ fn main() {
     let source = &opt.source;
     let destination = &opt.destination;
     let mut syncer = Syncer::new(&source, &destination);
-    syncer.preserve_permissions(preserve_permissions);
     syncer.sync()?;
 }
 ```
@@ -73,7 +77,7 @@ We declare a struct `Opt` which will contain our command line options, then in
 `main()` we parse the command line arguments and instantiate a new `Syncer`
 object.
 
-Here's the relevant parts of the `Syncer` implementation:
+Here are the relevant parts of the `Syncer` implementation:
 
 ```rust
 
@@ -126,14 +130,13 @@ impl Syncer {
 As you can see, the bulk of the work is done by the `sync_file` function, which
 calls `fsops::sync_entries` with a `Entry` type.
 
-The `Entry` is a container for the file path and its metadata. Reading metadata
+The `Entry` type is a container for the file path and its metadata. Reading metadata
 about the file (such as its `mtime`) is expensive, so we do that once in the
-`Entry::new()` method and the rest of the code can then use the public methods
-of the `Entry` struct to retrieve info about the path in question.
+`Entry::new()` function and the rest of the code can then use the public function
+of the `Entry` struct to retrieve info about the file in question.
 
 ```rust
 pub struct Entry {
-    description: String,
     path: PathBuf,
     metadata: Option<fs::Metadata>,
     exists: bool,
@@ -211,7 +214,7 @@ I decided what I needed was a flag on the command line so that users of rusync
 could choose to turn off the "copy permissions" feature.
 
 Well, this does not seem to hard, does it ? We just need to pass around a
-boolean called `preserve_permission`  all the way from the `Opt` struct in
+boolean called `preserve_permissions`  all the way from the `Opt` struct in
 `main` to the `sync_entries` in function, across the `Syncer` struct.
 
 Let's do that!
@@ -232,7 +235,7 @@ fn main() {
     let opt = Opt::from_args();
     let source = &opt.source;
     let destination = &opt.destination;
-    let preserve_permissions = ! opt.no_preserve_permissions;
+    let preserve_permissions = !opt.no_preserve_permissions;
 
     let mut syncer = Syncer::new(&source, &destination);
     syncer.preserve_permissions(preserve_permissions);
@@ -332,7 +335,7 @@ Yeah, I know it's a little change, but it's the kind of little details that
 matter in the long run. Double negatives are just as hard to understand in
 plain English as in code.
 
-Then we have all these methods that take a boolean parameter.
+Then we have all these functions that take a boolean parameter.
 
 As [Uncle Bob](https://blog.cleancoder.com/) would tell you, whenever you have
 a function that takes a boolean, you almost always want two functions instead.
@@ -355,7 +358,7 @@ Let's have a look at the patch:
   // ..
 
 -    if preserve_permissions {
--        copy_outcome = copy_permissions(&src, &dest);
+-        copy_permissions(&src, &dest);
 -    }
   Ok(())
 }
@@ -393,8 +396,8 @@ title="Single Responsibility Principle">SRP</abbr> more or less states that
 each module should only have one reason to change.
 
 Code in `syncer.rs` will have to change if we want to customize the *behavior* of `rusync`
-(like deleting the extraneous files in the destination folder), code in
-`fsops.rs` will change if we want to change low-level *implementation* details of `rusync`
+(like deleting the extraneous files in the destination folder). On the other hand, code in
+`fsops.rs` will have to change if we want to modify low-level *implementation* details of `rusync`
 (like using a more efficient algorithm like rsync does).
 
 Note that in the first case, we'll of course have to add code in `fsops.rst` to
@@ -431,7 +434,7 @@ the `copy_entry()` function, and an other time in the `copy_perms()` function.
 Usually, `File::create` truncates the file, but when the first file handle was
 destroyed, its contents were magically preserved. (Software is weird sometimes)
 
-After the refactoring, the second `File:;create` was called after the first
+After the refactoring, the second `File:;create()` was called after the first
 file handle was closed, and the destination filed ended up empty (but with the
 correct permissions ...)
 
