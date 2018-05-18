@@ -40,7 +40,7 @@ Suppose one of the files is executable, let's say `src/foo/bar.exe`, then the
 destination (`dest/foo/bar.exe`) should be executable too.
 
 So, after the destination file has been written, we should apply the necessary
-transformations so that the permissions of the destination file matches the
+transformations so that the permissions of the destination file match the
 permissions of the source file.
 
 # The code
@@ -132,8 +132,7 @@ calls `fsops::sync_entries` with a `Entry` type.
 
 The `Entry` type is a container for the file path and its metadata. Reading metadata
 about the file (such as its `mtime`) is expensive, so we do that once in the
-`Entry::new()` function and the rest of the code can then use the public function
-of the `Entry` struct to retrieve info about the file in question.
+`Entry::new()` function and the rest of the code can then use the public functions of the `Entry` struct to retrieve info about the file in question.
 
 ```rust
 pub struct Entry {
