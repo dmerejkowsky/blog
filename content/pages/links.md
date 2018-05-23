@@ -542,6 +542,7 @@ to keep easily available.
 ## Decentralized Internet
 
 * [C.H.A.T.O.N.S](https://chatons.org)
+* [Comment réparer les médias sociaux (et faire encore mieux)](https://framablog.org/2018/05/23/comment-reparer-les-medias-sociaux-et-faire-encore-mieux/)
 * [cozy](https://cozy.io/en/)
 * [Daplie](https://daplie.com/)
 * [de-Google-ify](https://degooglisons-internet.org/?l=en)
