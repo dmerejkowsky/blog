@@ -202,6 +202,7 @@ to keep easily available.
   https://docs.python.org/3/howto/functional.html)
 * [Get Python packages which need a C compiler installed easily on Windows](
   http://blog.rtwilson.com/how-to-get-python-package-which-need-a-c-compiler-installed-easily-on-windows/)
+* [Python Entry Points Explained](https://amir.rachum.com/blog/2017/07/28/python-entry-points/)
 * [Python FAQ: Why should I use Python 3?](
   https://eev.ee/blog/2016/07/31/python-faq-why-should-i-use-python-3)
 * [Switching to Python 3: An Awesome Upgrade](
