@@ -1,4 +1,5 @@
 ---
+authors: [dmerej]
 slug: trying-mypy
 date: 2018-05-27T10:17:17.789657+00:00
 draft: false

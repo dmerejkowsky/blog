@@ -1,4 +1,5 @@
 ---
+authors: [dmerej]
 slug: introducing-rusync
 date: 2018-05-08T17:59:06.225602+00:00
 draft: false
