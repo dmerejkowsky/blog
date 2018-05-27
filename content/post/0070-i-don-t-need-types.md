@@ -81,7 +81,7 @@ And then I watched a talk called [ideology](https://www.destroyallsoftware.com/t
 
 Excerpt:
 
-> [This is important] mostly because it will make you better programmers, but also because it will stop you from making angry hacker news comments.
+> [This is important] mostly because it will make you better programmers, but also because it will stop you from making angry Hacker News comments.
 
 
 I won't summarize the talk here, but it helped me realizing what I really meant when I claimed "I have tests so I don't need types".
