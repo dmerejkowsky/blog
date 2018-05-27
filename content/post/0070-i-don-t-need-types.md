@@ -1,8 +1,8 @@
 ---
 slug: trying-mypy
-date: 2018-04-21T10:17:17.789657+00:00
+date: 2018-05-27T10:17:17.789657+00:00
 draft: true
-title: "Trying mypy"
+title: "How I decided to give mypy a go"
 tags: [python]
 ---
 
@@ -44,23 +44,29 @@ I now think most of these statements are wrong, but it was what I believed at th
 
 So there I was. Tools and type systems did not matter, all that matter were tests and how easy it was to write them.
 
-All you need to do in order to have tests that you can trust and ship code without bug was to use TDD and write lots and lots of tests.
+Also, the *only* way to ship software without bugs was to use TDD and write lots and lots of tests.
+
+I did not need a type system because tests were enough.
 
 Here's a list of things that contributed to burst my bubble.
 
 
-## pyflakes
+## Some linters
 
-I started using [pyflakes]() in [vim-ale]. pyflakes is very easy to use, requires no configuration and it's fast.
+### pyflakes
+
+I started using [pyflakes](https://github.com/PyCQA/pyflakes) with [vim-ale](https://github.com/w0rp/ale).
+
+pyflakes is very easy to use, requires no configuration and is fast.
 
 Suddenly a whole bunch of bugs disappeared: `pyflakes` is very good at finding misspelled variables or missing imports.
 
-So maybe using TDD just to find misspelled variables or missing imports is overkill?
+So maybe writing just to find misspelled variables or missing imports is overkill?
 
 Of course, pyflakes does not catch other errors like calling a function with an incorrect number of arguments but still, it's quite nice to catch these errors *right after the file is saved*, instead of later when a test fails.
 
 
-## pylint
+### pylint
 
 I've already mentioned how [pylint can be very useful]() if you take the time to configure it properly, so I won't repeat myself here.
 
