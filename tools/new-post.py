@@ -9,6 +9,7 @@ import arrow
 
 TEMPLATE = """\
 ---
+authors: [dmerej]
 slug: {slug}
 date: {full_date}
 draft: false
