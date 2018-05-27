@@ -59,7 +59,7 @@ pyflakes is very easy to use, requires no configuration and is fast.
 
 Suddenly a whole bunch of bugs disappeared: pyflakes is very good at finding misspelled variables or missing imports.
 
-So maybe writing just to find misspelled variables or missing imports is overkill?
+So maybe writing tests just to find misspelled variables or missing imports is overkill?
 
 Of course, pyflakes does not catch other errors like calling a function with an incorrect number of arguments but still, it's quite nice to catch these errors *right after the file is saved*, instead of later when a test fails.
 
