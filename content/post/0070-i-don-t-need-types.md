@@ -100,7 +100,7 @@ But there were [flow](https://flow.org/) type annotations everywhere. The errors
 always easy to understand and even sometimes misleading, but flow did help me gain
 confidence that I was not breaking everything during the refactoring.
 
-That showed my that type annotations in a "dynamic" languages could actually be worth it.
+That showed me that type annotations in a "dynamic" languages could actually be worth it.
 
 Still, I was convinced we should have written tests for this project since day one, and not let
 the production code grow without tests.
@@ -147,7 +147,7 @@ That's why we try and multiply the techniques hoping each of them will find diff
 * We ask other humans to find defects in the code for us, and we call this "a QA process"
 * We use static analyzers to find issues in the code automatically
 * We use tests to try and prove that the code works as it should
-* We use TDD to look at the code both from the 'production' perspective (when we go from red to green), and from a 'quality' perspetive (when we go from green to refactor).
+* We use TDD to look at the code both from the 'production' perspective (when we go from red to green), and from a 'quality' perspective (when we go from green to refactor).
 * And we use static types or type annotations to improve correctness of the
   code in a way that complements all of the above methods.
 
