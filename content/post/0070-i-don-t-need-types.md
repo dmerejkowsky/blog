@@ -68,7 +68,7 @@ Of course, pyflakes does not catch other errors like calling a function with an 
 
 I've already mentioned how [pylint can be very useful]({{< ref "post/0018-some-pylint-tips.md" >}}) if you take the time to configure it properly, so I won't repeat myself here.
 
-Still, I learned that Python static analysers did not have to suck after all, and could find defects faster than tests.
+Still, I learned that Python static analyzers did not have to suck after all, and could find defects faster than tests.
 
 Today I use pyflakes, pylint and a few other linters for all my Python projects. You can read more about this in
 [How I lint my Python]({{< ref "post/0037-how-i-lint-my-python.md" >}}).
