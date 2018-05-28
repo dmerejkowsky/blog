@@ -32,7 +32,7 @@ C++ sucks:
 Python rocks:
 
 * I don't have to think about types if I don't want to. If I *really* need it, I can write an abstract base class, but most of the time duck-typing "just works".
-* If I misspell a variable or function name, or if I forgot to import a module, I'll get a test failure immediately.
+* I don't need compile-time checks because if I misspell a variable or function name, or if I forgot to import a module, I'll get a test failure immediately.
 * For each bug I can quickly add a non-regression test.
 * Refactoring is easy: all you have to do is run the tests, look at the failures and fix the code. When the tests pass, you know you're done.
 * Writing tests is easy: dependency injection is trivial thanks to duck-typing, and you can monkey-patch or mock everything! Plus, `pytest` is awesome!
