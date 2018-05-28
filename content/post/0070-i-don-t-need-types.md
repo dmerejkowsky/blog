@@ -129,7 +129,7 @@ Let me give you a few examples:
 
 * Anything that can fail returns a *type* (like `Option` or `Result`) that
   forces you to handle errors.
-* There is a `Copy` *trait* that tells you whether a type can be passed by reference or not.
+* There is a `Copy` *trait* that tells you whether a type has copy semantics versus move semantics.
 * The `Send` and `Sync` traits define how you can use a type across threads.
 * and more!
 
