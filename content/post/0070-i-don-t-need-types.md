@@ -39,7 +39,9 @@ Python rocks:
 * Static analysis for Python does not work, pylint is slow, and hard to configure. There are tons of bugs it does not catch, and it is often wrong.
 * Types annotations are useless (after all, the interpreter does almost nothing with them), except maybe for documentation purposes.
 
-I now think most of these statements are wrong, but it was what I believed at the time.
+{{< note >}}
+I now think **most of these statements are wrong**, but it was what I believed at the time.
+{{</ note >}}
 
 # Changing my mind
 
