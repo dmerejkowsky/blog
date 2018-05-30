@@ -839,19 +839,12 @@ Feel free to try and tell me about it, though!
 
 We saw how mypy, while stilling making relative few false positives, still found inconsistencies, a few bugs, and even design problems.
 
+What I still don't know (and would very much like to find out), is whether type annotations make refactoring easier.
 
-You see, we are terrible at spotting mistakes in our own code.
-
-That's why we try and multiply the techniques hoping each of them will find different types of mistakes.
-
-* We ask other humans to look at our code (during code reviews or peer programming)
-* We use static analyzers to find mistakes in the code automatically
-* We use tests to try and prove ourselves the code works as it should
-* We use TDD to look at the code both from the 'production' perspective (when we go from red to green), and from a 'quality' perspetive (when we go from green to refactor).
+We have quite a few [interesting features]() to implement, so probably the best way to go is to merge the `dm/mypy` branch and see how it goes. I'll let you know.
 
 
-Type annotations, even in a dynamic language like Python, and providing you have a good type checker, are just an other technique we can use.
+PS: We also start writing end-to-end tests for one of our app using Python + selenium, and we used `mypy` to check correctness of the Python code :)
 
-Think about it for your next project!
 
 [^1]: DRY stands for "Don't Repeat Yourself"
