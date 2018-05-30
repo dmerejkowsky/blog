@@ -75,6 +75,7 @@ I also used a project where lots of tools were already used in the hope of catch
 * Two static analyzers (pylint and pyflake) were ran for  each pull request
 * McCab complexity was measured for each and every function and method of the code base and was not allowed to go above 10.
 * TDD was used throughout the development of the projects
+* Test coverage is already at 80%
 
 Then I had to define what I meant by "worth it".
 
