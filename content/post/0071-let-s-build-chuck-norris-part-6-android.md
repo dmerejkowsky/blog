@@ -1,86 +1,236 @@
 ---
 authors: [dmerej]
-slug: chuck-norris-part-5-android
-date: 2018-03-18T16:52:30.882200+00:00
-draft: true
-title: "Let's Build Chuck Norris! - Part 5: Android"
+slug: chuck-norris-part-6-android
+date: 2018-06-02T10:17:17.789657+00:00
+draft: false
+title: "Let's Build Chuck Norris! - Part 6: Android"
 tags: [c++]
 ---
 
-# Java
+_Note: This is part 6 of the [Let's Build Chuck Norris!]({{< ref "0060-introducing-the-chuck-norris-project.md" >}}) series._
 
-* Using jna
+We now know how to wrap the ChuckNorris C++ library in Python.
 
-* Need to build a shared library (but still link with sqlite in static ...)
+For Android, we'll need to:
+
+* Wrap the C++ library in Java (this is quite similar to what we did with Python and ctypes)
+* Cross-compile the C++ library for Android (that's a big one ...)
+
+Let's start with the Java bindings.
+
+# Java bindings
+
+As a reminder, the `build/default` folder already contains our shared library, here's how we built it:
 
 ```
-$ mkdir -p cpp/build/java
-$ cd cpp/build/java
+$ cd build/default
 $ conan install ../..
-$ cmake -GNinja -DBUILD_SHAREDS_LIBS=ON ../..
+$ cmake -GNinja -DBUILD_SHARED_LIBS=ON ../..
 $ ninja
 ```
 
+Let's create a new Java library project with `gradle`:
+
+
 ```
-$ gradlew init --type java-library
+$ cd chucknorris
+$ mkdir java && cd java
+$ gradle init --type java-library
 ```
+
+Gradle created a bunch of files, but for now we just care about the sources and the tests.
+
+Our goal is to write a test that demonstrates we can indeed get some ChuckNorris facts.
+
+Let's start by removing cruft from the generated `build.gradle`:
+
+```diff
+dependencies {
+-    api 'org.apache.commons:commons-math3:3.6.1'
+-    implementation 'com.google.guava:guava:23.0'
+}
+```
+
+Let's rename the source files that gradle created into a proper package and with a correct name to have:
+
+```
+$ tree java
+├── build.gradle
+├── gradle
+└── src
+    ├── main
+    │   └── java
+    │       └── com
+    │           └── chucknorris
+    │               └── ChuckNorris.java
+    └── test
+        └── java
+            └── com
+                └── chucknorris
+                    └── ChuckNorrisTest.java
+```
+
+Now we can write a failing test:
+
+
 
 ```java
-public class ChuckNorrisLib {
-	private Pointer ckPointer;
+/* In ChuckNorrisTest.java */
+public class ChuckNorrisTest {
 
-    public interface CLibrary extends Library {
-        CLibrary INSTANCE = (CLibrary)
-            Native.loadLibrary("chucknorris", CLibrary.class);
-
-        Pointer chuck_norris_init();
-        String chuck_norris_get_fact(Pointer pointer);
-        void chuck_norris_deinit(Pointer pointer);
+    @Test
+    public void testGetFact() {
+        ChuckNorris ck = new ChuckNorris();
+        String fact = ck.getFact();
+        assertThat(fact, containsString("Chuck Norris"));
     }
-
-    public ChuckNorrisLib() {
-        ckPointer = CLibrary.INSTANCE.chuck_norris_init();
-    }
-
-    public String getFact() {
-        return CLibrary.INSTANCE.chuck_norris_get_fact(ckPointer);
-    }
-
-    // ...
 }
 ```
 
-```groovy
+
+```java
+/* In ChuckNorris.java */
+
+public class ChuckNorris {
+    String getFact() {
+        return "";
+    }
+}
+```
+
+Let's run the tests:
+
+```
+$ ./gradelew test
+> Task :test FAILED
+
+com.chucknorris.ChuckNorrisTest > testGetFact FAILED
+    java.lang.AssertionError at ChuckNorrisTest.java:14
+
+1 test completed, 1 failed
+
+# open build/reports/tests/test/index.html
+
+java.lang.AssertionError:
+Expected: a string containing "Chuck Norris"
+     but: was ""
+```
+
+OK, this fails for the good reason.
+
+Now we can try and load our shared library using jna.
+
+First, we add the dependency in the `build.gradle` file:
+
+```diff
 dependencies {
-    api 'net.java.dev.jna:jna:4.5.1'
++   api 'net.java.dev.jna:jna:4.5.1'
     testImplementation 'junit:junit:4.12'
 }
+```
 
+Then, we add the following code into the `ChuckNorris.java` class and use the `loadLibrary` method
+from jna's `Native` class.
 
+We also call `chuck_norris_init` in the constructor, storing the result into a jna `Pointer`:
+
+```java
+public class ChuckNorris {
+  private Pointer ckPointer;
+
+  private static CLibrary loadChuckNorrisLibrary() {
+    return (CLibrary) Native.loadLibrary("chucknorris", CLibrary.class);
+  }
+
+  public interface CLibrary extends Library {
+    CLibrary INSTANCE = loadChuckNorrisLibrary();
+
+    void chuck_norris_init();
+  }
+
+  public ChuckNorris() {
+    ckPointer = CLibrary.INSTANCE.chuck_norris_init();
+  }
+
+  public String getFact() {
+    return "";
+  }
+}
+```
+
+And we run the tests:
+
+```
+$ ./gradlew test
+java.lang.UnsatisfiedLinkError: Unable to load library 'chucknorris':
+Native library (linux-x86-64/libchucknorris.so) not found in resource path (...)
+	at com.sun.jna.NativeLibrary.loadLibrary(NativeLibrary.java:303)
+	at com.sun.jna.NativeLibrary.getInstance(NativeLibrary.java:427)
+        ...
+
+```
+
+This is expected. We never told jna where the `libchucknorris.so` file lived.
+
+There are several ways to do this. Here we'll set a system property in the `test` block of the Gradle configuration file:
+
+```gradle
 def thisFile  = new File(project.file('build.gradle').absolutePath)
-def projectPath = thisFile.getParentFile().getParentFile()
-def cppBuildPath = new File(projectPath, "cpp/build/java/lib")
+def projectPath = thisFile.getParentFile()
+def topPath = projectPath.getParentFile()
+def cppPath = new File(topPath, "cpp")
+def cppBuildPath = new File(cppPath, "build/default/lib")
 
 test {
     systemProperty 'jna.library.path', cppBuildPath
 }
 ```
 
+Now if we re-run the tests we get back our first failure:
 
-# Running tests
+```
+$ ./gradlew test
 
-For some reason `jna.library.path` does not get set when running the tests from android studio.
+java.lang.AssertionError:
+Expected: a string containing "Chuck Norris"
+     but: was ""
+```
 
-"Solution":
+But we did manage to instantiate the `ChuckNorris` class, so this is progress :)
 
-* Create a new configuration to run all tests in package
-* Add `-Djna.library.path=/path/to/build/java/lib` in the JVM options
+Let's implement `getFact()`, and while we're at it, add a `.close()` method:
 
-    This works but you cannot run just one test from the IDE
 
-Tip:
-* For me Android studio no longer compiled the tests before running them, fixed it by
-adding `compileTest` gradle task before launch.
+```java
+
+  public interface CLibrary extends Library {
+    // ...
+    void chuck_norris_init();
+    String chuck_norris_get_fact(Pointer pointer);
+    void chuck_norris_deinit(Pointer pointer);
+  }
+
+  public ChuckNorris() {
+    ckPointer = CLibrary.INSTANCE.chuck_norris_init();
+  }
+
+  public String getFact() {
+    return CLibrary.INSTANCE.chuck_norris_get_fact(ckPointer);
+  }
+
+  public void close() {
+    CLibrary.INSTANCE.chuck_norris_deinit(ckPointer);
+  }
+}
+```
+
+```
+$ ./gradlew test
+BUILD SUCCESSFUL
+```
+
+Success!
+
 
 # Android
 
