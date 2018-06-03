@@ -1,22 +1,16 @@
 ---
 authors: [dmerej]
-slug: chuck-norris-part-6-android
+slug: chuck-norris-part-8-android-jna
 date: 2018-06-02T10:17:17.789657+00:00
-draft: false
-title: "Let's Build Chuck Norris! - Part 6: Android"
+draft: true
+title: "Let's Build Chuck Norris! - Part 8: Android and jna"
 tags: [c++]
 ---
 
-_Note: This is part 6 of the [Let's Build Chuck Norris!]({{< ref "0060-introducing-the-chuck-norris-project.md" >}}) series._
+_Note: This is part 8 of the [Let's Build Chuck Norris!]({{< ref "0060-introducing-the-chuck-norris-project.md" >}}) series._
 
-We now know how to wrap the ChuckNorris C++ library in Python.
 
-For Android, we'll need to:
-
-* Wrap the C++ library in Java (this is quite similar to what we did with Python and ctypes)
-* Cross-compile the C++ library for Android (that's a big one ...)
-
-Let's start with the Java bindings.
+Let's take a detour on the desktop first.
 
 # Java bindings
 
@@ -232,29 +226,6 @@ BUILD SUCCESSFUL
 Success!
 
 
-# Android
-
-Using the Android helper.
-
-(Trust me on this)
-
-## Tips
-
-* Make sure to create a device with:
-
-    * a x86_64 CUP (faster!)
-    * lots of RAM and disk space (it's hidden in the "advanced" menu ..)
-
-
-* If emulator does not start, use:
-
-```
-$ cd ~/Android/Sdk/
-$ ./tools/emulitors -list-avds
-# to get your AVD name
-$ ./tools/emulator -use-system-libs -avd <name>
-```
-
 # Add ChuckNorrisLib.java
 
 Same as the `java` example.
@@ -316,158 +287,10 @@ Native library (android-x86-64/libchucknorris.so)
 not found in resource path (.)
 ```
 
-That means we now have to cross-compile our chucknorris lib for android x86-64
+But that's ok, we know how to cross-compile C++ code for Android, so all that's left to do is ...
 
-# Conan to the rescue
+# Symlinks
 
-Follow [the fine documentation]http://docs.conan.io/en/latest/systems_cross_building/cross_building.html#linux-windows-macos-to-android)
-
-Personally, I prefer to keep my conan profiles in `~/.conan/profiles/android-x86_64` so that I can omit
-the full path when using `conan create`.
-
-Let's cross-compile `sqlite3` for android:
-
-```
-$ cd console-recipes/sqlite3
-$ conan create . dmerej/test -p android-x86_64
-```
-
-And then cross-compile the `chucknorris` lib:
-
-```
-$ cd cpp
-$ mkdir build/android/x86_64
-$ conan install ../../ -p android-x86_64
-....
-Cross-build from 'Linux:x86_64' to 'Android:x86_64'
-sqlite3/3.21.0@dmerej/test: Already installed!
-```
-
-OK, now we are ready to build:
-
-
-```
-$ cd build/android/x86_64
-$ cmake -GNinja ../../..
-$ ninja
--- The C compiler identification is GNU 7.3.0
--- The CXX compiler identification is GNU 7.3.0
--- Check for working C compiler: /bin/cc
--- Check for working C compiler: /bin/cc -- works
-...
--- Check for working CXX compiler: /bin/c++
--- Check for working CXX compiler: /bin/c++ -- works
-...
-CMake Error at build/android/x86_64/conanbuildinfo.cmake:452 (message):
-  Incorrect 'clang', is not the one detected by CMake: 'GNU'
-```
-
-Uh-Oh: `cmake` is just using the default compiler `/bin/cc`. This is not going to work.
-
-
-But conan knew how to cross-compile `sqlite3` for android ? Can't we tell conan to build chucknorris too ?
-
-# Creating a recipe for chucknorris
-
-```
-$ conan new ChuckNorris/0.1 --source
-```
-
-Then patch the generated files to have:
-
-```python
-from conans import ConanFile, CMake
-
-
-class ChucknorrisConan(ConanFile):
-    name = "ChuckNorris"
-    version = "0.1"
-    license = "MIT"
-    url = "https://github.com/dmerejkowsky/cpp-mobile-example"
-    description = "Chuck Norris does not need a description"
-    settings = "os", "compiler", "build_type", "arch"
-    options = {"shared": [True, False]}
-    default_options = "shared=False"
-    generators = "cmake"
-    exports_sources = "CMakeLists.txt", "src/*", "include/*"
-
-    def build(self):
-        cmake = CMake(self)
-        cmake.configure()
-        cmake.build()
-
-    def package(self):
-        cmake = CMake(self)
-        cmake.install()
-
-    def package_info(self):
-        self.cpp_info.libs = ["chucknorris"]
-```
-
-Note how we use `cmake.install()` in the `package` step. More on this later.
-
-
-Telling conan to build our package:
-
-```
-$ cd cpp/
-$ conan build . --build-folder build/default
-Project: Running build()
-CMake Error: Error: generator : Unix Makefiles
-Does not match the generator used previously: Ninja
-```
-
-Set CMake generator in the environment. (It could be an option in the conan profile, but it's not as
-easy at it seems)
-TODO: as theo about this
-
-```
-$ CONAN_CMAKE_GENERATOR=Ninja conan build . --build-folder build/default
-Project: Running build()
-...
--- Build files have been written to: .../cpp/build/default
-ninja: no work to do.
-```
-
-Success!
-
-Let's add `export CONAN_CMAKE_GENERATOR` in our `~/.zshrc` file so that we don't forget.
-
-And now we can try a cross-compilation build:
-
-```
-$ conan install . --profile android-x86_64 --install-folder build/android/x86_64
-$ conan build . --build-folder build/android/x86_64
-```
-
-TODO: had to patch the conanfile.py to have:
-
-```python
-    def configure(self):
-        # TODO: ask theo why
-        # taken fro sqlite3 recipe
-        del self.settings.compiler.libcxx
-```
-
-# Running cross-compiled code
-
-
-```
-$ cd build/android/x86_64
-$ adb push lib/libchucknorris.-o /data/local/tmp/
-$ adb pusd bin/cpp-demo /data/local/tmp
-$ adb shell
-$ cd /data/local/tmp
-$ LD_LIBRARY_PATH=. ./cpp-demo
-# oups
-CANNOT LINK EXECUTABLE "./cpp_demo": library "libc++_shared.so" not found
-S adb push android-toolchain/x86_64-linux-android/lib64/libc++_shared.so /data/local/tmp/
-$ LD_LIBRARY_PATH=. ./cpp-demo
-# Success !
-```
-
-
-# New symlinks
 
 Now we can create a symlink to `cpp/build/android/x86_64/lib/libchucknorris.so` in
 `android/app/src/main/jniLibs/x86_64/`
