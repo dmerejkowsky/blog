@@ -15,7 +15,7 @@ others, hence this blog.
 
 My twitter bio reads:
 
-> #ResponsibleCoder. Scrum Master. Buildfarm guru. #Python3 fan.
+> ResponsibleCoder. Scrum Master. Buildfarm guru. Python3 fan.
 
 'nuff said ...
 
