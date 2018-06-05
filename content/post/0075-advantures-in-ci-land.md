@@ -13,7 +13,7 @@ Let's try and reproduce the interesting issues I had and how I solved them.
 
 # Setting the stage
 
-Here's what you are going to need if you want to  try and reproduce what I did.
+Here's what you are going to need if you want to try and reproduce what I did.
 
 * Node.js, yarn
 * Python3 and `pipenv`
@@ -46,7 +46,7 @@ class App extends Component {
 export default App;
 ```
 
-# Adding some end-to-end test
+# Adding some end-to-end tests
 
 Let's use `pipenv` to create a virtualenv with what we need:
 
@@ -85,7 +85,7 @@ OK, it works!
 
 Now let's imagine you have a team of people working on the application, and you would like these tests to run any time someone creates a merge request on this repo.
 
-This is know as *continuous integration* (CI for short) and, trust me on this, it works a lot better than telling your team mates to remember to run the tests before submitting their changes for review!
+This is known as *continuous integration* (CI for short) and, trust me on this, it works a lot better than telling your teammates to remember to run the tests before submitting their changes for review!
 
 # Writing the CI script
 
@@ -98,7 +98,7 @@ If you don't know GitLab CI at all, here's how it works:
 
 At my job we prefer to keep the `.gitlab-ci.yml` simple, and keep the code of the CI scripts separate, like this:
 
-(note how we use `python3 -m pipenv`  instead of just `pipenv`. This is to make sure `pipenv` runs with the expected version of Python)
+(note how we use `python3 -m pipenv` instead of just `pipenv`. This is to make sure `pipenv` runs with the expected version of Python)
 
 ```yaml
 # in .gitlab-ci.yml
@@ -126,7 +126,7 @@ if __name__ == "__main__":
 
 ```
 
-We do this because it makes it easy to reproduce build failures found during CI locally. Any developer on the team can run `python ci/ci.py` on his machine directly instead of trying to copy/paste code from the yaml file.
+We do this because it makes it easy to reproduce build failures found during CI locally. Any developer on the team can run `python ci/ci.py` on their machine directly instead of trying to copy/paste code from the yaml file.
 
 
 # Going headless
@@ -167,7 +167,7 @@ def test_home(headless):
 Now if we run `pytest` with the `--headless` option, the `headless` parameter of the `test_home` function will be set to `True` by pytest.
 That's how pytest *fixtures* work.
 
-Any way, we can now check this is working by running:
+Anyway, we can now check this is working by running:
 
 ```bash
 $ pytest --headless
@@ -176,14 +176,14 @@ $ pytest --headless
 # Writing the CI script
 
 
-So know we are faced with a new challenge: we need to run `yarn start` *before* runing `pytest`, and kill the React script when the selenium tests have finished.
+So now we are faced with a new challenge: we need to run `yarn start` *before* running `pytest`, and kill the React script when the selenium tests have finished.
 
 A nice way to do this in Python is to use the `with` statement, so let's do that:
 
 ```python
 
 class BackgroundProcess:
-    """ Runs `yarn start` in the background. Ensure the yarn process
+    """ Run `yarn start` in the background. Ensure the yarn process
     is killed when exiting the `with` block
 
     """
@@ -208,9 +208,9 @@ if __name__ == "__main__":
 The `__enter__` method will be called right before the contents of the `with` block, so before `pytest` starts.
 Then the `__exit__` method will be called after `pytest` is done, *even if an exception occurred*, passing data about the exception as arguments to the `__exit__()` method. Since we don't want do to anything other than re-raise if this happens, we just ignore them.
 
-Anyway, this is much more readable than using `try/except/finally`, don't you think ?
+Anyway, this is much more readable than using `try/except/finally`, don't you think?
 
-We still need a tiny fix: by default, `yarn start` will open a new tab on our browser. This was great while we wer working on the Javascript code, but here we are working on the CI script, so we'd prefer to disable this behavior.
+We still need a tiny fix: by default, `yarn start` will open a new tab on our browser. This was great while we were working on the JavaScript code, but here we are working on the CI script, so we'd prefer to disable this behavior.
 
 Fortunately, all we have to do is to set the `BROWSER` environment variable to `NONE`:
 
@@ -224,9 +224,9 @@ class BackgroundProcess:
         self.process = subprocess.Popen(self.cmd)
 ```
 
-Note: you may wonder why we did not just set the `BROWSER` environment variable directly in the `.gitlab-ci.yml` file. This would have worked,  but here we create a special *copy* of the current environment variables, and we set the `BROWSER` environment variable *just for the `yarn` process*. Why?
+Note: you may wonder why we did not just set the `BROWSER` environment variable directly in the `.gitlab-ci.yml` file. This would have worked, but here we create a special *copy* of the current environment variables, and we set the `BROWSER` environment variable *just for the `yarn` process*. Why?
 
-Well, if you think as environment variable as nasty global variables (and you should), it makes sense to limit their scope this way.
+Well, if you think of environment variables as nasty global variables (and you should), it makes sense to limit their scope this way.
 
 Anyway, back to the main topic:
 
@@ -247,13 +247,12 @@ Starting the development server...
 1 passed in 4.77 seconds
 ```
 
-Let's run it a second time just to check the `yarn` process was indeed killed:
+Let's run it a second time just to check that the `yarn` process was indeed killed:
 
 ```
 $ python ci.py
 ? Something is already running on port 3000. Probably:
   hello (pid 16508)
-  in /mnt/data/dmerej/src/tanker/hello
 
 Would you like to run the app on another port instead? (Y/n)
 ```
@@ -312,8 +311,7 @@ So it created a *child* process, namely `react-scripts start`, with a *different
 
 So when we killed the parent process, the `node` process became an orphan since its parent was dead (poor little process).
 
-On Linux at least, all orphans process get automatically re-attached to the first ever process that was created since the machine booted.
-(`systemd` on my machine). This process always as a PID equal to&nbsp;1.
+On Linux at least, all orphans process get automatically re-attached to the first ever process that was created since the machine booted. (`systemd` on my machine). This process always has a PID equal to&nbsp;1 and is often referred to as `init`.
 
 We can check that by running `pstree`:
 
@@ -330,11 +328,11 @@ systemd─┬                               <- PID 1
 
 So how do we make sure the `node` child process gets killed too?
 
-There are some fancy ways to fix these kind of problems (we could use `cgroups` for instance), but we can do  it just with the Python stdlib.
+There are some fancy ways to fix these kind of problems (we could use `cgroups` for instance), but we can do it just with the Python stdlib.
 
 Turns out we can use the `start_new_session` argument in the `subprocess.Popen()` call. This will create a *session* and attach the `yarn` process (and all its children) to it.
 
-Then we can send the `SIGINT` signal to the PID of the parent, and all the processes in the session will receive it:
+Then we can send the `SIGTERM` signal to the PID of the parent, and all the processes in the session will receive it:
 
 
 {{< highlight python "hl_lines=1-2 6 9" >}}
@@ -346,10 +344,10 @@ def __enter__(self):
   self.process = subprocess.Popen(self.cmd, start_new_session=True)
 
 def __exit__(self):
-    os.killpg(self.process.pid, signal.SIGINT)
+    os.killpg(self.process.pid, signal.SIGTERM)
 {{</ highlight >}}
 
-Now if we re-run our script, we can see that no `yarn` nor `node` process remain alive when the ci script terminates:
+Now if we re-run our script, we can see that neither `yarn` or `node` remain alive when the CI script terminates:
 
 ```
 $ python ci.py
