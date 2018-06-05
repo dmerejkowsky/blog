@@ -10,8 +10,6 @@ tags: [c++]
 _Note: This is part 6 of the [Let's Build Chuck Norris!]({{< ref "0060-introducing-the-chuck-norris-project.md" >}}) series._
 
 
-
-
 # Introduction
 
 After our little detour talking about how to wrap C++ in Python, we now are ready to tackle writing Android application using C++ code.
@@ -45,7 +43,7 @@ $ gcc hello.c -o hello
 
 And now, let's use `adb push` to copy the binary on our phone, and `adb shell` to try and run it:
 
-(Note that `/data/local/tmp` is the only folder I found where we can run executables):
+(Note that `/data/local/tmp` is the only directory I found where we can run executables):
 
 
 ```
@@ -123,6 +121,8 @@ And this is what we call "cross-compilation".
 
 Google provides a set of tools know as the *NDK* in order to help us cross-compiling code for Android.
 
+Here we are using version `r16`.
+
 If we download and extract the NDK, here's how we can compile and link our "Hello, World" program:
 
 ```
@@ -188,7 +188,7 @@ Hello, world
 
 Success!
 
-Our next objective is to run the `cpp_demo` executable we used to test the ChuckNorris library in [part 1]({{ ref "post/0061-let-s-build-chuck-norris-part-1-cmake-and-ninja.md" >}}) on our phone and on the Android simulator.
+Our next objective is to run the `cpp_demo` executable we used to test the Chuck Norris library in [part 1]({{ ref "post/0061-let-s-build-chuck-norris-part-1-cmake-and-ninja.md" >}}) on our phone and on the Android simulator.
 
 Things is going to be trickier because of the `sqlite3` dependency and the fact that the code is written in C++.
 
@@ -197,11 +197,16 @@ But surely there is a better way to than guessing how to invoke the compilers an
 
 # Conan to the rescue
 
-Of course, we could have use the native plug-in of Android Studio directly.
-However, the goal of these blog posts is to show you how things work "under the hood", so no we'll instead use conan, the tool we already met in [part 2]({{< ref "post/0062-let-s-build-chuck-norris-part-2-sqlite-and-conan.md" >}}).
+Of course, we could have used the native plug-in of Android Studio directly.
 
+Instead we will use Conan, the tool we already met in [part 2]({{< ref "post/0062-let-s-build-chuck-norris-part-2-sqlite-and-conan.md" >}}).
+
+Using Conan is a good way to abstract the above complexity, without loosing any of the control (like depending on an IDE plug-in does).
+
+Plus, what we learn using Conan we can apply in other contexts such as writing C++ code on iOS.
 
 ## The standalone toolchain
+
 
 If you a look at the contents of the Android NDK, you'll soon realize there are lots of stuff there.
 
@@ -223,9 +228,9 @@ Ah-ah! Sound like what we need, especially if later on we start depending on a l
 
 ## Build requirements
 
-It's now time to introduce a new conan feature, the build requirements.
+It's now time to introduce a new Conan feature, the build requirements.
 
-Basically build requirements are packages you only need when building something from sources. See the [conan docs](https://docs.conan.io/en/latest/devtools/build_requires.html) for more information.
+Basically build requirements are packages you only need when building something from sources. See the [Conan docs](https://docs.conan.io/en/latest/devtools/build_requires.html) for more information.
 
 So, here's the plan:
 
@@ -260,7 +265,7 @@ class AndroidndkConan(ConanFile):
 
 The `source()` method does nothing but fetching and extracting the NDK.
 
-The `package_info()` is more interesting: it adds the `build/tools` folder in the `env_info.PATH` variable. Any recipe that has the NDK package as build requirement can thus call `self.run()` to run any binary from the tools folder, since `PATH` will be set accordingly.
+The `package_info()` is more interesting: it adds the `build/tools` directory in the `env_info.PATH` variable. Any recipe that has the NDK package as build requirement can thus call `self.run()` to run any binary from the tools directory, since `PATH` will be set accordingly.
 
 ## The Android toolchain recipe
 
@@ -276,6 +281,7 @@ class AndroidtoolchainConan(ConanFile):
     license = "GPL/APACHE2"
     url = "https://github.com/lasote/conan-android-toolchain"
     settings = "os", "arch", "compiler"
+    build_requires = "android-ndk/r16@dmerej/test"
     ...
 
     def build(self):
@@ -288,7 +294,7 @@ class AndroidtoolchainConan(ConanFile):
           "--verbose"
           "--toolchan=%s",
           "--platform=android-%s"
-        ) % (toolchain, self.settings.os.api_level
+        ) % (toolchain, self.settings.os.api_level)
         self.run(command)
 
 
@@ -315,7 +321,7 @@ We can find traces of this data in the command line we used:
 
 ```
 ${NDK_ROOT}/.../bin/clang                  <- this is CC
-  --sysroot  ${NDK_ROOT}/...               <- this is the sysrot
+  --sysroot  ${NDK_ROOT}/...               <- this is the sysroot
   --target=armv7-none-linux-androideabi \
   --gcc-toolchain=..                     | <- those are compile flags
   -pie                                  /
@@ -331,7 +337,7 @@ Where can we specify all these configuration values?
 
 There's an elegant way to solve this.
 
-We create a global conan profile in `~/.conan/profiles/android`:
+We create a global Conan profile in `~/.conan/profiles/android`:
 
 ```ini
 [build_requires]
@@ -345,14 +351,14 @@ compiler=clang
 compiler.version=5.0
 
 [options]
-*:pic = true
+*:pic = True
 ```
 
 There we define all the common settings between all the Android configurations (like the API level, the compiler and the compiler version).
 
 Note the `*:pic` in the `[options]` section. This will make sure that everything is built with position independent code, a requirement for anything that runs on Android.
 
-Then if we need to build form `x86_64`, we can invoke conan this way:
+Then if we need to build form `x86_64`, we can invoke Conan this way:
 
 ```
 $ conan install --profile android --setting arch=x86_64
@@ -424,7 +430,7 @@ CMake Error at build/android/x86_64/conanbuildinfo.cmake:452 (message):
 Uh-Oh: CMake is using the default compiler `/bin/cc`. This is not going to work.
 
 
-But conan knew how to cross-compile `sqlite3` for Android! Can't we tell conan to build chucknorris too?
+But Conan knew how to cross-compile `sqlite3` for Android! Can't we tell Conan to build chucknorris too?
 
 ## Creating a recipe for chucknorris
 
@@ -462,9 +468,9 @@ class ChucknorrisConan(ConanFile):
         self.copy("cpp_demo" dst="bin", keep_path="false")
 ```
 
-Note that instead of having a `source()` method to fetch the sources from a remote location (as we did for `sqlite3`), we instead use `exports_sources` to tell conan about the sources it needs to build the package.
+Note that instead of having a `source()` method to fetch the sources from a remote location (as we did for `sqlite3`), we instead use `exports_sources` to tell Conan about the sources it needs to build the package.
 
-Also note how we copy the `cpp_demo` binary in the `package()` method. We'll use this to check that the binary we built with conan can actually *run*.
+Also note how we copy the `cpp_demo` binary in the `package()` method. We'll use this to check that the binary we built with Conan can actually *run*.
 
 Then we create the chucknorris package:
 
@@ -511,12 +517,12 @@ You have to choose between the `gnustl` library, or the `libc++` library, and th
 
 By default, our binary was compiled to link with shared version of `libc++`, hence the file name: `libc++_shared.so`.
 
-Fortunately, we can use an other feature of conan to help us: the `imports()` function. This function gets called before building and can be used to copy files from the dependencies packages.
+Fortunately, we can use an other feature of Conan to help us: the `imports()` function. This function gets called before building and can be used to copy files from the dependencies packages.
 
 Here's what we can do:
 
 * Use `imports()` to copy `libc++_shared.so` from the `android-toolchain` package to the build directory.
-* Use `keep_imports` so that the imported files do not get removed from the build dir.
+* Use `keep_imports` so that the imported files do not get removed from the build directory.
 * Add a `copy()` call in the `package()` method so that the `libc++_shared.so` file is present in the final package.
 
 This is known as "repackaging" in Conan parlance.
