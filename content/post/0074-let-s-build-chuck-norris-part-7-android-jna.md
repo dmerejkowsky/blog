@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: chuck-norris-part-8-android-jna
-date: 2018-06-02T10:17:17.789657+00:00
+date: 2018-06-05T12:17:17.789657+00:00
 draft: true
 title: "Let's Build Chuck Norris! - Part 7: Android and jna"
 tags: [c++]
