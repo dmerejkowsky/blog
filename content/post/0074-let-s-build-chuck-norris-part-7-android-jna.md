@@ -3,11 +3,11 @@ authors: [dmerej]
 slug: chuck-norris-part-8-android-jna
 date: 2018-06-02T10:17:17.789657+00:00
 draft: true
-title: "Let's Build Chuck Norris! - Part 8: Android and jna"
+title: "Let's Build Chuck Norris! - Part 7: Android and jna"
 tags: [c++]
 ---
 
-_Note: This is part 8 of the [Let's Build Chuck Norris!]({{< ref "0060-introducing-the-chuck-norris-project.md" >}}) series._
+_Note: This is part 7 of the [Let's Build Chuck Norris!]({{< ref "0060-introducing-the-chuck-norris-project.md" >}}) series._
 
 
 Let's take a detour on the desktop first.
