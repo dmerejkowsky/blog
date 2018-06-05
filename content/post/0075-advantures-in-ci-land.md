@@ -7,7 +7,7 @@ title: "Adventures in CI land"
 tags: [python]
 ---
 
-Today at work I wrote a CI script to test a react application, and it turned out to be a bit trickier than expected.
+Today  at work I wrote a CI script to test a react application, and it turned out to be a bit trickier than expected.
 
 Let's try and reproduce the interesting issues I had and how I solved them.
 
@@ -94,7 +94,7 @@ We use `GitLab` at work and are big fan of its CI features.
 If you don't know GitLab CI at all, here's how it works:
 
 * You install and configure the `gitlab-runner` program on some machines (called *runners*)
-* Then write a `.gitlab-ci.yml` file that contains the job description.
+* Then you write a `.gitlab-ci.yml` file that contains the job description.
 
 At my job we prefer to keep the `.gitlab-ci.yml` simple, and keep the code of the CI scripts separate, like this:
 
@@ -226,7 +226,7 @@ class BackgroundProcess:
 
 Note: you may wonder why we did not just set the `BROWSER` environment variable directly in the `.gitlab-ci.yml` file. This would have worked, but here we create a special *copy* of the current environment variables, and we set the `BROWSER` environment variable *just for the `yarn` process*. Why?
 
-Well, if you think of environment variables as nasty global variables (and you should), it makes sense to limit their scope this way.
+Well, if you think of environment variables as nasty global variables (and you should: the environment of a process is just a big mutable shared state), it makes sense to limit their scope this way.
 
 Anyway, back to the main topic:
 
@@ -307,7 +307,7 @@ When we ran `yarn start`, the `yarn` process looked at a section named `start` i
 
 ```
 
-So it created a *child* process, namely `react-scripts start`, with a *different PID*.
+It then created a *child* process, namely `react-scripts start`, with a *different PID*.
 
 So when we killed the parent process, the `node` process became an orphan since its parent was dead (poor little process).
 
