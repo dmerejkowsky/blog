@@ -203,7 +203,7 @@ Instead we will use Conan, the tool we already met in [part 2]({{< ref "post/006
 
 Using Conan is a good way to abstract the above complexity, without loosing any of the control (like depending on an IDE plug-in does).
 
-Plus, what we learn using Conan we can apply in other contexts such as writing C++ code on iOS.
+Plus, we can apply what we learn using Conan in other contexts such as writing C++ code on iOS.
 
 ## The standalone toolchain
 
