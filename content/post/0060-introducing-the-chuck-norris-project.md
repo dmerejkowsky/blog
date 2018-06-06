@@ -31,12 +31,12 @@ You will find all the source code on [GitHub](https://github.com/dmerejkowsky/ch
 
 Available:
 
-* [Using CMake and Ninja]({{< ref "post/0061-let-s-build-chuck-norris-part-1-cmake-and-ninja.md" >}})
-* [Managing third-party dependencies with conan]({{< ref "post/0062-let-s-build-chuck-norris-part-2-sqlite-and-conan.md" >}})
-* [Exposing a C API on top of C++ code]({{< ref "post/0063-let-s-build-chuck-norris-part-3-a-c-wrapper.md" >}})
-* [Using Python with ctypes]({{< ref "post/0064-let-s-build-chuck-norris-part-4-python-and-ctypes.md" >}})
-* [Using cffi to build a Python extension]({{< ref "post/0065-let-s-build-chuck-norris-part-5-python-and-cffi.md" >}})
-* [Cross-compiling for Android]({{< ref "post/0073-let-s-build-chuck-norris-part-6-android-cross-compilation.md" >}})
+1. [Using CMake and Ninja]({{< ref "post/0061-let-s-build-chuck-norris-part-1-cmake-and-ninja.md" >}})
+2. [Managing third-party dependencies with conan]({{< ref "post/0062-let-s-build-chuck-norris-part-2-sqlite-and-conan.md" >}})
+3. [Exposing a C API on top of C++ code]({{< ref "post/0063-let-s-build-chuck-norris-part-3-a-c-wrapper.md" >}})
+4. [Using Python with ctypes]({{< ref "post/0064-let-s-build-chuck-norris-part-4-python-and-ctypes.md" >}})
+5. [Using cffi to build a Python extension]({{< ref "post/0065-let-s-build-chuck-norris-part-5-python-and-cffi.md" >}})
+6. [Cross-compiling for Android]({{< ref "post/0073-let-s-build-chuck-norris-part-6-android-cross-compilation.md" >}})
 
 Planned for later:
 
