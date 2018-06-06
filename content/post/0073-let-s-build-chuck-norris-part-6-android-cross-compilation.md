@@ -12,7 +12,7 @@ _Note: This is part 6 of the [Let's Build Chuck Norris!]({{< ref "0060-introduci
 
 # Introduction
 
-After our little detour talking about how to wrap C++ in Python, we now are ready to tackle writing Android applications using C++ code.
+After our little detour talking about how to [wrap C++]({{< ref "post/0064-let-s-build-chuck-norris-part-4-python-and-ctypes.md" >}}) in [Python]({{< ref "post/0065-let-s-build-chuck-norris-part-5-python-and-cffi.md" >}}), we now are ready to tackle writing Android applications using C++ code.
 
 We'll start with a simple challenge: try and run a simple "Hello, world" program written in C inside a simulator and on our phone.
 
@@ -58,7 +58,7 @@ Hum. What just happened ?
 
 ## CPU architectures
 
-When use a compiler, you get a binary file from the source code. You can think of this binary file as a list of instructions, ready to be used by a CPU.
+When you use a compiler, you get a binary file from the source code. You can think of this binary file as a list of instructions, ready to be used by a CPU.
 
 The trick is that different CPU have different *instructions sets*.
 
@@ -69,7 +69,7 @@ This means that a binary you built for a `x86_64` CPU will not run on a `armv7` 
 
 ## The libc
 
-OK, but the Android also comes with a simulator, and we can choose the CPU architecture.
+OK, but the Android SDK also comes with a simulator, and we can choose the CPU architecture.
 
 Can't we just use a `x86_64` Android simulator ?
 
@@ -115,7 +115,7 @@ So if want to achieve our goal (running the "Hello, world" C program on a simula
 
 This is tricky because by default, compilers use the  same CPU architecture and the same libc used by the operating system they run on[^2].
 
-And this is what we call "cross-compilation".
+This is what we call "cross-compilation".
 
 ## Using the NDK to compile by hand
 
@@ -147,7 +147,7 @@ Some notes:
 
 * We have to specify the Android API level (21 here) like in any other project targeting Android
 * Most of the magic is done by the `--sysroot`, `--gcc-toolchain` and `--target` options.
-* We have to specify `-fPIE`, a flag for *position independent code* we already seen in a previous article.
+* We have to specify `-fPIE`, a flag that means _position independant executable_. It serves the same kind of purpose as the `-fPIC` flag we met in [a previous article]({{< ref "post/0064-let-s-build-chuck-norris-part-4-python-and-ctypes.md#building-the-shared-library" >}}).
 
 And now we can upload and run the binary on the `x86_64` simulator:
 
@@ -199,7 +199,7 @@ But surely there is a better way to than guessing how to invoke the compilers an
 
 Of course, we could have used the native plug-in of Android Studio directly.
 
-Instead we will use Conan, the tool we already met in [part 2]({{< ref "post/0062-let-s-build-chuck-norris-part-2-sqlite-and-conan.md" >}}).
+Instead we will use Conan, the tool we talked about in [part 2]({{< ref "post/0062-let-s-build-chuck-norris-part-2-sqlite-and-conan.md" >}}).
 
 Using Conan is a good way to abstract the above complexity, without loosing any of the control (like depending on an IDE plug-in does).
 
@@ -440,7 +440,7 @@ Of course we can! Let's go to `cpp/ChuckNorris` and run `conan new`:
 $ conan new ChuckNorris/0.1 --source
 ```
 
-Then we edit the generated `conanfile.py` to have:
+Then let's edit the generated `conanfile.py` to have:
 
 
 ```python
