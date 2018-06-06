@@ -519,6 +519,6 @@ destructor was a bad idea.
 # Conclusion
 
 Object-oriented programming is hard, C++ is hard, naming things are
-important, and thinking about boundaries lead to better code.
+important, and thinking about boundaries leads to better code.
 
 Hope you enjoyed my story, see you next time!
