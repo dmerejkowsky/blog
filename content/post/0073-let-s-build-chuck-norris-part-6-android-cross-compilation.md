@@ -188,7 +188,7 @@ Hello, world
 
 Success!
 
-Our next objective is to run the `cpp_demo` executable we used to test the Chuck Norris library in [part 1]({{ ref "post/0061-let-s-build-chuck-norris-part-1-cmake-and-ninja.md" >}}) on our phone and on the Android simulator.
+Our next objective is to run the `cpp_demo` executable we used to test the Chuck Norris library in [part 1]({{< ref "post/0061-let-s-build-chuck-norris-part-1-cmake-and-ninja.md#the-test-program" >}}) on our phone and on the Android simulator.
 
 Things is going to be trickier because of the `sqlite3` dependency and the fact that the code is written in C++.
 
