@@ -36,8 +36,8 @@ Available:
 * [Exposing a C API on top of C++ code]({{< ref "post/0063-let-s-build-chuck-norris-part-3-a-c-wrapper.md" >}})
 * [Using Python with ctypes]({{< ref "post/0064-let-s-build-chuck-norris-part-4-python-and-ctypes.md" >}})
 * [Using cffi to build a Python extension]({{< ref "post/0065-let-s-build-chuck-norris-part-5-python-and-cffi.md" >}})
+* [Cross-compiling for Android]({{< ref "post/0073-let-s-build-chuck-norris-part-6-android-cross-compilation.md" >}})
 
 Planned for later:
 
-* Using C++ in an Android application
 * Using C++ in an iOS application

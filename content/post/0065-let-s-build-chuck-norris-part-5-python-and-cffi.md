@@ -441,7 +441,7 @@ For this to work, the other user will need to be on Linux, have a compatible C++
 
 There's an entire blog post to be written about distribution of pre-compiled Python binary modules, but enough about Python for now :)
 
-See you next time, where we'll use everything we learned there and start porting chucknorris to Android.
+See you next time, where we'll use everything we learned there and start [porting Chuck Norris to Android]({{< ref "post/0073-let-s-build-chuck-norris-part-6-android-cross-compilation.md" >}}).
 
 [^1]: `ffibuilder.set_source()` uses the same API as the [distutils Extension class](https://docs.python.org/3.6/distutils/apiref.html#distutils.core.Extension).
 [^2]: This also means you should really have at least one executable to test every shared library you write, but you already knew that, right?
