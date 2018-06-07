@@ -1,19 +1,25 @@
 ---
 authors: [dmerej]
 slug: giving-mypy-a-go
-date: 2018-05-27T10:17:17.789657+00:00
+date: 2018-06-07T10:17:17.789657+00:00
 draft: true
 title: Giving mypy a go
 tags: [python]
 ---
 
-# Trying mypy
+# Introduction
 
+This is a follow up to the [I don't need types]({{< ref "post/0070-i-don-t-need-types.md" >}}) article, a story of me being wrong.
 
-## How mypy works
+I left a teaser explaining I'll be giving concrete examples using a Python project, so here goes.
 
+As you may have guessed, I'm going to talk about type annotations and the [mypy](http://mypy-lang.org/) static type checker.
 
-Here's a contrived example:
+# How mypy works
+
+Here's a quick overview of how mypy works, in case you are not already familiar with it.
+
+Let's use a rather contrived example:
 
 ```python
 def is_odd(num):
@@ -27,7 +33,7 @@ if is_odd("this sentence contains %s"):
 We have a function `is_odd`, which obviously only works with numbers, and we call it with a string.
 
 But since the string contains `%s`, Python will happily assume we are trying to format it, and the bug will go unnoticed.
-`is_odd` will simply return False, because we are *also* allowed to compare strings and numbers in Python.
+`is_odd` will simply return False, because we are *also* allowed to compare strings and numbers with `==` in Python.
 
 Without type annotations, mypy detects nothing:
 ```
@@ -48,34 +54,39 @@ if is_odd("this sentence contains %s"):
 
 ```
 $ mypy foo.py
-foo.py:5: error: Argument 1 to "is_odd" has incompatible type "str"; expected "int"
+error: Argument 1 to "is_odd" has incompatible type "str"; expected "int"
 ```
 
 Thus, you can use mypy in a loop:
 
 * Start by annotating a few functions.
 * Run mypy on your source code.
-* If it detects some errors, either fix the annotations on the code.
+* If it detects some errors, either fix the annotations or the code.
 * Back to step one
 
 This is called "gradual typing".
 
-## Designing an experiment
+
+# Designing an experiment
 
 The goal of the experiment is to check if going through the trouble of adding type annotations is worth it.
 
-To test this hypothesis, I first needed an existing project. I used tsrc.
+To test this hypothesis, I first needed an existing project. I used [tsrc](https://github.com/SuperTanker/tsrc).
+
+tsrc is the tool we use at [my work](https://tanker.io) to manage multiple git repositories and automate GitHub and GitLab review automation.[^1]
+
+I chose it because:
 
 * It's not too big, so the experiment will not take too long.
 * It's not too small, so we'll have enough experimental data.
 
-I also used a project where lots of tools were already used in the hope of catching bugs:
+I also chose it because a lot of tools were already used in the hope of catching bugs:
 
 * Every pull request was reviewed by other humans
 * Two static analyzers (pylint and pyflake) were ran for  each pull request
 * McCab complexity was measured for each and every function and method of the code base and was not allowed to go above 10.
 * TDD was used throughout the development of the projects
-* Test coverage is already at 80%
+* Test coverage was already at 80%
 
 Then I had to define what I meant by "worth it".
 
@@ -96,16 +107,18 @@ I know the second question is a bit subjective. I'm still going to use this metr
 
 The protocol will thus be:
 
-* Use the gradual typing loop until every function and method is annotated
+* Use the gradual typing loop until everything is type-annotated.
 * Make a note of every non-trivial patch. (That is anything that is *not* just adding annotations)
 * When the loop is finished, take a look at each of the patch, and ask if a bug was found, and whether it improved the quality of the code.
 
-Before I continue, I should tell you I used mypy with two important options:
+Before I continue, I should tell you I used mypy with three important options:
 
+* `--strict`: which means mypy emits an error for *every* missing type annotations.
 * `--ignore-missing-imports`: tsrc depends on libraries for which no type stub exist.
 * `--strict-optional`: If you have a string that can None, you must use `Optional[str]` instead of just `str`. I chose that because:
   * Errors relative to None are quite frequent
   * `--strict-optional` is going to be the default in a future mypy release.
+
 
 ## Looking at patches
 
@@ -181,7 +194,7 @@ We can fix that by forcing the `config` type:
 
 This a bit annoying, but the type annotation makes it clearer what the `config` is. 1 point for mypy.
 
-## encoding project names
+## Encoding project names
 
 
 When you use the GitLab API, you often have to use the 'project id'. The doc says you can use the `<namespace>/<project_name>` string if it is "url encoded", like this:
@@ -218,7 +231,7 @@ mypy saw that the default value was a string, so he complained we were using a l
 +        encoded_project_name = urllib.parse.quote(project_name, safe="")
 ```
 
-Here, mypy forced us to follow an implicit convention. There are two ways to represent a list of characters in Python. A real list: `['a', 'b', 'c']`, or a string: "abc". The authors of the `urllib.quote()` function decided to use the second form, so it's a good thing we follow this convention too.
+Here, mypy forced us to follow an implicit convention. There are two ways to represent a list of characters in Python. A real list: `['a', 'b', 'c']`, or a string: `"abc"`. The authors of the `urllib.quote()` function decided to use the second form, so it's a good thing we follow this convention too.
 
 An other win for mypi.
 
@@ -232,13 +245,13 @@ Here are a few of them. Feel free to try and find the bug yourself, the answer w
 
 ```python
 class GitLabAPIError(GitLabError):
-    def __init__(self, url: str, status_code: int, message: str) -> None:
+    def __init__(self, url: str, status_code: int, message: str) -> none:
         ...
 
 def handle_stream_errors(response: requests.models.Response) -> None:
      if response.status_code >= 400:
-     raise GitLabAPIError(
-        response.url, "Incorrect status code:", response.status_code)
+        raise GitLabAPIError(
+            response.url, "Incorrect status code:", response.status_code)
 ```
 
 
@@ -260,7 +273,7 @@ The problem here is that we inverted the `status_code` and `message` parameter. 
 
 The bug was not caught because the code in question was actually copy/pasted from a CI script (and you usually don't write tests for CI scripts).
 
-We actually don't need streamed responses anywhere in tsrc, so this is in fact dead code.
+We actually don't need streamed responses anywhere in tsrc, so this is in fact dead code (and it is now gone from the code base)
 
 
 #### handle_json_errors
@@ -288,15 +301,15 @@ def handle_json_errors(response: requests.models.Response):
         raise GitLabAPIError(url, status_code, response.text)
 ```
 
-This one is slightly more interesting. It is located near the previous one and handles errors for the calls to the GitLab API which returns json objects.
+This one is slightly more interesting. It is located near the previous one and handles errors for the calls to the GitLab API which returns JSON objects.
 
 We of course have to catch 500 errors, which hopefully happen not often.
 
 In case of a status code between 400 and 499, we know there was a problem in the request we made, but we need to tell the user why the request was rejected.
 
-Most of the time the GitLab API returns a json object containing a `error` or `message` key, but sometimes neither keys is found in the returned json object, and sometimes no valid json object is returned at all.
+Most of the time the GitLab API returns a JSON object containing a `error` or `message` key, but sometimes neither key is found in the returned object, and sometimes the text of the response is not even valid JSON code.
 
-So we have to check for both keys in the json object, and if not found (if we exit the for loop), just store the entire JSON response in the exception.
+So we have to check for both keys in the JSON object, and if not found (if we exit the for loop), just store the entire JSON response in the exception.
 
 <center>⁂</center>
 
@@ -309,9 +322,9 @@ The fix was:
 + raise GitLabAPIError(url, status_code, json.dumps(json_details, indent=2))
 ```
 
-Again, this was hard to catch with tests. The case where the json returned by GitLab did *not* contain a `error` or `message` key only happened once in the lifetime of the project (which explain why the code was written), so manual QA and unit tests did not need to check this code path.
+Again, this was hard to catch with tests. The case where the JSON returned by GitLab did *not* contain a `error` or `message` key only happened once in the lifetime of the project (which explain why the code was written), so manual QA and unit tests did not need to check this code path.
 
-Anyway, note we did not blindly wrote something like `str(json_details)` to convert the json object to a string. We found out it was used in a message displayed to the end user, thus we use `json.dumps(json_details), indent=2)` to make sure the message contains neatly indented json and is easy to read.
+Anyway, note we did not blindly wrote something like `str(json_details)` to convert the JSON object to a string. We found out it was used in a message displayed to the end user, thus we use `json.dumps(json_details), indent=2)` to make sure the message contains neatly indented JSON and is easy to read.
 
 
 #### LocalManifest
@@ -353,10 +366,10 @@ The `LocalManifest` class represent this manifest repository.
 
 Here's what happen, when you run `tsrc sync`:
 
-* `local_manifest.update()`: The repository in `<workspace>/.tsrc/manifest>` is updated by running `git fetch; git reset --hard origin/master`
-* `local_manifest.load()`: The `manifest.yml` file is parsed, and its contents are stored in the `self.manifest` attribute.
-* The `Syncer` class calls `local_manifest.get_repos()` to find out the list of repositories to clone or synchronise.
-* The `FileCopier` uses `local_manifest.copyfiles` to perform file copies.
+* `local_manifest.update()` is called: the repository in `<workspace>/.tsrc/manifest>` is updated by running `git fetch; git reset --hard origin/master`
+* `local_manifest.load()` is called: the `manifest.yml` file is parsed, and its contents are stored in the `self.manifest` attribute.
+* Then the `Syncer` class calls `local_manifest.get_repos()` to find out the list of repositories to clone or synchronise.
+* Finally, the `FileCopier` class uses `local_manifest.copyfiles` to perform file copies.
 
 <center>⁂</center>
 
@@ -367,7 +380,7 @@ We already have an `assert` in place in `get_repos()`, but mypy forced us to add
 ```patch
     @property
     def copyfiles(self) -> List[Tuple[str, str]]:
-    +    assert self.manifest, "manifest is empty. Did you call load()?"
++       assert self.manifest, "manifest is empty. Did you call load()?"
         return self.manifest.copyfiles
 ```
 
@@ -422,7 +435,7 @@ Here's what the helper looks like:
 You can use it like this:
 
 ```python
-def test_tsrc_sync(tsrc_cli, git_server):
+def test_tsrc_sync(tsrc_cli: CLI, git_server: GitServer) -> None:
     git_server.add_repo("foo/bar")
     git_server.add_repo("spam/eggs")
     manifest_url = git_server.manifest_url
@@ -459,12 +472,11 @@ So to have a clean implementation of the `GitServer` I of course used the best t
 
 ![yo dawg tests](/pics/yo-dawg-test.jpg)
 
-You can find some of them in the [test_fixtures.py]() file.
+You can find them in the [test_test_helpers.py](https://github.com/SuperTanker/tsrc/blob/master/tsrc/test/test_test_helpers.py) file.
 
 Anyway, I was writing an end-to-end test for tsrc that involved tags.
 
-I thought: "OK, I need a `.tag()` method in `GitServer`. So I also need a `get_tags()` method to check the tag was actually pushed".   Thus I wrote the `get_tags` method, forgetting to write a failing test for `GitServer` first (that still happens after 5 years of TDD, so don't worry if it happens to you too.). At that point I only had my end-to-end test failing, so I made it pass and completely forgot about the `get_tags()` method.
-
+I thought: "OK, I need a `.tag()` method in `GitServer`. So I also need a `get_tags()` method to check the tag was actually pushed".   Thus I wrote the `get_tags` method, forgetting to write a failing test for `GitServer` first (that still happens after 5 years of TDD, so don't worry if it happens to you too.). At that point I only had my end-to-end test failing, so I made it pass and completely forgot about the `get_tags()` method. Oh well.
 
 #### Executors and Tasks
 
@@ -478,7 +490,7 @@ tsrc sync
 remote: Counting objects: 3, done.
 ...
 Updating 62a5d28..39eb3bd
-error: The following untracked working tree files would be overwritten by merge:
+error: The following untracked files would be overwritten by merge:
 	bar.txt
 Please move or remove them before you merge.
 Aborting
@@ -503,31 +515,31 @@ Error: Running `ls foo` on every repo failed
 * spam
 ```
 
-So in order to keep things DRY [^1], we have some high-level code that only deals with loop and error handling:
+So in order to keep things DRY [^2], we have some high-level code that only deals with loop and error handling:
 
 ```python
 
-class Task(metaclass=abc.ABCMeta):
+class Task(Generic[T], metaclass=abc.ABCMeta):
 
     @abc.abstractmethod
     def description(self) -> str:
         pass
 
     @abc.abstractmethod
-    def display_item(self, _) -> str:
+    def display_item(self, item: T) -> str:
         pass
 
     @abc.abstractmethod
-    def process(self, _) -> None:
+    def process(self, item: T) -> None:
         pass
 
 
-class SequentialExecutor():
-    def __init__(self, task: Task) -> None:
+class SequentialExecutor(Generic[T]):
+    def __init__(self, task: Task[T]) -> None:
         self.task = task
         self.errors: List[Tuple[Any, tsrc.Error]] = list()
 
-    def process(self, items: List[Any]) -> None:
+    def process(self, items: List[T]) -> None:
         if not items:
             return True
         ui.info_1(self.task.description())
@@ -540,7 +552,7 @@ class SequentialExecutor():
         if self.errors:
             self.handle_errors()
 
-    def process_one(self, item) -> None:
+    def process_one(self, item: T) -> None:
         try:
             self.task.process(item)
         except tsrc.Error as error:
@@ -552,18 +564,20 @@ class SequentialExecutor():
         raise ExecutorFailed()
 ```
 
+Note that you can have your [own generic types](https://mypy.readthedocs.io/en/latest/generics.html) with mypy. (This is *awesome* because without it you get laughed at by C++ programmers).
+
 Thus we can inherit from `Task` to implement `tsrc sync`:
 
 ```python
-class Syncer(tsrc.executor.Task):
+class Syncer(tsrc.executor.Task[Repo]):
 
-    def process(self, repo: tsrc.Repo) -> None:
+    def process(self, repo: Repo) -> None:
         ui.info(repo.src)
         self.fetch(repo)
         self.check_branch(repo)
         self.sync_repo_to_branch(repo)
 
-    def check_branch(self, repo):
+    def check_branch(self, repo: Repo):
         current_branch = tsrc.git.get_current_branch(repo_path)
         if not current_branch:
             raise tsrc.Error("Not on any branch")
@@ -572,9 +586,9 @@ class Syncer(tsrc.executor.Task):
 Ditto for `tsrc foreach`:
 
 ```python
-class CmdRunner(tsrc.executor.Task):
+class CmdRunner(tsrc.executor.Task[Repo]):
 
-    def process(self, repo: tsrc.Repo) -> None:
+    def process(self, repo: Repo) -> None:
         full_path = self.workspace.joinpath(repo.src)
         rc = subprocess.call(cmd, ...)
         if rc != 0:
@@ -721,9 +735,9 @@ Oops.
 
 But there is more to it than just this bug.
 
-An interesting thing happened when I tried to annotate the `run_git` function.
+Notice the type of the return value of `run_git` depends *on the value of the `raises` parameter*.
 
-I first had to use a `Union` type because the type of the return value depends on the `raises` parameter.
+At first I tried to annotate the function with a `Union` type, like this:
 
 ```python
 def run_git(working_path: Path, *cmd: str, raises=True) ->
@@ -755,7 +769,8 @@ def run_git(working_path: Path, *cmd: str) -> None:
         raise GitCommandError(working_path, cmd)
 
 
-def run_git_captured(working_path: Path, *cmd: str, check=True) -> Tuple[int, str]:
+def run_git_captured(working_path: Path, *cmd: str,
+                     check: bool = True) -> Tuple[int, str]:
     """ Run git `cmd` in given `working_path`, capturing the output
 
     Return a tuple (returncode, output).
@@ -789,8 +804,8 @@ You can either write:
 
 ```python
 _, out = run_git_captured(repo_path, "some-cmd")
-# We know `out` is *not* an error message, because if `some-cmd` failed, an exception would have been raised
-# before `out` was set.
+# We know `out` is *not* an error message, because if `some-cmd` failed, an
+# exception would have been raised before `out` was set.
 ```
 
 
@@ -807,44 +822,21 @@ else:
 That alone would be a good reason to use mypy I think :)
 
 
-# Using mypy in production
+# What's next
 
 
-You may we wondering why the `dm/mypy` branch was not merged, then.
+Well, the `mypy` changes have [been merged](https://github.com/SuperTanker/tsrc/pull/110) and the CI now runs `mypy` in strict mode on every pull request.
 
-Well, the reason is that I really don't like the syntax you have to use in Python versions less that 3.6 to annotate *variables*:
+I'm still curious about the other benefits of type annotations I could not check (maintainability, code comprehension, ease of refactorings ...).
 
-```python
-# OK in python3.5
-
-def foo(bar: int) -> bool:
-    pass
-
-foo: Any = 42
-# Not OK for Pyton 3.5, use:
-foo = 42  # type: Any
-```
-
-So, I prefer to wait until tsrc does not need to support Python3.5 any more.
-
-There is also a mode of mypy I did not use, which produces an error if *any* annotation is missing. For instance, I did not add annotation for every member of every class.
-
-I'm still curious about the other benefits of type annotations I could not check (maintainability, code comprehension, ease of refactorings ...), but that will have to be with an other project.
-
-I could also have tried writing code using *only* type annotations to find mistakes (no tests, no linters ...), but I'm so used to TDD and linters I'm sure I won't enjoy the experience.
-
-Feel free to try and tell me about it, though!
+I guess we'll see how the next refactoring in tsrc goes.
 
 # Conclusion
 
 We saw how mypy, while stilling making relative few false positives, still found inconsistencies, a few bugs, and even design problems.
 
-What I still don't know (and would very much like to find out), is whether type annotations make refactoring easier.
-
-We have quite a few [interesting features]() to implement, so probably the best way to go is to merge the `dm/mypy` branch and see how it goes. I'll let you know.
+So, my advice is for you to use it if you get a chance. Cheers!
 
 
-PS: We also start writing end-to-end tests for one of our app using Python + selenium, and we used `mypy` to check correctness of the Python code :)
-
-
-[^1]: DRY stands for "Don't Repeat Yourself"
+[^1]: If you want to know more, feel free to browse the [documentation](https://supertanker.github.io/tsrc/), or read the [introduction post]({{< ref "post/0050-introducing-tsrc.md" >}}).
+[^2]: DRY stands for "Don't Repeat Yourself"
