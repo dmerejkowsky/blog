@@ -83,9 +83,9 @@ I chose it because:
 I also chose it because a lot of tools were already used in the hope of catching bugs:
 
 * Every pull request was reviewed by other humans
-* Two static analyzers (pylint and pyflake) were ran for  each pull request
-* McCab complexity was measured for each and every function and method of the code base and was not allowed to go above 10.
-* TDD was used throughout the development of the projects
+* Two static analyzers (pylint and pyflakes) were ran for  each pull request
+* McCabe complexity was measured for each and every function and method of the code base and was not allowed to go above 10.
+* TDD was used throughout the development of the project
 * Test coverage was already at 80%
 
 Then I had to define what I meant by "worth it".
@@ -141,7 +141,7 @@ def find_workspace_path() -> Path:
 ```
 
 This function starts by checking there is a `.tsrc` hidden directory in the working path.
-If not, it goes through every parent directory and check if the `.tsrc` directory is here. If it reaches the root of the  filesystem (the second value of `os.path.split` is None), it raises an exception.
+If not, it goes through every parent directory and check if the `.tsrc` directory is here. If it reaches the root of the  file system (the second value of `os.path.split` is None), it raises an exception.
 
 mypy did not like that `tail` started as a boolean, and then was assigned to a string.
 
@@ -156,7 +156,6 @@ We can fix that by using a non-empty string, with a name that reveals the intent
 An other way would be to use a type like `Union[bool,str]` but that would be more confusing I think.
 
 Anyway, I'm not sure the quality of the code improved there. No point for mypy.
-
 
 
 
@@ -179,7 +178,7 @@ def save_config(options: Options):
         ruamel.yaml.dump(config, fp)
 ```
 
-We are using `save_config` to serialize a "value object" (the `Options` class) into a yaml file.
+We are using `save_config` to serialize a "value object" (the `Options` class) into a YAML file.
 
 mypy saw the first two lines, `config = dict()`, `config["url"] = options.ul` and wrongly deduced that `config` was a dict from strings to strings.
 
@@ -233,7 +232,7 @@ mypy saw that the default value was a string, so he complained we were using a l
 
 Here, mypy forced us to follow an implicit convention. There are two ways to represent a list of characters in Python. A real list: `['a', 'b', 'c']`, or a string: `"abc"`. The authors of the `urllib.quote()` function decided to use the second form, so it's a good thing we follow this convention too.
 
-An other win for mypi.
+An other win for mypy.
 
 ### Bugs found
 
@@ -255,7 +254,7 @@ def handle_stream_errors(response: requests.models.Response) -> None:
 ```
 
 
-This code wraps calls to the GitLab API, and arrange for a particular GitLabAPIError to be raised, when we make a "stream" request. (For instance, to download a GitLab CI artifact):
+This code wraps calls to the GitLab API, and arrange for a particular `GitLabAPIError` to be raised, when we make a "stream" request. (For instance, to download a GitLab CI artifact):
 
 
 <center>⁂</center>
