@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: giving-mypy-a-go
-date: 2018-06-07T10:17:17.789657+00:00
+date: 2018-06-11T10:17:17.789657+00:00
 draft: false
 title: Giving mypy a go
 tags: [python]
