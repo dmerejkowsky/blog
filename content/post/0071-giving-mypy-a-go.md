@@ -249,8 +249,8 @@ Here are a few of them. Feel free to try and find the bug yourself, the answer w
 
 ```python
 class GitLabAPIError(GitLabError):
-    def __init__(self, url: str, status_code: int, message: str) -> none:
-        ...
+    def __init__(self, url: str, status_code: int, message: str) -> None:
+    ...
 
 def handle_stream_errors(response: requests.models.Response) -> None:
      if response.status_code >= 400:
@@ -306,7 +306,7 @@ def handle_json_errors(response: requests.models.Response):
 
 This one is slightly more interesting. It is located near the previous one and handles errors for the calls to the GitLab API which returns JSON objects.
 
-We of course have to catch 500 errors, which hopefully happen not often.
+We of course have to catch 500 errors, which hopefully do not happen often.
 
 In case of a status code between 400 and 499, we know there was a problem in the request we made, but we need to tell the user why the request was rejected.
 
