@@ -156,7 +156,7 @@ That's why we try and multiply the techniques hoping each of them will find diff
 
 That's all for today.
 
-If you still believe that Python does not need types if you have a good tests, I'll have some very concrete examples to show you in a future blog post.
+If you still believe that Python does not need types if you have a good tests, I'll have some very concrete examples to show you in a [future blog post]({{< ref "post/0071-giving-mypy-a-go.md" >}}).
 
 Cheers!
 
