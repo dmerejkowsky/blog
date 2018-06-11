@@ -77,7 +77,7 @@ Let me define what I mean by "worth it".
 
 There are many things said about types annotations like:
 
-* It make it easier for external contributors to understand the code
+* It makes it easier for external contributors to understand the code
 * It helps during refactorings
 * It facilitates maintenance of large projects
 
@@ -132,9 +132,9 @@ def find_workspace_path() -> Path:
          tsrc_path = os.path.join(head, ".tsrc")
          if os.path.isdir(tsrc_path):
              return Path(head)
-        else:
-            head, tail = os.path.split(head)
-    raise tsrc.Error("Could not find current workspace")
+         else:
+             head, tail = os.path.split(head)
+     raise tsrc.Error("Could not find current workspace")
 ```
 
 This function starts by checking there is a `.tsrc` hidden directory in the working path.
@@ -142,7 +142,7 @@ If not, it goes through every parent directory and check if the `.tsrc` director
 
 mypy did not like that `tail` started as a boolean, and then was assigned to a string.
 
-We can fix that by using a non-empty string, with a name that reveals the intention:
+We can fix that by using a non-empty string, with a value that reveals the intention:
 
 ```patch
 - tail = True
@@ -272,7 +272,6 @@ The problem here is that we inverted the `status_code` and `message` parameter. 
 -           response.url, "Incorrect status code:", response.status_code)
 +        raise GitLabAPIError(
 +           response.url, response.status_code, "Incorrect status code")
-+
 ```
 
 The bug was not caught because the code in question was actually copy/pasted from a CI script (and you usually don't write tests for CI scripts).
@@ -368,7 +367,7 @@ Thus, the contents of the `manifest.yml` is in `<workspace>/.tsrc/manifest/manif
 
 The `LocalManifest` class represent this manifest repository.
 
-Here's what happen, when you run `tsrc sync`:
+Here's what happens when you run `tsrc sync`:
 
 * `local_manifest.update()` is called: the repository in `<workspace>/.tsrc/manifest>` is updated by running `git fetch; git reset --hard origin/master`
 * `local_manifest.load()` is called: the `manifest.yml` file is parsed, and its contents are stored in the `self.manifest` attribute.
