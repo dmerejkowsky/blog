@@ -9,7 +9,7 @@ tags: [python]
 
 # Introduction
 
-This is a follow up to the [I don't need types]({{< ref "post/0070-i-don-t-need-types.md" >}}) article, a story of me being wrong.
+This is a follow up to the [I don't need types]({{< ref "post/0070-i-don-t-need-types.md" >}}) article.
 
 I left a teaser explaining I'll be giving concrete examples using a Python project, so here goes.
 
@@ -71,24 +71,9 @@ This is called "gradual typing".
 
 The goal of the experiment is to check if going through the trouble of adding type annotations is worth it.
 
-To test this hypothesis, I first needed an existing project. I used [tsrc](https://github.com/SuperTanker/tsrc).
+## Some definitions
 
-tsrc is the tool we use at [my work](https://tanker.io) to manage multiple git repositories and automate GitHub and GitLab review automation.[^1]
-
-I chose it because:
-
-* It's not too big, so the experiment will not take too long.
-* It's not too small, so we'll have enough experimental data.
-
-I also chose it because a lot of tools were already used in the hope of catching bugs:
-
-* Every pull request was reviewed by other humans
-* Two static analyzers (pylint and pyflakes) were ran for  each pull request
-* McCabe complexity was measured for each and every function and method of the code base and was not allowed to go above 10.
-* TDD was used throughout the development of the project
-* Test coverage was already at 80%
-
-Then I had to define what I meant by "worth it".
+Let me define what I mean by "worth it".
 
 There are many things said about types annotations like:
 
@@ -98,16 +83,28 @@ There are many things said about types annotations like:
 
 Those may be true, but they are hard to measure.
 
-So I ask myself something something else:
+So I asked myself something else:
 
 * One: even with everything else (linters, tests, reviews ...), were there bugs that only type annotations would catch?
 * Two: were the changes required to have mypy run without errors improving the quality of the code?
 
 I know the second question is a bit subjective. I'm still going to use this metric because it's one that really matters to me.
 
-The protocol will thus be:
+## Choosing a project
 
-* Use the gradual typing loop until everything is type-annotated.
+To test this hypothesis, I needed an existing project. I used [tsrc](https://github.com/SuperTanker/tsrc), the command-line tool we use [at work](https://tanker.io) to manage multiple git repositories and automate GitHub and GitLab review automation.[^1]
+
+I chose it because:
+
+* It's not too big, so the experiment will not take too long.
+* It's not too small, so we'll have enough experimental data.
+
+
+## The protocol
+
+So here is the protocol I used:
+
+* Go through the gradual typing loop until everything is type-annotated.
 * Make a note of every non-trivial patch. (That is anything that is *not* just adding annotations)
 * When the loop is finished, take a look at each of the patch, and ask if a bug was found, and whether it improved the quality of the code.
 
@@ -120,11 +117,11 @@ Before I continue, I should tell you I used mypy with three important options:
   * `--strict-optional` is going to be the default in a future mypy release.
 
 
-## Looking at patches
+# Looking at patches
 
 Let's look at trivial patches first:
 
-### Truthy string
+## Truthy string
 
 
 ```python
@@ -159,7 +156,7 @@ Anyway, I'm not sure the quality of the code improved there. No point for mypy.
 
 
 
-### save_config
+## save_config
 
 
 ```python
@@ -184,7 +181,7 @@ mypy saw the first two lines, `config = dict()`, `config["url"] = options.ul` an
 
 Then it complained about `config["shallow"]` that was assigned to a boolean.
 
-We can fix that by forcing the `config` type:
+We can fix that by forcing the `config` type to be a dict from string to `Any`: `Any` is a "magic" type we can use precisely for [this kind of situation](http://mypy.readthedocs.io/en/latest/kinds_of_types.html#the-any-type).
 
 ```patch
 - config = dict()
@@ -234,13 +231,21 @@ Here, mypy forced us to follow an implicit convention. There are two ways to rep
 
 An other win for mypy.
 
-### Bugs found
+## Bugs found
 
-Yes, mypy found bugs that tests, all the linters and all the reviewers did not find.
+We already use a lot of tools in the hope of catching bugs:
+
+* Every pull request was reviewed by other humans
+* Two static analyzers (pylint and pyflakes) were ran for  each pull request
+* McCabe complexity was measured for each and every function and method of the code base and was not allowed to go above 10.
+* TDD was used throughout the development of the project
+* Test coverage was already at 80%
+
+Despite of this, mypy found bugs that tests, all the linters and all the reviewers did not find.
 
 Here are a few of them. Feel free to try and find the bug yourself, the answer will be given after the ⁂ symbol.
 
-#### handle_stream_errors
+### handle_stream_errors
 
 ```python
 class GitLabAPIError(GitLabError):
@@ -266,7 +271,7 @@ The problem here is that we inverted the `status_code` and `message` parameter. 
 -        raise GitLabAPIError(
 -           response.url, "Incorrect status code:", response.status_code)
 +        raise GitLabAPIError(
-+           response.url, response.status_code, "")
++           response.url, response.status_code, "Incorrect status code")
 +
 ```
 
@@ -275,7 +280,7 @@ The bug was not caught because the code in question was actually copy/pasted fro
 We actually don't need streamed responses anywhere in tsrc, so this is in fact dead code (and it is now gone from the code base)
 
 
-#### handle_json_errors
+### handle_json_errors
 
 
 ```python
@@ -383,7 +388,7 @@ We already have an `assert` in place in `get_repos()`, but mypy forced us to add
         return self.manifest.copyfiles
 ```
 
-#### GitServer
+### GitServer
 
 Some of the tests for tsrc are what we call end-to-end tests:
 
@@ -477,7 +482,7 @@ Anyway, I was writing an end-to-end test for tsrc that involved tags.
 
 I thought: "OK, I need a `.tag()` method in `GitServer`. So I also need a `get_tags()` method to check the tag was actually pushed".   Thus I wrote the `get_tags` method, forgetting to write a failing test for `GitServer` first (that still happens after 5 years of TDD, so don't worry if it happens to you too.). At that point I only had my end-to-end test failing, so I made it pass and completely forgot about the `get_tags()` method. Oh well.
 
-#### Executors and Tasks
+### Executors and Tasks
 
 In the implementation of tsrc we often have to loop over a list of items, perform actions an each of them and record which one failed, and when the loop is done, display the error messages to the user.
 
@@ -516,6 +521,10 @@ Error: Running `ls foo` on every repo failed
 
 So in order to keep things DRY [^2], we have some high-level code that only deals with loop and error handling:
 
+First, a generic `Task` method.
+
+(Note that you can have your [own generic types](https://mypy.readthedocs.io/en/latest/generics.html) with mypy. This is *awesome* because without it you get laughed at by C++ programmers)
+
 ```python
 
 class Task(Generic[T], metaclass=abc.ABCMeta):
@@ -531,8 +540,11 @@ class Task(Generic[T], metaclass=abc.ABCMeta):
     @abc.abstractmethod
     def process(self, item: T) -> None:
         pass
+```
 
+And then, a generic `SequentialExecutor` who knows how to execute a given task on a list of items and display the outcome:
 
+```python
 class SequentialExecutor(Generic[T]):
     def __init__(self, task: Task[T]) -> None:
         self.task = task
@@ -563,7 +575,6 @@ class SequentialExecutor(Generic[T]):
         raise ExecutorFailed()
 ```
 
-Note that you can have your [own generic types](https://mypy.readthedocs.io/en/latest/generics.html) with mypy. (This is *awesome* because without it you get laughed at by C++ programmers).
 
 Thus we can inherit from `Task` to implement `tsrc sync`:
 
@@ -594,13 +605,15 @@ class CmdRunner(tsrc.executor.Task[Repo]):
             raise CommandFailed
 ```
 
+Did you spot the bug?
+
 <center>⁂</center>
 
 
 The bug is in here:
 
 ```python
-+    def process(self, items: List[Any]) -> None:
+    def process(self, items: List[T]) -> None:
          if not items:
              return True
 ```
@@ -614,7 +627,7 @@ But the early `return True` was left. Here `mypy` found something that would hav
 There were of course no tests left that checked the return value of `process` (they got refactored at the same time of the rest of the code), so the bug went unnoticed.
 
 
-## run_git
+### run_git
 
 The last changed required by mypy was also pretty interesting. Here's the deal.
 
