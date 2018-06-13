@@ -107,6 +107,7 @@ to keep easily available.
   https://eev.ee/blog/2016/08/22/testing-for-people-who-hate-testing/)
 * [The 100% correct way to validate email addresses](
   https://hackernoon.com/the-100-correct-way-to-validate-email-addresses-7c4818f24643)
+* [The Cult of the Complex](https://alistapart.com/article/cult-of-the-complex)
 * [The Like Button Ruined the Internet](
   https://www.theatlantic.com/technology/archive/2017/03/how-the-like-button-ruined-the-internet/519795/?single_page=true)
 * [The Open/Closed Principle](
