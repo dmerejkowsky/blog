@@ -89,7 +89,7 @@ public class ChuckNorris {
 Let's run the tests:
 
 ```
-$ ./gradelew test
+$ ./gradlew test
 > Task :test FAILED
 
 com.chucknorris.ChuckNorrisTest > testGetFact FAILED
@@ -106,7 +106,7 @@ Expected: a string containing "Chuck Norris"
 
 OK, this fails for the good reason.
 
-Now we can try and load our shared library using jna.
+Now we can try and load our shared library using JNA.
 
 First, we add the dependency in the `build.gradle` file:
 
@@ -121,7 +121,7 @@ Then we're ready to use JNA:
 
 * We use `Native.loadLibrary()` to load the shared library
 * We create a `CLibrary` interface that implements the C functions we want to call as methods. (just `chuck_norris_init` for now).
-* We call `chuck_norris_init` in the constructor of our ChuckNorris class, storing the result into a jna `Pointer`:
+* We call `chuck_norris_init` in the constructor of our ChuckNorris class, storing the result into a JNA `Pointer`:
 
 ```java
 public class ChuckNorris {
@@ -160,7 +160,7 @@ java.lang.UnsatisfiedLinkError: Unable to load library 'chucknorris':
 
 ```
 
-This is expected. We never told jna where the `libchucknorris.so` file is.
+This is expected. We never told JNA where the `libchucknorris.so` file is.
 
 As a reminder, the file currently lives in the `build/default` folder. Here's how we built it:
 
@@ -246,11 +246,11 @@ To do so, the best thing is to use Android Studio to create the gradle project, 
 ## Adapting the GUI
 
 
-First let's pretend the ChuckNorris class already exists and
+Let's pretend the ChuckNorris class already exists for now. [^1]
 
-* Add a `text_view` ID for the text view in the `content_main` layout.
-* Adapt the `MainActivity.java` file to  update the text view when clicking on the floating button action.
+We start by adding a `text_view` ID for the text view in the `content_main` layout.
 
+Then we adapt the `MainActivity.java` file to  update the text view when clicking on the floating button action:
 
 ```java
 
@@ -284,11 +284,11 @@ public class MainActivity extends AppCompatActivity {
 
 ## Adding ChuckNorris sources
 
-One of Java's slogan is "Write Once, Run Everywhere" [^1].
+One of Java's slogan is "Write Once, Run Everywhere" [^2].
 
 So let's:
 
-* Add jna in the dependencies
+* Add JNA in the dependencies
 * Add the ChuckNorris.java file we wrote earlier
 
 And everything should work, right?
@@ -305,7 +305,11 @@ We're faced with:
 >
 > Open App Again
 
+
 What? Chuck Norris *can't be stopped*, this is unacceptable!
+
+![Chuck Norris punching the screen](/pics/chuck-norris-punch.gif)
+
 
 Time to look at the logs:
 
@@ -322,7 +326,7 @@ not found in resource path (.)
   at info.dmerej.chucknorris.ChuckNorris.loadChuckNorrisLibrary
 ```
 
-That's a fun one. Turns out the name of dependency *changes* when compiling for Android, you need a `@aar` prefix [^2]:
+That's a fun one. Turns out the name of dependency *changes* when compiling for Android, you need a `@aar` prefix [^3]:
 
 ```gradle
 dependencies {
@@ -420,5 +424,6 @@ Victory \o/
 
 That's all for today. See you next time!
 
-[^1]: As always, the [Wikipedia page](https://en.wikipedia.org/wiki/Write_once,_run_anywhere) contains lots of interesting stuff about this topic.
-[^2]: You can find a note about this in [JNA's FAQ](https://github.com/java-native-access/jna/blob/master/www/FrequentlyAskedQuestions.md#jna-on-android), but as far as I know, not *anywhere else* in the documentation.
+[^1]: This is also known as [wishful thinking programming](https://dev.to/_bigblind/quick-tip-programming-by-wishful-thinking-3hn)
+[^2]: As always, the [Wikipedia page](https://en.wikipedia.org/wiki/Write_once,_run_anywhere) contains lots of interesting stuff about this topic.
+[^3]: You can find a note about this in [JNA's FAQ](https://github.com/java-native-access/jna/blob/master/www/FrequentlyAskedQuestions.md#jna-on-android), but as far as I know, not *anywhere else* in the documentation.
