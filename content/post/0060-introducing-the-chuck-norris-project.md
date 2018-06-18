@@ -37,6 +37,7 @@ Available:
 4. [Using Python with ctypes]({{< ref "post/0064-let-s-build-chuck-norris-part-4-python-and-ctypes.md" >}})
 5. [Using cffi to build a Python extension]({{< ref "post/0065-let-s-build-chuck-norris-part-5-python-and-cffi.md" >}})
 6. [Cross-compiling for Android]({{< ref "post/0073-let-s-build-chuck-norris-part-6-android-cross-compilation.md" >}})
+7. [Android and JNA]({{< ref "post/0074-let-s-build-chuck-norris-part-7-android-jna.md" >}})
 
 Planned for later:
 

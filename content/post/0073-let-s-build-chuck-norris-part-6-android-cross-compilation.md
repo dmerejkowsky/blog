@@ -586,7 +586,7 @@ We finally managed to run some `C++` code directly on Android.
 
 However, Android applications are written in Java (or Kotlin), so we still need to wrap the C++ library in Java.
 
-We'll do that in a following post. Stay tuned!
+See you in [part 7]({{< ref "post/0074-let-s-build-chuck-norris-part-7-android-jna.md" >}}) for the next episode :)
 
 [^1]: You may be using other architectures without realizing it, but don't worry too much about it.
 [^2]: It's actually a *good thing*. Otherwise you won't be able to run and debug the binaries you've just compiled.
