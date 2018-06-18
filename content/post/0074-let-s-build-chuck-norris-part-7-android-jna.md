@@ -10,18 +10,12 @@ tags: [c++]
 _Note: This is part 7 of the [Let's Build Chuck Norris!]({{< ref "0060-introducing-the-chuck-norris-project.md" >}}) series._
 
 
-Let's take a detour on the desktop first.
+[Last time]({{< ref "post/0073-let-s-build-chuck-norris-part-6-android-cross-compilation.md" >}}) we managed to cross-compile and run C++ code for Android.
+
+It's now time to write some Java code, but we need to take a detour on the desktop first.
 
 # Java bindings
 
-As a reminder, the `build/default` folder already contains our shared library, here's how we built it:
-
-```
-$ cd build/default
-$ conan install ../..
-$ cmake -GNinja -DBUILD_SHARED_LIBS=ON ../..
-$ ninja
-```
 
 Let's create a new Java library project with `gradle`:
 
@@ -45,7 +39,7 @@ dependencies {
 }
 ```
 
-Let's fix the source files that gradle created so that we have proper package:
+Then let's fix the source files that gradle created so that we have proper package:
 
 ```
 $ tree java
@@ -123,10 +117,11 @@ dependencies {
 }
 ```
 
-Then, we add the following code into the `ChuckNorris.java` class and use the `loadLibrary` method
-from jna's `Native` class.
+Then we're ready to use JNA:
 
-We also call `chuck_norris_init` in the constructor, storing the result into a jna `Pointer`:
+* We use `Native.loadLibrary()` to load the shared library
+* We create a `CLibrary` interface that implements the C functions we want to call as methods. (just `chuck_norris_init` for now).
+* We call `chuck_norris_init` in the constructor of our ChuckNorris class, storing the result into a jna `Pointer`:
 
 ```java
 public class ChuckNorris {
@@ -157,16 +152,26 @@ And we run the tests:
 ```
 $ ./gradlew test
 java.lang.UnsatisfiedLinkError: Unable to load library 'chucknorris':
-Native library (linux-x86-64/libchucknorris.so) not found in resource path (...)
-	at com.sun.jna.NativeLibrary.loadLibrary(NativeLibrary.java:303)
-	at com.sun.jna.NativeLibrary.getInstance(NativeLibrary.java:427)
-        ...
+  Native library (linux-x86-64/libchucknorris.so)
+  not found in resource path (...)
+  at com.sun.jna.NativeLibrary.loadLibrary(NativeLibrary.java:303)
+  at com.sun.jna.NativeLibrary.getInstance(NativeLibrary.java:427)
+  ...
 
 ```
 
-This is expected. We never told jna where the `libchucknorris.so` file lived.
+This is expected. We never told jna where the `libchucknorris.so` file is.
 
-There are several ways to do this. Here we'll set a system property in the `test` block of the Gradle configuration file:
+As a reminder, the file currently lives in the `build/default` folder. Here's how we built it:
+
+```
+$ cd build/default
+$ conan install ../..
+$ cmake -GNinja -DBUILD_SHARED_LIBS=ON ../..
+$ ninja
+```
+
+There are several ways to tell JNA about the location of the shared library file. Here we'll set a system property in the `test` block of the Gradle script:
 
 ```gradle
 def thisFile  = new File(project.file('build.gradle').absolutePath)
@@ -218,6 +223,8 @@ Let's implement `getFact()`, and while we're at it, add a `.close()` method:
 }
 ```
 
+Re-run the tests:
+
 ```
 $ ./gradlew test
 BUILD SUCCESSFUL
@@ -234,33 +241,16 @@ Now we know:
 
 It's time to glue things together.
 
-To do so, the best thing is to use Android Studio to create the gradle project.
+To do so, the best thing is to use Android Studio to create the gradle project, starting with a with a basic activity so we don't have to deal with all the Android boilerplate.
 
-I tried going the other way (generate a Android project from gradle and opening it with Android Studio), but with no avail. If you manage to do it, let me know :)
-
-I suggest you start with a basic activity.
-
-## Adding ChuckNorris sources
-
-One of Java's slogan is "Write Once, Run Everywhere" [^1].
-
-Write once, run everywhere, they said :)
-
-So let's:
-
-* Add jna in the dependencies
-* Add the ChuckNorris.java file we wrote earlier
-
-And everything should work, right?
+## Adapting the GUI
 
 
-## Fun with jnidispatch.so
-
-
-Once we've added the `ChuckNorris.java` file, we can
+First let's pretend the ChuckNorris class already exists and
 
 * Add a `text_view` ID for the text view in the `content_main` layout.
-* And then patch the `MainActivity` update the text view when clicking on the floating button action.
+* Adapt the `MainActivity.java` file to  update the text view when clicking on the floating button action.
+
 
 ```java
 
@@ -280,8 +270,8 @@ public class MainActivity extends AppCompatActivity {
     super.onDestroy();
   }
 
-
   // ...
+
   final TextView textView = (TextView) findViewById(R.id.text_view);
   FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
   fab.setOnClickListener(new View.OnClickListener() {
@@ -292,7 +282,24 @@ public class MainActivity extends AppCompatActivity {
   });
 ```
 
-Now let's create an emulator, and click on play:
+## Adding ChuckNorris sources
+
+One of Java's slogan is "Write Once, Run Everywhere" [^1].
+
+So let's:
+
+* Add jna in the dependencies
+* Add the ChuckNorris.java file we wrote earlier
+
+And everything should work, right?
+
+
+## Fun with jnidispatch.so
+
+
+To check if our code works, let's create an emulator, and click on play.
+
+We're faced with:
 
 > **ChuckNorris has stopped**
 >
@@ -345,10 +352,10 @@ If you put a `.so` file in a folder named `src/main/jniLibs/<arch>`, it will be 
 
 
 For simplicity purposes, we built the ChuckNorris library as a static library, just to show that the C++ binary still needed `libc++_shared.so` to run.
-But JNA needs a shared library to run, so let's patch the Conan profile to have:
+But JNA needs a shared library to run.
 
 
-Remember in [part 4]({{< ref "post/0064-let-s-build-chuck-norris-part-4-python-and-ctypes.md" >}} we called CMake with `-DBUILD_SHARED_LIBS=ON` to get `libchucknorris.so`.
+Remember in [part 4]({{< ref "post/0064-let-s-build-chuck-norris-part-4-python-and-ctypes.md" >}}) we had to call CMake with `-DBUILD_SHARED_LIBS=ON` to get a shared library.
 
 We'll do the same thing, but going through Conan this time.
 
@@ -408,8 +415,10 @@ Let's try again:
 
 ![Chuck Norris app running](/pics/chuck-norris-android.png)
 
-Victory!
+Victory \o/
 
+
+That's all for today. See you next time!
 
 [^1]: As always, the [Wikipedia page](https://en.wikipedia.org/wiki/Write_once,_run_anywhere) contains lots of interesting stuff about this topic.
-[^2]: You can find a note about this in the [FAQ](https://github.com/java-native-access/jna/blob/master/www/FrequentlyAskedQuestions.md#jna-on-android), but as far as I know, not *anywhere else* in the documentation.
+[^2]: You can find a note about this in [JNA's FAQ](https://github.com/java-native-access/jna/blob/master/www/FrequentlyAskedQuestions.md#jna-on-android), but as far as I know, not *anywhere else* in the documentation.
