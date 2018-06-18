@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: chuck-norris-part-8-android-jna
-date: 2018-06-05T12:17:17.789657+00:00
+date: 2018-06-18T12:17:17.789657+00:00
 draft: true
 title: "Let's Build Chuck Norris! - Part 7: Android and jna"
 tags: [c++]
@@ -45,7 +45,7 @@ dependencies {
 }
 ```
 
-Let's rename the source files that gradle created into a proper package and with a correct name to have:
+Let's fix the source files that gradle created so that we have proper package:
 
 ```
 $ tree java
@@ -225,110 +225,191 @@ BUILD SUCCESSFUL
 
 Success!
 
+# Creating a new Android project
 
-# Add ChuckNorrisLib.java
+Now we know:
 
-Same as the `java` example.
+* How to compile the C++ code for Android.
+* How to load some C++ in Java, but only for the desktop.
+
+It's time to glue things together.
+
+To do so, the best thing is to use Android Studio to create the gradle project.
+
+I tried going the other way (generate a Android project from gradle and opening it with Android Studio), but with no avail. If you manage to do it, let me know :)
+
+I suggest you start with a basic activity.
+
+## Adding ChuckNorris sources
+
+One of Java's slogan is "Write Once, Run Everywhere" [^1].
 
 Write once, run everywhere, they said :)
 
-# Fun with jnidispatch.so
+So let's:
+
+* Add jna in the dependencies
+* Add the ChuckNorris.java file we wrote earlier
+
+And everything should work, right?
 
 
-Let's try to make the tests in `src/test` work:
+## Fun with jnidispatch.so
+
+
+Once we've added the `ChuckNorris.java` file, we can
+
+* Add a `text_view` ID for the text view in the `content_main` layout.
+* And then patch the `MainActivity` update the text view when clicking on the floating button action.
 
 ```java
-public class ChuckNorrisTest {
-    @Test
-    public void testGetVersion() {
-        String version = ChuckNorrisLib.getVersion();
-        assertEquals(version, "0.1");
-    }
-}
+
+public class MainActivity extends AppCompatActivity {
+  private ChuckNorris chuckNorris;
+
+
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    chuckNorris = new ChuckNorris();
+    super.onCreate(savedInstanceState);
+  }
+
+  @Override
+  protected void onDestroy() {
+    chuckNorris.close();
+    super.onDestroy();
+  }
+
+
+  // ...
+  final TextView textView = (TextView) findViewById(R.id.text_view);
+  FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+  fab.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+      String fact = chuckNorris.getFact();
+      textView.setText(fact);
+  });
 ```
 
-Hu-ho:
+Now let's create an emulator, and click on play:
+
+> **ChuckNorris has stopped**
+>
+> Open App Again
+
+What? Chuck Norris *can't be stopped*, this is unacceptable!
+
+Time to look at the logs:
 
 ```
+06-18 14:27:18.553 6890-6890/info.dmerej.chucknorris E/AndroidRuntime:
+FATAL EXCEPTION: main
+Process: info.dmerej.chucknorris, PID: 6890
 java.lang.UnsatisfiedLinkError:
 Native library (com/sun/jna/android-x86-64/libjnidispatch.so)
 not found in resource path (.)
+  at com.sun.jna.Native.loadNativeDispatchLibraryFromClasspath
+  at com.sun.jna.Native.loadNativeDispatchLibrary
+  ...
+  at info.dmerej.chucknorris.ChuckNorris.loadChuckNorrisLibrary
 ```
 
-Fortunately, there's a standard way to put `.so` files so that the get packaged inside and Android app, called the `jniLibs` folder.
+That's a fun one. Turns out the name of dependency *changes* when compiling for Android, you need a `@aar` prefix [^2]:
 
-You can find the `libjnidispatch.so` lib inside the `android-x86-84.jar` folder in the
-[dist folder of jna on github](https://github.com/java-native-access/jna/tree/master/dist)
-
-
-so that other devs can guess what to do, also add a `.gitignore` file:
-
-```
-$ cat jniLibs/.gitignore
-x86_64
-# TODO: add more Android archs here
-$  tree -a jniLibs
-.
-├── .gitignore
-└── x86_64
-    └── libjnidispatch.so
-```
-
-Note how the contents of the `.gitignore` also serves as a documentation as it lists the names of the Android archs :)
-
-Note: there's probably a way to do that automatically with gradle, but life is short ...
-
-Now the error becomes:
-
-```
-java.lang.UnsatisfiedLinkError:
-Unable to load library 'chucknorris':
-Native library (android-x86-64/libchucknorris.so)
-not found in resource path (.)
-```
-
-But that's ok, we know how to cross-compile C++ code for Android, so all that's left to do is ...
-
-# Symlinks
-
-
-Now we can create a symlink to `cpp/build/android/x86_64/lib/libchucknorris.so` in
-`android/app/src/main/jniLibs/x86_64/`
-
-and a symlink to `/android-x86_64-api-27-toolchain/x86_64-linux-android/lib64/libc++_shared.so`
-
-And the test pass!
-
-
-# Finally, the GUI
-
-
-Add a button and a text view.
-
-Then patch the `MainActivity.java` class
-
-```java
-public class MainActivity extends AppCompatActivity {
-    private ChuckNorrisLib cklib = new ChuckNorrisLib();
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        Button button = findViewById(R.id.button);
-        final TextView view = (TextView) findViewById(R.id.textView);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String fact = cklib.getFact();
-                view.setText(fact);
-            }
-        });
-    }
+```gradle
+dependencies {
+  // ...
+  implementation 'net.java.dev.jna:jna:4.5.1@aar'
 }
-
 ```
 
+Let's try again!
 
-Done!
+We get the same error message, but this time it's the `chucknorris.so` library that is not found:
+
+```
+06-18 14:27:18.553 6890-6890/info.dmerej.chucknorris E/AndroidRuntime:
+FATAL EXCEPTION: main
+Process: info.dmerej.chucknorris, PID: 6890
+java.lang.UnsatisfiedLinkError: Unable to load library 'chucknorris':
+  Native library (android-x86-64/libchucknorris.so) not found
+```
+
+Fortunately, there's a more or less standard solution.
+
+If you put a `.so` file in a folder named `src/main/jniLibs/<arch>`, it will be included inside the Java application, and the Java code will be able to load it without any configuration.
+
+
+## The shared option
+
+
+For simplicity purposes, we built the ChuckNorris library as a static library, just to show that the C++ binary still needed `libc++_shared.so` to run.
+But JNA needs a shared library to run, so let's patch the Conan profile to have:
+
+
+Remember in [part 4]({{< ref "post/0064-let-s-build-chuck-norris-part-4-python-and-ctypes.md" >}} we called CMake with `-DBUILD_SHARED_LIBS=ON` to get `libchucknorris.so`.
+
+We'll do the same thing, but going through Conan this time.
+
+First, let's add the `ChuckNorris:shared` option in the `android` profile:
+
+```ini
+...
+[options]
+*:pic=True
+ChuckNorris:shared=True
+```
+
+Then adapt the recipe:
+
+{{< highlight python "hl_lines=4-5 9-12 15-16" >}}
+class ChucknorrisConan(ConanFile):
+    name = "ChuckNorris"
+    ...
+    options = {"shared": [True, False]}
+    default_options = "shared=False"
+
+    def build(self):
+        cmake = CMake(self)
+        cmake_definitions = {}
+        if self.options.shared:
+            cmake_definitions["BUILD_SHARED_LIBS"] = "ON"
+        cmake.configure(defs=cmake_definitions)
+
+    def package(self):
+        self.copy("lib/libchucknorris.so", dst="lib", keep_path=False)
+        self.copy("lib/libc++_shared.so", dst="lib", keep_path=False)
+{{</ highlight >}}
+
+
+Then let's re-create the Conan package:
+
+```
+$ conan create . dmerej/test --profile android --setting arch=x86_64
+Exporting package recipe
+...
+package(): Copied 2 '.so' files: libchucknorris.so, libc++_shared.so
+Package '<hash>' created
+```
+
+Finally let's create symlinks to all `.so` files from the package.
+
+```
+$ cd android/app
+$ cd src/main
+$ mkdir -p jniLibs/x86_64
+$ cd jniLibs/x86_64
+$ ln -s ~/.conan/data/ChuckNorris/0.1/dmerej/test/<hash>/libchucknorris.so .
+$ ln -s ~/.conan/data/ChuckNorris/0.1/dmerej/test/<hash>/libc++_shared.so .
+```
+
+Let's try again:
+
+![Chuck Norris app running](/pics/chuck-norris-android.png)
+
+Victory!
+
+
+[^1]: As always, the [Wikipedia page](https://en.wikipedia.org/wiki/Write_once,_run_anywhere) contains lots of interesting stuff about this topic.
+[^2]: You can find a note about this in the [FAQ](https://github.com/java-native-access/jna/blob/master/www/FrequentlyAskedQuestions.md#jna-on-android), but as far as I know, not *anywhere else* in the documentation.
