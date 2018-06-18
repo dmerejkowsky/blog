@@ -335,8 +335,7 @@ And now the binary works:
 ```
 $ ninja
 $ ./bin/c_demo
-Chuck Norris doesn't dial the wrong number.
-You answered the wrong phone.
+Chuck Norris counted to infinity. Twice.;
 ```
 
 That's all for today. The C library is the building block we'll use to [write Python bindings]({{< ref "post/0064-let-s-build-chuck-norris-part-4-python-and-ctypes.md" >}}) and phone applications. Stay tuned for the rest of the story!
