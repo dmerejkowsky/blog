@@ -36,6 +36,7 @@ to keep easily available.
 * [An Inside Look at IBM Watson and How it Works](
   http://www.redbooks.ibm.com/abstracts/redp4955.html)
 * [Automation is not DevOps](https://dev.to/liquid_chickens/automation-is-not-devops)
+* [Becoming a 10x programmer](https://kateheddleston.com/blog/becoming-a-10x-developer)
 * [Becoming a CTO](https://juokaz.com/blog/becoming-a-cto)
 * [Bots Should Punch Up](https://www.crummy.com/2013/11/27/0)
 * [Capitaine Train:  Building our web-app on GitLab-CI (coming from Jenkins)](
