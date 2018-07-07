@@ -21,7 +21,7 @@ using three articles I've already written:
 
 <!--more-->
 
-## Previously, on dmerej.info/blog
+## Previously, on this blog
 
 ### Heard and seen at FOSDEM 2017
 
