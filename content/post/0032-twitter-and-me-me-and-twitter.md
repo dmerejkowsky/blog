@@ -223,7 +223,7 @@ It was then I decided to massively unfollow people.
 No more Bill Murray, no more accounts that published interesting stuff 50% of
 the time, no accounts that were only re-tweeting popular tweets ...
 
-I went from following about one hundred accounts to less than twenty, and I decided
+I went from following about one hundred accounts to less than thirty, and I decided
 to never go above that number again.
 
 Now every night I spend less that a minute reading all the things I missed while
