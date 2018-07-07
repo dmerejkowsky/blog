@@ -3,10 +3,10 @@ authors: [dmerej]
 slug: why-mastodon
 date: 2017-05-01T11:16:14.779697+00:00
 draft: false
-title: Why mastodon
+title: Why Mastodon
 ---
 
-On April 20th, I created my first [mastodon](https://mastodon.social/about) account,
+On April 20th, I created my first [Mastodon](https://mastodon.social/about) account,
 `@dmerej@mamot.fr`.
 
 In this article, I'd like to show you why this matters a great deal to me,
@@ -105,7 +105,7 @@ resources, most of them naturally refuse to host too many accounts.
 
 ## Conclusion
 
-I encourage you to give mastodon a try. After you've chosen your instance, using
+I encourage you to give Mastodon a try. After you've chosen your instance, using
 the website is not very difficult if you already know how to use Twitter.
 
 You can use [mastodon-bridge](http://mastodon-bridge.herokuapp.com/) or the

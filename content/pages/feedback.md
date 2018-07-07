@@ -24,7 +24,7 @@ q.zrerw@tznvy.pbz
 If you can't decrypt this, feel free to leave a comment anywhere with your
 e-mail address and I'll get back to you.
 
-## comments
+## Comments
 
 Comments on this blog are powered by [isso](https://posativ.org/isso/).
 Here are a few things you need to know:
@@ -39,9 +39,9 @@ Here are a few things you need to know:
 * After you submit your comment, you'll have 15 minutes to edit or delete it
   (If you are wondering, this works with a secret token stored in a cookie).
 
-## mastodon
+## Mastodon
 
-I have a [mastodon](https://mastodon.social/about) account:
+I have a [Mastodon](https://mastodon.social/about) account:
 `@dmerej@mamot.fr`
 
 ## twitter
@@ -58,7 +58,7 @@ message.
 You can also find me on freenode, and `irc.mozilla.org`.
 On both servers my nick is `dmerejkowsky`
 
-## github
+## GitHub
 
 You can also fork the sources of this blog on [github](https://github.com/dmerejkowsky/blog).
 

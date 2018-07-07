@@ -14,7 +14,7 @@ _Note: this the second post in the [Quantum of Ideas]({{< ref "post/0057-introdu
 
 # Introduction
 
-I've already explained [on this blog]({{< ref "post/0032-twitter-and-me-me-and-twitter.md#fixing-my-timeline" >}}) why I've decided to never follow more than thirty accounts on twitter.
+I've already explained [on this blog]({{< ref "post/0032-twitter-and-me-me-and-twitter.md#fixing-my-timeline" >}}) why I've decided to never follow more than 30 accounts on twitter.
 
 To this day, I'm still convinced that if you follow more than 50 accounts, you should seriously considering cleaning your timeline too.
 
@@ -35,7 +35,7 @@ _Remember, this is **not** an existing product, just a "work in progress" idea._
 
 When this is done, the TTC shows you a list of accounts sorted by decreasing score, and all you have to do is to select which irrelevant accounts you want to stop following.
 
-By the way, unless they explicitly configured their account to do so, each account you un-follow will *not* get notified, so there's a pretty good chance they won't get mad at you.
+By the way, unless they explicitly configured their account to do so, each account you unfollow will *not* get notified, so there's a pretty good chance they won't get mad at you.
 
 
 # Conclusion
