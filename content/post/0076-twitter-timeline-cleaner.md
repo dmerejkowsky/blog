@@ -22,7 +22,7 @@ This may seem like a daunting task, especially if you're already following hundr
 
 # How it works
 
-_Remember, this is **not** an existing product, just an idea I had._
+_Remember, this is **not** an existing product, just a "work in progress" idea._
 
 * First, the TTC does a backup of the list of all your followers
 
