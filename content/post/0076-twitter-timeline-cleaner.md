@@ -37,6 +37,7 @@ When this is done, the TTC shows you a list of accounts sorted by decreasing sco
 
 By the way, unless they explicitly configured their account to do so, each account you unfollow will *not* get notified, so there's a pretty good chance they won't get mad at you.
 
+_Update: Turns out such a product already exists. Take a look at https://www.manageflitter.com/_
 
 # Conclusion
 
