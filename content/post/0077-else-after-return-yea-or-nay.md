@@ -40,8 +40,7 @@ In other words, the code should be written like this:
 def foo():
     if bar:
         return baz
-     return qux
-
+    return qux
 ```
 
 Well, the code is shorter. But is it *better*?
