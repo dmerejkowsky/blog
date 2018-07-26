@@ -56,6 +56,7 @@ def main():
     to_write = TEMPLATE.format(**locals())
     with open(post_path, "w") as fp:
         fp.write(to_write)
+    subprocess.call(["git", "add", post_path])
     subprocess.call(["nvim", post_path])
 
 
