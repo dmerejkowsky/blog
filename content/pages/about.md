@@ -35,9 +35,8 @@ http://creativecommons.org/licenses/by/3.0/fr)
 Le blog n'a aucun rapport avec une quelconque activité professionnelle et je
 n'en tire aucun revenu.
 
-Le serveur est hébergé chez [Gandi](https://www.gandi.net/whowe/?lang=fr#legal).
-
-Gandi pourra vous transmettre mes coordonnées si nécessaire.
+Le serveur est hébergé chez [Digital Ocean](https://www.digitalocean.com/), qui pourra vous
+transmettre mes coordonnées si nécessaire.
 
 Le service de commentaires utilise des cookies pour vous permettre d'éditer vos
 commentaires et est capable de stocker votre e-mail si vous le lui donnez.
