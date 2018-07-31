@@ -1,0 +1,28 @@
+Main author: Dimitri Merejkowsky
+Location: Paris, France.
+Mastodon: dmerej@mamot.fr
+IRC     : dmerejkowsy (freenode, irc.mozilla.org)
+Twitter : d_merej
+
+
+/* THANKS */
+
+  Hugo authors
+  Site: gohugo.io
+
+  Munif Tanjim: minimo (theme of the blog) author
+  Site: https://muniftanjim.com
+
+
+  Faithful subscribers (you know who you are)
+  People who leave helpful comments (you rock)
+
+
+/* SITE */
+  Language: English
+  Doctype: HTML5
+  IDE: neovim
+
+  DNS and SSL certificate from gandi
+
+  Server hosted on Digital Ocean
