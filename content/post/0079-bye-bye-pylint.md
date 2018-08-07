@@ -42,11 +42,11 @@ Now let's see a few problems I've encountered while using pylint.
 
 ## Initial setup
 
-Initial setup of `pylint` is always a bit painful. However, if you follow [some advice]({{< ref "post/0018-some-pylint-tips.md" >}}) you can get through it.
+Initial setup of pylint is always a bit painful. However, if you follow [some advice]({{< ref "post/0018-some-pylint-tips.md" >}}) you can get through it.
 
 ## False negatives
 
-A recurring issue with `pylint` is the amount of false negatives. That is, when pylint thinks something is wrong but the code is perfectly OK.
+A recurring issue with pylint is the amount of false negatives. That is, when pylint thinks something is wrong but the code is perfectly OK.
 
 For instance, I like using the [attrs](http://www.attrs.org/en/stable/overview.html) library whenever I have a class that mostly contains data, like so:
 
@@ -60,15 +60,15 @@ class Foo:
     baz = attr.ib()
 ```
 
-Those few lines of code give me get a nice human-readable `__repr__`, a complete set of comparison methods, sensible constructors (among other things), and without any boiler plate.
+Those few lines of code give me a nice human-readable `__repr__`, a complete set of comparison methods, sensible constructors (among other things), and without any boiler plate.
 
-But when I run `pylint` on this file I get:
+But when I run pylint on this file I get:
 
 ```
 foo.py:3: [R0903(too-few-public-methods), Foo] Too few public methods (0/2)
 ```
 
-Well, it's perfectly fine to require at least 2 public methods for every class you use. Most of the time, when you have a class with just *one* public method it's better to just have a function instead, like this:
+Well, it's perfectly fine to require at least 2 public methods for every class you declare. Most of the time, when you have a class with just *one* public method it's better to just have a function instead, like this:
 
 ```python
 
@@ -87,7 +87,7 @@ def greet(name="world"):
 ```
 
 
-But here Pylint does not know about all the nice methods added "dynamically" by `attr` and wrongly assumes our design is wrong.
+But here pylint does not know about all the nice methods added "dynamically" by `attr` and wrongly assumes our design is wrong.
 
 Thus, if you run pylint during CI and you fail the build if any error is found, you have to insert a specially formatted comment to locally disable this warning:
 
@@ -133,7 +133,7 @@ Here is a complete list:
 * (_F_)atal (something prevented pylint from running normally)
 * (_E_)rror (serious bug)
 * (_W_)arning (not so serious issue)
-* (_I_)nfo (errors like unable to parse a `# pylint: disable` comment)
+* (_I_)nfo (errors like being unable to parse a `# pylint: disable` comment)
 * (_C_)onvention (coding style)
 * (_R_)efactoring (code that could be written in a clearer or more Pythonic way)
 
