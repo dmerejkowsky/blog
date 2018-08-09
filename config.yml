@@ -28,3 +28,4 @@ menu:
     - name: Subscribe
       identifier: subscribe
       url: /index.xml
+      weight: 0

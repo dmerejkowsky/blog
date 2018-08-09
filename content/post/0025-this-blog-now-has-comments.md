@@ -11,7 +11,7 @@ Those are powered by [isso](https://posativ.org/isso/), which means
 your comments are stored (hopefully safely) on my own server.
 
 Enjoy, and if things do not work, don't hesitate to
-[contact me]({{< ref "pages/feedback.md" >}}) :)
+[contact me]({{< ref "pages/contact.md" >}}) :)
 
 Note: you can format your comments using
 [markdown](http://daringfireball.net/projects/markdown)

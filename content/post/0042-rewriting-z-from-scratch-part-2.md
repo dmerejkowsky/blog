@@ -90,7 +90,7 @@ tool itself is called `cwd-history`, and the paths are stalled
 
 I never got any feedback on this little puzzle, though :/ Maybe no one even tried, or
 maybe the puzzle was too hard, I don't know. Feel free to [tell me about it](
-{{< ref "pages/feedback.md" >}}) though :)
+{{< ref "pages/contact.md" >}}) though :)
 
 Anyway, now the commit has been [merged](
 https://github.com/dmerejkowsky/dotfiles/commit/0d5780c87dab3093266357663736d23296ca8b62),

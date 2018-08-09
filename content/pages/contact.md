@@ -1,16 +1,15 @@
 ---
 date: "2016-05-21T23:55:04+02:00"
 draft: false
-title: "Feedback"
+title: "Contact"
 menu: main
 feedback: false
 meta: false
+weight: 0
+aliases: ["pages/feedback"]
 ---
 
-Feedback is more than welcome :)
-
-I follow the [Croker's Rules](http://sl4.org/crocker.html), so feel free to
-speak up!
+Here are a few ways to contact me. Note that I follow the [Croker's Rules](http://sl4.org/crocker.html), so feel free to speak up!
 
 ## e-mail
 
@@ -60,9 +59,10 @@ On both servers my nick is `dmerejkowsky`
 
 ## GitHub
 
-You can also fork the sources of this blog on [github](https://github.com/dmerejkowsky/blog).
+Here's [my GitHub account](https://github.com/dmerejkowsky/).
+
+Among other projects, you can find the [sources of this blog](https://github.com/dmerejkowsky/blog).
 
 ## dev.to
 
-I cross-post most of my blog posts to [dev.to](https://dev.to/dmerejkowsky)
-so you can also follow me there if you like.
+I cross-post most of my blog posts to [dev.to](https://dev.to/dmerejkowsky). You can reach me there if you like.

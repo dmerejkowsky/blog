@@ -37,7 +37,7 @@ Anyway, feel free to continue reading, but please take everything I say below
 with a grain of salt ...
 
 Also, don't hesitate to give me feedback on this, see
-[the dedicated page]({{< ref "pages/feedback.md" >}}) on how to reach me.
+[the dedicated page]({{< ref "pages/contact.md" >}}) on how to reach me.
 
 
 
