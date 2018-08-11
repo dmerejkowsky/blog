@@ -152,7 +152,7 @@ So far I've been using all theses linters in *addition* to pylint, as explained 
 
 But what if I stopped using pylint altogether?
 
-All I would lose would be some of the *Refactoring* messages, but I assumed most of them would get caught during code review. In exchange, I could get rid of all this noisy `# pylint: disable` comments. (34 of them for about 5,000 lines of code)
+All I would lose would be some of the *Refactoring* messages, but I assumed most of them would get caught during code review. In exchange, I could get rid of all these noisy `# pylint: disable` comments. (34 of them for about 5,000 lines of code)
 
 And that's how I stopped using pylint and removed it from my CI scripts. My apologies to pylint authors and maintainers: you did a really great job all these years, but I now believe it's time for me to move on and use new and better tools instead.
 
