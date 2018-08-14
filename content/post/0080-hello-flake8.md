@@ -32,7 +32,6 @@ Here are some other features I overlooked:
 * You can use the `setup.cfg` file to configure all the linters flake8 knows about
 * The output is consistent for all the linters
 * The checks of any linter can be be disabled on any line with just a `# noqa` comment
-* flake8 can also be used with plugins, and [there are a bunch of them](https://pypi.org/search/?q=flake8-) already available.
 
 # A nice surprise
 
@@ -64,10 +63,10 @@ Advantages:
 
 Well, there is already a flake8 plugin called [flake8-comprehension](https://pypi.org/project/flake8-comprehensions/) that deals with these kind of issues.
 
-In fact, [there are a bunch of flak8 plugins](https://pypi.org/search/?q=flake8-) available!
+In fact, [there are a bunch of flake8 plugins](https://pypi.org/search/?q=flake8-) available!
 
 
-Plus, adding a new flake8 plugin is as easy as running `pipenv install --dev <plugin nmae>` and nothing else has to change :)
+Plus, adding a new flake8 plugin is as easy as running `pipenv install --dev <plugin name>` and nothing else has to change :)
 
 # The future is bright
 
@@ -114,12 +113,12 @@ $ pylint example.py
 
 I did not find a flake8 plugin that could catch this bug right away, but I found [flake8-bugbear](https://github.com/PyCQA/flake8-bugbear), a plugin to "find likely bugs and design problems".
 
-The plugin is which is well-written, well-tested and easy to contribute too.
+The plugin is well-written, well-tested and easy to contribute to.
 
 I've already tried [porting some pylint warnings to  flake8-bugbear](https://github.com/PyCQA/flake8-bugbear/pull/51) and so far it has been much easier than I thought. [^3]
 
 
-That means that next time I find a bug that could have been caught by inspecting the AST (which is what both flake8-bugbear and pylint do), I know how to write or contribute to a flake8 plugin in order to automatically catch it during CI.
+Therefore, next time I find a bug that could have been caught by inspecting the AST (which is what both flake8-bugbear and pylint do), I know how to write or contribute to a flake8 plugin in order to automatically catch it during CI.
 
 Thus, I can slowly build a complete replacement for pylint, with just the warnings I care about, and without the configuration issues and false positives.
 
