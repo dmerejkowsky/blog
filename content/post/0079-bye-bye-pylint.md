@@ -158,7 +158,7 @@ And that's how I stopped using pylint and removed it from my CI scripts. My apol
 
 # What's next
 
-This is not the end of the story of my never-ending quest of tools to help me write better Python code. There are  more things to be said about linting in Python, so stay tuned for the next episode!
+This is not the end of the story of my never-ending quest of tools to help me write better Python code. You can read the rest of the story in [Hello flake8]({{< ref "post/0080-hello-flake8.md" >}}).
 
 
 [^1]: By the way, at the end of  _[Giving mypy a go](https://dmerej.info/blog/post/giving-mypy-a-go/)_ I said I was curious to know if mypy would help during [a massive refactoring](https://github.com/SuperTanker/tbump/pull/24/commits/7aecba923feda081360d36892f8716045d0b1bd0). Well, it did, even better than I would have hoped!
