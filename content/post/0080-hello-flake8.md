@@ -5,6 +5,7 @@ date: 2018-08-13T14:12:44.006921+00:00
 draft: false
 title: "Hello flake8"
 tags: [python]
+summary: flake8 is awesome and has a bright future ahead
 ---
 
 # Introduction
