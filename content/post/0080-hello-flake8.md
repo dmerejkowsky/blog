@@ -129,4 +129,4 @@ Bright future indeed!
 
 [^1]: The name of the project is somewhat misleading.
 [^2]: If you haven't already, you should definitively check [his blog](https://codewithoutrules.com/) and subscribe to the *Software Clown* mailing list.
-[^3]: Note that the pull request was actually not merged. In reality, I started by blindly adding a new check in flake8 *before* taking a look at the whole list of flake8 plugins, and it turned out the check I added was already in the flake8-comprehensions plugin. Sometimes you have to lie to make a better story ;)
+[^3]: Note that the pull request was actually not merged. In reality, I started by blindly adding a new check in flake8 *before* taking a look at the whole list of flake8 plugins. The pull request got closed because it turned out the check I added was already in the `flake8-comprehensions` plugin. Sometimes you have to lie to make a better story ...
