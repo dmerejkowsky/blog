@@ -27,4 +27,7 @@ So, feel free to share them, and if you're bold enough to start working on them,
 
 Also, more that ever, do not hesitate sending me [feedback]({{< ref "pages/contact.md" >}}). If you do like my ideas, a small positive comment will be appreciated, and if you don't, you can yell at me for being a moron who has no clue about how the real world work.
 
-Without further ado, here's the first item on the list: [Helping BBC's subtitlers]({{< ref "post/0058-helping-bbc-subtitlers" >}})
+Anyway, here are the articles published so far in this series:
+
+* [Helping BBC's subtitlers]({{< ref "post/0058-helping-bbc-subtitlers" >}})
+* [Twitter Timeline Cleaner]({{< ref "post/0076-twitter-timeline-cleaner.md" >}})
