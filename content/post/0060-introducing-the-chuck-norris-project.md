@@ -27,7 +27,7 @@ You will find all the source code on [GitHub](https://github.com/dmerejkowsky/ch
 
 # Let's build Chuck Norris!
 
-"Let's Build Chuck Norris!" is a on-going series of blog posts aiming at exploring various topics about C++ and build systems:
+"Let's Build Chuck Norris!" is an on-going series of blog posts aiming at exploring various topics about C++ and build systems:
 
 Available:
 
