@@ -14,13 +14,13 @@ I've spent several years working on CI scripts and infrastructure. I've used man
 
 But let's start at the beginning.
 
-# What is CI
+# What is CI?
 
 You probably know that CI stands for "Continuous Integration".
 
 But what does it really means mean to "use continuous integration" for a group of developers working on some source code?
 
-Let me define a few terms.
+To answer this question, let me define a few terms.
 
 First, there exist some *scripts*. Those are pieces of code which usually have access to some part of the source code. They can do many things like compile some code, run some tests, produce deliveries and so on ...[^1]
 
@@ -39,8 +39,8 @@ Third, a *build farm* is used. A build farm is made of two things:
 The coordinator:
 
   * Listens to the *triggers* we listed above
-  * Dispatches the execution of the scripts on one or several machines among the runners.
-  * Aggregates the results of those executions. The result may simply be the return code and output of the script, but sometimes some arbitrary files are sent from the runners to the coordinator. [^2]
+  * Dispatches the execution of the scripts on one or several machines among the runners,
+  * Aggregates the results of those executions. Those can be test reports, logs, files and so on.
 
 # A new series
 
@@ -48,7 +48,7 @@ That's enough definitions for today :).
 
 The topic of CI is *huge*, so as I did for *[Let's Build Chuck Norris!]({{< ref "post/0060-introducing-the-chuck-norris-project.md" >}})* and *[Quantum of Ideas]({{< ref "post/0057-introducing-quantom-of-ideas.md" >}})*, I'll be writing several articles in the following weeks.
 
-Stay tuned for the first part: [CI scripts are scary]().
+Stay tuned for the first part: [CI scripts are scary]({{< ref "post/0083-tips-from-a-build-farmer-part-1-ci-scripts-are-scary.md" >}}).
 
 
 [^1]: If you've already heard about Continuous Deployment (CD), note that I'm including it into my definition of CI.
