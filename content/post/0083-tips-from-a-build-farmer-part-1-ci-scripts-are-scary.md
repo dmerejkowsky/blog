@@ -80,7 +80,9 @@ But wait, it gets worse.
 
 Let's keep our simplistic example and study a few bugs you may encounter.
 
-# CI builds and where to find them
+TODO: find out the exact title from the Harry Potter franchise: fantastic beasts and where to find them?
+
+# CI bugs and where to find them
 
 ## The fatal typo
 
@@ -147,7 +149,7 @@ Scared much? Let's talk about time travel for a change.
 
 # Back to the future
 
-Your team is working on a brand new product they intent to release in two months. You start writing CI scripts right away. But you still have to travel to the future and make sure the scripts you wrote today still work. Or at least, you can make them work quickly. Remember the "no bugs allowed" part.
+Your team is working on a brand new product they intent to release in two months. You start writing CI scripts right away. But you still have to travel to the future and make sure the scripts you wrote today still work. Or at least, you can make them work quickly. Remember: "no bugs allowed".
 
 So, in addition to not be allowed to have any bugs, you *also* have to **implement all the required features** and you **cannot miss the deadline**. If you're late, you can't ship. Or worse, you'll ship by doing the required steps by hand, and then you'll get an whole new set of problems.
 
@@ -173,7 +175,7 @@ Writing CI scripts is very different than writing production code or test code. 
 
 ## Testing is hard
 
-Writing automated tests for CI scripts is difficult and almost never catch any bugs (at least, based on my experience). The best way to check a CI script works is by running it it its entirety. And then you fall yet again into the Slow Development Trap.
+Writing automated tests for CI scripts is difficult and almost never catch any bugs (at least, based on my experience). The best way to check that a CI script works is by running it it its entirety. And then you fall yet again into the Slow Development Trap.
 
 ## Debug is hard
 
@@ -186,7 +188,7 @@ If the worst case scenario (which happens quite often), your only option will be
 
 By now you should start getting nervous.
 
-TDD helped *me* getting rid of the fear of changing production code by teaching me a way of writing tests and production code in a nice loop that always leads to code that has a high quality and few defects.
+TDD helped *me* getting rid of the fear of changing production code by teaching me a way of writing tests and production code in a nice loop that often leads to code that has a high quality and few defects.
 
 For this series, I will be trying to do the same thing. I'll tell you how to resist the Slow Development Trap, and how to avoid the bugs we discussed (and many others). Hopefully next time you'll have to change a CI script it will be less scary.
 

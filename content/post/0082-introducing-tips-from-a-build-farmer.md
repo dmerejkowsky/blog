@@ -12,4 +12,7 @@ I've spent several years working on CI scripts and infrastructure. I've used man
 
 The topic of CI is *huge*, so as I did for *[Let's Build Chuck Norris!]({{< ref "post/0060-introducing-the-chuck-norris-project.md" >}})* and *[Quantum of Ideas]({{< ref "post/0057-introducing-quantom-of-ideas.md" >}})*, I'll be writing several articles in the following weeks.
 
-Stay tuned for the first part: [CI scripts are scary]({{< ref "post/0083-tips-from-a-build-farmer-part-1-ci-scripts-are-scary.md" >}}).
+Here's the list of articles published so far (you can also find them [listed with the *ci* tag](/tags/ci)):
+
+* [CI scripts are scary]({{< ref "post/0083-tips-from-a-build-farmer-part-1-ci-scripts-are-scary.md" >}})
+* [Some concepts]({{< ref "post/0083-tips-from-a-build-farmer-part-1-ci-scripts-are-scary.md" >}})
