@@ -372,6 +372,7 @@ to keep easily available.
 * [f-droid](https://f-droid.org)
 * [MAPS.ME](https://play.google.com/store/apps/details?id=com.mapswithme.maps.pro)
 * [OneTimePass](https://f-droid.org/packages/com.github.onetimepass/)
+* [Simple Mobile Tools](https://simplemobiletools.github.io/)
 
 ## Building stuff
 
