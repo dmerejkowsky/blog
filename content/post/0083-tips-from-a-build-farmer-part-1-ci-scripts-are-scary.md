@@ -84,9 +84,10 @@ Let's keep our simplistic example and study a few bugs you may encounter.
 
 # CI bugs and where to find them
 
+## The fatal typo
+
 ![All the automated tests have crashed - it's normal](/pics/geek-and-poke-its-normal.png)
 
-## The fatal typo
 
 First example: the script always crashes right before running any test:
 
