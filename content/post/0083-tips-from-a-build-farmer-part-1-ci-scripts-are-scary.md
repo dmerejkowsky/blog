@@ -163,11 +163,11 @@ Since then you made some pretty big redesigns, and released version 3.0 and 3.1.
 
 But then someone sends you an e-mail saying they've found a security bug in the 2.5.2 release, and they will disclose it next week no matter what.
 
-Your team spends 1 day discussing and planning a fix. Then they take 3 days to actually implement it, because the have to find their way in an old code base no-one no longer knows very well.  Now it's time to QA the 2.5.3 release.
+Your team spends 1 day discussing and planning a fix. Then they take 3 days to actually implement it, because they have to find their way in an old code base no-one no longer knows very well.  Now it's time to QA the 2.5.3 release.
 
 Better be sure the scripts you wrote two years ago still work, or everyone will be getting a very hard time!
 
-OK, enough with scary stories, let's talk about the craft of writing CI code . I'm afraid I have some bad news there too.
+OK, enough with scary stories, let's talk about the craft of writing CI code. I'm afraid I have some bad news there too.
 
 # Your standard approach will not work
 
