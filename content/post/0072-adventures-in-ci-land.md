@@ -4,7 +4,7 @@ slug: adventures-in-ci-land
 date: 2018-06-04T18:21:30.504290+00:00
 draft: false
 title: "Adventures in CI land"
-tags: [python]
+tags: [python, ci]
 ---
 
 Today  at work I wrote a CI script to test a react application, and it turned out to be a bit trickier than expected.
