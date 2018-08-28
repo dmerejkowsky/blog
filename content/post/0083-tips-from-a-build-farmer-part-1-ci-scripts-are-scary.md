@@ -2,7 +2,7 @@
 authors: [dmerej]
 slug: tips-from-a-build-farmer-part-1-ci-scripts-are-scary
 date: 2018-08-20T10:35:17.547719+00:00
-draft: true
+draft: false
 title: "Tips From a Build Farmer - Part 1: CI scripts are scary"
 tags: [ci]
 summary: The ugly truth about CI
@@ -28,9 +28,11 @@ cd /tmp
 tar cvfz foo.tar.gz foo
 ```
 
+This code fetches the latest changes, compile the code, runs the tests and finally generates an archive.
+
 What's so scary about those few lines? Isn't this just *boring*?
 
-Well, let's have a look, and note that everything I'm about to you is  **based on true stories.** [^1]
+Well, let's have a look, and note that everything I'm about to tell you is  **based on true stories.** [^1]
 
 One last thing before we start: let's assume it takes 5 minutes to compile the code, and 10 minutes to run the tests.
 
@@ -80,16 +82,15 @@ But wait, it gets worse.
 
 Let's keep our simplistic example and study a few bugs you may encounter.
 
-TODO: find out the exact title from the Harry Potter franchise: fantastic beasts and where to find them?
-
 # CI bugs and where to find them
+
+![All the automated tests have crashed - it's normal](/pics/geek-and-poke-its-normal.png)
 
 ## The fatal typo
 
-
-TODO: insert geek&poke "it's normal" strip
-
 First example: the script always crashes right before running any test:
+
+
 
 ```bash
 echo "compiling" ...
@@ -169,7 +170,7 @@ OK, enough with scary stories, let's talk about the craft of writing CI code . I
 
 # Your standard approach will not work
 
-TODO: insert xkcd about standard approach
+![my normal approach is useless here](/pics/xkcd-normal-approach.jpg)
 
 Writing CI scripts is very different than writing production code or test code. It's a whole different world. Let me elaborate.
 

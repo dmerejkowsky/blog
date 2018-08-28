@@ -2,7 +2,7 @@
 authors: [dmerej]
 slug: introducing-tips-from-a-build-farmer
 date: 2018-08-18T08:34:50.667783+00:00
-draft: true
+draft: false
 title: 'Introducing "Tips From a Build Farmer"'
 tags: [ci]
 summary: Introducing a new series about CI
@@ -15,4 +15,3 @@ The topic of CI is *huge*, so as I did for *[Let's Build Chuck Norris!]({{< ref 
 Here's the list of articles published so far (you can also find them [listed with the *ci* tag](/tags/ci)):
 
 * [CI scripts are scary]({{< ref "post/0083-tips-from-a-build-farmer-part-1-ci-scripts-are-scary.md" >}})
-* [Some concepts]({{< ref "post/0083-tips-from-a-build-farmer-part-1-ci-scripts-are-scary.md" >}})
