@@ -353,10 +353,10 @@ You can also pass callbacks to deal with errors:
 
 ```python
 def try_something(on_error=None);
-  try:
+    try:
       ...
-  except Error as e:
-      on_error(e)
+    except Error as e:
+        on_error(e)
 
 def log_error(e):
     log.error(e)
