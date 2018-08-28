@@ -106,7 +106,7 @@ if (!fp) {
 Here, you don't even have an error message anywhere, all you get in a number. (ENOENT is just a `#define ENOENT 2`)
 
 {{< note >}}
-There's tool called `errno` in [moreutils](https://joeyh.name/code/moreutils/) that can help you if for some reason all you want to convert the value of errno to a human-readable message.
+There's a tool called `errno` in [moreutils](https://joeyh.name/code/moreutils/) that can help you if for some reason all you want to convert the value of errno to a human-readable message.
 {{</ note >}}
 
 All of this means you have to carefully check the return code of all the functions you called.
