@@ -23,10 +23,10 @@ class Fruit {
 }
 
 class Apple extends Fruit {
-	private final String sort;
+	private final String type;
 
-	public Apple(String sort) {
-		this.sort = sort;
+	public Apple(String type) {
+		this.type = type;
 	}
 }
 
@@ -40,7 +40,7 @@ class Foo {
 }
 ```
 
-It's clear that the `Apple` class is not really an apple. It's a bunch of data that identifies an apple via a `sort` string. We can say that the Apple class is a *metaphor* for the real apple object.
+It's clear that the `Apple` class is not really an apple. It's a bunch of data and methods that identifies an apple via a `type` string. We can say that the Apple class is a *metaphor* for the real apple object.
 
 But note that `fruitList` is *not* a list of fruits! It's a slice of memory containing objects of a certain type, and if you forget that, you're about to get nasty compilation failures such as this one:
 
@@ -50,9 +50,16 @@ Apple firstFruit = fruitList.get(0);
 foo.java:21: error: incompatible types: Fruit cannot be converted to Apple
 ```
 
-By the way, note we did not identify the various apples with a variable named `type` because *type* already means something different for all Java programmers, and we should probably have used `variety` instead of `sort` for the same reason.
+You can solve that with generics of course, but this is not my point.
 
-Anyway, my point is that as programmers we are surrounded with metaphors all day long, and sometimes without realizing it.
+My point is that as programmers we are surrounded with metaphors all day long, and sometimes without realizing it. After all, all we do is write text that ultimately is converted to a sequence of zeros and ones and ran on a piece of silicon.
+
+We create abstractions and encapsulations in order to be able to reason about the code we write, and we often do that with metaphors.
+
+We also really care about naming. For instance, you could argue the `type` field of the Apple class should be named `variety` instead, because this word already has several meanings for any developer.
+
+But metaphor are not only used by developers.
+
 
 # Why you should care
 
@@ -62,20 +69,20 @@ It goes with a bunch of other disciplines such as Test Driven Development, Susta
 
 Among programmers we sometimes don't think too much about metaphors because we can still look at the *actual code implementation*  (or comments) to figure out what the name means.
 
-Things change when we need to communicate with people outside the team, such as Product Owners, Marketing or Sales. Metaphors are then the only way we can talk with them about features or components of our systems.
+Things change when we need to communicate with people outside the team, such as Product Owners, Marketing or Sales. We use metaphors when we talk to them about features or components of our systems.
 
-Thus, coming up with good metaphors is the only way to communicate effectively between business and tech teams. You should come up with a *common vocabulary*  that everyone agrees on.
+Thus, coming up with good metaphors is the only way to communicate effectively between business and tech teams. We have to come up with a *common vocabulary*  that everyone agrees on.
 
-Also, you should be careful to:
+This means, among other things:
 
-* Avoid using the same word for different things
-* Make sure each word means the *same thing* among everyone.
+* Avoiding using the same word for different things
+* Making sure each word means the *same thing* for everyone.
 
-Anyway, this is why I wanted to talk about metaphors. The concepts I'm listing here can be also used as such to communicate between members of your team and other people.
+Anyway, this is why I wanted to talk about metaphors. The concepts I'll be listing below can be also used as such to communicate between people both inside and outside your team.
 
 # Concepts
 
-The concepts are listed in a top-bottom manner. So if you encounter a term you don't understand, just keep reading to find its definition below.
+The concepts are listed in a top-bottom manner. So if you encounter a term you don't understand, just keep reading!
 
 ## Continuous Integration
 
@@ -96,7 +103,7 @@ They can:
 
 ## Build Farm
 
-A *build farm* is made of two things. A set of *runners* on which the scrips run, and a *coordinator*.
+A *build farm* is made of two things. A set of *runners*, and a *coordinator*.
 
 There may be just one runner, and the coordinator may be running on the same machine as the runner, it does not matter; what matters is that runners and coordinators do different things.
 
@@ -116,7 +123,7 @@ Note that if you're using Jenkins, the coordinator is called *master*, and the r
 
 ## Job
 
-A *job* is a script plus a *configuration*. The configuration contains at least the specifications for the triggers, but may also contain arbitrary data such as a mapping of keys and values.
+A *job* is a script plus a *configuration*. The configuration contains at least the specifications for the triggers, but may also contain mappings of keys and values.
 
 ## Build
 
@@ -124,16 +131,16 @@ A *build* is the execution of a job.
 
 Usually, builds have a *number*, and jobs have a *name*.
 
-I know, that "build" has many other meanings in the programming world, but I don't have a better one.
+P.S: I know that "build" has many other meanings in the programming world, but I don't have a better one.
 
 ## Failure and success
 
-Builds have **only one way** to *succeed*, and many ways to *fail*. (The script could not run, the compilation failed, all the tests but one passed ...).
+Builds have **only one way** to *succeed*, and many ways to *fail*. (The script could not run, the compilation failed, all the tests but one passed, etc. ).
 
 
 By extension, we say that a job is *failing* when the most recent build failed. We say that the job is *stable* if the last build succeed. Thus a job can *go from stable to failing*, or *be back to stable*.
 
-Job can have other states depending on the coordinator such as "skipped', "starting", or "cancelled"
+Job can have other states depending on the coordinator such as "skipped', "starting", or "cancelled".
 
 Side note: Jenkins assigns colors to builds, such as "yellow" when the compilation is OK but some tests are failing. For me a yellow build is just an other kind of *failed* build. [^3]
 
@@ -146,7 +153,7 @@ For instance, if a build triggered by a pull request fails, an e-mail may be sen
 
 ## Step
 
-We saw that scripts can do many various tasks. Usually the script will go through a series of *steps*, like our example in [CI scripts are scary]({{< ref "post/0083-tips-from-a-build-farmer-part-1-ci-scripts-are-scary.md" >}}).
+We saw that scripts can do many various tasks. Scripts often go through a series of *steps*, like our example in [CI scripts are scary]({{< ref "post/0083-tips-from-a-build-farmer-part-1-ci-scripts-are-scary.md" >}}):
 
 * Fetch the code
 * Compile everything
@@ -169,8 +176,8 @@ A *delivery* is an artifact that can be used by your customers. Deliveries are o
 
 A *deployment* is a special kind of job that consists in either:
 
-* uploading some files to a remote location
-* updating the code that is running somewhere else
+* Uploading some files to a remote location
+* Updating some code that is running somewhere else
 
 In the second case you may:
 
