@@ -15,4 +15,4 @@ The topic of CI is *huge*, so as I did for *[Let's Build Chuck Norris!]({{< ref 
 Here's the list of articles published so far (you can also find them [listed with the *ci* tag](/tags/ci)):
 
 * [Part 1: CI scripts are scary]({{< ref "post/0083-tips-from-a-build-farmer-part-1-ci-scripts-are-scary.md" >}})
-* [Part 2: Some Concepts]({{< ref "post/0084-tips-from-a-build-farmer-part-2-some-concepts.md" >}})
+* [Part 2: Some concepts]({{< ref "post/0084-tips-from-a-build-farmer-part-2-some-concepts.md" >}})
