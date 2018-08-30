@@ -54,7 +54,7 @@ You can solve that with generics of course, but this is not my point.
 
 My point is that as programmers we are surrounded with metaphors all day long, and sometimes without realizing it. After all, all we do is write text that ultimately is converted to a sequence of zeros and ones and ran on a piece of silicon.
 
-We create abstractions and encapsulations in order to be able to reason about the code we write, and we often do that with metaphors.
+We create abstractions and encapsulations to be able to reason about the code we write, and we often do that with metaphors.
 
 We also really care about naming. For instance, you could argue the `type` field of the Apple class should be named `variety` instead, because this word already has several meanings for any developer.
 
@@ -78,7 +78,7 @@ This means, among other things:
 * Avoiding using the same word for different things
 * Making sure each word means the *same thing* for everyone.
 
-Anyway, this is why I wanted to talk about metaphors. The concepts I'll be listing below can be also used as such to communicate between people both inside and outside your team.
+Anyway, this is why I wanted to talk about metaphors. The concepts I'll be listing below can also be used as such to communicate between people both inside and outside your team.
 
 # Concepts
 
@@ -92,7 +92,7 @@ The concepts are listed in a top-bottom manner. So if you encounter a term you d
 
 The *scripts* are usually written in an "scripting language" (hence there name).
 
-They have access to some or all the source code and can do many things: compiling, running some tests, produce deliveries, deploy new servers, and so on. [^2]
+They have access to some or all the source code and can do many things: compiling, running some tests, produce deliveries, deploy new servers, and so on [^2].
 
 They can:
 
@@ -140,7 +140,7 @@ Builds have **only one way** to *succeed*, and many ways to *fail*. (The script 
 
 By extension, we say that a job is *failing* when the most recent build failed. We say that the job is *stable* if the last build succeed. Thus a job can *go from stable to failing*, or *be back to stable*.
 
-Job can have other states depending on the coordinator such as "skipped', "starting", or "cancelled".
+Jobs can have other states depending on the coordinator such as "skipped", "starting", or "cancelled".
 
 Side note: Jenkins assigns colors to builds, such as "yellow" when the compilation is OK but some tests are failing. For me a yellow build is just an other kind of *failed* build. [^3]
 
@@ -195,7 +195,7 @@ An environment is just a group of machines where a certain kind deployment occur
 For instance, you may decide that:
 
 * Every deployment triggered by a push on the master branch will go to an environment called "pre-production"
-* Every deployment triggered by a tag starting by 'v' will go to an environment called "production".
+* Every deployment triggered by a tag starting with 'v' will go to an environment called "production".
 
 By the way, GitLab CI has an [excellent support for environments](https://docs.gitlab.com/ee/ci/environments.html).
 
