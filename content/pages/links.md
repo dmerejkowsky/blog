@@ -239,6 +239,7 @@ to keep easily available.
 * [Go, Arch Linux and Programming](http://blog.roboticoverlords.org/)
 * [guyzmo](http://i.got.nothing.to/blog)
 * [HTeuMeuLeu](http://www.hteumeuleu.fr/)
+* [In Pursuit of Laziness](https://manishearth.github.io)
 * [Jacques Mattheij](http://jacquesmattheij.com/)
 * [Joel on Software](http://www.joelonsoftware.com/)
 * [Karol Kuczmarski's Blog](http://xion.io/)
