@@ -119,6 +119,8 @@ Or old friend the c++ library is back!
 
 ## Going dirty
 
+FIXME: talk about the +Private stuff
+
 We'll just put the void* pointer directly in the class
 
 ```objective-c
@@ -188,3 +190,16 @@ Almost there:
 ```
 Compiling CKChuckNorris.m -> fatal error: 'chucknorris.h' file not found
 ```
+
+```
+  s.pod_target_xcconfig = {
+    'HEADER_SEARCH_PATHS' => "${PODS_ROOT}/../../../cpp/ChuckNorris/include/",
+  }
+```
+
+which happen to work both for app/ and bindings.
+
+# Notes for releasers
+
+If you want to re-distribute ChuckNorrisBindings, you will need to build a .tar.gz containing
+chucknorris.h, libchucknorris.a and libsqlite3.a
