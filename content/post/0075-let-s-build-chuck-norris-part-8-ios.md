@@ -11,11 +11,11 @@ _Note: This is part 8 of the [Let's Build Chuck Norris!]({{< ref "0060-introduci
 
 If you came this far after reading part 1 to 7, congrats!
 
-In this post, we are going to use everything we learnt so far and write an iOS application able to show Chuck Norris facts.
+In this article, we'll use everything we learnt so far and write an iOS application able to show Chuck Norris facts. We'll also learn a few things specific to iOS and Xcode. Let's dive in!
 
 # Introduction: cocoapods
 
-We are going to use [cocoapods]() which is a tool that helps you manage dependencies for iOS application.
+There are many ways to achieve our goal. Several tools exist, but for this post we'll concentrate on [cocoapods](). [^1]
 
 It means we can configure the Xcode projects by writing code, which is good news!
 
@@ -23,14 +23,13 @@ Cocoapods can be used in two modes:
 
 First, you can run `pod lib create foo`. This will create a `Foo.podspec` file. The podspec describes how to build the `foo` library, a bit like conan recipes. You can then upload the podspec file and the associated sources to a `repository`.
 
-Second, you can run `pod init` next to an existing Xcode project. This will create an Xcode *workspace* and a `Podfile` file. You can then edit the pod file to specify dependencies. Then, we you run `pod install`, dependencies will be fetched and the workspace will be able to build the dependencies and use them in the original Xcode project.
-
+Second, you can run `pod init` next to an existing Xcode project. This will create an Xcode *workspace* and a `Podfile` file. You can then edit the pod file to specify dependencies. Then, when you run `pod install`, the pod specs will be fetched and the workspace will be able to build the dependencies and use them in the original Xcode project.
 
 So, here's the plan:
 
-* First, create a *cocoapods library* called `ChuckNorrisBindings` in `ios/bindings/ChuckNorrisBindings`.
-* Then, create a blank iOS application with in the `ios/app/ChuckNorris` directory, called ChuckNorris.
-* Finally, use cocoapods to create a dependency between ChuckNorrisBindings and ChuckNorris.
+* Create a *cocoapods library* called `ChuckNorrisBindings` in `ios/bindings/ChuckNorrisBindings`.
+* Create a blank iOS application with in the `ios/app/ChuckNorris` directory, called ChuckNorris.
+* Use cocoapods to create a dependency between ChuckNorrisBindings and ChuckNorris.
 
 # The Bindings
 
@@ -74,7 +73,7 @@ TODO: check the architecture.
 
 We'll do that by invoking conan with the `--settings arch=<arch>` flag.
 
-Note that this time we don't need to write the toolchain recipe ourselves, there is already one on conan-center.[^1]
+Note that this time we don't need to write the toolchain recipe ourselves, there is already one on conan-center.[^2]
 TODO: Check it's the conan-center remote:
 
 Then, as we did for Android, we run `conan create` for `sqlite3`.
@@ -237,9 +236,25 @@ For now, we'll just set the text view to the string `Hello` when the button is c
 }
 ```
 
-OK, that works. All that's left to do is add a `CKChuckNorris*` pointer to the controller, set it in `viewDidLoad` and call the `getFact()` method when the button is clicked:
+OK, that works.
+
+Now we can run `pod init` and patch the Podfile:
+
+```ruby
+target 'ChuckNorris' do
+
+  pod 'ChuckNorrisBindings' => '../../ChuckNorrisBindings.podspec'
+
+end
+```
+
+We took a small shortcut here. Rather than deploying the ChuckNorrisBindings to a spec repository, we just tell the Podfile to get the podspec directly from the file system.
+
+All that's left to do is add a `CKChuckNorris*` pointer to the controller, set it in `viewDidLoad` and call the `getFact()` method when the button is clicked:
 
 ```Objective-C
+TODO: CKChuckNorris property?
+
 - (void)viewDidLoad {
   [super viewDidLoad];
   self.ck = [[CKChuckNorris alloc] init];
@@ -261,4 +276,5 @@ TODO: screenshot
 * Use lipo in out/
 
 
-[^1]: This recipe was written and shared by my nice colleague Théo Delrieu from [tanker.io](https://tanker.io). Say thanks!
+[^1]: I heard Carthage is also a good option. Did not try it, though.
+[^2]: This recipe was written and shared by my nice colleague Théo Delrieu from [tanker.io](https://tanker.io). Say thanks!
