@@ -37,7 +37,7 @@ We run `pod lib create ChuckNorrisBindings` and answer a few questions.
 
 You will note cocoapods has created lots of files. Among them:
 
-TODO
+TODO: files created by `pod lib create`
 
 If we try to run the tests directly from Xcode, it won't work right away.
 
@@ -86,7 +86,7 @@ conan create . dmerej/test --profile ios --settings arch=x86_6
 
 As we did for Android with the `libc++shared.so` file, we patch the ChuckNorris recipe to deal with the copies of all the `.a` files, both in the `imports()` and `package()` methods:
 
-```python
+{{< highlight python "hl_lines=2-5 10" >}}
 def imports():
       if self.settings.os == "Android":
           self.copy("*libc++_shared.so", dst="lib", keep_path=False)
@@ -97,7 +97,7 @@ def package(self):
       self.copy("bin/cpp_demo", dst="bin", keep_path=False)
       self.copy("lib/*.so", dst="lib", keep_path=False)
       self.copy("lib/*.a", dst="lib", keep_path=False)
-```
+{{</ highlight >}}
 
 Then we can create the ChuckNorris package:
 
@@ -123,27 +123,25 @@ So that we don't forget, let's add `out` to the `.gitignore`.
 Next we can edit the podspec to specify:
 
 * The include directory. It's inside a directory called `pod_target_xcconfig`.
-* The "vendored" libraries: that's our `libchucknorris.a` and `libsqlite3.a`. They are called "vendored" because they won't be compiled by cocoapods itself, and are not already present on the target operating system either.
+* The *vendored* libraries: that's our `libchucknorris.a` and `libsqlite3.a`. They are called "vendored" because they won't be compiled by cocoapods itself, and are not already present on the target operating system either.
 
 ```ruby
 Pod::Spec.new do |s|
   ...
 
   s.pod_target_xcconfig = {
-    'HEADER_SEARCH_PATHS' => "${PODROOTS}/../../cpp/ChuckNorris/include/",
+    'HEADER_SEARCH_PATHS' => "${POD_ROOTS}/../../cpp/ChuckNorris/include/",
   }
 
   s.vendored_libraries = Dir["out/*.a"]
 ```
 
-TODO: check PODROOTS
-
 Two remarks:
 
 * Since cocoapods recipes are written in Ruby, we can use the overloaded `[]` operator for `Dir` objects to get the full list of files matching the `out/*.a` *glob* pattern.
-* The `HEADER_SEARCH_PATHS` string contains a `${PODROOTS}` extension, that will be set by cocoapods.
+* The `HEADER_SEARCH_PATHS` string contains a `${POD_ROOTS}` extension, that will be set by cocoapods.
 
-Note how it does not matter if we are building the `ChuckNorrisBindings` cocoapods library or the `ChuckNorris` application: the resulting path will be the same in both cases.
+Note how it does not matter if we are building the `ChuckNorrisBindings` cocoapods library or the `ChuckNorris` application: the resulting `HEADER_SEARCH_PATHS` will be the same.
 
 # Objective-C
 
@@ -156,17 +154,47 @@ It's still dangerous to expose C code directly, so here's how we can proceed:
 
 ```Objective-C
 /* In CKChuckNorris.h */
-TODO
+@interface CKChuckNorris: NSObject
+
+@property void* ckPtr;
+
+-(instancetype)init;
+-(NSString*) getFact;
+
+// TODO: deinit!
+
+@end
 ```
 
 ```Objective-C
 /* In CKChuckNorris.m */
-TODO
+#import "CKChuckNorris.h"
+#include "CKChuckNorris+Private.m"
+
+@implementation CKChuckNorris
+
+-(instancetype)init {
+  self = [super init];
+  return [self createCkPtr];
+}
+
+-(NSString *)getFact {
+  return [self getFactImpl];
+}
+
+@end
 ```
 
 ```Objective-C
 /* In CKChuckNorris+Private.h */
-TODO
+#import "CKChuckNorris.h"
+
+@interface CKChuckNorris (Private)
+
+-(instancetype) createCkPtr;
+-(NSString*) getFactImpl;
+
+@end
 ```
 
 So far we have just *declared* the  `createCKPtr` and `getFactImpl` methods.
@@ -175,20 +203,48 @@ It's time to *define* them in the `CKChuckNorris+Private.m` file:
 
 ```Objective-C
 /* In CKChuckNorris+Private.m */
-TODO
+#import "CKChuckNorris+Private.h"
+
+#include "chucknorris.h"   // <- Our C header file
+
+@implementation CKChuckNorris (Private)
+
+-(instancetype)createCkPtr  {
+  self.ckPtr = chuck_norris_init();
+  return self;
+}
+
+-(NSString*)getFactImpl {
+  const char* fact = chuck_norris_get_fact(self.ckPtr);
+  return [NSString stringWithCString:fact encoding:NSUTF8StringEncoding];
+}
+@end
 ```
 
 Note how the *only* file that depends on the `chucknorris.h` C header file is the *private implementation* of the `CKChuckNorris` class.
 
-That's a technique often used in C++ code too, where it's named "PIMPL" (private implementation).
+There's a similar technique known as "PIMPL" (pointer to implementation) you can use in C++ code to achieve the same kind of isolation.
 
-TODO: check the name.
 
 It's now time to edit the tests:
 
 ```Objective-C
 /* In Tests.m */
-TODO
+describe(@"ChuckNorris", ^{
+
+  it(@"can get version", ^{
+    expect([CKChuckNorris versionString]).to.equal(@"0.1");
+  });
+
+  it(@"can get a fact", ^{
+    CKChuckNorris* ck = [[CKChuckNorris alloc] init];
+    NSString* fact = [ck getFact];
+    expect(fact).toNot.beEmpty();
+    NSLog(@"Got fact: %@", fact);
+  });
+
+
+});
 ```
 
 And see if they pass:
@@ -231,8 +287,9 @@ TODO: screenshot
 For now, we'll just set the text view to the string `Hello` when the button is clicked:
 
 ```objective-c
+/* In ViewController.m */
 - (IBAction)onClick:(id)sender {
-  NSLog(@"Hello!");
+  self.textView.text = @"Hello";
 }
 ```
 
@@ -242,19 +299,37 @@ Now we can run `pod init` and patch the Podfile:
 
 ```ruby
 target 'ChuckNorris' do
-
-  pod 'ChuckNorrisBindings' => '../../ChuckNorrisBindings.podspec'
-
+  pod 'ChuckNorrisBindings', :path => '../bindings/'
 end
 ```
 
 We took a small shortcut here. Rather than deploying the ChuckNorrisBindings to a spec repository, we just tell the Podfile to get the podspec directly from the file system.
 
+Let's check this works:
+
+```
+$ cd ios/app
+$ pod update
+TODO: pod update output
+```
+
+Looks OK.
+
 All that's left to do is add a `CKChuckNorris*` pointer to the controller, set it in `viewDidLoad` and call the `getFact()` method when the button is clicked:
 
-```Objective-C
-TODO: CKChuckNorris property?
+{{< highlight objective-c "hl_lines=3 7" >}}
+/* In ViewController.h */
+#import <UIKit/UIKit.h>
+#import "CKChuckNorris.h"
 
+@interface ViewController : UIViewController
+
+@property CKChuckNorris* ck;
+
+@end
+{{</ highlight >}}
+
+{{< highlight objective-c "hl_lines=2-3 7" >}}
 - (void)viewDidLoad {
   [super viewDidLoad];
   self.ck = [[CKChuckNorris alloc] init];
@@ -263,7 +338,7 @@ TODO: CKChuckNorris property?
 -(IBAction)onClick:(id)sender {
   self.textView.text = [self.ck getFact];
  }
-```
+{{</ highlight >}}
 
 We can now run the application inside a simulator.
 
