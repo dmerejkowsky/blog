@@ -38,7 +38,6 @@ Available:
 5. [Using cffi to build a Python extension]({{< ref "post/0065-let-s-build-chuck-norris-part-5-python-and-cffi.md" >}})
 6. [Cross-compiling for Android]({{< ref "post/0073-let-s-build-chuck-norris-part-6-android-cross-compilation.md" >}})
 7. [Android and JNA]({{< ref "post/0074-let-s-build-chuck-norris-part-7-android-jna.md" >}})
+8. [Using C++ in an iOS application]({{< ref "post/0075-let-s-build-chuck-norris-part-8-ios.md" >}})
 
 Planned for later:
-
-* Using C++ in an iOS application

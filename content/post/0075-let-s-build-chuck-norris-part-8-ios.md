@@ -1,43 +1,62 @@
 ---
 authors: [dmerej]
 slug: chuck-norris-part-8-ios
-date: 2018-03-18T16:53:30.882200+00:00
+date: 2018-09-03T16:53:30.882200+00:00
 draft: true
-title: "Let's Build Chuck Norris! - Part 8: iOS"
+title: "Let's Build Chuck Norris! - Part 8: Using C++ in an iOS application"
 tags: [c++]
 ---
 
-# Part 6: iOS
+_Note: This is part 8 of the [Let's Build Chuck Norris!]({{< ref "0060-introducing-the-chuck-norris-project.md" >}}) series._
 
-## The App
+If you came this far after reading part 1 to 7, congrats!
 
-* Create Ojbective-C app from XCode
-* Main storyboard
-  * Add a Stack View
-  * Add a Button
+In this post, we are going to use everything we learnt so far and write an iOS application able to show Chuck Norris facts.
 
-* Drag and drop (with alt) from designer to code (between @interface and @implementation) to create variables
-* Drag and drop (with alt) from designer to code (after @implementation) to create handlers
+# Introduction: cocoapods
 
-## The Bindings
+We are going to use [cocoapods]() which is a tool that helps you manage dependencies for iOS application.
 
-* Run `pod lib create ChuckNorrisBindings` and answer a few questions
-* Fiddle with test scheme, and select None in the general project settings
-* Can run the tests!
+It means we can configure the Xcode projects by writing code, which is good news!
 
-## What we'll need:
+Cocoapods can be used in two modes:
 
-* chucknorris.a
-* include/chucknorris.h
-* and sqlite3.a
+First, you can run `pod lib create foo`. This will create a `Foo.podspec` file. The podspec describes how to build the `foo` library, a bit like conan recipes. You can then upload the podspec file and the associated sources to a `repository`.
 
-Like Python/cffi, but with cross-compiling.
+Second, you can run `pod init` next to an existing Xcode project. This will create an Xcode *workspace* and a `Podfile` file. You can then edit the pod file to specify dependencies. Then, we you run `pod install`, dependencies will be fetched and the workspace will be able to build the dependencies and use them in the original Xcode project.
 
-## Building ChuckNorris for iOS
 
-* Use the darwin-toolchain from The Delrieu
+So, here's the plan:
 
-Create ~/.conan/profile/ios
+* First, create a *cocoapods library* called `ChuckNorrisBindings` in `ios/bindings/ChuckNorrisBindings`.
+* Then, create a blank iOS application with in the `ios/app/ChuckNorris` directory, called ChuckNorris.
+* Finally, use cocoapods to create a dependency between ChuckNorrisBindings and ChuckNorris.
+
+# The Bindings
+
+We run `pod lib create ChuckNorrisBindings` and answer a few questions.
+
+You will note cocoapods has created lots of files. Among them:
+
+TODO
+
+If we try to run the tests directly from Xcode, it won't work right away.
+
+We have to fiddle with the files cocoapods generated for us:
+
+TODO: screen shots about the scheme management
+
+Now we can write tests and run them.
+
+
+### Cross-compiling ChuckNorris for iOS
+
+Our plan to bind the C++ library for iOS is a combination of techniques we already seen in [Python with cffi](), and in [Android]().
+
+We'll cross-compile ChuckNorris as a static library from macOS to iOS. And then we'll compile the Objective-C code by giving it the paths to the `libchucknorris.a` file, the conan dependencies, and the `chucknorris.h` C header.
+
+
+As we did for Android, we'll create a conan profile called `ios` and add a build dependency:
 
 ```ini
 [settings]
@@ -49,23 +68,24 @@ arch=x86_64
 darwin-toolchain/1.0@theodelrieu/stable
 ```
 
-Note: we are usin x86_64 for now: it will *only* work in a simulator. But that should let us run the tests.
+As with Android, in a real project, we'll need to cross-compile for a variety of CPUs:
+`x86_64` for the simulator, `armv7` and `armv8` for the real devices.
+TODO: check the architecture.
 
-Export sqlite3 package:
+We'll do that by invoking conan with the `--settings arch=<arch>` flag.
+
+Note that this time we don't need to write the toolchain recipe ourselves, there is already one on conan-center.[^1]
+TODO: Check it's the conan-center remote:
+
+Then, as we did for Android, we run `conan create` for `sqlite3`.
 
 ```
+# For sqlite3
 cd conan/sqlite3
-conan create . dmerej/test -pr ios -s arch=x86_6
+conan create . dmerej/test --profile ios --settings arch=x86_6
 ```
 
-Now we can build ChuckNorris with *exactly the same command:*
-
-```
-cd cpp/ChuckNorris
-conan create . dmerej/test -pr ios -s arch=x86_6
-```
-
-After having patched the file to handle the static stuff, like we did for Android
+As we did for Android with the `libc++shared.so` file, we patch the ChuckNorris recipe to deal with the copies of all the `.a` files, both in the `imports()` and `package()` methods:
 
 ```python
 def imports():
@@ -80,27 +100,99 @@ def package(self):
       self.copy("lib/*.a", dst="lib", keep_path=False)
 ```
 
-## The podspec
-
-So know we specify include dirs and "vendored libs", ie libs that will *not* get built by cocapods:
+Then we can create the ChuckNorris package:
 
 ```
+cd cpp/ChuckNorris
+conan create . dmerej/test --profile ios --settings arch=x86_6
+```
+
+So far so good.
+
+
+## The podspec
+
+Note that all the `.a` are somewhere inside `~/.conan/data/`. Since we do not plan to edit the C++ code just yet, we can simply copy the `.a` from the package into a `out/` directory next to the bindings code.
+
+```
+mkdir -p out/
+cp ~/.conan/data/.../*.a out/
+```
+
+So that we don't forget, let's add `out` to the `.gitignore`.
+
+Next we can edit the podspec to specify:
+
+* The include directory. It's inside a directory called `pod_target_xcconfig`.
+* The "vendored" libraries: that's our `libchucknorris.a` and `libsqlite3.a`. They are called "vendored" because they won't be compiled by cocoapods itself, and are not already present on the target operating system either.
+
+```ruby
+Pod::Spec.new do |s|
+  ...
+
   s.pod_target_xcconfig = {
-    'HEADER_SEARCH_PATHS' => '../../../../cpp/ChuckNorris/include/'
+    'HEADER_SEARCH_PATHS' => "${PODROOTS}/../../cpp/ChuckNorris/include/",
   }
 
   s.vendored_libraries = Dir["out/*.a"]
 ```
 
-(Ruby ftw)
+TODO: check PODROOTS
 
-## The Objective-C wrapper
+Two remarks:
 
-Rename ReplaceMe.m into ChuckNorris.m and add ChuckNorris.h
+* Since cocoapods recipes are written in Ruby, we can use the overloaded `[]` operator for `Dir` objects to get the full list of files matching the `out/*.a` *glob* pattern.
+* The `HEADER_SEARCH_PATHS` string contains a `${PODROOTS}` extension, that will be set by cocoapods.
 
-Re-run `pod install`, easier that trying to add the files from Xcode (not kidding!)
+Note how it does not matter if we are building the `ChuckNorrisBindings` cocoapods library or the `ChuckNorris` application: the resulting path will be the same in both cases.
 
-## Link error
+# Objective-C
+
+Like C++, you can use C code directly in Objective-C.
+
+It's still dangerous to expose C code directly, so here's how we can proceed:
+
+* Write a CKChuckNorris class. (It's a convention to prefix all the classes in a pod library by the initials of the projects)
+* Write a CKChuckNorris+Private categary to hide the C code from the consumers of the CKChuckNorris class.
+
+```Objective-C
+/* In CKChuckNorris.h */
+TODO
+```
+
+```Objective-C
+/* In CKChuckNorris.m */
+TODO
+```
+
+```Objective-C
+/* In CKChuckNorris+Private.h */
+TODO
+```
+
+So far we have just *declared* the  `createCKPtr` and `getFactImpl` methods.
+
+It's time to *define* them in the `CKChuckNorris+Private.m` file:
+
+```Objective-C
+/* In CKChuckNorris+Private.m */
+TODO
+```
+
+Note how the *only* file that depends on the `chucknorris.h` C header file is the *private implementation* of the `CKChuckNorris` class.
+
+That's a technique often used in C++ code too, where it's named "PIMPL" (private implementation).
+
+TODO: check the name.
+
+It's now time to edit the tests:
+
+```Objective-C
+/* In Tests.m */
+TODO
+```
+
+And see if they pass:
 
 ```
 Undefined symbols for architecture x86_64:
@@ -110,96 +202,63 @@ ld: symbol(s) not found for architecture x86_64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 ```
 
-Or old friend the c++ library is back!
+Whoops, we forgot to add the dependency to the C++ library. It's less hard than in the Android case, since they always have the same name for iOS:
 
-```
+```ruby
+Pod::Spec.new do |s|
+  ...
+
+  s.vendored_libraries = ...
   s.libraries = ['c++', 'c++abi']
-  s.vendored_libraries += Dir["out/*.a"]
+end
 ```
 
-## Going dirty
+`libc++` and `libc++abi` are found on the target operating system, hence we use the `libraries` variable.
 
-FIXME: talk about the +Private stuff
+We can now try again, and this time the tests pass \o/.
 
-We'll just put the void* pointer directly in the class
+# The GUI
+
+We create the Objective-C application from Xcode.
+
+TODO: screenshot
+
+Then we edit the main storyboard to add a stack view and a button.
+
+We drag and drop the components from the designer view to the code, while keeping the `alt` key pressed.
+
+TODO: screenshot
+
+For now, we'll just set the text view to the string `Hello` when the button is clicked:
 
 ```objective-c
-/* in CKChuckNorris.h */
-@interface CKChuckNorris: NSObject
-
-@property void* ckPtr;
-+(NSString*) versionString;
-
--(instancetype)init;
--(NSString*) getFact;
-
-@end
-```
-
-```objective-c
-/* in CKChuckNorris.m */
-#import "CKChuckNorris.h"
-#include "chucknorris.h"
-
-@implementation CKChuckNorris
-
--(instancetype)init {
-  self = [super init];
-  self.ckPtr = chuck_norris_init();
-  return self;
-}
-
--(NSString *)getFact {
-  const char* fact = chuck_norris_get_fact(self.ckPtr);
-  return [NSString stringWithCString:fact encoding:NSUTF8StringEncoding];
-}
-
-+ (NSString*)versionString {
-  return [NSString stringWithCString:chuck_norris_version() encoding:NSUTF8StringEncoding];
-}
-@end
-```
-
-Then we can patch the app:
-
-```objective-c
- #import <UIKit/UIKit.h>
-+#import "CKChuckNorris.h"
-
- @interface ViewController : UIViewController
-
-+@property CKChuckNorris* ck;
-
- @end
-```
-
-```patch
 - (IBAction)onClick:(id)sender {
--  self.textView.text = @"hello";
-+  self.textView.text = [self.ck getFact];
+  NSLog(@"Hello!");
+}
+```
+
+OK, that works. All that's left to do is add a `CKChuckNorris*` pointer to the controller, set it in `viewDidLoad` and call the `getFact()` method when the button is clicked:
+
+```Objective-C
+- (void)viewDidLoad {
+  [super viewDidLoad];
+  self.ck = [[CKChuckNorris alloc] init];
+}
+
+-(IBAction)onClick:(id)sender {
+  self.textView.text = [self.ck getFact];
  }
-
- - (void)viewDidLoad {
-   [super viewDidLoad];
--  // Do any additional setup after loading the view, typically from a nib.
-+  self.ck = [[CKChuckNorris alloc] init];
- }
 ```
 
-Almost there:
-```
-Compiling CKChuckNorris.m -> fatal error: 'chucknorris.h' file not found
-```
+We can now run the application inside a simulator.
 
-```
-  s.pod_target_xcconfig = {
-    'HEADER_SEARCH_PATHS' => "${PODS_ROOT}/../../../cpp/ChuckNorris/include/",
-  }
-```
+TODO: screenshot
 
-which happen to work both for app/ and bindings.
 
-# Notes for releasers
+# Dealing with the other architectures
 
-If you want to re-distribute ChuckNorrisBindings, you will need to build a .tar.gz containing
-chucknorris.h, libchucknorris.a and libsqlite3.a
+* Run conan for armv7 and the like
+* Use lipo in out/
+
+
+[^1]: This recipe was written and shared by my nice colleague Théo Delrieu from [tanker.io](https://tanker.io). Say thanks!
