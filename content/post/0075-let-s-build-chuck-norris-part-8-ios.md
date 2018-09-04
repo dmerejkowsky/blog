@@ -13,51 +13,109 @@ If you came this far after reading part 1 to 7, congrats!
 
 In this article, we'll use everything we learnt so far and write an iOS application able to show Chuck Norris facts. We'll also learn a few things specific to iOS and Xcode. Let's dive in!
 
-# Introduction: cocoapods
+# Introduction: CocoaPods
 
-There are many ways to achieve our goal. Several tools exist, but for this post we'll concentrate on [cocoapods](). [^1]
+There are many ways to achieve our goal. Several tools exist, but for this post we'll concentrate on [CocoaPods](https://cocoapods.org). [^1]
 
 It means we can configure the Xcode projects by writing code, which is good news!
 
-Cocoapods can be used in two modes:
+CocoaPods can be used in two modes:
 
-First, you can run `pod lib create foo`. This will create a `Foo.podspec` file. The podspec describes how to build the `foo` library, a bit like conan recipes. You can then upload the podspec file and the associated sources to a `repository`.
+First, you can run `pod lib create foo`. This will create a `Foo.podspec` file. The *podspec* describes how to build the `foo` library, a bit like a Conan recipe. You can then upload the podspec file and the associated sources to a *repository*.
 
-Second, you can run `pod init` next to an existing Xcode project. This will create an Xcode *workspace* and a `Podfile` file. You can then edit the pod file to specify dependencies. Then, when you run `pod install`, the pod specs will be fetched and the workspace will be able to build the dependencies and use them in the original Xcode project.
+Second, you can run `pod init` next to an existing Xcode project. This will create an Xcode *workspace* and a `Podfile` file. You can secify one or several dependencies in the Podfile. Then, when you run `pod install`, the podspecs will be fetched and the workspace will be configured so that you can build and use those dependencies in the original Xcode project.
 
 So, here's the plan:
 
-* Create a *cocoapods library* called `ChuckNorrisBindings` in `ios/bindings/ChuckNorrisBindings`.
+* Create a *CocoaPods library* called `ChuckNorrisBindings` in `ios/bindings/ChuckNorrisBindings`.
 * Create a blank iOS application with in the `ios/app/ChuckNorris` directory, called ChuckNorris.
-* Use cocoapods to create a dependency between ChuckNorrisBindings and ChuckNorris.
+* Use CocoaPods to create a dependency between ChuckNorrisBindings and ChuckNorris.
 
 # The Bindings
 
-We run `pod lib create ChuckNorrisBindings` and answer a few questions.
+We run `pod lib create ChuckNorrisBindings` and answer a few questions:
 
-You will note cocoapods has created lots of files. Among them:
+```
+$ pod lib create ChuckNorrisBindings
+Cloning `https://github.com/CocoaPods/pod-template.git` into `ChuckNorrisBindings`.
+...
+What platform do you want to use? [ iOS / macOS ]
+> ios
+What language do you want to use? [ Swift / ObjC ]
+> ObjC
+Would you like to include a demo application with your library? [ Yes / No ]
+> No
+Which testing frameworks will you use? [ Specta / Kiwi / None ]
+> Specta
+Would you like to do view based testing? [ Yes / No ]
+> No
+What is your class prefix?
+CK
+...
+Running pod install on your new library.
+...
+Analyzing dependencies
+Fetching podspec for `ChuckNorrisBindings` from `../`
+Setting up CocoaPods master repo
+...
+ Ace! you're ready to go!
+ We will start you off by opening your project in Xcode
+  open 'ChuckNorrisBindings/Example/ChuckNorrisBindings.xcworkspace'
+```
 
-TODO: files created by `pod lib create`
+You will note CocoaPods has created lots of files. Among them:
 
-If we try to run the tests directly from Xcode, it won't work right away.
+* `ChuckNorrisBindings/Sources`: the sources of the library.
+* `ChuckNorrisBindings.podspec`: the podspec used to build and use the ChuckNorrisBindings library
+* `Example/ChuckNorrisBindings.xcodeproj` the Xcode project to build the sources
+* `Example/ChuckNorrisBindings.xcworkspace` the Xcode workspace which we can use to:
+    * build the library
+    * build the test framework
+    * build and run the tests themselves.
 
-We have to fiddle with the files cocoapods generated for us:
+If we try to run the tests directly from Xcode, it won't work right away, instead we get this error message:
 
-TODO: screen shots about the scheme management
+```
+Scheme "Pods-ChuckNorrisBindings_Tests" is not configured for testing. Edit the scheme to enable testing, or cancel the action
+```
 
-Now we can write tests and run them.
+We have to fiddle with the schemes CocoaPods generated for us:
+
+Open the shceme editor:
+
+![edit the testing scheme](/pics/xcode/manage-schemes.png)
+
+Show the test scheme:
+
+![show test scheme](/pics/xcode/show-test-scheme.png)
+
+Click the `+` bottom at the bottom and select the test target.
+
+![choose the test target](/pics/xcode/choose-test-target.png)
+
+This time we get an other error message:
+
+```
+Could not find test host for ChuckNorrisBindings_Tests ...
+```
+
+Edit the project settings, under "General" and switch the Host application form "Custom" to "None":
+
+![select test host](/pics/xcode/select-test-host-app.png)
+
+And it works: a simulator is started and the tests run.
 
 
 ### Cross-compiling ChuckNorris for iOS
 
-Our plan to bind the C++ library for iOS is a combination of techniques we already seen in [Python with cffi](), and in [Android]().
-
+Our plan to bind the C++ library for iOS is a combination of techniques we already seen in *[Part 5: Python with cffi]({{< ref "post/0065-let-s-build-chuck-norris-part-5-python-and-cffi.md" >}})* and *[Part 6: Android and JNA]({{< ref "post/0074-let-s-build-chuck-norris-part-7-android-jna.md" >}})*.
 We'll cross-compile ChuckNorris as a static library from macOS to iOS. And then we'll compile the Objective-C code by giving it the paths to the `libchucknorris.a` file, the conan dependencies, and the `chucknorris.h` C header.
 
 
-As we did for Android, we'll create a conan profile called `ios` and add a build dependency:
+Let's create a conan profile called `ios` and add a build dependency:
 
 ```ini
+# In ~/.conan/profiles/ios
 [settings]
 os=iOS
 os.version=9.0
@@ -67,21 +125,15 @@ arch=x86_64
 darwin-toolchain/1.0@theodelrieu/stable
 ```
 
-As with Android, in a real project, we'll need to cross-compile for a variety of CPUs:
-`x86_64` for the simulator, `armv7` and `armv8` for the real devices.
-TODO: check the architecture.
-
-We'll do that by invoking conan with the `--settings arch=<arch>` flag.
+For now, we've hard-coded the x86_64 architecture, because we'll run everything in simulators, and Xcode simulators need the x86_64 architecture. In order to run the code on actual devices, we'll invoke conan with the correct `--settings arch=<arch>` flag. This is similar to what we did in Part 6.
 
 Note that this time we don't need to write the toolchain recipe ourselves, there is already one on conan-center.[^2]
-TODO: Check it's the conan-center remote:
 
 Then, as we did for Android, we run `conan create` for `sqlite3`.
 
-```
-# For sqlite3
+```bash
 cd conan/sqlite3
-conan create . dmerej/test --profile ios --settings arch=x86_6
+conan create . dmerej/test --profile ios --settings arch=x86_64
 ```
 
 As we did for Android with the `libc++shared.so` file, we patch the ChuckNorris recipe to deal with the copies of all the `.a` files, both in the `imports()` and `package()` methods:
@@ -111,19 +163,19 @@ So far so good.
 
 ## The podspec
 
-Note that all the `.a` are somewhere inside `~/.conan/data/`. Since we do not plan to edit the C++ code just yet, we can simply copy the `.a` from the package into a `out/` directory next to the bindings code.
+Note that all the `.a` are somewhere inside `~/.conan/data/`. Let's copy all the `a` into a `nativelibs/x86_64` directory next to the bindings code:
 
 ```
-mkdir -p out/
-cp ~/.conan/data/.../*.a out/
+mkdir -p nativelibs/x86_64/
+cp ~/.conan/data/.../*.a nativelibs/x86_64/
 ```
 
-So that we don't forget, let's add `out` to the `.gitignore`.
+So that we don't forget, let's add `nativelibs` to the `.gitignore`.
 
 Next we can edit the podspec to specify:
 
 * The include directory. It's inside a directory called `pod_target_xcconfig`.
-* The *vendored* libraries: that's our `libchucknorris.a` and `libsqlite3.a`. They are called "vendored" because they won't be compiled by cocoapods itself, and are not already present on the target operating system either.
+* The *vendored* libraries: that's our `libchucknorris.a` and `libsqlite3.a`. They are called "vendored" because they won't be compiled by CocoaPods itself, and are not already present on the target operating system either.
 
 ```ruby
 Pod::Spec.new do |s|
@@ -138,10 +190,10 @@ Pod::Spec.new do |s|
 
 Two remarks:
 
-* Since cocoapods recipes are written in Ruby, we can use the overloaded `[]` operator for `Dir` objects to get the full list of files matching the `out/*.a` *glob* pattern.
-* The `HEADER_SEARCH_PATHS` string contains a `${POD_ROOTS}` extension, that will be set by cocoapods.
+* Since CocoaPods recipes are written in Ruby, we can use the overloaded `[]` operator for `Dir` objects to get the full list of files matching the `out/*.a` *glob* pattern.
+* The `HEADER_SEARCH_PATHS` string contains a `${POD_ROOTS}` extension, that will be set by CocoaPods.
 
-Note how it does not matter if we are building the `ChuckNorrisBindings` cocoapods library or the `ChuckNorris` application: the resulting `HEADER_SEARCH_PATHS` will be the same.
+Note how it does not matter if we are building the `ChuckNorrisBindings` CocoaPods library or the `ChuckNorris` application: the resulting `HEADER_SEARCH_PATHS` will be the same.
 
 # Objective-C
 
