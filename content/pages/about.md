@@ -29,7 +29,7 @@ If you want to get in touch, please see the
 _For English readers: This is a bunch of legalese stuff
 that are required, by law, to be on this blog._
 
-Ce blog est édité par Dimitri Merejkowsky et tous les contenus mis à disposition
+Ce blog est édité par Dimitri Merejkowsky et tous les contenus sont mis à disposition
 gratuitement selon les termes de la
 [Licence Creative Commons Attribution 3.0 France](
 http://creativecommons.org/licenses/by/3.0/fr)
