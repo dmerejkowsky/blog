@@ -61,7 +61,10 @@ Here's what our first attempt looks like:
 
 _src/c_wrapper.cpp:_
 ```cpp
-#include <chucknorris.hpp>
+#include <cstring>
+#include <chucknorris.h>
+
+#include <ChuckNorris.hpp>
 
 chuck_norris_t* chuck_norris_init()
 {
@@ -204,6 +207,7 @@ The solution is to tell the C++ compiler to *not* mangle the symbols defined in 
 
 extern "C" {
 
+  typedef struct chuck_norris chuck_norris_t;
   chuck_norris_t* chuck_norris_init(void);
   char* chuck_norris_get_fact(chuck_norris_t*);
   void chuck_norris_deinit(chuck_norris_t*);
