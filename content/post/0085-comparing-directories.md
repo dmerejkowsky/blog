@@ -115,7 +115,7 @@ find . | sort > ~/manifest-a
   * The order of the files returned by find are not deterministic and can change form one file system to an other, so we use a pipe (`|`) to take the output of `find` and pass it to the `sort` command. (`sort` is also part of the coreutils package).
   * Finally, we use an angle bracket (`>`) to write the output of `sort` to a file in the home directory: (`~/manifest-a`): we must not write the manifest-a file inside the `a` directory, otherwise the manifest may contain itself!
 
-Now, do the same on costello:
+Now, we do the same on costello:
 
 ```
 ssh user@costello
@@ -123,7 +123,7 @@ cd b
 find . -type f | sort > ~/manifest-b
 ```
 
-Then use `scp` to transfer the A manifest to costello:
+Then we use `scp` to transfer the A manifest to costello:
 
 ```
 # On abbot
@@ -192,7 +192,7 @@ And we're done: from the differences of the manifests we know which file are mis
 
 We saw that we can use nothing but command line tools from the `coreutils` package to compare the contents of two directories: the technique we used was working exactly the same way several decades ago, and will probably continue to work for a long time.
 
-So, if you liked the techniques show here, here's my advice to you: next time you are confronted with a task similar to the one we just studied, take a look at all the coreutils documentation and try using them. If you do this often, after a while you'll have gained a nice addition to your skill set.
+So, if you liked the techniques show here, here's my advice to you: next time you are confronted with a task similar to the one we just studied, take a look at all of the coreutils documentation and try using them. If you do this often, after a while you'll have gained a nice addition to your skill set.
 
 Oh, and if you think "this is all useless", please read this [enlightening paper](https://adamdrake.com/command-line-tools-can-be-235x-faster-than-your-hadoop-cluster.html) called *Command-line Tools can be 235x Faster than your Hadoop Cluster* :)
 
@@ -202,4 +202,4 @@ Cheers!
 [^2]: If you'd like to see all of what `diff` can do, feel free to run `man diff` and be amazed!
 [^3]: Git is smart enough to see that neither A and B are inside a directory it controls, and if A and B *were* inside a git working tree, you could use the `--no-index` option, as explained [in the documentation](https://git-scm.com/docs/git-diff#git-diff-emgitdiffemltoptionsgt--no-index--ltpathgtltpathgt)
 [^4]: You may already have heard of *md5 sum*: it works exactly the same way but uses an older algorithm to compute the checksum and its usage is generally discouraged.
-[^5]: If you use zsh you can als ask it to list all the files directly with a *glob* extension, like this: `shasum **/*(.) > ~/a.md5`. Yeah zsh!
+[^5]: If you use zsh you can also ask it to list all the files directly with a *glob* extension, like this: `shasum **/*(.) > ~/a.md5`. Yeah zsh!
