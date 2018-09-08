@@ -111,6 +111,7 @@ And it works: a simulator is started and the tests run.
 Our plan to bind the C++ library for iOS is a combination of techniques we already seen in *[Part 5: Python with cffi]({{< ref "post/0065-let-s-build-chuck-norris-part-5-python-and-cffi.md" >}})* and *[Part 6: Android and JNA]({{< ref "post/0074-let-s-build-chuck-norris-part-7-android-jna.md" >}})*.
 We'll cross-compile ChuckNorris as a static library from macOS to iOS. And then we'll compile the Objective-C code by giving it the paths to the `libchucknorris.a` file, the conan dependencies, and the `chucknorris.h` C header.
 
+Before anything, **let's make sure Xcode command line tools are installed** by running `xcode-select --install`, or nothing will work.
 
 Let's create a conan profile called `ios` and add a build dependency:
 
@@ -120,10 +121,16 @@ Let's create a conan profile called `ios` and add a build dependency:
 os=iOS
 os.version=9.0
 arch=x86_64
+compiler=apple-clang
+compiler.version=9.0
+compiler.libcxx=libc++
+build_type=Release
+os_build=Macos
 
 [build_requires]
 darwin-toolchain/1.0@theodelrieu/stable
 ```
+
 
 For now, we've hard-coded the x86_64 architecture, because we'll run everything in simulators, and Xcode simulators need the x86_64 architecture. In order to run the code on actual devices, we'll invoke conan with the correct `--settings arch=<arch>` flag. This is similar to what we did in Part 6.
 
@@ -167,7 +174,9 @@ Note that all the `.a` are somewhere inside `~/.conan/data/`. Let's copy all the
 
 ```
 mkdir -p nativelibs/x86_64/
-cp ~/.conan/data/.../*.a nativelibs/x86_64/
+cp \
+  ~/.conan/dataChuckNorris/0.2/dmerej/test/package/<id>/*.a
+  nativelibs/x86_64/
 ```
 
 So that we don't forget, let's add `nativelibs` to the `.gitignore`.
@@ -195,9 +204,11 @@ Two remarks:
 
 Note how it does not matter if we are building the `ChuckNorrisBindings` CocoaPods library or the `ChuckNorris` application: the resulting `HEADER_SEARCH_PATHS` will be the same.
 
+Anyway, we can now run `pod update` from the `Example` directory to update the Xcode projects and workspace configurations.
+
 # Objective-C
 
-Like C++, you can use C code directly in Objective-C.
+We can use C code directly in Objective-C.
 
 It's still dangerous to expose C code directly, so here's how we can proceed:
 
