@@ -11,7 +11,7 @@ summary: A tour of the various possible ways to compare the contents of two diff
 
 # The problem
 
-Let's say we have a directory called O that contains a large amount of subdirectories and files.
+Let's say we have a directory called O that contains a large number of subdirectories and files.
 
 We find ourselves with two different directories, A and B. Each of them started as a copy of O, but then, in each of them, some files were changed, some were added or removed, and we don't know which ones.
 
@@ -103,7 +103,7 @@ Then, we go inside the `a` directory:
 cd a
 ```
 
-Then we nun the following command:
+Then we run the following command:
 
 ```
 find . | sort > ~/manifest-a
@@ -112,7 +112,7 @@ find . | sort > ~/manifest-a
 *Explanation*:
 
   * `find .` lists all the files and directories inside the current working directory.
-  * The order of the files returned by find are not deterministic and can change form one file system to an other, so we use a pipe (`|`) to take the output of `find` and pass it to the `sort` command. (`sort` is also part of the coreutils package).
+  * The order of the files returned by find are not deterministic and can change form one file system to another, so we use a pipe (`|`) to take the output of `find` and pass it to the `sort` command. (`sort` is also part of the coreutils package).
   * Finally, we use an angle bracket (`>`) to write the output of `sort` to a file in the home directory: (`~/manifest-a`): we must not write the manifest-a file inside the `a` directory, otherwise the manifest may contain itself!
 
 Now, we do the same on costello:
@@ -143,7 +143,7 @@ diff ~/manifest-*
 
 That takes care of the contents of the directories. What about contents of the files themselves ?
 
-Well, we can use an other coreutils tools called `shasum`.
+Well, we can use another coreutils tools called `shasum`.
 
 `shasum` can be used to compute a *checksum* of the contents of a given file. It will generate the same output if the contents are the same, and if two files are different, there's almost zero chance their checksum will be equal. [^4]
 
