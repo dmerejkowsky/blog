@@ -29,5 +29,5 @@ Also, more that ever, do not hesitate sending me [feedback]({{< ref "pages/conta
 
 Anyway, here are the articles published so far in this series:
 
-* [Helping BBC's subtitlers]({{< ref "post/0058-helping-bbc-subtitlers" >}})
+* [Helping BBC's subtitlers]({{< ref "post/0058-helping-bbc-subtitlers.md" >}})
 * [Twitter Timeline Cleaner]({{< ref "post/0076-twitter-timeline-cleaner.md" >}})
