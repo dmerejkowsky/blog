@@ -339,13 +339,13 @@ We can now try again, and this time the tests pass \o/.
 
 We create the Objective-C application from Xcode.
 
-TODO: screenshot
+![Creating Xcode project](/pics/xcode/create-project.png)
 
-Then we edit the main storyboard to add a stack view and a button.
+Then we edit the main storyboard to add a stack view, a text field and a button:
 
-We drag and drop the components from the designer view to the code, while keeping the `alt` key pressed.
+We drag and drop the components from the designer view to the code, while keeping the `ctrl` key pressed.
 
-TODO: screenshot
+![Using the assistant](/pics/xcode/assistant-editor.png)
 
 For now, we'll just set the text view to the string `Hello` when the button is clicked:
 
@@ -355,6 +355,7 @@ For now, we'll just set the text view to the string `Hello` when the button is c
   self.textView.text = @"Hello";
 }
 ```
+
 
 OK, that works.
 
@@ -403,10 +404,12 @@ All that's left to do is add a `CKChuckNorris*` pointer to the controller, set i
  }
 {{</ highlight >}}
 
-We can now run the application inside a simulator.
+We can now run the application inside a simulator:
 
-TODO: screenshot
+![ChuckNorris application on a simulator](/pics/xcode/simulator.png)
 
+
+Victory!
 
 # Dealing with the other architectures
 
