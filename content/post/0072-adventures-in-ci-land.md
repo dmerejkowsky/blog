@@ -221,7 +221,7 @@ class BackgroundProcess:
     def __enter__(self):
         env = os.environ.copy()
         env["BROWSER"] = "NONE"
-        self.process = subprocess.Popen(self.cmd)
+        self.process = subprocess.Popen(self.cmd, env=env)
 ```
 
 Note: you may wonder why we did not just set the `BROWSER` environment variable directly in the `.gitlab-ci.yml` file. This would have worked, but here we create a special *copy* of the current environment variables, and we set the `BROWSER` environment variable *just for the `yarn` process*. Why?
