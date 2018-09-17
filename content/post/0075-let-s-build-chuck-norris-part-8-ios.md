@@ -162,7 +162,7 @@ Then we can create the ChuckNorris package:
 
 ```
 cd cpp/ChuckNorris
-conan create . dmerej/test --profile ios --settings arch=x86_6
+conan create . dmerej/test --profile ios --settings arch=x86_64
 ```
 
 So far so good.
