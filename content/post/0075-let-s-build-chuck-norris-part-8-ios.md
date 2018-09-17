@@ -213,7 +213,7 @@ We can use C code directly in Objective-C.
 It's still dangerous to expose C code directly, so here's how we can proceed:
 
 * Write a CKChuckNorris class. (It's a convention to prefix all the classes in a pod library by the initials of the projects)
-* Write a CKChuckNorris+Private categary to hide the C code from the consumers of the CKChuckNorris class.
+* Write a CKChuckNorris+Private category to hide the C code from the consumers of the CKChuckNorris class.
 
 ```Objective-C
 /* In CKChuckNorris.h */
@@ -232,7 +232,7 @@ It's still dangerous to expose C code directly, so here's how we can proceed:
 ```Objective-C
 /* In CKChuckNorris.m */
 #import "CKChuckNorris.h"
-#include "CKChuckNorris+Private.m"
+#import "CKChuckNorris+Private.h"
 
 @implementation CKChuckNorris
 
