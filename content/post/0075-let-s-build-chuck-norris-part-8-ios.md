@@ -409,13 +409,106 @@ We can now run the application inside a simulator:
 ![ChuckNorris application on a simulator](/pics/xcode/simulator.png)
 
 
-Victory!
+Yippee!
 
 # Dealing with the other architectures
 
-* Run conan for armv7 and the like
-* Use lipo in out/
+Let's try to build an `.ipa`, ie an application file that can be installed on real devices.
 
+The first step is to generate an *archive* of our application. To do this, we can use the "Archive" entry in the "Product" menu.
+
+Right now it's disabled, but we can fix this by selecting the "Generic iOS Device" next to the play/stop buttons in the bottom left.
+
+Let's click on it:
+
+```
+ld: warning: ignoring file /nativelibs/x86_64/libchucknorris.a, file was built
+  for archive which is not the architecture being linked (arm64)
+error: Undefined symbols for architecture arm64:
+  "_chuck_norris_version", referenced from:
+  +[CKChuckNorris(Private) versionStringImpl] in
+    libChuckNorrisBindings.a(CKChuckNorris.o)
+```
+
+You read this right: the fact the `.a` was **not build for the correct CPU architecture** is a *warning*, and after that we get a generic error about the symbol being not found. The morale of the story is: when you have a compilation failure, start at the top of the compiler output :)
+
+So, let's try and add support for Arm 64bits. We can start by cross-compiling sqlite3 like so:
+
+```bash
+cd sqlite3
+conan create . dmerej/test --profile ios --settings arch=armv8
+```
+
+Note that Conan and Xcode use different names for this architecture (`armv8` and `arm64` respectively).
+
+Now, for the x86_64 architecture we manually copied files from `.conan/data` to `nativelibs/x86_64`. This is not ideal. Instead, we can use `conan install` (to install the deps), then `conan build` (to build the ChuckNorris library), and finally `conan package` to copy the libraries and headers (the code that was in the `package()` function of the recipe, remember?)
+
+```bash
+$ cd cpp/ChuckNorris
+$ conan install . --profile ios --settings arch=armv8 \
+    --install-folder build/ios/armv8
+$ conan build . --build-folder build/ios/armv8
+$ connan package . --build-folder build/ios/armv8 \
+    --package-folder nativelibs/armv8
+```
+
+Note how the "install folder" for `conan install` matches the "build folder" for `conan build` and `conan package`.
+
+Also note how the profile and settings are only used by `conan install`. After this, everything conan needs to know can be found in the build directory.
+
+Let's do the same for 'armv7', 'armv7s', and 'x86'. Armv7 and armv7s are architectures used by older iOS devices, and x86 is used by 32 bits simulators.
+
+Since this is a bit tedious by hand, we'll use the [build_ios.py](https://github.com/dmerejkowsky/chucknorris/blob/master/cpp/ChuckNorris/ios_build.py) script. [^3]
+
+Now, instead of trying to build the ChuckNorrisBindings several times, oncce per architectures, (which is hard to do when using CocoaPods), we can use *fat libraries* instead. Fat libraries are just like regular libraries, except they can contain code for multiple architectures.
+
+So let's create a `nativelibs/universal` folder containing fat `liqsqlite3.a` and fat `libchucknorris.a` libraries:
+
+```
+cd nativelibs/universal
+lipo -create -output libsqlite3.a ../*/lib/libsqlite3.a
+lipo -create -output libchucknorris.a ../*/lib/libchucknorris.a
+```
+
+We can check with `lipo -info` that this worked:
+
+```
+$ lipo -info libchucknorris.a
+Architectures in the fat file: libchucknorris.a are:
+  armv7 armv7s i386 x86_64 arm64
+```
+
+Then we fix the podspec:
+
+```patch
+- s.vendored_libraries = Dir["nativelibs/x86_64/*.a"]
++ s.vendored_libraries = Dir["nativelibs/universal/*.a"]
+```
+
+We re-generate the Xcode project with `pod update --ro-repo-update`. This time the "Archive" step triggers no errors, and we are faced with this window:
+
+![xcode archive output](/pics/xcode/archive.png)
+
+# Signing the archive
+We now need to build a re-distributable application from the archive. The depends on your Xcode profiles and certificates. Here's what worked for me, your mileage may vary:
+
+* Select "export" on the right pane
+* Choose "Ad Hoc" method of distribution
+* Then tick the "Rebuild from Bitcode" option.
+* Let Xcode do the signing and save the `.ipa` in a folder named based on the current date.
+
+Finally, go to Xcode "Window" menu, select "Devices", and drag and drop the ".ipa" from the date folder to the list of applications installed on this device.
+
+And here's the result (taken from my crappy Android phone):
+
+![ChuckNorris running on a real device](/pics/xcode/victory.jpg)
+
+Victory!
+
+# Conclusion
+
+That's the end of the Chuck Norris series. I hope you had fun, I hope you learned a thing or two. See you next time!
 
 [^1]: I heard Carthage is also a good option. Did not try it, though.
 [^2]: This recipe was written and shared by my nice colleague Théo Delrieu from [tanker.io](https://tanker.io). Say thanks!
+[^3]: Which is not far from [the CI script]({{< ref "post/0082-introducing-tips-from-a-build-farmer.md" >}}) we use at work by the way.
