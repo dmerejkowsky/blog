@@ -78,7 +78,8 @@ You will note CocoaPods has created lots of files. Among them:
 If we try to run the tests directly from Xcode, it won't work right away, instead we get this error message:
 
 ```
-Scheme "Pods-ChuckNorrisBindings_Tests" is not configured for testing. Edit the scheme to enable testing, or cancel the action.
+Scheme "Pods-ChuckNorrisBindings_Tests" is not configured for testing.
+Edit the scheme to enable testing, or cancel the action.
 ```
 
 We have to fiddle with the schemes CocoaPods generated for us:
@@ -110,7 +111,7 @@ And it works: a simulator is started and the tests run.
 
 ### Cross-compiling ChuckNorris for iOS
 
-Our plan to bind the C++ library for iOS is a combination of techniques we already seen in *[Part 5: Python with cffi]({{< ref "post/0065-let-s-build-chuck-norris-part-5-python-and-cffi.md" >}})* and *[Part 6: Android and JNA]({{< ref "post/0074-let-s-build-chuck-norris-part-7-android-jna.md" >}})*.
+Our plan to bind the C++ library for iOS is a combination of techniques we already seen in *[Part 5: Python with cffi]({{< ref "post/0065-let-s-build-chuck-norris-part-5-python-and-cffi.md" >}})* and *[Part 6: Cross compilation for Android]({{< ref "post/0073-let-s-build-chuck-norris-part-6-android-cross-compilation.md" >}})*.
 We'll cross-compile ChuckNorris as a static library from macOS to iOS. And then we'll compile the Objective-C code by giving it the paths to the `libchucknorris.a` file, the conan dependencies, and the `chucknorris.h` C header.
 
 Before anything, **let's make sure Xcode command line tools are installed** by running `xcode-select --install`. If you are following this tutorial at home, make sure to run thing or nothing will work.
