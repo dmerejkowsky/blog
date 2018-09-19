@@ -27,9 +27,9 @@ You will find all the source code on [GitHub](https://github.com/dmerejkowsky/ch
 
 # Let's build Chuck Norris!
 
-"Let's Build Chuck Norris!" is an on-going series of blog posts aiming at exploring various topics about C++ and build systems:
+"Let's Build Chuck Norris!" is a series of blog posts aiming at exploring various topics about C++ and build systems.
 
-Available:
+Here are all of them, in chronological order. Enjoy!
 
 1. [Using CMake and Ninja]({{< ref "post/0061-let-s-build-chuck-norris-part-1-cmake-and-ninja.md" >}})
 2. [Managing third-party dependencies with conan]({{< ref "post/0062-let-s-build-chuck-norris-part-2-sqlite-and-conan.md" >}})
@@ -38,6 +38,4 @@ Available:
 5. [Using cffi to build a Python extension]({{< ref "post/0065-let-s-build-chuck-norris-part-5-python-and-cffi.md" >}})
 6. [Cross-compiling for Android]({{< ref "post/0073-let-s-build-chuck-norris-part-6-android-cross-compilation.md" >}})
 7. [Android and JNA]({{< ref "post/0074-let-s-build-chuck-norris-part-7-android-jna.md" >}})
-
-Planned for later:
-* Using C++ in an iOS application
+8. [Using C++ in an iOS application]({{<ref "post/0075-let-s-build-chuck-norris-part-8-ios.md" >}})
