@@ -17,19 +17,21 @@ In this article, we'll use everything we learnt so far and write an iOS applicat
 
 There are many ways to achieve our goal. Several tools exist, but for this post we'll concentrate on [CocoaPods](https://cocoapods.org). [^1]
 
-It means we can configure the Xcode projects by writing code, which is good news!
-
 CocoaPods can be used in two modes:
 
 First, you can run `pod lib create foo`. This will create a `Foo.podspec` file. The *podspec* describes how to build the `foo` library, a bit like a Conan recipe. You can then upload the podspec file and the associated sources to a *repository*.
 
-Second, you can run `pod init` next to an existing Xcode project. This will create an Xcode *workspace* and a `Podfile` file. You can secify one or several dependencies in the Podfile. Then, when you run `pod install`, the podspecs will be fetched and the workspace will be configured so that you can build and use those dependencies in the original Xcode project.
+Second, you can run `pod init` next to an existing Xcode project. This will create an Xcode *workspace* and a `Podfile` file. You can specify one or several dependencies in the Podfile. Then, when you run `pod install`, the podspecs will be fetched and the workspace will be configured so that you can build and use those dependencies in the original Xcode project.
+
+That way you minimize the interactions with Xcode through its GUI and use code instead.
 
 So, here's the plan:
 
 * Create a *CocoaPods library* called `ChuckNorrisBindings` in `ios/bindings/ChuckNorrisBindings`.
 * Create a blank iOS application with in the `ios/app/ChuckNorris` directory, called ChuckNorris.
 * Use CocoaPods to create a dependency between ChuckNorrisBindings and ChuckNorris.
+* ...
+* Profit!
 
 # The Bindings
 
@@ -66,7 +68,7 @@ Setting up CocoaPods master repo
 You will note CocoaPods has created lots of files. Among them:
 
 * `ChuckNorrisBindings/Sources`: the sources of the library.
-* `ChuckNorrisBindings.podspec`: the podspec used to build and use the ChuckNorrisBindings library
+* `ChuckNorrisBindings.podspec`: the podspec used to build and depend on the ChuckNorrisBindings library
 * `Example/ChuckNorrisBindings.xcodeproj` the Xcode project to build the sources
 * `Example/ChuckNorrisBindings.xcworkspace` the Xcode workspace which we can use to:
     * build the library
@@ -76,12 +78,12 @@ You will note CocoaPods has created lots of files. Among them:
 If we try to run the tests directly from Xcode, it won't work right away, instead we get this error message:
 
 ```
-Scheme "Pods-ChuckNorrisBindings_Tests" is not configured for testing. Edit the scheme to enable testing, or cancel the action
+Scheme "Pods-ChuckNorrisBindings_Tests" is not configured for testing. Edit the scheme to enable testing, or cancel the action.
 ```
 
 We have to fiddle with the schemes CocoaPods generated for us:
 
-Open the shceme editor:
+Open the scheme editor:
 
 ![edit the testing scheme](/pics/xcode/manage-schemes.png)
 
@@ -111,7 +113,7 @@ And it works: a simulator is started and the tests run.
 Our plan to bind the C++ library for iOS is a combination of techniques we already seen in *[Part 5: Python with cffi]({{< ref "post/0065-let-s-build-chuck-norris-part-5-python-and-cffi.md" >}})* and *[Part 6: Android and JNA]({{< ref "post/0074-let-s-build-chuck-norris-part-7-android-jna.md" >}})*.
 We'll cross-compile ChuckNorris as a static library from macOS to iOS. And then we'll compile the Objective-C code by giving it the paths to the `libchucknorris.a` file, the conan dependencies, and the `chucknorris.h` C header.
 
-Before anything, **let's make sure Xcode command line tools are installed** by running `xcode-select --install`, or nothing will work.
+Before anything, **let's make sure Xcode command line tools are installed** by running `xcode-select --install`. If you are following this tutorial at home, make sure to run thing or nothing will work.
 
 Let's create a conan profile called `ios` and add a build dependency:
 
@@ -131,8 +133,7 @@ os_build=Macos
 darwin-toolchain/1.0@theodelrieu/stable
 ```
 
-
-For now, we've hard-coded the x86_64 architecture, because we'll run everything in simulators, and Xcode simulators need the x86_64 architecture. In order to run the code on actual devices, we'll invoke conan with the correct `--settings arch=<arch>` flag. This is similar to what we did in Part 6.
+For now, we've hard-coded the x86_64 architecture, because we'll run everything in simulators, and Xcode simulators require this architecture. In order to run the code on actual devices, we'll invoke conan with the correct `--settings arch=<arch>` flag. This is similar to what we did in Part 6.
 
 Note that this time we don't need to write the toolchain recipe ourselves, there is already one on conan-center.[^2]
 
@@ -170,7 +171,7 @@ So far so good.
 
 ## The podspec
 
-Note that all the `.a` are somewhere inside `~/.conan/data/`. Let's copy all the `a` into a `nativelibs/x86_64` directory next to the bindings code:
+Note that all the `.a` files are somewhere inside `~/.conan/data/`. Let's copy them into a `nativelibs/x86_64` directory next to the bindings code:
 
 ```
 mkdir -p nativelibs/x86_64/
@@ -183,7 +184,7 @@ So that we don't forget, let's add `nativelibs` to the `.gitignore`.
 
 Next we can edit the podspec to specify:
 
-* The include directory. It's inside a directory called `pod_target_xcconfig`.
+* The include directory: it's inside a directory called `pod_target_xcconfig`.
 * The *vendored* libraries: that's our `libchucknorris.a` and `libsqlite3.a`. They are called "vendored" because they won't be compiled by CocoaPods itself, and are not already present on the target operating system either.
 
 ```ruby
@@ -212,7 +213,7 @@ We can use C code directly in Objective-C.
 
 It's still dangerous to expose C code directly, so here's how we can proceed:
 
-* Write a CKChuckNorris class. (It's a convention to prefix all the classes in a pod library by the initials of the projects)
+* Write a CKChuckNorris class. (It's a convention to prefix all the classes in a pod library with the initials of the projects)
 * Write a CKChuckNorris+Private category to hide the C code from the consumers of the CKChuckNorris class.
 
 ```Objective-C
@@ -223,8 +224,6 @@ It's still dangerous to expose C code directly, so here's how we can proceed:
 
 -(instancetype)init;
 -(NSString*) getFact;
-
-// TODO: deinit!
 
 @end
 ```
@@ -359,7 +358,7 @@ For now, we'll just set the text view to the string `Hello` when the button is c
 
 OK, that works.
 
-Now we can run `pod init` and patch the Podfile:
+Now we can run `pod init` and edit the Podfile:
 
 ```ruby
 target 'ChuckNorris' do
@@ -374,7 +373,10 @@ Let's check this works:
 ```
 $ cd ios/app
 $ pod update
-TODO: pod update output
+...
+Downloading dependencies
+...
+Sending stats
 ```
 
 Looks OK.
@@ -413,7 +415,7 @@ Yippee!
 
 # Dealing with the other architectures
 
-Let's try to build an `.ipa`, ie an application file that can be installed on real devices.
+Let's try to build an `.ipa`, i.e an application file that can be installed on real devices.
 
 The first step is to generate an *archive* of our application. To do this, we can use the "Archive" entry in the "Product" menu.
 
@@ -441,7 +443,7 @@ conan create . dmerej/test --profile ios --settings arch=armv8
 
 Note that Conan and Xcode use different names for this architecture (`armv8` and `arm64` respectively).
 
-Now, for the x86_64 architecture we manually copied files from `.conan/data` to `nativelibs/x86_64`. This is not ideal. Instead, we can use `conan install` (to install the deps), then `conan build` (to build the ChuckNorris library), and finally `conan package` to copy the libraries and headers (the code that was in the `package()` function of the recipe, remember?)
+Now, for the x86_64 architecture we manually copied files from `.conan/data` to `nativelibs/x86_64`. This is not ideal. Instead, we can use `conan install` (to install the deps), then `conan build` (to build the ChuckNorris library), and finally `conan package` to copy the libraries and headers (to run the code that was in the `package()` function of the recipe, remember?):
 
 ```bash
 $ cd cpp/ChuckNorris
@@ -460,7 +462,7 @@ Let's do the same for 'armv7', 'armv7s', and 'x86'. Armv7 and armv7s are archite
 
 Since this is a bit tedious by hand, we'll use the [build_ios.py](https://github.com/dmerejkowsky/chucknorris/blob/master/cpp/ChuckNorris/ios_build.py) script. [^3]
 
-Now, instead of trying to build the ChuckNorrisBindings several times, oncce per architectures, (which is hard to do when using CocoaPods), we can use *fat libraries* instead. Fat libraries are just like regular libraries, except they can contain code for multiple architectures.
+Now, instead of trying to build the ChuckNorrisBindings several times, once per architecture, (which is hard to do when using CocoaPods), we can use *fat libraries* instead. Fat libraries are just like regular libraries, except they can contain code for multiple architectures.
 
 So let's create a `nativelibs/universal` folder containing fat `liqsqlite3.a` and fat `libchucknorris.a` libraries:
 
@@ -490,6 +492,7 @@ We re-generate the Xcode project with `pod update --ro-repo-update`. This time t
 ![xcode archive output](/pics/xcode/archive.png)
 
 # Signing the archive
+
 We now need to build a re-distributable application from the archive. The depends on your Xcode profiles and certificates. Here's what worked for me, your mileage may vary:
 
 * Select "export" on the right pane
@@ -507,7 +510,7 @@ Victory!
 
 # Conclusion
 
-That's the end of the Chuck Norris series. I hope you had fun, I hope you learned a thing or two. See you next time!
+That's the end of the Chuck Norris series. I hope you had fun, I hope you learned something new. See you next time!
 
 [^1]: I heard Carthage is also a good option. Did not try it, though.
 [^2]: This recipe was written and shared by my nice colleague Théo Delrieu from [tanker.io](https://tanker.io). Say thanks!
