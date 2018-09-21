@@ -140,6 +140,7 @@ to keep easily available.
   https://theoutline.com/post/1228/when-machines-go-rogue)
 * [Where automated testing should (and shouldn't) fit in your strategy](
   http://lifeimitatescode.com/automated-testing-strategy)
+* [Why I Use Tape Instead of Mocha & So Should You](https://medium.com/javascript-scene/why-i-use-tape-instead-of-mocha-so-should-you-6aa105d8eaf4)
 * [Why Most Unit Testing Is Waste](
   http://rbcs-us.com/documents/Why-Most-Unit-Testing-is-Waste.pdf)
   and the [follow-up](http://rbcs-us.com/documents/Segue.pdf)
