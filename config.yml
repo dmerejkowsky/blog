@@ -14,8 +14,6 @@ buildDrafts: true
 params:
   info:
     description: Personal blog of Dimitri Merejkowsky
-  assets:
-    customJS: [js/custom.js]
   social: ~
   settings:
     showReadingTime: true
