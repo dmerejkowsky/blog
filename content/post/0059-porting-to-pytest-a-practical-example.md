@@ -257,8 +257,8 @@ For `assertContains` I quickly managed to find I could use `response.rendered_co
 
 
 ```patch
-- assert "No polls are available." in response.rendered_content
-+ self.assertContains(response, "No polls are available.")
+- self.assertContains(response, "No polls are available.")
++ assert "No polls are available." in response.rendered_content
 ```
 
 For `assertQuerysetEqual` it was a bit harder.
