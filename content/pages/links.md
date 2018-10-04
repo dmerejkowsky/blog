@@ -357,6 +357,7 @@ to keep easily available.
   https://www.soimort.org/translate-shell/)
 * [twtxt: decentralised, minimalist microblogging service for hackers](
   http://twtxt.readthedocs.io/en/latest/)
+* [tychus: Live-reload for web applications](https://github.com/devlocker/tychus)
 * [umonitor: Manage monitor configuration automatically](
   https://github.com/rliou92/umonitor)
 * [Windows Server Core: Windows with just the command line](
