@@ -8,6 +8,8 @@ tags: [neovim]
 summary: Why I turned off syntax highlighting for Markdown files.
 ---
 
+&hellip; at least when it comes to Markdown files ;)
+
 # Introduction: editing this blog in Neovim
 
 Here's what it used to look like to edit one of my articles in Neovim:
