@@ -76,7 +76,7 @@ The fact is, you still need to remember the sed syntax, which, by the way, varie
 
 # ruplacer to the rescue
 
-And here's where ruplacer comes in. It's good at one thing and one thing only: replace text in source files.
+And here's where ruplacer comes in. It's good at one thing and one thing only: find and replace text in source files.
 
 Here's how to use it:
 
