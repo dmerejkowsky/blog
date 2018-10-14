@@ -4,6 +4,7 @@ slug: introducing-dmerej-newsletter
 date: 2017-01-22T15:27:04.797920+00:00
 draft: false
 title: Introducing dmerej's newsletter
+feedback: false
 ---
 
 Quick post to let you know I've created a newsletter.
@@ -16,18 +17,15 @@ Quick post to let you know I've created a newsletter.
 
 ## What you'll get
 
-* You'll be notified of every new blog post by e-mail.
-* Every week end or so, you'll get a list of interesting links I found while
-  browsing.
+You'll be notified of every new blog post by e-mail. Nothing more, nothing less.
+
+If you want to un-subscribe, just answer one of those and tell me so. No questions asked.
+
+(Although feel free to tell me why ...)
 
 ## Notes
 
-If you prefer to use `RSS`, feel fee to subscribe to the following feeds:
+You can also get notified by:
 
-* [General blog feed](https://dmerej.info/blog/index.xml)
-* [Just the links](http://dmerej.info/links.atom)
-
-And if you prefer tweeter, follow me at [@d_merej](https://twitter.com/d_merej)
-and get basically the same thing.
-
-Cheers!
+* Subscribing to the [RSS feed](https://dmerej.info/blog/index.xml)
+* Following me on [Mastodon](https://mamot.fr/@dmerej), [dev.to](https://dev.to/dmerejkowsky), or [twitter](https://twitter.com/d_merej).
