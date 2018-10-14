@@ -12,7 +12,8 @@ summary: Introducing ruplacer, a command line tool that finds and replaces text 
 
 Let's say you've written a big application in your favorite language.
 
-You've just [you should never have Users](), by Itamar, so you decide to rename all usages of the class 'User', to a new class named 'Account'.
+You've just read *[Never use the word “User” in your code](https://codewithoutrules.com/2018/09/21/users-considered-harmful/)*, by Itamar Turner-Trauring, so you decide to rename all usages of the class 'User', to a new class named 'Account'.
+
 
 # The powerful IDE
 
@@ -21,7 +22,7 @@ Let's see what happens if you try to perform this task from an IDE:
 * First, you navigate to the 'User' class definition
 * You enter the shortcut for the "Refactor/Rename" feature
 * You type the new name: 'Account'
-* Maybe you to interact with the GUI to specify a few options. If you're lucky, you can sometimes see a preview of the changes before they happen.
+* Maybe you to interact with the GUI to specify a few options. If you're lucky, you see a preview of the changes before they happen.
 * Then you wait.
 * Then you realize you still have a UserAccessor class, and you redo the whole thing.
 
@@ -45,16 +46,16 @@ find . -type f -exec sed -i "" -e s/User/Account/g {} \;
 
 And because your rock, you're able to enter this without making any mistakes.
 
-For the muggles, this means:
+For the Muggles, this means:
 
 * Find (`find`) every file (`-type f`) in the current directory (`'.'`)
-* Then for each file, exececute (`-exec`) the following command: `sed -i -e s/User/Account/g <filename>`.
+* Then for each file, execute (`-exec`) the following command: `sed -i -e s/User/Account/g <filename>`.
 * The `\;` at the end is here because `find` needs it for some reason. (Don't ask ...).
 
 
 And what does sed does?
 
-* It runs inplace (`-i`), meaning it will modify the file given as argument, and then it:
+* It runs in place (`-i`), meaning it will modify the file given as argument, and then it
 * Executes (`-e`) the following sed code: `s/User/Account/g` on each line of the file.
 
 And what does the `s/User/Account/g` sed code does?
@@ -63,7 +64,7 @@ And what does the `s/User/Account/g` sed code does?
 
 Phew! What a loads of weird syntax to know about! Plus, this time you have no way to preview the changes before they happen.
 
-If you know `fd`, I can hear you say: *"Just use `fd` instead of find. Look how simpler the syntax is!"*:
+If you know fd, I can hear you say: *"Just use fd instead of find. Look how simpler the syntax is!"*:
 
 ```
 $ fd --type file --exec sed -i ""e 's/User/Account/g' {}
@@ -101,7 +102,7 @@ $ ruplacer User Account --go
 Performed 3 replacements on 2 matching files
 ```
 
-ruplacer and `fd` are quite similar:
+ruplacer and fd are quite similar:
 
 * They're both written in Rust, so they are fast.
 * The both defaults to the current working directory, although you can pass a directory after the pattern and the replacement.
@@ -118,11 +119,11 @@ $ ruplacer '(\d{2})/(\d{2})/(\d{4})' '$3-$1-$2'
 
 If you don't like this behavior, you can use a `--fixed-strings` option and ruplacer will only deal with lines that merely *contains* the `pattern` as a substring.
 
-Finally, inspired by the great [Abolish vim plugin]() by Tim Pope, ruplacer also has a `--subvert` option.
+Finally, inspired by the great [Abolish vim plugin](https://github.com/tpope/vim-abolish) by Tim Pope, ruplacer also has a `--subvert` option.
 
 For instance:
 
-```patch
+```bash
 $ ruplacer --subvert foo_bar spam_eggs
 -- this is foo_bar, an instance of the FooBar class
 ++ this is spam_eggs, an instance of the SpamEggs class
@@ -134,12 +135,9 @@ And that's all there is to it.
 
 The idea of ruplacer started almost 10 years ago when a colleague of mine showed me a shell function called `replacer`. Thanks, Cédric!
 
-Since then, I've re-written it in Python (twice!). Along the way the features, command line syntax and the style of the output changed quite a lot, but I've been using it regularly for all this time.
+Since then, I've re-written it in Python (twice!). Along the way the features, command line syntax and the style of the output changed quite a lot, but I've been using it regularly for all this time. ruplacer is the third version of this tool, which makes me confident it's good enough for *you* to try.
 
-ruplacer is the third version of this tool, which makes me confident it's good enough for *you* to try.
-
-
-You will find the source code and pre-compiled binaries of ruplacer on github.
+You will find the source code and pre-compiled binaries of ruplacer on [github](https://github.com/supertanker/ruplacer).
 
 Cheers!
 
