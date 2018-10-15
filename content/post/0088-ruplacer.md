@@ -8,6 +8,15 @@ tags: [rust]
 summary: Introducing ruplacer, a command line tool that finds and replaces text in source files.
 ---
 
+
+REDO:
+
+- what it does (emphasis on the --subvert mode)
+- how  (rust, ignore, inflector crates)
+- history
+
+Get rid of IDE stuff
+
 # Introduction: switching from User to Account
 
 Let's say you've written a big application in your favorite language.
