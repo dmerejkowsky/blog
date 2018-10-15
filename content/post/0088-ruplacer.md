@@ -135,7 +135,7 @@ And that's all there is to it.
 
 The idea of ruplacer started almost 10 years ago when a colleague of mine showed me a shell function called `replacer`. Thanks, Cédric!
 
-Since then, I've re-written it in Python (twice!). Along the way the features, command line syntax and the style of the output changed quite a lot, but I've been using it regularly for all this time. ruplacer is the third version of this tool, which makes me confident it's good enough for *you* to try.
+Since then, I've re-written it in Python (twice!). Along the way, the features, command line syntax and the style of the output changed quite a lot, but I've been using it regularly for all this time. ruplacer is the third version of this tool, which makes me confident it's good enough for *you* to try.
 
 You will find the source code and pre-compiled binaries of ruplacer on [github](https://github.com/supertanker/ruplacer).
 
