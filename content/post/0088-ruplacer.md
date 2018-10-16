@@ -14,6 +14,11 @@ REDO:
 - what it does (emphasis on the --subvert mode)
 - how  (rust, ignore, inflector crates)
 - history
+    - find + sed but
+       - speed
+       - cross-platform
+       - color
+       - dry-run
 
 Get rid of IDE stuff
 
