@@ -2,7 +2,7 @@
 authors: [dmerej]
 slug: ruplacer
 date: 2018-10-14T12:34:43.722319+00:00
-draft: true
+draft: false
 title: "ruplacer: find and replace text in source files"
 tags: [rust]
 summary: Introducing ruplacer, a command line tool that finds and replaces text in source files.
