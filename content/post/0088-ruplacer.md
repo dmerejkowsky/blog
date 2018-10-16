@@ -8,151 +8,63 @@ tags: [rust]
 summary: Introducing ruplacer, a command line tool that finds and replaces text in source files.
 ---
 
+# Introduction
 
-REDO:
+Today I'd like to talk about a command-line tool I've been working on.
 
-- what it does (emphasis on the --subvert mode)
-- how  (rust, ignore, inflector crates)
-- history
-    - find + sed but
-       - speed
-       - cross-platform
-       - color
-       - dry-run
+It's called [ruplacer](https://github.com/SuperTanker/ruplacer) and as the name suggest, it's a tool that finds and replaces text in source files.
 
-Get rid of IDE stuff
+Here's a screenshot of ruplacer in action:
 
-# Introduction: switching from User to Account
+![ruplacer screenshot](/pics/ruplacer.png)
 
-Let's say you've written a big application in your favorite language.
+Some nice features:
 
-You've just read *[Never use the word “User” in your code](https://codewithoutrules.com/2018/09/21/users-considered-harmful/)*, by Itamar Turner-Trauring, so you decide to rename all usages of the class 'User', to a new class named 'Account'.
-
-
-# The powerful IDE
-
-Let's see what happens if you try to perform this task from an IDE:
-
-* First, you navigate to the 'User' class definition
-* You enter the shortcut for the "Refactor/Rename" feature
-* You type the new name: 'Account'
-* Maybe you to interact with the GUI to specify a few options. If you're lucky, you see a preview of the changes before they happen.
-* Then you wait.
-* Then you realize you still have a UserAccessor class, and you redo the whole thing.
-
-This is tedious.
-
-(Or at least, *I* find it tedious, especially because for every IDE the way to do this always changes slightly. If you *really* don't mind, well, ruplacer is not for you.)
-
-# The mighty shell
-
-Maybe you're one of these people who thinks some things can and should be done from the command line.
-
-In this case, welcome to the club!
-
-*"No need for stinkin' IDE"* you say. *"Behold! The power of composing shell pipelines to achieve your goal with simple tools!"*
-
-And then you type:
-
-```
-find . -type f -exec sed -i "" -e s/User/Account/g {} \;
-```
-
-And because your rock, you're able to enter this without making any mistakes.
-
-For the Muggles, this means:
-
-* Find (`find`) every file (`-type f`) in the current directory (`'.'`)
-* Then for each file, execute (`-exec`) the following command: `sed -i -e s/User/Account/g <filename>`.
-* The `\;` at the end is here because `find` needs it for some reason. (Don't ask ...).
-
-
-And what does sed does?
-
-* It runs in place (`-i`), meaning it will modify the file given as argument, and then it
-* Executes (`-e`) the following sed code: `s/User/Account/g` on each line of the file.
-
-And what does the `s/User/Account/g` sed code does?
-
-* It does a "global" (`g`) "substitution" (`s`), using `/User/` for the regular expression to search for each line, and `Account` for the replacement to use. [^1]
-
-Phew! What a loads of weird syntax to know about! Plus, this time you have no way to preview the changes before they happen.
-
-If you know fd, I can hear you say: *"Just use fd instead of find. Look how simpler the syntax is!"*:
-
-```
-$ fd --type file --exec sed -i ""e 's/User/Account/g' {}
-```
-
-True, the syntax is less weird: no need of `\;`, no need to specify the directory (the current working dir is used by default), and as a bonus, hidden files and files listed in the `.gitignore` will be skipped.
-
-The fact is, you still need to remember the sed syntax, which, by the way, varies from an operating system to another!
-
-
-# ruplacer to the rescue
-
-And here's where ruplacer comes in. It's good at one thing and one thing only: find and replace text in source files.
-
-Here's how to use it:
+* Beautiful output
+* Skip files listed in `.gitignore`, as well as binary files
+* Dry run mode by default (use `--go` to actually write the changes to the filesystem)
+* Defaults to searching the current working directory, although an other path maybe specified after the pattern and the replacement.
+* Uses Rust regular expressions, which means you can capture groups in the pattern and use them in the replacement. For instance:
 
 ```shell
-$ cargo install ruplacer
-$ ruplacer old new
-Patching tests/data/a_dir/sub/foo.txt
--- sub/foo: old is everywhere, old is old
-++ sub/foo: new is everywhere, new is new
--- old is really old
-++ new is really new
-
-Patching tests/data/top.txt
--- Top: old is nice
-++ Top: new is nice
-
-Would perform 3 replacements on 2 matching files
-
-# If the diff looks ok, re-run ruplacer with the `--go` option:
-$ ruplacer User Account --go
-...
-Performed 3 replacements on 2 matching files
-```
-
-ruplacer and fd are quite similar:
-
-* They're both written in Rust, so they are fast.
-* The both defaults to the current working directory, although you can pass a directory after the pattern and the replacement.
-* They both only look at files that are not listed in the `.gitignore`
-
-Note how we keep the 'preview feature' of the IDE by just having a "dry-run" mode by default and a `--go` option.
-
-ruplacer uses Rust regular expressions by default, which means you can do things like this:
-
-```shell
-# Replace ugly MM/DD/YYYY dates by YYYY-MM-DD
+# Replaces dates looking like DD/MM/YYYY to YYYY-MM-DD
 $ ruplacer '(\d{2})/(\d{2})/(\d{4})' '$3-$1-$2'
 ```
+* Can be run with `--no-regex` if the pattern is just a substring and should not be used as a regular expression
+* Last, but not least  there's also a `--subvert` mode, which allows you to perform replacements on a variety of case styles:
 
-If you don't like this behavior, you can use a `--fixed-strings` option and ruplacer will only deal with lines that merely *contains* the `pattern` as a substring.
-
-Finally, inspired by the great [Abolish vim plugin](https://github.com/tpope/vim-abolish) by Tim Pope, ruplacer also has a `--subvert` option.
-
-For instance:
-
-```bash
+```shell
 $ ruplacer --subvert foo_bar spam_eggs
--- this is foo_bar, an instance of the FooBar class
-++ this is spam_eggs, an instance of the SpamEggs class
+Patching src/foo.txt
+-- foo_bar, FooBar, and FOO_BAR!
+++ spam_eggs, SpamEggs, and SPAM_EGGS!
 ```
 
-And that's all there is to it.
+
+# How it works
+
+`ruplacer` is written in Rust, which means it's pretty fast.
+
+Here's how it works:
+
+First, we build a [structopt](https://crates.io/crates/structopt) struct for the command-line arguments parsing. Depending on the presence of the `--subvert` or `--no-rexeg` flags, we  build a *Query*, which can be several types: `Substring`, `Regex` or `Subvert`.
+
+Then we leverage the [ignore](https://crates.io/crates/ignore) crate to walk through every file in the source directory  while skipping files listed in `.gitignore`.
+
+Along the way, we build a *FilePatcher* from the source file and the query. The FilePatcher goes through every line of the file and  then sends it along with the query to  a *LinePatcher*.
+
+The LinePatcher runs the code corresponding to the query type and returns a new string, using the [Inflector](https://crates.io/crates/Inflector) to perform case string conversions if required.
+
+Finally, if the string has changed, the FilePatcher builds a *Replacement* struct and pretty-prints it to the user. While doing so, it also keeps a recod of the modified contents of the file. Finally, if not in dry-run mode, it overwrites the file with the new contents.
+
+And that's pretty much it :)
 
 # Why I'm sharing this
 
-The idea of ruplacer started almost 10 years ago when a colleague of mine showed me a shell function called `replacer`. Thanks, Cédric!
+The idea of ruplacer started almost a decade ago when a colleague of mine showed me a shell function called `replacer` (thanks, Cédric!) It was basically a mixture of calls to `find`, `sed` and `diff`.
 
-Since then, I've re-written it in Python (twice!). Along the way, the features, command line syntax and the style of the output changed quite a lot, but I've been using it regularly for all this time. ruplacer is the third version of this tool, which makes me confident it's good enough for *you* to try.
+Because I wanted better cross-platform support, a dry-run mode and a colorful output, I rewrote it in Python a few years ago. Along the way, the features, command line syntax and the style of the output changed quite a lot, but I've been using it regularly for all this time.
 
-You will find the source code and pre-compiled binaries of ruplacer on [github](https://github.com/supertanker/ruplacer).
+ruplacer is the third incarnation of this tool, which makes me confident it's good enough for *you* to try. If you have `cargo` installed, you can get ruplacer by running `cargo install ruplacer`. Otherwise, you will find the [source code](https://github.com/SuperTanker/ruplacer/tree/master/src) and [pre-compiled binaries](https://github.com/SuperTanker/ruplacer/releases) on GitHub.
 
 Cheers!
-
-[^1]: This comes from the 'ed' editor, from which both sed and vim derive, and that's why you would type mostly the same thing in vim.
