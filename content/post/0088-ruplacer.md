@@ -50,9 +50,9 @@ Then we leverage the [ignore](https://crates.io/crates/ignore) crate to walk thr
 
 Along the way, we build a *FilePatcher* from the source file and the query. The FilePatcher goes through every line of the file and  then sends it along with the query to  a *LinePatcher*.
 
-The LinePatcher runs the code corresponding to the query type and returns a new string, using the [Inflector](https://crates.io/crates/Inflector) to perform case string conversions if required.
+The LinePatcher runs the code corresponding to the query type and returns a new string, using the [Inflector](https://crates.io/crates/Inflector) crate to perform case string conversions if required.
 
-Finally, if the string has changed, the FilePatcher builds a *Replacement* struct and pretty-prints it to the user. While doing so, it also keeps a recod of the modified contents of the file. Finally, if not in dry-run mode, it overwrites the file with the new contents.
+Finally, if the string has changed, the FilePatcher builds a *Replacement* struct and pretty-prints it to the user. While doing so, it also keeps a record of the modified contents of the file. Finally, if not in dry-run mode, it overwrites the file with the new contents.
 
 And that's pretty much it :)
 
