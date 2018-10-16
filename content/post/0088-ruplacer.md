@@ -61,7 +61,7 @@ And that's pretty much it :)
 
 The idea of ruplacer started almost a decade ago when a colleague of mine showed me a shell function called `replacer` (thanks, Cédric!) It was basically a mixture of calls to `find`, `sed` and `diff`. You can still [find it online](https://github.com/cgestes/ctafconf/blob/78b92a60bc185b73f95418e3e913e33aae8799f6/bin/replacer#L75).
 
-Because I wanted better cross-platform support, a dry-run mode and a colorful output, I rewrote it in Python a few years ago. Along the way, the features, command line syntax and the style of the output changed quite a lot, but I've been using it regularly for all this time.
+Because I wanted better cross-platform support, a dry-run mode and a colorful output, I [rewrote it in Python](https://github.com/dmerejkowsky/replacer) a few years ago. Along the way, the features, command line syntax and the style of the output changed quite a lot, but I've been using it regularly for all this time.
 
 
 Finally, after hearing about ripgrep and [fd-find](https://github.com/BurntSushi/ripgrep), I decided to give Rust a go, and that's how ruplacer, the third incarnation of this tool, was born. This makes me confident it's good enough for *you* to try.
