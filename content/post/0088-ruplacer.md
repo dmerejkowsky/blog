@@ -12,17 +12,16 @@ summary: Introducing ruplacer, a command line tool that finds and replaces text 
 
 Today I'd like to talk about a command-line tool I've been working on.
 
-It's called [ruplacer](https://github.com/SuperTanker/ruplacer) and as the name suggest, it's a tool that finds and replaces text in source files.
+It's called [ruplacer](https://github.com/SuperTanker/ruplacer) and as the name suggest, it's *rually* cool and written in Rust.
 
-Here's a screenshot of ruplacer in action:
+Basically, it finds and replaces text in source files. Here's a screenshot of ruplacer in action:
 
 ![ruplacer screenshot](/pics/ruplacer.png)
 
 Some nice features:
 
-* Beautiful output
-* Skip files listed in `.gitignore`, as well as binary files
-* Dry run mode by default (use `--go` to actually write the changes to the filesystem)
+* Skips files listed in `.gitignore`, as well as binary files
+* Runs in dry run mode by default (use `--go` to actually write the changes to the filesystem)
 * Defaults to searching the current working directory, although an other path maybe specified after the pattern and the replacement.
 * Uses Rust regular expressions, which means you can capture groups in the pattern and use them in the replacement. For instance:
 
@@ -43,13 +42,11 @@ Patching src/foo.txt
 
 # How it works
 
-`ruplacer` is written in Rust, which means it's pretty fast.
-
 Here's how it works:
 
-First, we build a [structopt](https://crates.io/crates/structopt) struct for the command-line arguments parsing. Depending on the presence of the `--subvert` or `--no-rexeg` flags, we  build a *Query*, which can be several types: `Substring`, `Regex` or `Subvert`.
+First, we build a [structopt](https://crates.io/crates/structopt) struct for the command-line arguments parsing. Depending on the presence of the `--subvert` or `--no-rexeg` flags, we  build a *Query*, which can be of several types: `Substring`, `Regex` or `Subvert`.
 
-Then we leverage the [ignore](https://crates.io/crates/ignore) crate to walk through every file in the source directory  while skipping files listed in `.gitignore`.
+Then we leverage the [ignore](https://crates.io/crates/ignore) crate to walk through every file in the source directory  while skipping files listed in `.gitignore`. By the way, the ignore crates comes directly from [ripgrep](https://github.com/BurntSushi/ripgrep), an awesome alternative to `grep` also written in Rust.
 
 Along the way, we build a *FilePatcher* from the source file and the query. The FilePatcher goes through every line of the file and  then sends it along with the query to  a *LinePatcher*.
 
@@ -59,12 +56,16 @@ Finally, if the string has changed, the FilePatcher builds a *Replacement* struc
 
 And that's pretty much it :)
 
+
 # Why I'm sharing this
 
-The idea of ruplacer started almost a decade ago when a colleague of mine showed me a shell function called `replacer` (thanks, Cédric!) It was basically a mixture of calls to `find`, `sed` and `diff`.
+The idea of ruplacer started almost a decade ago when a colleague of mine showed me a shell function called `replacer` (thanks, Cédric!) It was basically a mixture of calls to `find`, `sed` and `diff`. You can still [find it online](https://github.com/cgestes/ctafconf/blob/78b92a60bc185b73f95418e3e913e33aae8799f6/bin/replacer#L75).
 
 Because I wanted better cross-platform support, a dry-run mode and a colorful output, I rewrote it in Python a few years ago. Along the way, the features, command line syntax and the style of the output changed quite a lot, but I've been using it regularly for all this time.
 
-ruplacer is the third incarnation of this tool, which makes me confident it's good enough for *you* to try. If you have `cargo` installed, you can get ruplacer by running `cargo install ruplacer`. Otherwise, you will find the [source code](https://github.com/SuperTanker/ruplacer/tree/master/src) and [pre-compiled binaries](https://github.com/SuperTanker/ruplacer/releases) on GitHub.
+
+Finally, after hearing about ripgrep and [fd-find](https://github.com/BurntSushi/ripgrep), I decided to give Rust a go, and that's how ruplacer, the third incarnation of this tool, was born. This makes me confident it's good enough for *you* to try.
+
+If you have `cargo` installed, you can get ruplacer by running `cargo install ruplacer`. Otherwise, you will find the [source code](https://github.com/SuperTanker/ruplacer/tree/master/src) and [pre-compiled binaries](https://github.com/SuperTanker/ruplacer/releases) on GitHub.
 
 Cheers!
