@@ -64,7 +64,7 @@ The idea of ruplacer started almost a decade ago when a colleague of mine showed
 Because I wanted better cross-platform support, a dry-run mode and a colorful output, I [rewrote it in Python](https://github.com/dmerejkowsky/replacer) a few years ago. Along the way, the features, command line syntax and the style of the output changed quite a lot, but I've been using it regularly for all this time.
 
 
-Finally, after hearing about ripgrep and [fd-find](https://github.com/BurntSushi/ripgrep), I decided to give Rust a go, and that's how ruplacer, the third incarnation of this tool, was born. This makes me confident it's good enough for *you* to try.
+Finally, after hearing about ripgrep and [fd](https://github.com/sharkdp/fd), I decided to give Rust a go, and that's how ruplacer, the third incarnation of this tool, was born. This makes me confident it's good enough for *you* to try.
 
 If you have `cargo` installed, you can get ruplacer by running `cargo install ruplacer`. Otherwise, you will find the [source code](https://github.com/SuperTanker/ruplacer/tree/master/src) and [pre-compiled binaries](https://github.com/SuperTanker/ruplacer/releases) on GitHub.
 
