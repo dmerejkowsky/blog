@@ -79,9 +79,7 @@ Here's what the commands to build them look like on Linux:
 # Compile the .cpp file into a .o
 $ g++ -c -I include/ src/ChuckNorris.cpp -o libchucknorris.o
 # Create an archive containing the .o
-$ ar qc libchucknorris.a libchucknorris.o
-# Run ranlib so that the archive can be used by the linker
-$ ranlib libchucknorris.a
+$ ar cr libchucknorris.a libchucknorris.o
 # Compile main.cpp into main.o
 $ g++ -c -I include/ src/main.cpp -o main.o
 # Tell g++ to link everything into an executable
