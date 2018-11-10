@@ -39,4 +39,4 @@ Comme d'habitude, merci de m'avoir lu jusqu'au bout et à la prochaine! [^1]
 
 [^1]: Pas de panique, la suite de "Bye, bye Pylint" arrive très bientôt.
 
-*Mise à jour: J'ai trouvé :) J'interviendrai prochainement à [l'École du Libre](https://www.e2li.org/). Merci à tous ceux qui m'ont répondu et ont fait circuler ce message!*
+*Mise à jour: J'ai trouvé :) J'interviendrai prochainement à [l'École du Logiciel Libre](https://www.e2li.org/). Merci à tous ceux qui m'ont répondu et ont fait circuler ce message!*
