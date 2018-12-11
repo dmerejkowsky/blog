@@ -28,9 +28,9 @@ e-mail address and I'll get back to you.
 Comments on this blog are powered by [isso](https://posativ.org/isso/).
 Here are a few things you need to know:
 
-* Your comments are stored (hopefully safely) on my server. I make daily
+* Your comments are stored (hopefully safely) on my server. I make regular
   backups.
-* Sorry, you can't see them if you choose to block `javascript`. (This has the
+* Sorry, you can't see them if you choose to block JavaScript. (This has the
   nice effect of greatly reducing spam, without using CAPTCHAs)
 * When you leave a comment, you have the choice to fill the 'e-mail' field.
   I won't share it with anyone, and I'll use it to contact you directly if
