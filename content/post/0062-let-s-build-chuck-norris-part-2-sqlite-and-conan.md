@@ -79,11 +79,20 @@ ChuckNorris::~ChuckNorris()
 
 std::string ChuckNorris::getFact()
 {
+  // Note: error handling omitted for brevity
+
   sqlite3_stmt* statement;
-  sqlite3_prepare_v2(_db,
+  int rc;
+  rc = sqlite3_prepare_v2(_db,
       R"(SELECT fact FROM chucknorris ORDER BY RANDOM() LIMIT 1;)",
       -1, &statement, 0);
+  if (rc != SQLITE_OK) {
+    // ...
+  }
   rc = sqlite3_step(statement);
+  if (rc != SQLITE_ROW) {
+    // ...
+  }
   auto sqlite_row = sqlite3_column_text(statement, 0);
   auto row = reinterpret_cast<const char*>(sqlite_row);
   auto res = std::string(row);
@@ -172,7 +181,9 @@ add_library(chucknorris
 )
 ```
 
-This allows us to use `target_link_libraries` to add a dependency between our `ChuckNorris` library and the imported target, the same way we did to link `cpp_demo` with `ChuckNorris`:
+Note that `/path/to/sqlite3` is *an hard-coded absolute path* to the folder we used to compile `sqlite3` by hand.
+
+Obviously, hard-coded paths are bad, but this allows us to use `target_link_libraries` to add a dependency between our `ChuckNorris` library and the imported target, the same way we did to link `cpp_demo` with `ChuckNorris`:
 
 ```cmake
 target_link_libraries(chucknorris sqlite3)
