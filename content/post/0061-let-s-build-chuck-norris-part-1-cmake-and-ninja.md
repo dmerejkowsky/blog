@@ -96,7 +96,9 @@ Keeping track of all this by hand would get tedious very soon, but fortunately t
 # CMake
 
 
-CMake lets us describe the targets we want to build in code:
+CMake lets us describe the targets we want to build in code.
+
+We do it by writing the following code in a file named `CMakeLists.txt`:
 
 
 ```cmake
