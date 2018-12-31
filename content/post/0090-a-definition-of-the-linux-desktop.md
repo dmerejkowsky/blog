@@ -66,13 +66,13 @@ If you upgrade Windows and a third-party driver stops working, you're basically 
 
 On Linux, things *will* break more often. They are less people to do QA, there are more unknowns, tons of different configurations (as we saw in the "control" section), and a pressure to release often and stay "bleeding edge".
 
-Almost everything is written and maintained by non-paid volunteers.
+Almost everything is written and maintained by non-paid volunteers (and some of them do a terrific job by the way).
 
-Upgrades are big and scary, and so stuff breaks more often. No point discussing that.
+Upgrades are big and scary, and so things often break. No point discussing that.
 
 Hell, right now on my laptop the brightness control does not work and it used to work fine when I bought it.
 
-By the way, I did not take the time to look for a solution, which leads us to the next section.
+But to be honest, I did not take the time to look for a solution, which leads us to the next section.
 
 # Your own moral failure
 
