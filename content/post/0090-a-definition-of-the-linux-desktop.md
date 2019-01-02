@@ -1,13 +1,12 @@
 ---
 authors: [dmerej]
 slug: a-definition-of-the-linux-desktop
-date: 2018-12-31T15:58:07.228445+00:00
-draft: true
-title: "A definition of the linux desktop"
+date: 2019-01-02T09:56:30.925105+00:00
+draft: false
+title: "A definition of the Linux desktop"
 tags: [linux]
+summary: Where I spent a whole article arguing about one word
 ---
-
-# Introduction
 
 Quite some time ago, I came across a thread from Gary Bernhardt on twitter.
 
@@ -21,15 +20,17 @@ As a guy who uses Linux for almost everything (both at work and at home), you ma
 
 But no, I agree with almost everything, except I would rephrase the last sentence. Let me explain.
 
+<!--more-->
+
 # Control
 
-Let's start at the beginning. What *control* do you have?
+Let's start at the beginning. What kind of control do you have depending on the operating system you use?
 
 ## Control on macOS
 
 You have almost no control over hardware. You buy hardware that is manufactured by Apple, often in an "Apple store".
 
-Most applications have minimal configuration, simple things like preventing the laptop to suspend when closing the lid are hard to achieve [^1]
+Most applications have minimal configuration, simple things like preventing the laptop to suspend when closing the lid are hard to achieve [^1].
 
 Finally, you often haven little control over *your own data*. Watching the movie you bought on iTunes on an non-Apple device is very hard.
 
@@ -37,7 +38,7 @@ You can put all your stuff on iTunes or iCloud, but if you loose access to your 
 
 ## Control on Windows
 
-Compared to macOS, you hae more control over hardware. For instance you do not need to buy an (expensive) control chord everytime you upgrade your laptop. You can buy a new battery when the one you use is failing, and so on.
+Compared to macOS, you have more control over hardware. For instance you do not need to buy an (expensive) control chord every time you upgrade your laptop. You can buy a new battery when the one you use is failing, and so on.
 
 But still, you  less and less control over what to update and when, and let's not talk about privacy...
 
@@ -45,7 +46,7 @@ But still, you  less and less control over what to update and when, and let's no
 
 You control (almost) everything.
 
-You can choose your distribution. You can choose its "stability". For instance on Debian, you can choose between "old stable", "stable", "unstable", "testing" and "sid".
+You can choose your distribution. You can choose its stability. For instance on Debian, you can choose between *stable*, *testing*, or *unstable*.
 
 You can chose your desktop environment: KDE, Gnome, LXDE, XFCE, Mint, or even use no desktop environment at all.
 
@@ -53,7 +54,7 @@ You can can choose your window manager, your init system, your package manager .
 
 You can choose when and what to update (less so on "rolling distros" lie Arch Linux, although it is still possible with extra care ...), etc.
 
-Control is everywhere and so ubiquitous it's even scary. But it's free: both as free beer *and* free speech, so nothing prevents you from experimenting but time and energy.
+Control is everywhere and so ubiquitous it's even scary. But it's free: nothing prevents you from experimenting but time and energy.
 
 
 # When it breaks
@@ -66,28 +67,28 @@ If you upgrade Windows and a third-party driver stops working, you're basically 
 
 On Linux, things *will* break more often. They are less people to do QA, there are more unknowns, tons of different configurations (as we saw in the "control" section), and a pressure to release often and stay "bleeding edge".
 
-Almost everything is written and maintained by non-paid volunteers (and some of them do a terrific job by the way).
+Almost everything is written and maintained by non-paid volunteers (and they do a terrific job by the way).
 
 Upgrades are big and scary, and so things often break. No point discussing that.
 
-Hell, right now on my laptop the brightness control does not work and it used to work fine when I bought it.
+A few months, after I upgraded Arch Linux on my laptop, the brightness control button ceased to work and I have no clue why.
 
 But to be honest, I did not take the time to look for a solution, which leads us to the next section.
 
 # Your own moral failure
 
-Let's take a look at some exchanges between an average user with a problem, looking for answer from the community, for instance in a public bug tracker or a forum.
+Let's take a look at some exchanges between an average user with a problem, looking for answer from the community, for instance in a public bug tracker or a forum:
 
 
-> Q: I've upgraded foo to version 3.0 and now I can frob anymore <br />
-> A: Did you read the changelog *before* upgrading?
+> Q: I've upgraded *foo* to version 3.0 and now I cannot frob anymore <br />
+> A: Did you read the changelog before upgrading?
 
 <span/>
 
-> Q: I bought a new printer and I can only print in black and white! </br>
+> Q: I bought a new printer and now I can only print in black and white! </br>
 > A: Did you research compatibility with Linux before buying the new printer?
 
-Let's try to put ourselves in the shoes of this user. He or she might thing it failed at something, or even that he's not even supposed to ask this kind of question[^3], which illustrates with the "moral failure" Gary talked about.
+Let's try to put ourselves in the shoes of those users. They might think they failed at something, or even that they are not even supposed to ask this kind of question[^3], which illustrates with the "moral failure" Gary talked about.
 
 # Rephrasing the last part
 
@@ -105,13 +106,9 @@ So I don't think the community is *framing* it. I just think it's how things wor
 
 So, yes, in exchange for the freedom of control you get some duties. Your duty is to help yourself and others when things break. And by the way, teaching users about reading changelogs and doing research before buying hardware is good advice, *if* they are willing to accept it.
 
-For me those duties are a small price to pay because I value control and freedom more than convenience.
+For me those duties are a small price to pay because I value control and freedom more than convenience. If you are willing to accept those duties to gain this freedom and are not using Linux, give it a go!
 
-If you are willing to accept those duties to gain this freedom and are not using Linux, give it a go!
-
-If you are using Linux and want to "convert" other people, (like friends or family), explain this to them so they don't get mad at you.
-
-Be ready to help them for things they don't understand. You can even teach them a few things, or teach them how to learn. That's how I got to use Linux in the first place almost 15 years ago.
+If you are using Linux and want to "convert" other people, (like friends or family), explain this to them so they don't get mad at you. Be ready to help them for things they don't understand. You can even teach them a few things, or teach them how to learn. That's how I got to use Linux in the first place almost 15 years ago.
 
 And if you don't want to try and fix stuff when it breaks, keep using macOS or Windows. There's nothing wrong with that.
 
