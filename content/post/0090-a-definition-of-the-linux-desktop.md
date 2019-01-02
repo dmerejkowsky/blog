@@ -71,7 +71,7 @@ Almost everything is written and maintained by non-paid volunteers (and they do 
 
 Upgrades are big and scary, and so things often break. No point discussing that.
 
-A few months, after I upgraded Arch Linux on my laptop, the brightness control button ceased to work and I have no clue why.
+A few months ago, after I upgraded Arch Linux on my laptop, the brightness control button ceased to work and I have no clue why.
 
 But to be honest, I did not take the time to look for a solution, which leads us to the next section.
 
