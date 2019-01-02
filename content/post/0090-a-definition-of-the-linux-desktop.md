@@ -38,9 +38,9 @@ You can put all your stuff on iTunes or iCloud, but if you loose access to your 
 
 ## Control on Windows
 
-Compared to macOS, you have more control over hardware. For instance you do not need to buy an (expensive) control chord every time you upgrade your laptop. You can buy a new battery when the one you use is failing, and so on.
+Compared to macOS, you have more control over hardware. For instance, you can buy a new battery when the one you use is failing instead of buying a completely new device.
 
-But still, you  less and less control over what to update and when, and let's not talk about privacy...
+But still, you get less and less control over what to update and when, and let's not talk about privacy...
 
 ## Control on Linux
 
@@ -52,7 +52,7 @@ You can chose your desktop environment: KDE, Gnome, LXDE, XFCE, Mint, or even us
 
 You can can choose your window manager, your init system, your package manager ...
 
-You can choose when and what to update (less so on "rolling distros" lie Arch Linux, although it is still possible with extra care ...), etc.
+You can choose when and what to update (less so on "rolling distributions" like Arch Linux, although it is still possible with extra care ...), etc.
 
 Control is everywhere and so ubiquitous it's even scary. But it's free: nothing prevents you from experimenting but time and energy.
 
