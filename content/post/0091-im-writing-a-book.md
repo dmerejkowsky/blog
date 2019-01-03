@@ -10,22 +10,20 @@ summary: I've decided to try and write a book
 
 # History
 
-* Wanted to have a blog for a *long* time
-* Spent a lot of time looking for a platform
-* Decided to stop looking and just write and publish stuff (thanks dotclear)
-* Finally got content published after several years!
-* Got too much spam, started a static blog
-* Re-added comments with isso
-* Started a series about C++ called "Let's build chuck norris"
-* Enjoyed it, started a series about CI (also wanted to write about that for a long time)
-* Series did not work. You can't really modify a previously published article which is not
-  a problem if you know exactly what you are going to tell when
-* So decided to start a book!
+
+Permets moi de raconter brièvement comment j'en suis arrivé à l'idée d'écrire un livre.
+
+J'ai commencé à publier des articles [sur mon blog]() en 2016. La CI est un sujet dont j'ai envie de traiter depuis longtemps, d'une part parce que j'ai accumulé pas mal d'expérience dans le domaine, et d'autre part parce que la CI en général (et les scripts de CI en particulier) sont un peu mal-aimés je trouve.
+
+J'ai donc commencé [une série d'articles sur le sujet](). C'est alors que je me suis rendu compte qu'il serait très difficile d'obtenir
+un résultat satisfaisant en ne rédigeant qu'un article à la fois, puisqu'une fois un article publié, il est difficile d'y apporter des modifications. Par exemple, si je me rend compte au bout de 4 articles qu'il manque la définition d'un concept, il est compliqué d'éditer l'article numéro 2 pour y rajouter la définition en question.
+
+Et c'est ainsi que j'ai pris la décision de partager mon expérience sur la CI dans un format "livre". L'idée étant de rédiger tout le contenu d'une traite avant la publication.
+
+Voilà l'histoire.
 
 # Tracking progress
 
-Sources will be open, because why not
-
-The two first article will be the first two chapters
+Sources will be open, because why not!
 
 Let's meet in a year and see where we're at :)
