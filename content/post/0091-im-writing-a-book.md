@@ -8,12 +8,13 @@ tags: [ci]
 summary: I've decided to try and write a book
 ---
 
-# History
+TL;DR: I'm writing a book about CI. Firnd the sources [on GitHub]().
 
+# Why?
 
-Permets moi de raconter brièvement comment j'en suis arrivé à l'idée d'écrire un livre.
+I wanted to talk about CI for a very long time (more than 2 years). But it's a huge topic, and it took me some time before I decided to [start a blog post series ]() about series.
 
-J'ai commencé à publier des articles [sur mon blog]() en 2016. La CI est un sujet dont j'ai envie de traiter depuis longtemps, d'une part parce que j'ai accumulé pas mal d'expérience dans le domaine, et d'autre part parce que la CI en général (et les scripts de CI en particulier) sont un peu mal-aimés je trouve.
+But then I had a problem when writing and publishing articles one after the other. You can't really modify an article when it's published. So for instance, if in the forth I discover there's a concept definition missing, I can't really edit the second post
 
 J'ai donc commencé [une série d'articles sur le sujet](). C'est alors que je me suis rendu compte qu'il serait très difficile d'obtenir
 un résultat satisfaisant en ne rédigeant qu'un article à la fois, puisqu'une fois un article publié, il est difficile d'y apporter des modifications. Par exemple, si je me rend compte au bout de 4 articles qu'il manque la définition d'un concept, il est compliqué d'éditer l'article numéro 2 pour y rajouter la définition en question.
