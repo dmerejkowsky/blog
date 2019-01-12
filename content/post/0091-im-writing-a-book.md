@@ -3,28 +3,23 @@ authors: [dmerej]
 slug: im-writing-a-book
 date: 2019-01-02T10:58:18.142670+00:00
 draft: true
-title: "I'm writing a book"
+title: "I'm writing a book about CI"
 tags: [ci]
-summary: I've decided to try and write a book
+summary: I'm writing a book about CI - stay tuned for more.
 ---
-
-TL;DR: I'm writing a book about CI. Firnd the sources [on GitHub]().
 
 # Why?
 
-I wanted to talk about CI for a very long time (more than 2 years). But it's a huge topic, and it took me some time before I decided to [start a blog post series ]() about series.
+I wanted to talk about CI for a very long time (more than 2 years). But it's a huge topic, and it took me some time before I decided to [start a blog post series ]({{< ref "post/0082-introducing-tips-from-a-build-farmer.md" >}}) about it.
 
-But then I had a problem when writing and publishing articles one after the other. You can't really modify an article when it's published. So for instance, if in the forth I discover there's a concept definition missing, I can't really edit the second post
+But then I realized that was the wrong format: you see, writing and publishing one post at a time requires for you to know exactly what to say and in what order. That would work for the "Let's Build Chuck Norris!" series, but I found out I could not make it work for the "Tips From A Build Farmer" series. So instead, I am going to try and write the whole thing as a book.
 
-J'ai donc commencé [une série d'articles sur le sujet](). C'est alors que je me suis rendu compte qu'il serait très difficile d'obtenir
-un résultat satisfaisant en ne rédigeant qu'un article à la fois, puisqu'une fois un article publié, il est difficile d'y apporter des modifications. Par exemple, si je me rend compte au bout de 4 articles qu'il manque la définition d'un concept, il est compliqué d'éditer l'article numéro 2 pour y rajouter la définition en question.
+# How?
 
-Et c'est ainsi que j'ai pris la décision de partager mon expérience sur la CI dans un format "livre". L'idée étant de rédiger tout le contenu d'une traite avant la publication.
+For now, I'm only focusing on the *content*: I just have a bunch of Markdown files I can turn into a big pdf thanks to [pandoc](https://pandoc.org/).
 
-Voilà l'histoire.
+Once done, I'll probably publish the pdf and the sources on the Internet, available for free.
 
-# Tracking progress
+# When?
 
-Sources will be open, because why not!
-
-Let's meet in a year and see where we're at :)
+I have no clue at all, this is my first attempt at writing a book. If everything goes according to plan, I'll probably post updates there. Wish me luck!
