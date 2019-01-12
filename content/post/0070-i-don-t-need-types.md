@@ -4,7 +4,7 @@ slug: trying-mypy
 date: 2018-05-27T10:17:17.789657+00:00
 draft: false
 title: I don't need types
-tags: [misc]
+tags: [rust, python]
 ---
 
 This is a story about me being wrong about tests and type systems.
