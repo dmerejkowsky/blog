@@ -238,7 +238,7 @@ struct Opt {
 
 Well, since we did not do anything with the `opt.color_when` but print it, everything still works :)
 
-## Error 6
+## Error 5
 
 Had we try to use the option directly like this:
 
