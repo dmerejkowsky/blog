@@ -10,11 +10,11 @@ summary: "What happens when you let the compiler tell you what to do? Let's find
 
 If you've ever wrote code in a compiled language (C, C++, Java, ...), you are probably used to compiler error messages, and you may think there are only here to prevent you from making mistakes.
 
-Well, they do, but sometimes you can also use compiler error messages to *design and implement* new features. Let me show you what I mean.
+Well sometimes you can also use compiler error messages to *design and implement* new features. Let me show you with a simple command-line program written in Rust.
 
 # An example
 
-Let's take a simple command-line program written in Rust: here's the code we have written so far:
+Here's the code we have written so far:
 
 ```rust
 use structopt::StructOpt;
@@ -72,7 +72,7 @@ fn main() {
 
 *Note: this is sometimes called "programming by wishful thinking" and can be used in various situations*.
 
-Anyway, we try and compile that and are faced with a bunch of compiler errors.
+Anyway, we try and compile this code and are faced with a bunch of compiler errors.
 
 And that's where the magic starts. We are going to make this work *without* changing the way structopt works and by *only* reading and fixing compiler errors, one by one. Ready? Let's go!
 
@@ -294,7 +294,7 @@ fn main {
 }
 ```
 
-I like this one better because the default value is right after the declaration of the enum.
+The code is a bit longer but I find it more readable and more "intention revealing".
 
 (End of side note)
 
