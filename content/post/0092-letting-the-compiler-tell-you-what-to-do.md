@@ -2,7 +2,7 @@
 authors: [dmerej]
 slug: letting-the-compiler-tell-you-what-to-do
 date: 2019-01-12T12:26:27.325275+00:00
-draft: true
+draft: false
 title: "Letting the compiler tell you what to do - an example using Rust"
 tags: [rust]
 summary: "What happens when you let the compiler tell you what to do? Let's find out with a simple example in Rust."
