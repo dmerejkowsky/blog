@@ -37,7 +37,6 @@ We want to return immediately if the value is none.
 Here's a non-optimal way to do it:
 
 ```rust
-// Bad
 fn my_func() -> Option<Foo> {
   let opt = bar::return_opt();
   if opt.is_none() {
@@ -52,8 +51,6 @@ fn my_func() -> Option<Foo> {
 Why is it bad? Because you can use the question mark operator instead:
 
 ```rust
-// Better
-
 fn my_func() -> Option<Foo> {
   let value = bar::return_opt()?;
   // Done: the question mark will cause the function to
@@ -86,7 +83,6 @@ Note how we use the `match` statement together with the `let` expression. Yay Ru
 Let's see the bad code first:
 
 ```rust
-// Bad
 fn my_func() -> Result<Foo, MyError> {
   let res = bar::return_res();
   if res.is_err() {
