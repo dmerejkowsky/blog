@@ -13,6 +13,24 @@ I think I fell in love 9 months ago while reading the [Rust book](https://doc.ru
 
 Anyway, writing Rust code is still challenging for me (but it's also part of the fun!).
 
+TODO:
+intro: what is unwrap()?
+problem: can cause panics
+```
+if ! foo.is_none() {
+  let bar = foo.unwrap();
+}
+```
+is easy to break.
+
+Prefer `.expect()` if you want a kind of assertion
+
+```
+let mystring = format!("{}; {}", spam, eggs);
+....
+let foo = mystring.find(':').expect("mystring should contain a colon!"):
+```
+
 Here's what my process looks like at this point:
 
 1. Start by writing a failing test [^1]
