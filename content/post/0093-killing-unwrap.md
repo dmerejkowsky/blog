@@ -164,7 +164,7 @@ fn my_func() -> Result<Foo, MyError> {
 }
 ```
 
-# Example 4 - assertions
+# Example 4 - Assertions
 
 Sometime you may want to catch errors that are a consequence of faulty logic within the code.
 
