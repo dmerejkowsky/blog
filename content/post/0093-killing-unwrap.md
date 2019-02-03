@@ -8,6 +8,27 @@ tags: [rust]
 summary: A collection of snippets to avoid unnecessary calls to unwrap() in Rust
 ---
 
+# Wait, what? Who do you want to kill?
+
+In Rust, to indicate errors or absence of a value we use types named `Result` and `Option` respectively.
+
+If we need the *value* of an Result or Option, we can write code like this:
+
+```rust
+let maybe_bar = get_bar();
+// bar is now an Option<String>
+if maybe_bar.is_some() {
+  let bar = bar.unwrap();
+  // now bar is a String
+} else {
+  // handle the absence of bar
+}
+```
+
+This works well but there's a huge problem: if after some refactoring the `if` statement is not called, the entire program will panic with "Trying to unwrap a None value".
+
+
+
 [Rust](/tags/rust) quickly become my second favorite language. I think it
 I think I fell in love 9 months ago while reading the [Rust book](https://doc.rust-lang.org/book/) for the second time.
 
