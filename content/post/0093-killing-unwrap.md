@@ -2,7 +2,7 @@
 authors: [dmerej]
 slug: killing-unwrap
 date: 2019-01-30T19:11:26.380880+00:00
-draft: true
+draft: false
 title: "Killing unwrap()"
 tags: [rust]
 summary: A collection of snippets to avoid unnecessary calls to unwrap() in Rust
