@@ -25,55 +25,15 @@ if maybe_bar.is_some() {
 }
 ```
 
-This works well but there's a huge problem: if after some refactoring the `if` statement is not called, the entire program will panic with "Trying to unwrap a None value".
+This works well but there's a problem: if after some refactoring the `if` statement is not called, the entire program will crash with: `called Option::unwrap on a None value`.
 
+This is fine if `unwrap()` is called in a test, but in production code it's best to prevent panics altogether.
 
+So that's the why. Let's see the how.
 
-[Rust](/tags/rust) quickly become my second favorite language. I think it
-I think I fell in love 9 months ago while reading the [Rust book](https://doc.rust-lang.org/book/) for the second time.
+# Example 1 - Handling None
 
-Anyway, writing Rust code is still challenging for me (but it's also part of the fun!).
-
-TODO:
-intro: what is unwrap()?
-problem: can cause panics
-```
-if ! foo.is_none() {
-  let bar = foo.unwrap();
-}
-```
-is easy to break.
-
-Prefer `.expect()` if you want a kind of assertion
-
-```
-let mystring = format!("{}; {}", spam, eggs);
-....
-let foo = mystring.find(':').expect("mystring should contain a colon!"):
-```
-
-Here's what my process looks like at this point:
-
-1. Start by writing a failing test [^1]
-2. Make the code compile, At this point I'm focusing on making the failing test pass. Thus, I'll often use `unwrap()` so that I don't have to think about error handling at this stage.
-3. Make the borrow checker pass. Go back to 2/ if pleasing the borrow checker breaks the compilation ...
-4. Make the test pass
-5. Refactor. Go back to 2/ if the refactoring breaks compilation or borrow checking). I often experience problems when introducing new structs, traits or extracting functions, but I'm slowly getting better at it.
-
-
-What I've discovered is that calling `unwrap()` is almost always a code smell - there's often a better way to deal with functions that return Option or Error. Below is a list of useful patterns I've collected.
-
-I'm sharing this in the hope it will help you too. Also, many thanks to all the nice people who agreed to review my Rust code!
-
-
-
-# Example 1
-
-Let's start with a simple example: we'll assume there is a `bar::return_opt()` function coming from an external crate and returning an `Option<Bar>`.
-
-We want to return immediately if the value is none.
-
-Here's a non-optimal way to do it:
+Let's go back to our first example: we'll assume there is a `bar::return_opt()` function coming from an external crate and returning an `Option<Bar>`, and that we are calling it in `my_func`, a function also returning an option:
 
 ```rust
 fn my_func() -> Option<Foo> {
@@ -87,7 +47,7 @@ fn my_func() -> Option<Foo> {
 }
 ```
 
-Why is it bad? Because you can use the question mark operator instead:
+So how do we get rid of the `unwrap()` here? Simple, with the *question mark operator*:
 
 ```rust
 fn my_func() -> Option<Foo> {
@@ -96,7 +56,7 @@ fn my_func() -> Option<Foo> {
   // return None automatically if bar::return_opt() is None
   ...
 
-  // We can use value` here directly!
+  // We can use `value` here directly!
 }
 ```
 
@@ -114,10 +74,10 @@ fn my_func() {
 }
 ```
 
-Note how we use the `match` statement together with the `let` expression. Yay Rust!
+Note the how the `match` expression and the `let` statement are combined. Yay Rust!
 
 
-# Example 2
+# Example 2 - Handling Result
 
 Let's see the bad code first:
 
@@ -177,7 +137,7 @@ fn my_func() -> Result<Foo, Error> {
 We can still use the question mark operator, the ugly `Err(MyError::new(...))`
 is gone, and we can provide some additional context in our custom Error type. Epic win!
 
-# Example 3
+# Example 3 - Converting to Option
 
 This time we are calling a function that returns an `Error` and we want a `Option`.
 
@@ -204,6 +164,28 @@ fn my_func() -> Result<Foo, MyError> {
 }
 ```
 
+# Example 4 - assertions
+
+Sometime you may want to catch errors that are a consequence of faulty logic within the code.
+
+For instance:
+
+```rust
+let mystring = format!("{}: {}", spam, eggs);
+// ... some code here
+let index = mystring.find(':').unwrap();
+```
+
+We've built an immutable string with `format()` and we put a colon in the format string. There's no way for the string to *not* contain a colon in the last line, and so we *know* that `find` will return something.
+
+I reckon we should still kill the `unwrap()` here and make the error message clearer with `expect()`:
+
+```rust
+let index = mystring.find(':').expect("my_string should contain a colon");
+```
+
+
+
 # Closing thoughts
 
 When using `Option` or `Result` types in your own code, take some time to read
@@ -213,5 +195,6 @@ what you need, leading to shorter, cleaner and more idiomatic Rust code.
 
 If you come up with better solutions or other examples, please let me know!
 Until then, happy Rusting :)
+
 
 [^1]: Yes, I'm using TDD, but this post is not about testing. Feel free to read [my other articles](/tags/testing) on the subject, though :).
