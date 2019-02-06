@@ -2,7 +2,7 @@
 authors: [dmerej]
 slug: my-blogging-flow
 date: 2019-02-06T11:46:32.632044+00:00
-draft: false
+draft: true
 title: "My Blogging Flow"
 tags: [blog]
 summary: How this blog gets written
