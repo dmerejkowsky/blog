@@ -21,7 +21,7 @@ Twitter : d_merej
 /* SITE */
   Language: English
   Doctype: HTML5
-  IDE: neovim
+  IDE: kakoune
 
   DNS and SSL certificate from gandi
 
