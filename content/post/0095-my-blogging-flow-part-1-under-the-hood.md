@@ -55,14 +55,14 @@ But I still I had a problem: I was receiving many notifications about comments b
 
 This was depressing, so I shot down the comment service and started looking for an alternative.
 
-## The hugo period
+## The Hugo period
 
-I went back looking for static engines, and found `hugo` on [the StaticGen comparator](https://www.staticgen.com/) comparator.
+I went back looking for static engines, and found Hugo on [the StaticGen comparator](https://www.staticgen.com/) comparator.
 
 I immediately liked it:
 
 * There are many beautiful themes available. (Dotclear themes are nice too, but they looked a bit old to me).
-* `hugo` is easy to install (just one binary)
+* Hugo is easy to install (just one binary)
 * Its documentation is complete and easy to follow
 * And I no longer had to try and configure `php` on my server. Just a few lines of `nginx` configuration was enough.
 
@@ -88,19 +88,19 @@ First, I have custom `scene` shortcode insid the `layouts/shortcode` directory o
 </div>
 ```
 
-This allows me to write things like this in the Markdown source:
+This allows me to write things like this in the Markdown source [^1]: 
 
 ```markdown
-{{< scene title="Resurrecting Dinosaurs, what could possibly go wrong?" > }}
+{{〈 scene title="Resurrecting Dinosaurs, what could possibly go wrong?" 〉}}
 SPEAKER: I did *not* expect to have a win32 architecture slide here at FOSDEM
-{{< /scene >}}
+{{〈 /scene 〉}}
 ```
 
-When hugo sees the `{{< scene` directive it will generate the html with:
+When hugo sees the `scene` directive it will generate the html with:
 
 * The `<div>` and its special `scene` class
 * The `title` inside the `h1` tag
-* And the text inside the `{{< scene >}}` directive, interpreted as Markdown too
+* And the text inside the `scene` directive, interpreted as Markdown too
 
 Finally, I have a bit of CSS to render the `div` properly:
 
@@ -147,20 +147,65 @@ title: "..."
 ```
 
 
-So that's how the blog works under the hood. Now, allow me to explain how the publication works.
+## Comments
 
-# Publication flow
 
-Everything starts with an idea. I have a small git repository on my dedicated machine which contains a bunch of markdown files, one per article. (This repository is private by the way).
+The last piece of the puzzle is the comments system.
 
-The contents of these files can vary from just a few lines, to an almost complete article. Most of the time they only contain a basic outline though.
+I use [isso](https://posativ.org/isso/), a self-hosted commening service.
 
-I update the `ideas` repository as soon as ideas come. You won't believe how fast you can forget what or how you wanted to say something otherwise.
+First, I've patched the Hugo template to add a tiny bit of JavaScript at the bottom of every article: 
 
-Next it's time to start writing the full article. I have a [small Python script](post.py) which:
+```html
+<!-- in layouts/entry.html -->
+<div>
+  <script data-isso="//dmerej.info/isso/"
+            src="//dmerej.info/isso/js/embed.min.js"
+  >
+  </script>
+  <section id="isso-thread">
+  </section>
+</div>
+```
 
-* finds out the next article number and fill up the front matter for me (because I'm lazy)
-* runs `git add` on the generated Markdown file so I don't delete it by mistake by running `git clean` (because mistakes happen)
-* opens the Markdown file in Neovim
+Then I made sure the `isso` service was reachable at `https://dmerej.info/isso`, with help from `nginx`:
 
-Now it's time to draft the article. I always do it from Neovim
+```nginx
+# In /etc/nginx/conf.d/blog.conf
+
+location /isso {
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Script-Name /isso;
+    proxy_set_header Host $host;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_pass http://localhost:1234;
+}
+```
+
+and `systemd`:
+
+```ini
+# In isso.service
+[Unit]
+Description=isso comments service
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/srv/isso/.local/bin/isso -c /srv/isso/isso.conf run
+User=isso
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Some notes:
+
+* The comment form does not show if the user has disabled JavaScript. I find that a bit sad, but an the other hand it keeps robots from posting spam.
+* All the comments are stored in a sqlite database. I have a systemd timer to back it up every day
+* People can opt-in to leave their e-mail in the form. Isso does nothing with it but store them in its database. I sometimes send answers to commenters directly by mail though.
+
+So that's how the blog works under the hood! Stay tuned for [part 2]({{< ref "post/0096-my-blogging-flow-part-2-publishing.md" >}}) when I explain how new articles get written and published.
+
+[^1]: I'm using unicode character RIGHT ANGLE BRACKET to prevent Hugo from expanding the shortcode in *this* article ...
