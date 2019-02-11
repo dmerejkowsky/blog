@@ -287,10 +287,13 @@ impl std::default::Default for ColorWhen {
         ColorWhen::Auto
     }
 }
+```
 
+And calling `unwrap_or_default()` instead of `unwrap_or()`: 
 
+```rust
 fn main {
-    let color_when = opt.color_when.unwrap_or(ColorWhen::default());
+    let color_when = opt.color_when.unwrap_or_default();
 }
 ```
 

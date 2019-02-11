@@ -183,7 +183,45 @@ I reckon we should still kill the `unwrap()` here and make the error message cle
 ```rust
 let index = mystring.find(':').expect("my_string should contain a colon");
 ```
+# In tests and main
 
+*Note: I'd like to thank Jeikabu whose [comment on dev.to](https://dev.to/jeikabu/comment/8kb4) triggered the addition of this section*:
+
+Let's take an other example. Here is the code under test:
+
+```rust
+struct Foo { ... };
+
+fn setup_foo() -> Result<Foo, Error> {
+    ...
+}
+
+fn frob_foo(foo: Foo) -> Result<(), Error> {
+    ...
+}
+```
+
+Traditionally, you had to write tests for `setup_foo()` and `frob_foo()` this way:
+
+```rust
+#[test]
+fn test_foo {
+  let foo = setup_foo().unwrap();
+  frob_foo(foo).unwrap();
+}
+```
+
+But since recent versions of Rust you can write the same test this way:
+
+```rust
+#[test]
+fn test_foo -> Result<(), MyError> {
+  let foo = setup_foo()?;
+  frob_foo(foo)
+}
+```
+
+An other big win in legibility, don't you agree?
 
 
 # Closing thoughts
@@ -195,6 +233,7 @@ what you need, leading to shorter, cleaner and more idiomatic Rust code.
 
 If you come up with better solutions or other examples, please let me know!
 Until then, happy Rusting :)
+
 
 
 [^1]: Yes, I'm using TDD, but this post is not about testing. Feel free to read [my other articles](/tags/testing) on the subject, though :).
