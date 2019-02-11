@@ -187,7 +187,7 @@ let index = mystring.find(':').expect("my_string should contain a colon");
 
 *Note: I'd like to thank Jeikabu whose [comment on dev.to](https://dev.to/jeikabu/comment/8kb4) triggered the addition of this section*:
 
-Let's take an other example. Here is the code under test:
+Let's take another example. Here is the code under test:
 
 ```rust
 struct Foo { ... };
@@ -221,7 +221,25 @@ fn test_foo -> Result<(), MyError> {
 }
 ```
 
-An other big win in legibility, don't you agree?
+Another big win in legibility, don't you agree?
+
+By the way, the same technique can be used with the `main()` function (the entry point for Rust executables):
+
+Old version:
+```rust
+fn main() {
+    let result = setup_foo().unwrap();
+    ...
+}
+```
+
+New version:
+```rust
+fn main() -> Result<(), MyError> {
+    let foo = setup_foo()?;
+    ...
+}
+```
 
 
 # Closing thoughts
