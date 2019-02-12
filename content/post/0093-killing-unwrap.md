@@ -147,7 +147,7 @@ Again, let's start with the "bad" version:
 fn my_func() -> Result<Foo, MyError> {
   let res = bar::return_opt();
   if res.is_none() {
-    retrun Err(MyError::new(....);
+    retrun Err(MyError::new(....));
   }
   let res = res.unwrap();
 
