@@ -518,7 +518,7 @@ Error: Running `ls foo` on every repo failed
 * spam
 ```
 
-So in order to keep things DRY [^2], we have some high-level code that only deals with loop and error handling:
+So in order to keep things <abbr title="Don't Repeat Yourself">DRY</abbr>, we have some high-level code that only deals with loop and error handling:
 
 First, a generic `Task` method.
 
@@ -850,4 +850,3 @@ So, my advice is for you to use it if you get a chance. Cheers!
 
 
 [^1]: If you want to know more, feel free to browse the [documentation](https://supertanker.github.io/tsrc/), or read the [introduction post]({{< ref "post/0050-introducing-tsrc.md" >}}).
-[^2]: DRY stands for "Don't Repeat Yourself"
