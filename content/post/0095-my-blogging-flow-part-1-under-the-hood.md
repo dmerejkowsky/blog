@@ -11,13 +11,19 @@ summary: How this blog gets written - part 1
 
 Several people have asked me how my blog works and how it gets written, so here's a blog post about how I blog (so meta).
 
-# History
+Let's start at the beginning.
+
+# The history of dmerej.info/blog
+
+## Buying a DNS domain
+
+The first step was to buy a domain name. I chose [gandi.net](https://www.gandi.net/en) because I only heard good things about their registration service. I like the "retro" feel of the `.info` <abbr title="Top Level Domain">TLD</abbr>, and the `dmerej` prefix is the one I use to shorten my name. Wether it's a good thing or not, it's to late to change it now, so there.
 
 ## Getting my own machine
 
 I always wanted to control all aspects regarding the hosting of my blog, so I started by looking for a dedicated machine.
 
-If you're not familiar with the concept, having a dedicated machine means that you pay for the hardware and a ssh access to a server owned by soneone else. In exchange, you get to install and configure everything by hand. If it sounds like a loosy deal to you, remember that [I value control over convenience]({{< ref "post/0090-a-definition-of-the-linux-desktop.md" >}}).
+If you're not familiar with the concept, having a dedicated machine means that you pay for the hardware and ssh access to a server owned by soneone else. In exchange, you get to install and configure everything by hand. If it sounds like a loosy deal to you, remember that [I value control over convenience]({{< ref "post/0090-a-definition-of-the-linux-desktop.md" >}}) :)
 
 Anyway, I bought a server at a company called dedibox. (For the sake of completeness, I must say I'm now hosted by the nice people at [Digital Ocean](https://www.digitalocean.com)).
 
