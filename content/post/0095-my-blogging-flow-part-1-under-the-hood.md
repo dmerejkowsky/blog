@@ -4,7 +4,7 @@ slug: my-blogging-flow-part-1-under-the-hood
 date: 2019-02-06T11:46:32.632044+00:00
 draft: false
 tags: [misc]
-title: "My Blogging Flow - Part 1 - Under the Hood"
+title: "My Blogging Flow - Part 1 - Under the hood"
 tags: [misc]
 summary: How this blog gets written - part 1
 ---
@@ -57,7 +57,7 @@ Finally, my articles were online and publicly readable by anyone on the world. W
 
 Advice to my dear readers: if you want to publish something online, don't make my mistake: make sure you have *some* contents before worrying about its publication.
 
-## The dotclear period
+## The Dotclear period
 
 Configuring `php` for Dotclear was a bit tedious, but once it was done I must admit it was quite pleasant to use. The admin view is rich and featureful, and the editing form is ergonomic. Comments are supported out of the box, and they are easy to moderate.
 
@@ -74,10 +74,10 @@ I immediately liked it:
 * There are many beautiful themes available. (Dotclear themes are nice too, but they look a tad outmoded to me).
 * Hugo is easy to install (just one binary)
 * Its documentation is complete and easy to follow
-* And I no longer had to try and configure `php` on my server. Just a few lines of `nginx` configuration was enough.
-* Plus it is ridiculously *fast*. More than one hundred pages in less than 400 milliseconds.
+* I no longer had to setup `php` on my server. Just a few lines of `nginx` configuration was enough.
+* Plus it is ridiculously *fast*. More than one hundred pages in less than one second.
 
-To work, Hugo need a *theme*.  A Hugo theme is made of various *templates*, which control how the HTML gets generated, and some *static files* (like CSS or images) that needs to be copied along the generated files.
+To work, Hugo need a *theme*.  A Hugo theme is made of various *templates*, which control how the HTML gets produced, and some *static files* (like CSS or images) that needs to be copied along the generated files.
 
 Hugo does not come with a default theme, so after a few tries, I settled on [blackburn](https://themes.gohugo.io/blackburn/).
 
@@ -100,7 +100,7 @@ First, I have custom `scene` shortcode inside the `layouts/shortcode` directory 
 </div>
 ```
 
-This allows me to write things like this in the Markdown source [^2]:
+This allows me to write things like this in the Markdown source [^1]:
 
 ```markdown
 {{〈 scene title="Resurrecting Dinosaurs" 〉}}
@@ -151,7 +151,7 @@ And that's all there is to it :)
 
 After a while, I was getting tired with `blackburn`. Its CSS files were not easy to edit, it also had big dependencies like `font-awesome` or Yahoo's `Pure CSS`.
 
-So I switched to [minio](https://themes.gohugo.io/minimo/), which is the theme I still use today. It uses `sass` instead of pure `CSS`, and its sources are neatly organized. Plus, it comes with a nicely configured toolchain, which allows to get feedback on changes made to the theme instantly.
+So I switched to [minio](https://themes.gohugo.io/minimo/), which is the theme I still use today. It uses `Sass` instead of pure `CSS`, and its sources are neatly organized. Plus, it comes with a nicely configured toolchain, which allows to get feedback on changes made to the theme instantly.
 
 ## Source organization
 
@@ -249,10 +249,10 @@ WantedBy=multi-user.target
 Some notes:
 
 * The comment form does not show if the visitor has disabled JavaScript. I find that a bit sad, but on the other hand it keeps robots from posting spam (at least so far).
-* All the comments are stored in a sqlite database. I have a systemd timer to back it up every day.
+* All the comments are stored in a SQLite database. I have a systemd timer to back it up every day.
 * People can opt-in to leave their e-mail in the form. Isso does nothing with it but store them in its database. I sometimes use them to send them private messages.
 
 So that's how the blog works under the hood! Stay tuned for part 2, where I'll explain how new articles get written and published.
 
 
-[^2]: I'm using unicode character <small>RIGHT ANGLE BRACKET</small> to prevent Hugo from expanding the shortcode in *this* article ...
+[^1]: I'm using unicode character <small>RIGHT ANGLE BRACKET</small> to prevent Hugo from expanding the shortcode in *this* article ...
