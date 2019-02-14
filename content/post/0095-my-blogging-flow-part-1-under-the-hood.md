@@ -5,7 +5,7 @@ date: 2019-02-06T11:46:32.632044+00:00
 draft: false
 tags: [misc]
 title: "My Blogging Flow - Part 1 - Under the Hood"
-tags: [blog]
+tags: [misc]
 summary: How this blog gets written - part 1
 ---
 
