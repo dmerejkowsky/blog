@@ -109,7 +109,7 @@ fn my_func() -> Result<Foo, Error> {
 }
 ```
 
-The code won't compile of course, but the compiler will [tell you what to do]({{< ref "post/0092-letting-the-compiler-tell-you-what-to-do.md" >}}),
+The code won't compile of course, but the compiler will [tell you what to do]({{< ref "/post/0092-letting-the-compiler-tell-you-what-to-do.md" >}}),
 and you'll just need to implement the `From` trait:
 
 ```rust

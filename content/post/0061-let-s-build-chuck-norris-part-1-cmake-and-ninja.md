@@ -140,7 +140,7 @@ Now that we have described what we want to build and how, we still need to perfo
 
 CMake does not know how to *actually* perform the build. Instead it generates files that will be used by an *other* tool. It's called a CMake *generator*.
 
-There are plenty of generators available, but for now we'll only talk about Ninja. I've already explain why I prefer using CMake with Ninja in an [other blog post]({{< ref "post/0035-cmake-visual-studio-and-the-command-line.md" >}}).
+There are plenty of generators available, but for now we'll only talk about Ninja. I've already explain why I prefer using CMake with Ninja in an [other blog post]({{< ref "/post/0035-cmake-visual-studio-and-the-command-line.md" >}}).
 
 In our first attempt, we generated all the binaries (`libchucknorris.a`, the `.o` files and the `cpp_demo` executable) directly in the current working directory. It's cleaner to have them put inside a dedicated *build folder* instead:
 
@@ -199,4 +199,4 @@ $ ninja
 ...
 ```
 
-That's all for the first part. Stay tuned for [part 2]({{< ref "post/0062-let-s-build-chuck-norris-part-2-sqlite-and-conan.md" >}}), where we'll introduce an external dependency and get rid of the hard-coded fact.
+That's all for the first part. Stay tuned for [part 2]({{< ref "/post/0062-let-s-build-chuck-norris-part-2-sqlite-and-conan.md" >}}), where we'll introduce an external dependency and get rid of the hard-coded fact.

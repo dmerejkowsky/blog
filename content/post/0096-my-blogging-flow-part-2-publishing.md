@@ -27,7 +27,7 @@ Next it's time to start writing the full article. I have a [small Python script]
 Now it's time to draft the article. I always do it from Neovim with:
 
 * spell checker activated
-* syntax highlighting disabled (I've explained why [in a previous blog post]({{< ref "post/0087-syntax-highlighting-is-useless.md" >}}).
+* syntax highlighting disabled (I've explained why [in a previous blog post]({{< ref "/post/0087-syntax-highlighting-is-useless.md" >}}).
 
 In an other terminal (usually hidden behind a tab), I have `hugo serve` running, and finally, next to the text editor, a web browser, so that I can see the changes happening **in real time**.
 
@@ -56,7 +56,7 @@ I then can run yet an other Python script to:
 * Parse the RSS feed and find out the URL and title of the latest article
 * Make an automatic tweet like [this one](https://twitter.com/d_merej/status/1092029859864416259) (the additional hash tags at the end are given on the command line)
 * Ditto for Mastodon
-* Finally, send an-email to the people who subscribed to [the newsletter]({{< ref "post/0031-introducing-dmerej-newsletter.md" >}}).
+* Finally, send an-email to the people who subscribed to [the newsletter]({{< ref "/post/0031-introducing-dmerej-newsletter.md" >}}).
  
 # dev.to
 

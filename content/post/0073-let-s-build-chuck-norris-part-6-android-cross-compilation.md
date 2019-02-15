@@ -12,7 +12,7 @@ _Note: This is part 6 of the [Let's Build Chuck Norris!]({{< ref "0060-introduci
 
 # Introduction
 
-After our little detour talking about how to [wrap C++]({{< ref "post/0064-let-s-build-chuck-norris-part-4-python-and-ctypes.md" >}}) in [Python]({{< ref "post/0065-let-s-build-chuck-norris-part-5-python-and-cffi.md" >}}), we now are ready to tackle writing Android applications using C++ code.
+After our little detour talking about how to [wrap C++]({{< ref "/post/0064-let-s-build-chuck-norris-part-4-python-and-ctypes.md" >}}) in [Python]({{< ref "/post/0065-let-s-build-chuck-norris-part-5-python-and-cffi.md" >}}), we now are ready to tackle writing Android applications using C++ code.
 
 We'll start with a simple challenge: try and run a simple "Hello, world" program written in C inside a simulator and on our phone.
 
@@ -87,7 +87,7 @@ The file does exist, but Android does not know how to run it. Why?
 
 
 Remember when we used `LD_TRACE_LOADED_OBJECTS` back in [a previous post](
-{{< ref "post/0064-let-s-build-chuck-norris-part-4-python-and-ctypes.md#using-the-chucknorris-shared-library" >}})?
+{{< ref "/post/0064-let-s-build-chuck-norris-part-4-python-and-ctypes.md#using-the-chucknorris-shared-library" >}})?
 
 Well, if we re-run the binary we just built we can see it loads a few `.so` files:
 
@@ -147,7 +147,7 @@ Some notes:
 
 * We have to specify the Android API level (21 here) like in any other project targeting Android
 * Most of the magic is done by the `--sysroot`, `--gcc-toolchain` and `--target` options.
-* We have to specify `-fPIE`, a flag that means _position independant executable_. It serves the same kind of purpose as the `-fPIC` flag we met in [a previous article]({{< ref "post/0064-let-s-build-chuck-norris-part-4-python-and-ctypes.md#building-the-shared-library" >}}).
+* We have to specify `-fPIE`, a flag that means _position independant executable_. It serves the same kind of purpose as the `-fPIC` flag we met in [a previous article]({{< ref "/post/0064-let-s-build-chuck-norris-part-4-python-and-ctypes.md#building-the-shared-library" >}}).
 
 And now we can upload and run the binary on the `x86_64` simulator:
 
@@ -188,7 +188,7 @@ Hello, world
 
 Success!
 
-Our next objective is to run the `cpp_demo` executable we used to test the Chuck Norris library in [part 1]({{< ref "post/0061-let-s-build-chuck-norris-part-1-cmake-and-ninja.md#the-test-program" >}}) on our phone and on the Android simulator.
+Our next objective is to run the `cpp_demo` executable we used to test the Chuck Norris library in [part 1]({{< ref "/post/0061-let-s-build-chuck-norris-part-1-cmake-and-ninja.md#the-test-program" >}}) on our phone and on the Android simulator.
 
 Things is going to be trickier because of the `sqlite3` dependency and the fact that the code is written in C++.
 
@@ -199,7 +199,7 @@ But surely there is a better way to than guessing how to invoke the compilers an
 
 Of course, we could have used the native plug-in of Android Studio directly.
 
-Instead we will use Conan, the tool we talked about in [part 2]({{< ref "post/0062-let-s-build-chuck-norris-part-2-sqlite-and-conan.md" >}}).
+Instead we will use Conan, the tool we talked about in [part 2]({{< ref "/post/0062-let-s-build-chuck-norris-part-2-sqlite-and-conan.md" >}}).
 
 Using Conan is a good way to abstract the above complexity, without loosing any of the control (like depending on an IDE plug-in does).
 
@@ -586,7 +586,7 @@ We finally managed to run some `C++` code directly on Android.
 
 However, Android applications are written in Java (or Kotlin), so we still need to wrap the C++ library in Java.
 
-See you in [part 7]({{< ref "post/0074-let-s-build-chuck-norris-part-7-android-jna.md" >}}) for the next episode :)
+See you in [part 7]({{< ref "/post/0074-let-s-build-chuck-norris-part-7-android-jna.md" >}}) for the next episode :)
 
 [^1]: You may be using other architectures without realizing it, but don't worry too much about it.
 [^2]: It's actually a *good thing*. Otherwise you won't be able to run and debug the binaries you've just compiled.

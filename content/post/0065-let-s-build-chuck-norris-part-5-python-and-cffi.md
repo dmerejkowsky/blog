@@ -9,7 +9,7 @@ tags: [c++, python]
 
 _Note: This is part 5 of the [Let's Build Chuck Norris!]({{< ref "0060-introducing-the-chuck-norris-project.md" >}}) series._
 
-[Last week]({{< ref "post/0064-let-s-build-chuck-norris-part-4-python-and-ctypes.md" >}}) we wrote Python bindings for the chucknorris library using `ctypes`.
+[Last week]({{< ref "/post/0064-let-s-build-chuck-norris-part-4-python-and-ctypes.md" >}}) we wrote Python bindings for the chucknorris library using `ctypes`.
 
 We managed to get some Chuck Norris facts from a Python program.
 
@@ -302,7 +302,7 @@ ImportError: .../_chucknorris.abi3.so: undefined symbol: sqlite3_close
 
 This one is easier: `chucknorris` depends on `libsqlite3`, so we have to link with `sqlite3` too.
 
-In the CMakeLists.txt we wrote back in [part 2]({{< ref "post/0062-let-s-build-chuck-norris-part-2-sqlite-and-conan.md" >}}), when we were building the `cpp_demo` executable, we just called `target_link_libraries(cpp_demo chucknorris)`. CMake knew about the dependency from the `chucknorris` target to the sqlite3 library and everything worked fine.
+In the CMakeLists.txt we wrote back in [part 2]({{< ref "/post/0062-let-s-build-chuck-norris-part-2-sqlite-and-conan.md" >}}), when we were building the `cpp_demo` executable, we just called `target_link_libraries(cpp_demo chucknorris)`. CMake knew about the dependency from the `chucknorris` target to the sqlite3 library and everything worked fine.
 
 But we're not using the CMake&nbsp;/&nbsp;conan build system here, we are using the Python build system. How can we make them cooperate?
 
@@ -441,7 +441,7 @@ For this to work, the other user will need to be on Linux, have a compatible C++
 
 There's an entire blog post to be written about distribution of pre-compiled Python binary modules, but enough about Python for now :)
 
-See you next time, where we'll use everything we learned there and start [porting Chuck Norris to Android]({{< ref "post/0073-let-s-build-chuck-norris-part-6-android-cross-compilation.md" >}}).
+See you next time, where we'll use everything we learned there and start [porting Chuck Norris to Android]({{< ref "/post/0073-let-s-build-chuck-norris-part-6-android-cross-compilation.md" >}}).
 
 [^1]: `ffibuilder.set_source()` uses the same API as the [distutils Extension class](https://docs.python.org/3.6/distutils/apiref.html#distutils.core.Extension).
 [^2]: This also means you should really have at least one executable to test every shared library you write, but you already knew that, right?

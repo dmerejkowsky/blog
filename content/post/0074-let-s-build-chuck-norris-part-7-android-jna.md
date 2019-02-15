@@ -10,7 +10,7 @@ tags: [c++]
 _Note: This is part 7 of the [Let's Build Chuck Norris!]({{< ref "0060-introducing-the-chuck-norris-project.md" >}}) series._
 
 
-[Last time]({{< ref "post/0073-let-s-build-chuck-norris-part-6-android-cross-compilation.md" >}}) we managed to cross-compile and run C++ code for Android.
+[Last time]({{< ref "/post/0073-let-s-build-chuck-norris-part-6-android-cross-compilation.md" >}}) we managed to cross-compile and run C++ code for Android.
 
 It's now time to write some Java code, but we need to take a detour on the desktop first.
 
@@ -359,7 +359,7 @@ For simplicity purposes, we built the ChuckNorris library as a static library, j
 But JNA needs a shared library to run.
 
 
-Remember in [part 4]({{< ref "post/0064-let-s-build-chuck-norris-part-4-python-and-ctypes.md" >}}) we had to call CMake with `-DBUILD_SHARED_LIBS=ON` to get a shared library.
+Remember in [part 4]({{< ref "/post/0064-let-s-build-chuck-norris-part-4-python-and-ctypes.md" >}}) we had to call CMake with `-DBUILD_SHARED_LIBS=ON` to get a shared library.
 
 We'll do the same thing, but going through Conan this time.
 

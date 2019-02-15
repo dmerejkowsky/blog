@@ -447,4 +447,4 @@ annotations to provide gradual static typing for Python.
 I never used any of them (yet), because for now I'm happy catching type errors
 through linters and automatic tests, but if you have, please let me know!
 
-*Update: One year later, I finally gave mypy a go. You can read more about it in  the aptly named [giving mypy a go]({{< ref "post/0071-giving-mypy-a-go.md" >}}) blog post.*
+*Update: One year later, I finally gave mypy a go. You can read more about it in  the aptly named [giving mypy a go]({{< ref "/post/0071-giving-mypy-a-go.md" >}}) blog post.*

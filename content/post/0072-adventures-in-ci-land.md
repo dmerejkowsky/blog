@@ -360,4 +360,4 @@ $ pgrep node
 That's all for today. Cheers!
 
 
-[^1]: This is not the first time I've used those tools to write end-to-end tests for Web application. See [Porting to pytest]({{< ref "post/0059-porting-to-pytest-a-practical-example.md"  >}}) for instance.
+[^1]: This is not the first time I've used those tools to write end-to-end tests for Web application. See [Porting to pytest]({{< ref "/post/0059-porting-to-pytest-a-practical-example.md"  >}}) for instance.

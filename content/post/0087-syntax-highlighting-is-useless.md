@@ -75,6 +75,6 @@ augroup end
 
 I'm still using syntax highlight in the other cases.
 
-But, in the same way the syntax highlighting may be useless (and even harmful) for editing Markdown when a HTML renderer can be used, maybe syntax highlighting is *also* useless if [a linter can be used directly]({{< ref "post/0047-lets-have-a-pint-of-vim-ale.md" >}}) to check the code **while it's being typed**.
+But, in the same way the syntax highlighting may be useless (and even harmful) for editing Markdown when a HTML renderer can be used, maybe syntax highlighting is *also* useless if [a linter can be used directly]({{< ref "/post/0047-lets-have-a-pint-of-vim-ale.md" >}}) to check the code **while it's being typed**.
 
 Food for thought &hellip;

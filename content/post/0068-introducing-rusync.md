@@ -30,7 +30,7 @@ I wrote this because I wanted to give Rust a try.
 
 If you're already are a Rust developer, I'd appreciate it if you could give me a honest review of the code I wrote.
 
-See the [contact page]({{< ref "pages/contact.md" >}}) for all the possible ways to reach me, and many thanks in advance!
+See the [contact page]({{< ref "/pages/contact.md" >}}) for all the possible ways to reach me, and many thanks in advance!
 
 # What's next
 

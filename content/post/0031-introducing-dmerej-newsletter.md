@@ -13,7 +13,7 @@ Quick post to let you know I've created a newsletter.
 
 ## Subscribing
 
-[Contact me]({{< ref "pages/contact.md" >}}) and send me your e-mail.
+[Contact me]({{< ref "/pages/contact.md" >}}) and send me your e-mail.
 
 ## What you'll get
 

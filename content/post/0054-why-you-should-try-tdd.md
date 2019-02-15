@@ -440,7 +440,7 @@ The only way to get good at TDD is by practicing. It will take you quite some ti
 
 ## Beware of caveats
 
-I talked about them on my blog: [When TDD Fails]({{< relref "post/0014-when-tdd-fails.md" >}})
+I talked about them on my blog: [When TDD Fails]({{< relref "0014-when-tdd-fails.md" >}})
 
 ## Avoid classic beginners mistakes
 

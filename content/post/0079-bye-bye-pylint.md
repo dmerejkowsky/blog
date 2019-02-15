@@ -42,7 +42,7 @@ Now let's see a few problems I've encountered while using pylint.
 
 ## Initial setup
 
-Initial setup of pylint is always a bit painful. However, if you follow [some advice]({{< ref "post/0018-some-pylint-tips.md" >}}) you can get through it.
+Initial setup of pylint is always a bit painful. However, if you follow [some advice]({{< ref "/post/0018-some-pylint-tips.md" >}}) you can get through it.
 
 ## False negatives
 
@@ -110,7 +110,7 @@ But so far I had managed to overcome those pain points. So what changed?
 
 Two things happened:
 
-First, I've [started using mypy]({{< ref "post/0071-giving-mypy-a-go.md" >}}) and a "real" type system [^1].
+First, I've [started using mypy]({{< ref "/post/0071-giving-mypy-a-go.md" >}}) and a "real" type system [^1].
 
 What I found is that mypy can catch many of the errors pylint would catch, and probably more.
 
@@ -148,7 +148,7 @@ I realized I could use other linters (not just mypy) for almost every pylint cat
 * The *Convention* category can also be taken care of by [pycodestyle](https://pycodestyle.readthedocs.io/en/latest/).
 * A few *Refactoring* warnings (but not all) can also be caught by [mccabe](https://pypi.org/project/mccabe/), which measures code complexity.
 
-So far I've been using all theses linters in *addition* to pylint, as explained in [how I lint my Python]({{< ref "post/0037-how-i-lint-my-python.md" >}})
+So far I've been using all theses linters in *addition* to pylint, as explained in [how I lint my Python]({{< ref "/post/0037-how-i-lint-my-python.md" >}})
 
 But what if I stopped using pylint altogether?
 
@@ -158,7 +158,7 @@ And that's how I stopped using pylint and removed it from my CI scripts. My apol
 
 # What's next
 
-This is not the end of the story of my never-ending quest of tools to help me write better Python code. You can read the rest of the story in [Hello flake8]({{< ref "post/0080-hello-flake8.md" >}}).
+This is not the end of the story of my never-ending quest of tools to help me write better Python code. You can read the rest of the story in [Hello flake8]({{< ref "/post/0080-hello-flake8.md" >}}).
 
 
 [^1]: By the way, at the end of  _[Giving mypy a go](https://dmerej.info/blog/post/giving-mypy-a-go/)_ I said I was curious to know if mypy would help during [a massive refactoring](https://github.com/SuperTanker/tbump/pull/24/commits/7aecba923feda081360d36892f8716045d0b1bd0). Well, it did, even better than I would have hoped!

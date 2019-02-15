@@ -10,7 +10,7 @@ summary: I am writing a book about CI - stay tuned for more.
 
 # Why?
 
-I wanted to talk about CI for a very long time (more than 2 years). But it's a huge topic, and it took me some time before I decided to [start a blog post series ]({{< ref "post/0082-introducing-tips-from-a-build-farmer.md" >}}) about it.
+I wanted to talk about CI for a very long time (more than 2 years). But it's a huge topic, and it took me some time before I decided to [start a blog post series ]({{< ref "/post/0082-introducing-tips-from-a-build-farmer.md" >}}) about it.
 
 But then I realized that was the wrong format: you see, writing and publishing one post at a time requires for you to know exactly what to say and in what order, and I found that was not the case for the "Tips From A Build Farmer" series. So instead, I am going to try and write the whole thing as a book.
 

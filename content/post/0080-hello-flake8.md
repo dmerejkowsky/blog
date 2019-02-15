@@ -10,12 +10,12 @@ summary: flake8 is awesome and has a bright future ahead
 
 # Introduction
 
-In my [last article]({{< ref "post/0079-bye-bye-pylint.md" >}}) I explained why I decided to no longer use pylint.
+In my [last article]({{< ref "/post/0079-bye-bye-pylint.md" >}}) I explained why I decided to no longer use pylint.
 
 In a nutshell, most pylint warning are now caught by other linters, and all that's left are
 some warnings.
 
-In an [other article]({{< ref "post/0037-how-i-lint-my-python.md#putting-it-all-together" >}}) I mentioned [flake8](http://flake8.pycqa.org/en/latest/) briefly, saying that I preferred a simple bash script to drive the execution of the various linters.
+In an [other article]({{< ref "/post/0037-how-i-lint-my-python.md#putting-it-all-together" >}}) I mentioned [flake8](http://flake8.pycqa.org/en/latest/) briefly, saying that I preferred a simple bash script to drive the execution of the various linters.
 
 I was concerned that flake8 did not include pylint (now I no longer care of course). Also, I did not like the fact that flake8 forces a specific version for all the linters it runs.
 

@@ -55,7 +55,7 @@ Here are a few useful ones.
 
 ### `set -e`
 
-(Or `set -o errexit` if <a href="{{< relref "post/0007-dont-use-short-options.md" >}}">using long options</a>
+(Or `set -o errexit` if <a href="{{< relref "0007-dont-use-short-options.md" >}}">using long options</a>
 better suits you)
 
 Adding that at the top of the script will make sure errors will not be silently

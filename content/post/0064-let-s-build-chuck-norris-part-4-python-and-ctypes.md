@@ -384,7 +384,7 @@ When Chuck Norris enters a rodeo the bull has to try and last 8 seconds.
 
 And we're done.
 
-This is all well and good, but there's a more robust method to write our Python bindings. You can read more about it in [part 5]({{< ref "post/0065-let-s-build-chuck-norris-part-5-python-and-cffi.md" >}}).
+This is all well and good, but there's a more robust method to write our Python bindings. You can read more about it in [part 5]({{< ref "/post/0065-let-s-build-chuck-norris-part-5-python-and-cffi.md" >}}).
 
 [^1]: Actually, on Windows when you want to link with a shared library, you use both a `.lib` when linking and a `.dll` at runtime. It's confusing, I know.
 [^2]: This file is the reason sometimes people on the internet will tell you to run `ldconfig` after installing a shared library: it's used to rebuild the cache.

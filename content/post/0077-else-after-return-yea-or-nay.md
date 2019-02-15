@@ -181,4 +181,4 @@ Last, be careful with code samples that are too abstract :)
 Cheers!
 
 
-[^1]: I already blogged about this in [Some pylint tips]({{< ref "post/0018-some-pylint-tips.md" >}}) and [How I lint my Python]({{< ref "post/0037-how-i-lint-my-python.md" >}}).
+[^1]: I already blogged about this in [Some pylint tips]({{< ref "/post/0018-some-pylint-tips.md" >}}) and [How I lint my Python]({{< ref "/post/0037-how-i-lint-my-python.md" >}}).

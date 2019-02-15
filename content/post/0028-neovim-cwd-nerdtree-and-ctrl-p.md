@@ -7,7 +7,7 @@ title: Neovim, cwd, NERDTree and CtrlP
 tags: [neovim]
 ---
 
-A follow-up to my [latest article]({{< relref "post/0008-vim-cwd-and-neovim.md" >}})
+A follow-up to my [latest article]({{< relref "0008-vim-cwd-and-neovim.md" >}})
 where I explain how I made further changes to make things
 work with [NERDTree](https://github.com/scrooloose/nerdtree) and
 [CtrlP](https://github.com/ctrlpvim/ctrlp.vim)

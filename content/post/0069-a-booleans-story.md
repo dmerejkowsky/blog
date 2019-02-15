@@ -7,7 +7,7 @@ title: "A boolean's story"
 tags: [rust]
 ---
 
-[Earlier this month]({{< ref "post/0068-introducing-rusync.md" >}}) I told you
+[Earlier this month]({{< ref "/post/0068-introducing-rusync.md" >}}) I told you
 about my pet project in Rust.
 
 As a reminder, it's a tool named rusync which contains some of the
@@ -424,7 +424,7 @@ If you want to find out, click on the "spoiler" below.
 {{< spoiler >}}
 
 It's the same kind of bug I mentioned in the [non-isomorphic C++ refactoring
-article]({{< ref "post/0051-non-isomorphic-cpp-refactoring.md" >}}).
+article]({{< ref "/post/0051-non-isomorphic-cpp-refactoring.md" >}}).
 
 You see, in Rust some types implement the `Drop` trait, and have a `.drop()`
 method called when they go out of scope.

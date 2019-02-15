@@ -10,11 +10,11 @@ summary: |
   to keep up with tons of stuff you don't really care about ?
 ---
 
-_Note: this the second post in the [Quantum of Ideas]({{< ref "post/0057-introducing-quantom-of-ideas.md" >}}) series._
+_Note: this the second post in the [Quantum of Ideas]({{< ref "/post/0057-introducing-quantom-of-ideas.md" >}}) series._
 
 # Introduction
 
-I've already explained [on this blog]({{< ref "post/0032-twitter-and-me-me-and-twitter.md#fixing-my-timeline" >}}) why I've decided to never follow more than 30 accounts on twitter.
+I've already explained [on this blog]({{< ref "/post/0032-twitter-and-me-me-and-twitter.md#fixing-my-timeline" >}}) why I've decided to never follow more than 30 accounts on twitter.
 
 To this day, I'm still convinced that if you follow more than 50 accounts, you should seriously considering cleaning your timeline too.
 
@@ -44,7 +44,7 @@ _Update: Turns out such a product already exists. Take a look at https://www.man
 And that's all there is to it. We could also extend the TTC so that it prevents *you* from becoming an account with low signal-to-noise ratio using the same technique. For instance, it would display messages like: "only 2% of readers found this tweet interesting", or "you've already tweeted 3 times today, maybe go take a break".
 
 
-&hellip; or you could just [use Mastodon]({{< ref "post/0038-why-mastodon.md" >}}) where:
+&hellip; or you could just [use Mastodon]({{< ref "/post/0038-why-mastodon.md" >}}) where:
 
 * you can choose an instance that matches your interests
 * messages are more likely to get interesting due to the 500 characters limit

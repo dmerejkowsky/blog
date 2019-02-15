@@ -191,7 +191,7 @@ I've set up [a GitHub repository](https://github.com/dmerejkowsky/django-polls) 
 
 # Step one: setup pytest
 
-I've already told you [how much I love pytest]({{< ref "post/0006-pytest-rocks.md" >}}), so let's try to convert to `pytest`.
+I've already told you [how much I love pytest]({{< ref "/post/0006-pytest-rocks.md" >}}), so let's try to convert to `pytest`.
 
 The first step is to install `pytest-django` and configure it:
 

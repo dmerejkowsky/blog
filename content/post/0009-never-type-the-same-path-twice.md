@@ -7,7 +7,7 @@ title: "Never Type the Same Path Twice"
 tags: ["neovim"]
 ---
 
-This is a follow-up of my [previous post]({{< ref "post/0008-vim-cwd-and-neovim.md"
+This is a follow-up of my [previous post]({{< ref "/post/0008-vim-cwd-and-neovim.md"
 >}}) on Vim and `cwd`, so I suggest you go read it first.
 
 If you've read the previous post carefully, you may have noticed that

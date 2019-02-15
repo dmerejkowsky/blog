@@ -60,7 +60,7 @@ talk, but I since realized I've missed the deadline.
 #### Update
 
 Here's the promised article (better late than never, right?):
-[Why Mastodon]({{< ref "post/0038-why-mastodon.md" >}})
+[Why Mastodon]({{< ref "/post/0038-why-mastodon.md" >}})
 
 
-[^1]: [the name does not matter]({{< ref "post/0004-finding-a-good-project-name.md" >}})
+[^1]: [the name does not matter]({{< ref "/post/0004-finding-a-good-project-name.md" >}})

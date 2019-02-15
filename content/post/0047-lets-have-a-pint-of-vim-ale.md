@@ -15,7 +15,7 @@ TL;DR: [vim-ale](https://github.com/w0rp/ale) is awesome and you should give a t
 
 # Introduction: the rise of linters
 
-I've [already blogged]({{< ref "post/0037-how-i-lint-my-python.md" >}})
+I've [already blogged]({{< ref "/post/0037-how-i-lint-my-python.md" >}})
 about linters and how I use them when I write Python code.
 
 Let's recap:

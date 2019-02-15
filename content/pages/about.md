@@ -22,7 +22,7 @@ My twitter bio reads:
 'nuff said ...
 
 If you want to get in touch, please see the
-[contact page]({{< ref "pages/contact.md" >}})
+[contact page]({{< ref "/pages/contact.md" >}})
 
 # Mentions légales
 

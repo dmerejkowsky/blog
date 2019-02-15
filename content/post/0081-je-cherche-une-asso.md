@@ -31,7 +31,7 @@ Bien sûr, tout ceci est négociable!
 ## Une bouteille à la mer
 
 
-Si vous connaissez une association qui convienne ou semblable, que vous souhaitez me poser plus de questions, ou si vous avez d'autres pistes à me conseiller, vous pouvez me contacter de plein de façons, qui sont toutes listées sur [ma page de contact]({{< ref "pages/contact.md" >}}), ou simplement laisser un commentaire ci-dessous.
+Si vous connaissez une association qui convienne ou semblable, que vous souhaitez me poser plus de questions, ou si vous avez d'autres pistes à me conseiller, vous pouvez me contacter de plein de façons, qui sont toutes listées sur [ma page de contact]({{< ref "/pages/contact.md" >}}), ou simplement laisser un commentaire ci-dessous.
 
 Si le cœur vous en dit, vous pouvez aussi faire circuler ce message autour de vous.
 

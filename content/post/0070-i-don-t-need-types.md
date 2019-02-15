@@ -69,12 +69,12 @@ Of course, pyflakes does not catch other errors like calling a function with an 
 
 ### pylint
 
-I've already mentioned how [pylint can be very useful]({{< ref "post/0018-some-pylint-tips.md" >}}) if you take the time to configure it properly, so I won't repeat myself here.
+I've already mentioned how [pylint can be very useful]({{< ref "/post/0018-some-pylint-tips.md" >}}) if you take the time to configure it properly, so I won't repeat myself here.
 
 Still, I learned that Python static analyzers did not have to suck after all, and could find defects faster than tests.
 
 Today I use pyflakes, pylint and a few other linters for all my Python projects. You can read more about this in
-[How I lint my Python]({{< ref "post/0037-how-i-lint-my-python.md" >}}).
+[How I lint my Python]({{< ref "/post/0037-how-i-lint-my-python.md" >}}).
 
 At this point I had changed my mind a little bit. They were tools other than tests that could be useful. But I was still thinking that types did not help nearly as much as tests did.
 
@@ -156,8 +156,8 @@ That's why we try and multiply the techniques hoping each of them will find diff
 
 That's all for today.
 
-If you still believe that Python does not need types if you have a good tests, I'll have some very concrete examples to show you in a [future blog post]({{< ref "post/0071-giving-mypy-a-go.md" >}}).
+If you still believe that Python does not need types if you have a good tests, I'll have some very concrete examples to show you in a [future blog post]({{< ref "/post/0071-giving-mypy-a-go.md" >}}).
 
 Cheers!
 
-[^1]: If using this kind of linters sounds interesting to you, you can read my [blog post]({{< ref "post/0047-lets-have-a-pint-of-vim-ale.md" >}}) on the subject.
+[^1]: If using this kind of linters sounds interesting to you, you can read my [blog post]({{< ref "/post/0047-lets-have-a-pint-of-vim-ale.md" >}}) on the subject.

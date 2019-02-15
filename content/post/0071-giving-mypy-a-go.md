@@ -9,7 +9,7 @@ tags: [python]
 
 # Introduction
 
-This is a follow up to the [I don't need types]({{< ref "post/0070-i-don-t-need-types.md" >}}) article.
+This is a follow up to the [I don't need types]({{< ref "/post/0070-i-don-t-need-types.md" >}}) article.
 
 I left a teaser explaining I'll be giving concrete examples using a Python project, so here goes.
 
@@ -849,4 +849,4 @@ We saw how mypy, while stilling making relative few false positives, still found
 So, my advice is for you to use it if you get a chance. Cheers!
 
 
-[^1]: If you want to know more, feel free to browse the [documentation](https://supertanker.github.io/tsrc/), or read the [introduction post]({{< ref "post/0050-introducing-tsrc.md" >}}).
+[^1]: If you want to know more, feel free to browse the [documentation](https://supertanker.github.io/tsrc/), or read the [introduction post]({{< ref "/post/0050-introducing-tsrc.md" >}}).

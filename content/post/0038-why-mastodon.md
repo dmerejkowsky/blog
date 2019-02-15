@@ -13,11 +13,11 @@ In this article, I'd like to show you why this matters a great deal to me,
 using three articles I've already written:
 
 * [Heard and Seen at FOSDEM 2017](
-  {{< ref "post/0034-heard-and-seen-at-fosdem-2017.md" >}})
+  {{< ref "/post/0034-heard-and-seen-at-fosdem-2017.md" >}})
 * [Twitter and me, me and twitter](
-  {{< ref "post/0032-twitter-and-me-me-and-twitter.md" >}})
+  {{< ref "/post/0032-twitter-and-me-me-and-twitter.md" >}})
 * [How to build decentralized social networks](
-  {{< ref "post/0029-how-to-build-decentralized-social-networks.md" >}})
+  {{< ref "/post/0029-how-to-build-decentralized-social-networks.md" >}})
 
 <!--more-->
 
@@ -28,7 +28,7 @@ using three articles I've already written:
 When I was at FOSDEM in February, I spent a lot of time in a room called
 "Decentralized Internet".
 
-I heard about [many nice projects and people]({{< ref "pages/links.md#decentralized-internet" >}}).
+I heard about [many nice projects and people]({{< ref "/pages/links.md#decentralized-internet" >}}).
 
 All of them shared the same concern for their users' privacy, and all of them
 wanted to avoid having all their data centralized in one place.

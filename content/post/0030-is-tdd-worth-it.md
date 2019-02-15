@@ -23,7 +23,7 @@ Still, I guess you want me to elaborate a tad more, so here goes ...
 
 {{< note >}}
 If you don't know TDD at all, you can read the introduction
-[here]({{< relref "post/0014-when-tdd-fails.md#introduction-what-is-tdd" >}})
+[here]({{< relref "0014-when-tdd-fails.md#introduction-what-is-tdd" >}})
 {{< /note >}}
 
 ## My testing story
@@ -239,7 +239,7 @@ convince anyone, I was right, and they were wrong.
 I began realizing how little I knew about testing thanks to this very blog.
 
 You can read more about this in ["My Thoughts on: 'Why Most Unit Testing is Waste'"](
-{{< ref "post/0010-my-thoughts-on-why-most-unit-testing-is-waste.md" >}}).
+{{< ref "/post/0010-my-thoughts-on-why-most-unit-testing-is-waste.md" >}}).
 
 It was then I understood that maybe things were not that simple.
 
@@ -247,9 +247,9 @@ I wrote two more articles to remember myself that my thoughts on testing were no
 completely black and white: [^8]
 
 * [Is Line Coverage Meaningless?](
-{{< ref "post/0012-is-line-coverage-meaningless.md" >}})
+{{< ref "/post/0012-is-line-coverage-meaningless.md" >}})
 * [When TDD Fails](
-{{< ref "post/0014-when-tdd-fails.md" >}})
+{{< ref "/post/0014-when-tdd-fails.md" >}})
 
 
 ### Realizing the truth
@@ -503,11 +503,11 @@ Thanks for reading!
 
 
 [^1]: Source code is still on [github](https://github.com/aldebaran/qibuild)
-[^2]: That's where I realized how important [changelogs]({{< ref "post/0023-thoughts-on-changelogs.md" >}}) were.
+[^2]: That's where I realized how important [changelogs]({{< ref "/post/0023-thoughts-on-changelogs.md" >}}) were.
 [^3]: It's not that obvious when your binaries are built for Linux, macOS and Windows, and there are `.so`, `.dylib` and `.dll` files involved.
-[^4]: At the time, I thought it was a good idea to measure test coverage. <br /> I'm [not so sure anymore]({{< ref "post/0012-is-line-coverage-meaningless.md" >}}).
+[^4]: At the time, I thought it was a good idea to measure test coverage. <br /> I'm [not so sure anymore]({{< ref "/post/0012-is-line-coverage-meaningless.md" >}}).
 [^5]: By that I mean that I started having just a few tests failures that pointed me directly to the bug I just introduced.
-[^6]: Using [pytest]({{< ref "post/0006-pytest-rocks.md" >}}) of course!
+[^6]: Using [pytest]({{< ref "/post/0006-pytest-rocks.md" >}}) of course!
 [^7]: [Randall](https://en.wikipedia.org/wiki/Randall_Munroe), if you see this, I'm so sorry.
 [^8]: Fifty shades of testing?
 [^9]: I used stuff I learned from [Uncle Bob's videos on the subject](https://cleancoders.com/videos/clean-code/advanced-tdd)

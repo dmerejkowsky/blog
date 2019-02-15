@@ -8,7 +8,7 @@ tags: [ci]
 summary: Why you should consider writing your CI scripts in Python
 ---
 
-[Last time]({{< ref "post/0084-tips-from-a-build-farmer-part-2-some-concepts.md" >}}) we asked ourselves: "What language should I use to write CI scripts?".
+[Last time]({{< ref "/post/0084-tips-from-a-build-farmer-part-2-some-concepts.md" >}}) we asked ourselves: "What language should I use to write CI scripts?".
 
 Based on my experience, (I've been writing and maintaining CI scripts for almost 10 years): there's only one good answer: Python.
 
@@ -87,7 +87,7 @@ I'm truly convinced Python is better suited for thask. It's readable, maintainab
 
 The fact you have to install it separately on macOS is not an excuse, and actually a good thing: the built-in python that comes with macOS is outdated (it's Python2, not Python3), close source, and you may break things if you use it.
 
-So let's take a look at how Python features help you [fight the fear]({{< ref "post/0083-tips-from-a-build-farmer-part-1-ci-scripts-are-scary.md" >}}) associated with writing and maintaining CI scripts.
+So let's take a look at how Python features help you [fight the fear]({{< ref "/post/0083-tips-from-a-build-farmer-part-1-ci-scripts-are-scary.md" >}}) associated with writing and maintaining CI scripts.
 
 [^1]: I'm assuming that because it's what we use at work, but the advice I'll be giving here will apply also for travis or even Jenkins.
 

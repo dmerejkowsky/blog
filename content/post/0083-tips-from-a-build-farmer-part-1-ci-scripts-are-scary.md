@@ -9,7 +9,7 @@ summary: The ugly truth about CI
 ---
 
 
-_Note: This is part 1 of the [Tips From a Build Farmer]({{< ref "post/0082-introducing-tips-from-a-build-farmer.md" >}}) series._
+_Note: This is part 1 of the [Tips From a Build Farmer]({{< ref "/post/0082-introducing-tips-from-a-build-farmer.md" >}}) series._
 
 
 Here's an simple yet somewhat realistic CI script, in Bash:

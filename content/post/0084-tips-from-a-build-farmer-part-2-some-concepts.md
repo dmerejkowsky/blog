@@ -8,7 +8,7 @@ tags: [ci]
 summary: ... or the importance of good metaphors
 ---
 
-_Note: This is part 2 of the [Tips From a Build Farmer]({{< ref "post/0082-introducing-tips-from-a-build-farmer.md" >}}) series._
+_Note: This is part 2 of the [Tips From a Build Farmer]({{< ref "/post/0082-introducing-tips-from-a-build-farmer.md" >}}) series._
 
 In this article we'll define a few concepts that we're going to use in the rest of this series.
 
@@ -153,7 +153,7 @@ For instance, if a build triggered by a pull request fails, an e-mail may be sen
 
 ## Step
 
-We saw that scripts can do many various tasks. Scripts often go through a series of *steps*, like our example in [CI scripts are scary]({{< ref "post/0083-tips-from-a-build-farmer-part-1-ci-scripts-are-scary.md" >}}):
+We saw that scripts can do many various tasks. Scripts often go through a series of *steps*, like our example in [CI scripts are scary]({{< ref "/post/0083-tips-from-a-build-farmer-part-1-ci-scripts-are-scary.md" >}}):
 
 * Fetch the code
 * Compile everything

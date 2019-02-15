@@ -197,7 +197,7 @@ Instead of trying to guess the best result, we'll let the user choose by hooking
 into `fzf`.
 
 I already talked about `fzf` on a [previous article](
-{{< ref "post/0040-fzf-for-the-win.md" >}}). The gist of it is that you
+{{< ref "/post/0040-fzf-for-the-win.md" >}}). The gist of it is that you
 can pass any command as input to `fzf`, and let the user interactively select
 one result from the list.
 
@@ -299,4 +299,4 @@ in [fzf wiki](https://github.com/junegunn/fzf/wiki/examples#integration-with-z)
 
 [^1]: Here since Python 3.2
 [^2]: It's `cat` in reverse, do you get it?
-[^3]: `tcd` is a neovim-only feature. I already mentioned it in my [post about vim, cwd, and neovim]({{< ref "post/0008-vim-cwd-and-neovim.md" >}})
+[^3]: `tcd` is a neovim-only feature. I already mentioned it in my [post about vim, cwd, and neovim]({{< ref "/post/0008-vim-cwd-and-neovim.md" >}})

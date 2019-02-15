@@ -224,4 +224,4 @@ Well, turned out Berker Peksag, one of Python maintainers, actually cared enough
 
 [^1]: There's a nice [story](https://plus.google.com/+RobPikeTheHuman/posts/R58WgWwN9jp) by Rob Pike about this topic.
 [^2]: Yes, the password is in clear text, but that's another topic.
-[^3]: I know it because of [this other article]({{< ref "post/0017-why-i-dont-like-ruby.md" >}}) I wrote
+[^3]: I know it because of [this other article]({{< ref "/post/0017-why-i-dont-like-ruby.md" >}}) I wrote

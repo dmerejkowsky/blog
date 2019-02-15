@@ -23,7 +23,7 @@ The first step was to buy a domain name. I chose [gandi.net](https://www.gandi.n
 
 I always wanted to control all aspects regarding the hosting of my blog, so I started by looking for a dedicated machine.
 
-If you're not familiar with the concept, having a dedicated machine means that you pay for the hardware and ssh access to a server owned by soneone else. In exchange, you get to install and configure everything by hand. If it sounds like a loosy deal to you, remember that [I value control over convenience]({{< ref "post/0090-a-definition-of-the-linux-desktop.md" >}}) :)
+If you're not familiar with the concept, having a dedicated machine means that you pay for the hardware and ssh access to a server owned by soneone else. In exchange, you get to install and configure everything by hand. If it sounds like a loosy deal to you, remember that [I value control over convenience]({{< ref "/post/0090-a-definition-of-the-linux-desktop.md" >}}) :)
 
 Anyway, I bought a server at a company called dedibox. (For the sake of completeness, I must say I'm now hosted by the nice people at [Digital Ocean](https://www.digitalocean.com)).
 
@@ -83,7 +83,7 @@ Hugo does not come with a default theme, so after a few tries, I settled on [bla
 
 ### Writing my own shortcode
 
-The nice thing about Hugo is that you can customize the look and feel of your blog as much as you like. I still remember fondly the day I managed to implement the "movie script look" for the short scenes I wrote in [Heard and Seen at FOSDEM 2017]({{< ref "post/0034-heard-and-seen-at-fosdem-2017.md#scenes" >}}).
+The nice thing about Hugo is that you can customize the look and feel of your blog as much as you like. I still remember fondly the day I managed to implement the "movie script look" for the short scenes I wrote in [Heard and Seen at FOSDEM 2017]({{< ref "/post/0034-heard-and-seen-at-fosdem-2017.md#scenes" >}}).
 
 Here's how it works.
 
