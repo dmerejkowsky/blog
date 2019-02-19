@@ -252,7 +252,7 @@ Some notes:
 * All the comments are stored in a SQLite database. I have a systemd timer to back it up every day.
 * People can opt-in to leave their e-mail in the form. Isso does nothing with it but store them in its database. I sometimes use them to send them private messages.
 
-So that's how the blog works under the hood! Stay tuned for part 2, where I'll explain how new articles get written and published.
+So that's how the blog works under the hood! Stay tuned for [part 2]({{< relref "0096-my-blogging-flow-part-2-publishing.md" >}}), where I'll explain how new articles get written and published.
 
 
 [^1]: I'm using unicode character <small>RIGHT ANGLE BRACKET</small> to prevent Hugo from expanding the shortcode in *this* article ...
