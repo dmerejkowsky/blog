@@ -474,7 +474,7 @@ Do you still think this test needs a docstring ?
 
 Here we are going to use the Python bindings, which allow us to start `Firefox` or `Chrome` and control them with code.
 
-(In both cases, you'll need to install a separate binary: `geckodriver` or `chromdriver` respectively)
+(In both cases, you'll need to install a separate binary: `geckodriver` or `chromedriver` respectively)
 
 
 Here's how you can use `selenium` do visit a web page and click the first link:
