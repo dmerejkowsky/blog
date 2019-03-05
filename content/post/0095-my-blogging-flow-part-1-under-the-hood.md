@@ -17,7 +17,7 @@ Let's start at the beginning.
 
 ## Buying a DNS domain
 
-The first step was to buy a domain name. I chose [gandi.net](https://www.gandi.net/en) because I only heard good things about their registration service. I like the "retro" feel of the `.info` <abbr title="Top Level Domain">TLD</abbr>, and the `dmerej` prefix is the one I use to shorten my name. Wether it's a good thing or not, it's to late to change it now, so there.
+The first step was to buy a domain name. I chose [gandi.net](https://www.gandi.net/en) because I only heard good things about their registration service. I like the "retro" feel of the `.info` <abbr title="Top Level Domain">TLD</abbr>, and the `dmerej` prefix is the one I use to shorten my name. Wether it's a good thing or not, it's too late to change it now, so there.
 
 ## Getting my own machine
 
