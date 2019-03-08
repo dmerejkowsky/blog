@@ -61,6 +61,8 @@ to keep easily available.
   https://dev.to/isaacandsuch/developer-driven-development)
 * [Execution in the Kingdom of Nouns (a Java rant)](
   http://steve-yegge.blogspot.fr/2006/03/execution-in-kingdom-of-nouns.html)
+* [“Good Code Documents Itself” And Other Hilarious Jokes You Shouldn’t Tell Yourself](
+  https://hackaday.com/2019/03/05/good-code-documents-itself-and-other-hilarious-jokes-you-shouldnt-tell-yourself/)
 * [Graphite, Grafana and statsd gotchas](
   http://dieter.plaetinck.be/post/25-graphite-grafana-statsd-gotchas/)
 * [Hype isn't a use case](https://dev.to/liquid_chickens/hype-isnt-a-use-case-3a7)
