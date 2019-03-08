@@ -10,7 +10,7 @@ summary: "What happens when you let the compiler tell you what to do? Let's find
 
 If you've ever written code in a compiled language (C, C++, Java, ...), you are probably used to compiler error messages, and you may think there are only here to prevent you from making mistakes.
 
-Well sometimes you can also use compiler error messages to *design and implement* new features. Let me show you with a simple command-line program written in Rust.
+Well, sometimes you can also use compiler error messages to *design and implement* new features. Let me show you with a simple command-line program written in Rust.
 
 # An example
 
@@ -37,7 +37,7 @@ We implemented a `--dry-run` option using the [structopt crate](https://github.c
 
 Now we want to add a `--color` option that can have the following values: `never`, `always`, and `auto`.
 
-But structopt (nor clap, which it is based on) does *not* has the concept of "choice", like `argparse` or `docopt` would.
+But structopt (nor clap, which it is based on) does *not* have the concept of "choice", like `argparse` or `docopt`.
 
 So we *pretend* it does and we write:
 
@@ -240,7 +240,7 @@ Well, since we did not do anything with the `opt.color_when` but print it, every
 
 ## Error 5
 
-Had we try to use the option directly like this:
+Had we tried to use the option directly like this:
 
 ```rust
 fn force_no_color() {
@@ -256,7 +256,7 @@ fn main() {
   }
 ```
 
-The compiler would have tell us about our mistake:
+The compiler would have told us about our mistake:
 
 ```
 ColorWhen::Never => force_no_color(),
@@ -308,6 +308,6 @@ I hope this gave you new insights about what a good compiler can do, or at least
 
 I call this new workflow "compiler-driven development" and I find it nicely complements other well-known workflows like TDD.
 
-*Final note: to be honest we could have achieved a better result by reading the documentation too: for instance, we could have used a [custom string parser](https://docs.rs/structopt/0.2.14/structopt/#custom-string-parsers) instead of the `FromStr` boilerplate, and implement the Display trait on our [custom error](https://doc.rust-lang.org/rust-by-example/error/multiple_error_types/define_error_type.html) instead. Good docs matter too ...*
+*Final note: to be honest we could have achieved better results by reading the documentation too: for instance, we could have used a [custom string parser](https://docs.rs/structopt/0.2.14/structopt/#custom-string-parsers) instead of the `FromStr` boilerplate, and implemented the Display trait on our [custom error](https://doc.rust-lang.org/rust-by-example/error/multiple_error_types/define_error_type.html) instead. Good docs matter too ...*
 
 Cheers!
