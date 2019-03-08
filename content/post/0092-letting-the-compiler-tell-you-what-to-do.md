@@ -8,7 +8,7 @@ tags: [rust]
 summary: "What happens when you let the compiler tell you what to do? Let's find out with a simple example in Rust."
 ---
 
-If you've ever wrote code in a compiled language (C, C++, Java, ...), you are probably used to compiler error messages, and you may think there are only here to prevent you from making mistakes.
+If you've ever written code in a compiled language (C, C++, Java, ...), you are probably used to compiler error messages, and you may think there are only here to prevent you from making mistakes.
 
 Well sometimes you can also use compiler error messages to *design and implement* new features. Let me show you with a simple command-line program written in Rust.
 
@@ -289,7 +289,7 @@ impl std::default::Default for ColorWhen {
 }
 ```
 
-And calling `unwrap_or_default()` instead of `unwrap_or()`: 
+And calling `unwrap_or_default()` instead of `unwrap_or()`:
 
 ```rust
 fn main {
