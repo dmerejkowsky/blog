@@ -94,3 +94,10 @@ Things to know about colors:
 * Follow existing conventions, like red for errors
 * Try to use them in a *consistent* way.
 * On Linux and macOS, coloring is achieved by emitting certain non-printable ASCII characters (sometimes refered to as ANSI escape codes). This is fine when your program runs in a terminal, but *not* when its output is redirected to a file, for instance. Side note: you should use `sys.stdout.isatty()` or equivalent to check. `isatty()` is almost certainly in the standard library of your favorite language :)
+
+# Tests
+
+Of course I'm going to talk about tests!
+
+While tweaking your output, having a "happy" end-to-end test you can run
+can be *very* helpful.
