@@ -12,7 +12,7 @@ I've used and wrote many command line tools. It always makes me feel happy when 
 
 Along the way, I've learned a few tricks I'd like to share with you.
 
-<!-- more -->
+<!--more-->
 
 # Start with the contents
 
