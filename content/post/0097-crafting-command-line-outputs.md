@@ -8,7 +8,7 @@ tags: [misc]
 ---
 
 
-I've used and wrote many command line tools. It always makes me feel happy when I come across a tool that has a nice, usable and friendly output. I always try to make those I create or maintain as good as possible in this regard.
+I've used many command line tools. It always makes me feel happy when I come across a tool that has a nice, usable and friendly output. I always try to make those I create or maintain as good as possible in this regard.
 
 Along the way, I've learned a few tricks I'd like to share with you.
 
@@ -64,7 +64,7 @@ https://bixense.com/clicolors/).
 
 # Progress
 
-If your comman-line tool does some lengthy work, you should output _something_  to yoru users so that they know your program is not stuck.
+If your comman-line tool does some lengthy work, you should output _something_  to your users so that they know your program is not stuck.
 
 The best possible progress indicator contains:
 
