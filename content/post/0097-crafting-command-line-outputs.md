@@ -45,7 +45,7 @@ Please make sure the file exists and try again
 
 # Standard out and standard error
 
-Speaking of error messages, note that your can choose to write text to *two* different channels (often called `stdin` and `stdout` for short). Use `stderr` for error messages and error messages only. People sometimes need to hide "normal" messages from your tool, but they'll need to know about those errors!
+Speaking of error messages, note that your can choose to write text to *two* different channels (often called `stdout` and `stderr` for short). Use `stderr` for error messages and error messages only. People sometimes need to hide "normal" messages from your tool, but they'll need to know about those errors!
 
 # Colors
 
