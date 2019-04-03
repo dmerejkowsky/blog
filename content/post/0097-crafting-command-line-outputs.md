@@ -53,7 +53,7 @@ Things to know about colors:
 
 * Use red for errors (that's about the only convention I know of which is somewhat followed by everyone).
 * You can get a lot of meaning out of simple, ASCII-art decoration. Don't necessarily reach from emojis immediately 😜.
-* Try to use colors in a *consistent* way. Having helper methods like `print_errror()`, `print_message ()` can help.
+* Try to use colors in a *consistent* way. Having helper methods like `print_error()`, `print_message ()` can help.
 * On Linux and macOS, coloring is achieved by emitting certain non-printable ASCII characters (sometimes referred to as ANSI escape codes). This is fine when your program runs in a terminal, but *not* when its output is redirected to a file, for instance.
 * People usually expect color activation to be controlled with a tri-state: "always", "never", or "auto". The first two are self-explanatory, but "auto" needs some explaining.
 * When "auto" is set, your program should decide whether to use colors by itself. You can do so by calling `isatty(stdout)` or something equivalent.
