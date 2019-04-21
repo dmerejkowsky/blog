@@ -17,7 +17,7 @@ I submitted this challenge to my Python students yesterday,
 asking them to write the code from scratch. [^1]
 
 
-1 hour later, something miracolous happened that I never
+1 hour later, something miraculous happened that I never
 would have expect.
 
 But let me tell you the full story.
@@ -118,7 +118,7 @@ units =  {
 We'll have to:
 
 * Add a new 'feet' key to the `units` dictionary
-* Compute all the coffecient to convert `feet` to all the other units.
+* Compute all the coefficient to convert `feet` to all the other units.
 * Add a `feet` key to all the other dictionaries
 
 There has to be a better way!
@@ -128,7 +128,7 @@ After a short brainstorming session, we decided to limit ourselves to the distan
 So we draw the new structure of the `units` dictionary:
 
 ```python
-# Coefficents convert from "meters"
+# Coefficients convert from "meters"
 distances = {
     "km": 1/1000,
     "yards": 1.094,
@@ -140,7 +140,7 @@ And then we thought about the algorithm. We found three possibilities:
 
 * If we want to convert *from meters*, we just have to look up the coefficient in the dictionary
 * If we want to convert *to meters*, we can look up the coefficient in the dictionary and return its inverse
-* Otherwise, we combine the above two processess and return the product of the two coefficients.
+* Otherwise, we combine the above two processes and return the product of the two coefficients.
 
 
 "This is looking good", I said. "Let's try to implement the algorithm but just for the first case and see what happens".
@@ -153,8 +153,8 @@ We quickly manage to get the first case working:
 
 ```python
 def get_coefficient(unit_in, unit_out):
-    # FIXME: only works with distances for now
-    # Coefficents to convert from "meters"
+    # FIX ME: only works with distances for now
+    # Coefficients to convert from "meters"
     distances = {
         "km": 1/1000,
         "yards": 1.094,
@@ -176,8 +176,8 @@ def get_coefficient(unit_in, unit_out):
 
 ```python
 def get_coefficient(unit_in, unit_out):
-    # FIXME: only works with distances for now
-    # Coefficents to convert from "meters"
+    # FIX ME: only works with distances for now
+    # Coefficients to convert from "meters"
     distances = {
         "km": 1/1000,
         "yards": 1.094,
@@ -200,13 +200,13 @@ def get_coefficient(unit_in, unit_out):
 
 # The miracle
 
-I then pointed out that the ['else' after the return]({{< ref "/post/0077-else-after-return-yea-or-nay.md" >}}) was unecessary.
+I then pointed out that the ['else' after the return]({{< ref "/post/0077-else-after-return-yea-or-nay.md" >}}) was unnecessary.
 
 
 ```python
 def get_coefficient(unit_in, unit_out):
-    # FIXME: only works with distances for now
-    # Coefficents to convert from "meters"
+    # FIX ME: only works with distances for now
+    # Coefficients to convert from "meters"
     distances = {
         "km": 1/1000,
         "yards": 1.094,
@@ -225,7 +225,7 @@ We could get rid of the first `if` too!".
 
 ```python
 def get_coefficient(unit_in, unit_out):
-    # FIXME: only works with distances for now
+    # FIX ME: only works with distances for now
     distances = {
         "m": 1,
         "km": 1/1000,
@@ -248,7 +248,7 @@ def get_coefficient(unit_in, unit_out):
 
 And of course, this works. When `meters` is either `unit_in` or `unit_out`, all operations will involve multiplying or dividing by 1.
 
-That was a real nice suprise for several reasons:
+That was a real nice surprise for several reasons:
 
 * One, when I thought about the problem alone, before starting the workshop, I was pretty sure I would need a much more complex data structure.
 * Two, one of the students just refused to believe the code would work, even after having seen in work from the interpreter ;)
