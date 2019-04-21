@@ -252,6 +252,7 @@ That was a real nice surprise for several reasons:
 
 * One, when I thought about the problem alone, before starting the workshop, I was pretty sure I would need a much more complex data structure.
 * Two, one of the students just refused to believe the code would work, even after having seen in work from the interpreter ;)
+* Three, we killed one comment!
 
 
 # Lessons learned
