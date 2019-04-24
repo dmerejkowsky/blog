@@ -85,7 +85,7 @@ def convert(value, unit_in, unit_out):
 ```
 
 ```bash
-# Usage: 'convert.py value unit_in unit_out
+# Usage: convert.py value unit_in unit_out
 $ python3 convert.py 2 meters miles
 ```
 
