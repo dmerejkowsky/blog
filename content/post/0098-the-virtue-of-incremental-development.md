@@ -8,12 +8,12 @@ tags: [misc]
 ---
 
 Here's today challenge: can you write a command-line tool that
-allows to convert to and from various measurements units?
+allows converting to and from various measurements units?
 
 For instance, you could input "3 miles in meters" and get
 "4828.03".
 
-I submitted this challenge to my Python students last week-end,
+I submitted this challenge to my Python students last weekend,
 asking them to write the code from scratch. [^1]
 
 1 hour later, something miraculous happened that I never
@@ -77,7 +77,7 @@ def main():
 Some notes:
 
 * The `main()` function is now completely *generic*, and we probably won't need to change it.
-* Te signature of the `convert` function almost dictated the command-line syntax:
+* The signature of the `convert` function almost dictated the command-line syntax:
 
 ```python
 def convert(value, unit_in, unit_out):
@@ -149,7 +149,7 @@ And then we thought about the algorithm. We found three possibilities:
 
 I showed my students how they could use Python's interpreter to check the get_coefficient() function was working properly.
 
-We quickly manage to get the first case working:
+We quickly managed to get the first case working:
 
 ```python
 def get_coefficient(unit_in, unit_out):
@@ -220,7 +220,7 @@ def get_coefficient(unit_in, unit_out):
     return reciprocal_coefficient * distances[unit_out]
 ```
 
-And then it happened. "Hey", one of students said, "what if we added meters in the distances dictionary with `1` as value?
+And then it happened. "Hey", one of the students said, "what if we added meters in the distances dictionary with `1` as value?
 We could get rid of the first `if` too!".
 
 "Let's do it", I said:
@@ -250,7 +250,7 @@ def get_coefficient(unit_in, unit_out):
 
 And of course, this works. When `meters` is either `unit_in` or `unit_out`, all operations will involve multiplying or dividing by 1.
 
-That was a real nice surprise for several reasons:
+That was a really nice surprise for several reasons:
 
 * One, when I thought about the problem alone, before starting the workshop, I was pretty sure I would need a much more complex data structure.
 * Two, one of the students just refused to believe the code would work, even after having seen it in action in the interpreter ;)

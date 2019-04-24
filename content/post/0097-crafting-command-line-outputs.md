@@ -106,7 +106,7 @@ End-to-end tests are a great way to tweak the output without having to do a bunc
 
 # Parting words
 
-Well, that's all I've got today. Please keep those tips in mind when creating your own command line tool, and if you find a program that does not adhere to this rules, feel free to send patches. Until next time!
+Well, that's all I've got today. Please keep those tips in mind when creating your own command line tool, and if you find a program that does not adhere to these rules, feel free to send patches. Until next time!
 
 
 [^1]: Assuming they take the time to *read* the output. But the better they are, the more they're likely to get read :)
