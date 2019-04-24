@@ -2,20 +2,19 @@
 authors: [dmerej]
 slug: the-virtue-of-incremental-development
 date: 2019-04-21T12:10:49.553858+00:00
-draft: true
+draft: false
 title: "The virtue of incremental development"
 tags: [misc]
 ---
 
 Here's today challenge: can you write a command-line tool that
-allows to convert from various measurements units?
+allows to convert to and from various measurements units?
 
 For instance, you could input "3 miles in meters" and get
 "4828.03".
 
-I submitted this challenge to my Python students yesterday,
+I submitted this challenge to my Python students last week-end,
 asking them to write the code from scratch. [^1]
-
 
 1 hour later, something miraculous happened that I never
 would have expect.
@@ -31,9 +30,9 @@ I told the students that they could start by writing some "exploratory code".
 "Just hard-code anything you have to and keep everything in the `main()` function ", I said.
 
 After a few discussions, we agreed to only write code that converted kilometers to miles, and that
-we'll read the value from the command line.
+we'll read the values from the command line.
 
-Here's what they came up with:
+Here's what we came up with:
 
 ```python
 import sys
@@ -52,11 +51,12 @@ I then pointed out that the code was not generic. Indeed, "kilometers", "miles" 
 
 # Naming a new function
 
-The students understood there was a three-parameters function hiding behind the name. So we went to the drawing board
+The students understood there was a three-parameters function waiting to be written. So we went to the drawing board
 and after a while we decided to have a function called `convert(value, unit_in, unit_out)`.
 
 Note that we did *not* make any assumption about the *body* of the function. We just wanted to see how `main()` could become
 more generic, and we were still allowed to hard-code parts of the code:
+
 
 ```python
 def convert(value, unit_in, unit_out):
@@ -77,7 +77,7 @@ def main():
 Some notes:
 
 * The `main()` function is now completely *generic*, and we probably won't need to change it.
-* Also, note how the signature of the `convert` function almost dictated the command-line syntax:
+* Te signature of the `convert` function almost dictated the command-line syntax:
 
 ```python
 def convert(value, unit_in, unit_out):
@@ -117,13 +117,13 @@ units =  {
 
 We'll have to:
 
-* Add a new 'feet' key to the `units` dictionary
-* Compute all the coefficient to convert `feet` to all the other units.
-* Add a `feet` key to all the other dictionaries
+* add a new 'feet' key to the `units` dictionary,
+* compute all the coefficient to convert from `feet` to all the other units,
+* and add a `feet` key to all the other dictionaries
 
 There has to be a better way!
 
-After a short brainstorming session, we decided to limit ourselves to the distance measurement, and to always convert to SI units first.
+After a short brainstorming session, we decided to limit ourselves to *distance* measurements, and to *always convert to SI units* first.
 
 So we draw the new structure of the `units` dictionary:
 
@@ -140,7 +140,7 @@ And then we thought about the algorithm. We found three possibilities:
 
 * If we want to convert *from meters*, we just have to look up the coefficient in the dictionary
 * If we want to convert *to meters*, we can look up the coefficient in the dictionary and return its inverse
-* Otherwise, we combine the above two processes and return the product of the two coefficients.
+* Otherwise, we combine the two procedures above and return the product of the two coefficients.
 
 
 "This is looking good", I said. "Let's try to implement the algorithm but just for the first case and see what happens".
@@ -196,7 +196,9 @@ def get_coefficient(unit_in, unit_out):
 1760
 ```
 
-"Look how clean the code is", I said. "We have a value that's called `reciprocal_coefficient` and we get it by calling 1 over something else. Isn't this nice?".
+"Look how readable the code is", I said. "We have a value that's called
+`reciprocal_coefficient` and we get it by calling 1 over something else. Isn't
+this nice?".
 
 # The miracle
 
@@ -251,19 +253,21 @@ And of course, this works. When `meters` is either `unit_in` or `unit_out`, all 
 That was a real nice surprise for several reasons:
 
 * One, when I thought about the problem alone, before starting the workshop, I was pretty sure I would need a much more complex data structure.
-* Two, one of the students just refused to believe the code would work, even after having seen in work from the interpreter ;)
-* Three, we killed one comment!
+* Two, one of the students just refused to believe the code would work, even after having seen it in action in the interpreter ;)
+* Three, we killed one comment :)
 
 
 # Lessons learned
 
-We found a beautiful algorithm and a nice data structure, not by trying to solve *everything* at once, but by slowly building up more and more generic code, getting rid of hard-coded values one after the other, and by carefully thinking about function *names* and *parameters*.
+We found a beautiful algorithm and a nice data structure, not by trying to
+solve *everything* at once, but by slowly building up more and more generic
+code, getting rid of hard-coded values one after the other, and by carefully
+thinking about naming.
 
-I hope you find this approach useful, and I highly suggest you try using it next time you implement a new feature.
+I hope you find this approach useful, and I highly suggest you try using it
+next time you implement a new feature.
 
 Cheers!
-
-
 
 
 [^1]: I'm using [mob programming](https://en.wikipedia.org/wiki/Mob_programming) during my Python classes. It works really well.
