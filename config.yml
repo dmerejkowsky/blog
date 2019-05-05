@@ -1,3 +1,5 @@
+DefaultContentLanguage: en
+
 title: "dmerej's blog"
 author: Dimitri Merejkowsky
 languageCode: en-us
@@ -11,12 +13,39 @@ pygmentsCodeFences: true
 
 buildDrafts: true
 
-params:
-  info:
-    description: Personal blog of Dimitri Merejkowsky
-  social: ~
-  settings:
-    showReadingTime: true
+languages:
+    en:
+      footnoteReturnLinkContents: "<sup>[return]</sup>"
+      contentDir: content/en/
+      params:
+        info:
+          description: Personal blog of Dimitri Merejkowsky
+        settings:
+          dateFormat: 2006, Jan 02
+          showReadingTime: true
+          blackfriday:
+            footnoteReturnLinkContents: return
+      menu:
+        main:
+          - name: RSS
+            identifier: subscribe
+            url: /index.xml
+            weight: 0
+    fr:
+      contentDir: content/fr/
+      footnoteReturnLinkContents: "<sup>[retour]</sup>"
+      params:
+        info:
+          description: Blog personnel de Dimitri Merejkowsky
+        settings:
+          dateFormat: 02/01 2006
+          showReadingTime: true
+      menu:
+        main:
+          - name: "Flux RSS"
+            identifier: subscribe
+            url: /index.xml
+            weight: 0
 
 taxonomies:
   tag: tags
