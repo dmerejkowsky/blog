@@ -5,6 +5,7 @@ draft: false
 title: "Hello, world"
 tags: ["misc"]
 authors: [dmerej]
+feedback: false
 ---
 
 First blog post. Stay tuned for more!
