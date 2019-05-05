@@ -30,7 +30,7 @@ Ce fichier peut être présent soit dans le répertoire courant, soit dans la bi
 Vous connaissez peut-être le rôle de la variable d'environnement `PATH`. Celle-ci contient une liste de chemins,
 et est utilisée par votre shell pour trouver le chemin complet des commandes que vous lancez.
 
-Par example:
+Par exemple:
 
 ```bash
 PATH="/bin:/usr/bin:/usr/sbin"
@@ -41,14 +41,14 @@ $ ls
 ```
 
 Le chemin est "résolu" par le shell en parcourant la liste de tout les segments de `PATH`, et en regardant si le chemin complet
-exist. La résolution s'arrête dès le premier chemin trouvé.
+existe. La résolution s'arrête dès le premier chemin trouvé.
 
-Par example, si vous avez `PATH="/home/user/bin:/usr/bin"` et un fichier `ls` dans `/home/user/bin/ls`, c'est ce fichier-là
+Par exemple, si vous avez `PATH="/home/user/bin:/usr/bin"` et un fichier `ls` dans `/home/user/bin/ls`, c'est ce fichier-là
 (et non `/bin/ls`) qui sera utilisé quand vous taperez `ls`
 
 # sys.path
 
-En Python, c'est pareil. Il existe une variable pré-définie dans le module `sys` qui contient une liste de chemins.
+En Python, c'est pareil. Il existe une variable prédéfinie dans le module `sys` qui contient une liste de chemins.
 
 Si j'essaye de l'afficher sur mon Arch Linux, voici ce que j'obtiens :
 
@@ -64,7 +64,7 @@ Si j'essaye de l'afficher sur mon Arch Linux, voici ce que j'obtiens :
 ]
 ```
 
-Notez que le résultat dépend de ma distribution, et de la présence ou non du répertoire `~/.local/lib/python3.7/` sur ma machine - cela prouve que `sys.path` est construit dynamiquement par l'interpéteur Python.
+Notez que le résultat dépend de ma distribution, et de la présence ou non du répertoire `~/.local/lib/python3.7/` sur ma machine - cela prouve que `sys.path` est construit dynamiquement par l'interpréteur Python.
 
 Notez également que `sys.path` commence par une chaîne vide. En pratique, cela signifie que le répertoire courant a la priorité sur tout le reste.
 
@@ -152,7 +152,7 @@ setup(
 # Résultat de l'invocation de setup.py
 
 
-Par défaut, `setup.py` essaira d'écrire dans un des chemins système de
+Par défaut, `setup.py` essaiera d'écrire dans un des chemins système de
 `sys.path` [^3], d'où l'utilisation de l'option `--user`.
 
 Voici à quoi ressemble la sortie de la commande :
@@ -172,7 +172,7 @@ Notez que module a été copié dans `~/.local/lib/python3.7/site-packages/` et 
 
 Notez également qu'un script a été installé dans `~/.local/bin` - Une bibliothèque Python peut contenir aussi bien des modules que des scripts.
 
-Un point important est que vous n'avez en général pas besoin de lancer le script directement. Vous pouvez utiliser `python3 -m tabulate`. Procéder de cette façon est intéressant puisque vous n'avez pas à vous soucier de rajouter le chemin d'installation des scripts dans la variable d'environement PATH.
+Un point important est que vous n'avez en général pas besoin de lancer le script directement. Vous pouvez utiliser `python3 -m tabulate`. Procéder de cette façon est intéressant puisque vous n'avez pas à vous soucier de rajouter le chemin d'installation des scripts dans la variable d'environnement PATH.
 
 
 # Dépendances
@@ -228,11 +228,11 @@ Cet annuaire, c'est le site [pypi.org](https://pypi.org/). Vous y trouverez les 
 
 Il est conseillé de *toujours* lancer `pip` avec `python3 -m pip`. De cette façon, vous êtes certains d'utiliser le module `pip` correspondant à votre binaire `python3`, et vous ne dépendez pas de ce qu'il y a dans votre `PATH`.
 
-`pip` est capable d'interroger le site `pypi.org` pour retrouver les dépendances, et égalemnt de lancer les différents scripts `setup.py`.
+`pip` est capable d'interroger le site `pypi.org` pour retrouver les dépendances, et également de lancer les différents scripts `setup.py`.
 
 Comme de nombreux outils, il s'utilise à l'aide de *commandes*. Voici comment installer `cli-ui` à l'aide de la commande 'install' de  `pip`:
 
-```pbash
+```bash
 $ python3 -m pip install cli-ui --user
 Collecting cli-ui
 ...
@@ -249,10 +249,10 @@ On constate ici quelques limitations de `pip`:
 * Si le paquet est déjà installé dans le système, pip ne saura pas le mettre à jour - il faudra passer par le gestionnaire de paquet de
   la distribution
 
-En revanch, `pip` contient de nombreuses fonctionalités intéressantes:
+En revanche, `pip` contient de nombreuses fonctionnalités intéressantes:
 
 * Il est capable de désinstaller des bibliothèques (à condition toutefois qu'elles ne soit pas dans un répertoire système)
-* Il est aussi capalbe d'afficher la liste complète des bibliothèques Python accessibles  par l'utilisateur courant avec `freeze`.
+* Il est aussi capable d'afficher la liste complète des bibliothèques Python accessibles  par l'utilisateur courant avec `freeze`.
 
 Voici un extrait de la commande `python3 -m pip freeze` au moment de la rédaction de cet article sur ma machine:
 
@@ -266,7 +266,7 @@ tabulate==0.8.4
 
 On y retrouve les bibliothèques `cli-ui` et `tabulate`, bien sûr, mais aussi la bibliothèque `gaupol`, qui correspond au [programme d'édition de sous-titres](https://otsaloma.io/gaupol/) que j'ai installé à l'aide du gestionnaire de paquets de ma distribution. Précisons que les modules de la bibliothèque standard et ceux utilisés directement par pip sont omis de la liste.
 
-On constate égalemnt que chaque bibliothèque possède un *numéro de version*
+On constate également que chaque bibliothèque possède un *numéro de version*
 
 # Numéro de versions
 
@@ -301,14 +301,14 @@ setup(
 )
 ```
 
-# Apparté : pourquoi éviter sudo pip
+# Aparté : pourquoi éviter sudo pip
 
-Souvenez vous que les fichiers systèmes sont contrôllés par votre gestionnaire de paquet.
+Souvenez vous que les fichiers systèmes sont contrôlés par votre gestionnaire de paquet.
 
 Les mainteneurs de votre distribution font en sorte qu'ils fonctionnent bien  les uns
-avec les autres. Par exemple, le paquet `python3-cli-qui` ne sera mis à jour que lorsque tous les paquets qui en dépendent seront prêts à utiliser la nouvelle API.
+avec les autres. Par exemple, le paquet `python3-cli-ui` ne sera mis à jour que lorsque tous les paquets qui en dépendent seront prêts à utiliser la nouvelle API.
 
-En revanche, si vous lancez `sudo pip` (où `pip` avec un compte root), vous allez écrire dans ces mêmes repértoire et vous risquez de casser votre système.
+En revanche, si vous lancez `sudo pip` (où `pip` avec un compte root), vous allez écrire dans ces mêmes répertoire et vous risquez de casser votre système.
 
 Mais il y a un autre problème encore pire.
 
@@ -316,21 +316,21 @@ Mais il y a un autre problème encore pire.
 
 Supposons deux projets A et B dans votre répertoire personnel. Ils dépendent tous les deux de `cli-ui`, mais l'un des deux utilise `cli-ui 0.7` et l'autre `cli-ui 0.9`.
 
-Certains langages de programmation (rust et Javascript entre autres) autorisent la même bibliothèque a être utilisée das plusieurs versions différentes, mais pas Python.
+Certains langages de programmation (rust et Javascript entre autres) autorisent la même bibliothèque a être utilisée dans plusieurs versions différentes, mais pas Python.
 
 Que faire donc ?
 
-# Environements virtuels
+# Environnements virtuels
 
-La solution est d'utiliser un environement virtuel (*virtualenv* en abrégé). C'est un répertoire *isolé* du reste du système.
+La solution est d'utiliser un environnement virtuel (*virtualenv* en abrégé). C'est un répertoire *isolé* du reste du système.
 
 Il se crée par exemple avec la commande `python3 -m venv foo-venv`. où `foo-venv` est un répertoire quelconque.
 
-## Apparté : python3 -m venv sur Debian
+## Aparté : python3 -m venv sur Debian
 
 La commande `python3 -m venv` fonctionne en général partout, dès l'installation de Python3 (*out of the box*, comme disent les Anglais), *sauf* sur Debian et ses dérivées [^5].
 
-Si vous utilisez debian, la commande pourrait ne pas fonctionner. En fonction des messages d'erreur que vous obtenez, il est possible de les contourner en:
+Si vous utilisez Debian, la commande pourrait ne pas fonctionner. En fonction des messages d'erreur que vous obtenez, il est possible de les contourner en:
 
 * Installant le paquet `python3-venv`
 * Ou en utilisant d'abord `pip` pour installer `virtualenv`, avec `python3 -m pip install virtualenv --user` puis lancer `python3 -m virtualenv foo-venv`.
@@ -364,23 +364,23 @@ $ /home/dmerej/foo-venv/bin/python -c 'import sys; print(sys.path)'
 À noter:
 
 * Le répertoire "global" dans `~/.local/lib` a disparu
-* Seuls quelques répertoires systèmes sont present (ils correspondent plus ou moins à l'emplacements des modules de la bibliothèque standard)
+* Seuls quelques répertoires systèmes sont présents (ils correspondent plus ou moins à l'emplacement des modules de la bibliothèque standard)
 * Un répertoire *au sein* du virtualenv a été rajouté
 
 Ainsi, l'isolation du virtualenv vient uniquement de la différence dans la valeur de `sys.path`.
 
-Il faut aussi préciser que le virtualenv n'est pas complètement isolé du reste du système. En particulier, il dépend encore du binaire Pyton utilisé pour le créer.
+Il faut aussi préciser que le virtualenv n'est pas complètement isolé du reste du système. En particulier, il dépend encore du binaire Python utilisé pour le créer.
 
-Par example, si vous avec un binaire `/usr/local/bin/python3.8`, vous pourrez créer un virtualenv `foo-38` utilisant `Python3.8` qui fonctionnera tant que Python3.8 sera installé sur votre système en lançant `/usr/local/bin/python3.8 foo-3.8`.
+Par exemple, si vous avec un binaire `/usr/local/bin/python3.8`, vous pourrez créer un virtualenv `foo-38` utilisant `Python3.8` qui fonctionnera tant que Python3.8 sera installé sur votre système en lançant `/usr/local/bin/python3.8 foo-3.8`.
 
 Cela signifie également qu'il est possible qu'en mettant à jour le paquet `python3` sur votre distribution, vous risquez de casser les virtualenvs créés avec l'ancienne version du paquet.
 
 
 ## Comportement de pip dans le virtualenv
 
-D'après ce qui précède, le virtualenv ne devrait contenir aucun module en dehors de la bibliothèque standard et de `pip` lui-mème.
+D'après ce qui précède, le virtualenv ne devrait contenir aucun module en dehors de la bibliothèque standard et de `pip` lui-même.
 
-On peut le vérifier en lançant `python3 -m pip freeze` depuis le virtualenv et en vérfiant que rien ne s'affiche.
+On peut le vérifier en lançant `python3 -m pip freeze` depuis le virtualenv et en vérifiant que rien ne s'affiche.
 
 ```
 $ python3 -m pip freeze
@@ -394,7 +394,7 @@ $ /home/dmerej/foo-venv/bin/python3 -m pip freeze
 # rien :)
 ```
 
-On peut alors utiliser le module `pip` du virtualenv pour installer des bibliotheques dans celui-ci:
+On peut alors utiliser le module `pip` du virtualenv pour installer des bibliothèques dans celui-ci:
 
 ```
 $ /home/dmerej/foo-venv/bin/python3 -m pip install cli-ui
@@ -442,9 +442,9 @@ Mon conseil est de toujours suivre ces deux règles:
 * Un virtualenv par projet et par version de Python
 * Toujours utiliser `pip` *depuis* un virtualenv
 
-Certes, cela peut paraître fastidieux, mais c'est une méthode qui vous évitera problablement de vous arracher les cheveux (croyez-en mon expérience).
+Certes, cela peut paraître fastidieux, mais c'est une méthode qui vous évitera probablement de vous arracher les cheveux (croyez-en mon expérience).
 
-Dans un futur article, nous appronfondirons la question, en évoquant d'autres sujets comme `PYTHONPATH`, le fichier `requirements.txt` ou des outils comme `poetry` ou `pipenv`. À très vite.
+Dans un futur article, nous approfondirons la question, en évoquant d'autres sujets comme `PYTHONPATH`, le fichier `requirements.txt` ou des outils comme `poetry` ou `pipenv`. À très vite.
 
 
 [^1]: C'est une condition suffisante, mais pas nécessaire - on y reviendra.
