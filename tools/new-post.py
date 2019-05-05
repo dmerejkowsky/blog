@@ -31,9 +31,9 @@ def slugify(text):
     return re.sub('[-\s]+', '-', res)
 
 
-def get_last_index():
+def get_last_index(*, lang):
     this_path = pathlib.Path(".")
-    all_posts = (this_path / "content/post").glob("*.md")
+    all_posts = (this_path / "content" / lang / "post").glob("*.md")
 
     def get_index(p):
         try:
@@ -46,13 +46,14 @@ def get_last_index():
 
 
 def main():
-    title = sys.argv[1]
+    lang = sys.argv[1]
+    title = sys.argv[2]
     slug = slugify(title)
     now = arrow.get()
-    last_index = get_last_index()
+    last_index = get_last_index(lang=lang)
     file_name = "%04i" % (last_index + 1) + "-" + slug + ".md"
     full_date = arrow.get().isoformat()
-    post_path = os.path.join("content/post", file_name)
+    post_path = pathlib.Path("content") / lang / "post" / file_name
     to_write = TEMPLATE.format(**locals())
     with open(post_path, "w") as fp:
         fp.write(to_write)
