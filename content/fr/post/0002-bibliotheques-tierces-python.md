@@ -8,20 +8,20 @@ authors: [dmerej]
 feedback: true
 ---
 
-Note: cet article reprend en grande partie le cours donné à [l'École du Logiciel Libre](https://e2li.org) le 4 mai 2019.
+Note : cet article reprend en grande partie le cours donné à [l'École du Logiciel Libre](https://e2li.org) le 4 mai 2019.
 
 Quelques rappels pour commencer.
 
-# Importer um module
+# Importer un module
 
-Soit le code suivant:
+Soit le code suivant :
 
 ```python
 import foo
 foo.bar()
 ```
 
-Ce code fonctionne si il y a un ficher `foo.py` quelque par qui contient la fonction `bar` [^1]
+Ce code fonctionne s'il y a un ficher `foo.py` quelque part qui contient la fonction `bar` [^1]
 
 Ce fichier peut être présent soit dans le répertoire courant, soit dans la bibliothèque standard Python.
 
@@ -40,17 +40,17 @@ $ ls
 # résout sur /bin/ls
 ```
 
-Le chemin est "résout" par le shell en parcourant la liste de tout les segments de `PATH`, et en regardant si le chemin complet
+Le chemin est "résolu" par le shell en parcourant la liste de tout les segments de `PATH`, et en regardant si le chemin complet
 exist. La résolution s'arrête dès le premier chemin trouvé.
 
-Par example, si vous avez `PATH="/home/user/bin:/usr/bin"` et un fichier `ls` dans `/home/user/bin/ls`, c'est ce fichier là
+Par example, si vous avez `PATH="/home/user/bin:/usr/bin"` et un fichier `ls` dans `/home/user/bin/ls`, c'est ce fichier-là
 (et non `/bin/ls`) qui sera utilisé quand vous taperez `ls`
 
 # sys.path
 
 En Python, c'est pareil. Il existe une variable pré-définie dans le module `sys` qui contient une liste de chemins.
 
-Si j'essaye de l'afficher sur mon Arch Linux, voici ce que j'obtiens:
+Si j'essaye de l'afficher sur mon Arch Linux, voici ce que j'obtiens :
 
 ```python
 >>> import sys
@@ -70,13 +70,13 @@ Notez également que `sys.path` commence par une chaîne vide. En pratique, cela
 
 Ainsi, si vous avez un fichier `random.py` dans votre répertoire courant, et que vous lancez un script `foo.py` dans ce même répertoire, vous vous retrouvez à utiliser le code dans `random.py`, et non celui de la bibliothèque standard, donc gardez cela en tête. Pour information, la liste de tous les modules de la bibliothèque standard est présente dans [la documentation](https://docs.python.org/fr/3/library/index.html).
 
-Un autre aspect notable de `sys.path` est qu'il ne contient que deux répertoire dans lequel mon utilisateur courant peut potentiellement écrire: le chemin courant et le chemin dans `~/.local/lib`. Tous les autres (`/usr/lib/python3.7/`, etc.) sont des chemins "système" et ne peuvent être modifiés que par un compte admnistrateur (avec `root` ou `sudo`, donc).
+Un autre aspect notable de `sys.path` est qu'il ne contient que deux répertoires dans lesquels mon utilisateur courant peut potentiellement écrire : le chemin courant et le chemin dans `~/.local/lib`. Tous les autres (`/usr/lib/python3.7/`, etc.) sont des chemins "système" et ne peuvent être modifiés que par un compte administrateur (avec `root` ou `sudo`, donc).
 
 La situation est semblable sur macOS et Windows [^2].
 
 # Bibliothèques tierces
 
-Prenons un exemple:
+Prenons un exemple :
 
 ```python
 # dans foo.py
@@ -108,7 +108,7 @@ Eh bien, plusieurs solutions s'offrent à vous.
 
 # Le gestionnaire de paquets
 
-Si vous utilisez une distribution Linux, peut-être pourrez-vous utiliser votre gestionnaire de paquets:
+Si vous utilisez une distribution Linux, peut-être pourrez-vous utiliser votre gestionnaire de paquets :
 
 ```bash
 $ sudo apt install python3-tabulate
@@ -120,7 +120,7 @@ Comme vous lancez votre gestionnaire de paquets avec `sudo`, celui-ci sera capab
 
 Une autre méthode consiste à partir des sources - par exemple, si le paquet de votre distribution n'est pas assez récent, ou si vous avez besoin de modifier les sources de la bibliothèque en question.
 
-Voici une marche à suivre possible:
+Voici une marche à suivre possible :
 
 1. Récupérer les sources de la version qui vous intéresse dans la [section téléchargement de bitbucket](https://bitbucket.org/astanin/python-tabulate/downloads/?tab=tags).
 1. Extraire l'archive, par exemple dans `src/tabulate`
@@ -129,7 +129,7 @@ Voici une marche à suivre possible:
 # Anatomie du fichier setup.py
 
 La plupart des bibliothèques Python contiennent un `setup.py` à
-la racine de leur sources. Il sert à plein de choses, la commande `install`
+la racine de leurs sources. Il sert à plein de choses, la commande `install`
 n'étant qu'une parmi de nombreuses autres possibles.
 
 
@@ -155,7 +155,7 @@ setup(
 Par défaut, `setup.py` essaira d'écrire dans un des chemins système de
 `sys.path` [^3], d'où l'utilisation de l'option `--user`.
 
-Voici à quoi ressemble la sortie de la commande:
+Voici à quoi ressemble la sortie de la commande :
 
 ```bash
 $ cd src/tabulate
@@ -301,7 +301,7 @@ setup(
 )
 ```
 
-# Apparté - pourquoi il ne faut pas utiliser `sudo pip`
+# Apparté : pourquoi éviter sudo pip
 
 Souvenez vous que les fichiers systèmes sont contrôllés par votre gestionnaire de paquet.
 
@@ -326,9 +326,9 @@ La solution est d'utiliser un environement virtuel (*virtualenv* en abrégé). C
 
 Il se crée par exemple avec la commande `python3 -m venv foo-venv`. où `foo-venv` est un répertoire quelconque.
 
-## Apparté: python3 -m venv sur Debian
+## Apparté : python3 -m venv sur Debian
 
-La commande `python3 -m venv` fonctionne en général partout, dès l'installation de Python3 (*out of the box*, comme disent les Anglais), *sauf* sur Debian et ses dérivées [^5]
+La commande `python3 -m venv` fonctionne en général partout, dès l'installation de Python3 (*out of the box*, comme disent les Anglais), *sauf* sur Debian et ses dérivées [^5].
 
 Si vous utilisez debian, la commande pourrait ne pas fonctionner. En fonction des messages d'erreur que vous obtenez, il est possible de les contourner en:
 
