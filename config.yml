@@ -44,7 +44,7 @@ languages:
         main:
           - name: "Flux RSS"
             identifier: subscribe
-            url: /index.xml
+            url: /fr/index.xml
             weight: 0
 
 taxonomies:
