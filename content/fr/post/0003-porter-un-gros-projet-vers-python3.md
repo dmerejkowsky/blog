@@ -470,4 +470,4 @@ N'hésitez pas en commentaire à partager votre propre expérience
 d'y répondre.
 
 Il vous reste jusqu'à la fin de l'année avant l'arrêt du support de Python2 en 2020,
-et ce coup-là il n'y aura probablement pas de report.
+et ce coup-là il n'y aura probablement pas de report. Au boulot !
