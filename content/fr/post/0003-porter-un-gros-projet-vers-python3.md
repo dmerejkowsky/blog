@@ -12,22 +12,18 @@ tags: ["python"]
 ## Introduction : le projet en question
 
 Il s'agit d'une collection d'outils en ligne de commande que j'ai
-développé dans mon ancienne boîte.
+développé dans mon ancienne boîte, les points importants étant
 
-Le code source est [sur github](https://github.com/aldebaran/qibuild) si vous
-êtes curieux, le point important étant la taille du projet: un peu moins de
-30,000 lignes de code.
+* la taille du projet: un peu moins de 30,000 lignes de code, et
+* l'ancienneté du code: près de 6 ans, qui initialement a tourné avec Python 2.6 (eh oui)
 
 ## Le challenge
 
-Donc on une code base vieille de 6 ans, qui initialement a tourné avec Python2.6
-(eh oui) qu'on veut rendre compatible Python3.
-
-On veut aussi garder la rétro-compat vers Python2.7, histoire que la transition
+On veut garder la rétro-compat vers Python2.7, histoire que la transition
 se fasse en douceur.
 
-Enfin, on veut pouvoir continuer les développements en Python2 sans attendre
-la fin du portage.
+On veut aussi pouvoir continuer les développements en Python2 sans attendre
+la fin du port.
 
 ## À faire avant de commencer à porter
 
@@ -75,9 +71,9 @@ du code Python2 en code polyglotte. Si vous avez des retours à faire sur cet
 outil, partagez !
 
 Note 2 : Vous n'êtes bien sûr pas obligés d'utiliser `six` si vous n'avez pas
-envie, notamment si votre code n'a aucune autre dépendance que la `stdlib`.
-Vous pouvez vous en sortir avec des `if sys.version_info()[1] < 3`, et autres
-`from __future__ import` (voir plus bas)
+envie. Vous pouvez vous en sortir avec des `if sys.version_info()[1] < 3`, et autres
+`from __future__ import` (voir plus bas). Mais certaines fonctionnalités de `six`
+sont compliquées à ré-implémenter à la main.
 
 Note 3 : il existe aussi [pies](https://github.com/timothycrosley/pies)
 comme alternative à `six`. Voir
@@ -86,8 +82,7 @@ pour une liste des différences avec `six`. Personnellement, je trouve
 `pies` un peu trop "magique" et je préfère rester explicite. De plus,
 `six` semble être devenu le "standard" pour le code Python polyglotte.
 
-(En termes de [téléchargements sur Pypi](http://pypi-ranking.info/alltime)
-il est même devant `requests`)
+Voyons maintenant quelques exemples de modifications à effectuer.
 
 ### print
 
@@ -235,7 +230,7 @@ Allez voir la table des cas traités par `six`
 
 `six` est notamment indispensable pour supporter les métaclasses, dont
 la syntaxe a complètement changé entre Python2 et Python3. (Ne vous amusez
-pas à recoder ça vous-même, c'est velu)
+pas à recoder ça vous-mêmes, c'est velu)
 
 Avec `six`, vous pouvez écrire
 
@@ -249,7 +244,7 @@ class Foo:
 
 En Python2, `range()` est "gourmand" et retourne la liste entière dès qu'on
 l'appelle, alors qu'en Python3, `range()` est "feignant" et retourne un
-itérateur produisant les éléments à itérer sur demande. En Python2, si vous
+itérateur produisant les éléments sur demande. En Python2, si vous
 voulez un itérateur, il faut utiliser `xrange()`.
 
 Partant de là, vous avez deux solutions:
@@ -470,9 +465,9 @@ J'aimerais remercier Eric S. Raymond qui m'a donné l'idée de ce billet suite
 à ma
 [réponse](https://github.com/dmerejkowsky/response-to-practical-python-porting-by-esr)
 
-Enfin, j'aimerais remercier Sam et Max pour l'opportunité d'apporter
-ma modeste contribution à leur blog.
-
 N'hésitez pas en commentaire à partager votre propre expérience
 (surtout si vous avez procédé différemment) ou vos questions, j'essaierai
 d'y répondre.
+
+Il vous reste jusqu'à la fin de l'année avant l'arrêt du support de Python2 en 2020,
+et ce coup-là il n'y aura probablement pas de report.
