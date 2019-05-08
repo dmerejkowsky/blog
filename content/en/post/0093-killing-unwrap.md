@@ -8,6 +8,7 @@ tags: [rust]
 summary: A collection of snippets to avoid unnecessary calls to unwrap() in Rust
 ---
 
+
 # Wait, what? Who do you want to kill?
 
 In Rust, to indicate errors or absence of a value we use types named `Result` and `Option` respectively.
@@ -31,7 +32,7 @@ This is fine if `unwrap()` is called in a test, but in production code it's best
 
 So that's the why. Let's see the how.
 
-# Example 1 - Handling None
+# Example 1 - Handling options
 
 Let's go back to our first example: we'll assume there is a `bar::return_opt()` function coming from an external crate and returning an `Option<Bar>`, and that we are calling it in `my_func`, a function also returning an option:
 
@@ -65,12 +66,12 @@ use this technique, but a `match` may be used to keep the "early return"
 pattern:
 
 ```rust
-fn my_func() {
+fn my_func() -> SomeType {
   let value = match bar::return_opt() {
-      None => return,
+      None => return SomeType::default()
       Some(v) => v
   };
-  ...
+  // do something with v
 }
 ```
 
@@ -137,9 +138,9 @@ fn my_func() -> Result<Foo, Error> {
 We can still use the question mark operator, the ugly `Err(MyError::new(...))`
 is gone, and we can provide some additional context in our custom Error type. Epic win!
 
-# Example 3 - Converting to Option
+# Example 3 - Converting from Option
 
-This time we are calling a function that returns an `Error` and we want a `Option`.
+This time we are calling a function that returns an `Option` and we want a `Result`.
 
 Again, let's start with the "bad" version:
 
@@ -159,12 +160,38 @@ The solution is to use `ok_or_else`, a bit like how we used the `unwrap_err` bef
 
 ```rust
 fn my_func() -> Result<Foo, MyError> {
-  let value = bar::return_opt().ok_or((MyError::new(...))?;
+  let value = bar::return_opt().ok_or_else(|| (MyError::new(...))?;
   ...
 }
 ```
 
-# Example 4 - Assertions
+# Example 4 - Converting to Option
+
+This time we want to discard the error and simply return None.
+
+Bad example (even with the pattern matching):
+
+```rust
+fn my_func() -> Option<SomeType> {
+  let result = bar::return_res();
+  let v = match (result) {
+     Err(_) => return None,
+     Ok(v) => v
+  };
+  Some(v)
+}
+```
+
+Better example:
+
+```rust
+fn my_func() -> Option<SomeType> {
+  let v = bar::return_res().ok()?;
+  Some(v)
+}
+```
+
+# Example 5 - Assertions
 
 Sometime you may want to catch errors that are a consequence of faulty logic within the code.
 
