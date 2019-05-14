@@ -23,3 +23,6 @@ My twitter bio reads:
 
 If you want to get in touch, please see the
 [contact page]({{< ref "/pages/contact.md" >}})
+
+
+[^1]: I prefer the term "software writer" to the more conventional "software engineer" phrasing. Go watch the talk [Writing Software](https://www.youtube.com/watch?v=9LfmrkyP81M) by David Heinemeier Hansson to learn why.
