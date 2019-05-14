@@ -1,6 +1,5 @@
 DefaultContentLanguage: en
 
-title: "dmerej's blog"
 author: Dimitri Merejkowsky
 languageCode: en-us
 canonifyurls: true
@@ -15,6 +14,7 @@ buildDrafts: true
 
 languages:
     en:
+      title: "dmerej's blog"
       footnoteReturnLinkContents: "<sup>[return]</sup>"
       contentDir: content/en/
       params:
@@ -32,11 +32,12 @@ languages:
             url: /index.xml
             weight: 0
     fr:
+      title: "Le blog de Dim'"
       contentDir: content/fr/
       footnoteReturnLinkContents: "<sup>[retour]</sup>"
       params:
         info:
-          description: Blog personnel de Dimitri Merejkowsky
+          description: ~
         settings:
           dateFormat: 02/01 2006
           showReadingTime: true
