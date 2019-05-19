@@ -9,4 +9,4 @@ tags: [python]
 
 Note : cet article reprend en grande partie le cours donné à [l'École du Logiciel Libre](https://e2li.org) le 18 mai 2019.
 
-<!--more-->
+# Code de production et code de test
