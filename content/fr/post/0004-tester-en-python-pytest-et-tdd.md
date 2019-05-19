@@ -7,6 +7,13 @@ title: "Écriture de tests en Python: pytest et TDD"
 tags: [python]
 ---
 
+TODO:
+
+general proofread
+proofread snpippets, make sure they are consistent
+grammalecte
+
+
 Notes : cet article reprend en grande partie le cours donné à [l'École
 du Logiciel Libre](https://e2li.org) le 18 mai 2019.
 Il s'inspire également des travaux de Robert C. Martin (alias Uncle Bob) sur la question,
