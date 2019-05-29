@@ -11,10 +11,8 @@ TODO:
 
 general proofread
 proofread snpippets, make sure they are consistent
-grammalecte
 
-
-Notes : cet article reprend en grande partie le cours donné à [l'École
+Note : cet article reprend en grande partie le cours donné à [l'École
 du Logiciel Libre](https://e2li.org) le 18 mai 2019.
 Il s'inspire également des travaux de Robert C. Martin (alias Uncle Bob) sur la question,
 notamment sa série de vidéos sur
@@ -32,7 +30,7 @@ def faire_le_café():
 
 ```
 
-Que ce passe-t-il lorsque ce code tourne avec `au_régime` à True et `pas_de_sucre` à False?
+Que se passe-t-il lorsque ce code tourne avec `au_régime` à True et `pas_de_sucre` à False?
 
 ```python
 >>> au_régime = True
@@ -49,7 +47,7 @@ AssertionError
 
 On constate qu'en réalité, tout ce que `assert` a fait, c'est d'évaluer la condition et comme la condition était "falsy", il a jeté une exception.
 
-On peut modifier le message de l'assertion en rajoutant une chaîne de caractères après la virgule:
+On peut modifier le message de l'assertion en rajoutant une chaîne de caractères après la virgule&nbsp;:
 
 ```python
 def faire_le_café():
@@ -60,7 +58,7 @@ def faire_le_café():
 # À quoi servent les assertions
 
 Comme on l'a vu, utiliser `assert` ressemble fortement à lever une exception. Dans les deux cas, on veut signaler
-à celui qui appelle notre code que quelque chose ne va pas. Mais `assert` est différent par deux aspects:
+à celui qui appelle notre code que quelque chose ne va pas. Mais `assert` est différent par deux aspects&nbsp;:
 
 * Il peut arriver que l'appel à `assert` soit ignoré
 * `assert` et souvent utilisé pour signaler qu'il y a une erreur *dans le code* qui a appelé la fonction, et
@@ -68,9 +66,9 @@ Comme on l'a vu, utiliser `assert` ressemble fortement à lever une exception. D
 
 Voir [cet article de Sam & Max](http://sametmax.com/programmation-par-contrat-avec-assert/) pour plus de détails.
 
-# Qu'est-ce qu'un test?
+# Qu'est-ce qu'un test&nbsp;?
 
-Voici un exemple minimal:
+Voici un exemple minimal&nbsp;:
 
 ```python
 # dans calc.py
@@ -86,7 +84,7 @@ result = calc.add_one(3)
 assert result == 4, "result != 4"
 ```
 
-On retrouve l'idée d'utiliser `assert` pour indiquer une erreur *interne* au code. En l'occurence, si on lance le script `test_calc.py`, on va obtenir:
+On retrouve l'idée d'utiliser `assert` pour indiquer une erreur *interne* au code. En l'occurrence, si on lance le script `test_calc.py`, on va obtenir&nbsp;:
 
 ```bash
 $ python3 test_calc.py
@@ -113,16 +111,16 @@ Une petite digression s'impose ici. Selon Robert C. Martin, le code possède une
 * La valeur primaire est le *comportement* du code - ce que j'ai appelé le *produit* ci-dessus
 * La valeur secondaire est le fait que le code (et donc le produit) peut être *modifié*.
 
-Selon lui, la valeur secondaire (en dépit de son nom) est la plus importante: dans `software`, il y a 'soft', par opposition à `hardware`. Si vous avez un produit qui fonctionne bien mais que le code est impossible à changer, vous
+Selon lui, la valeur secondaire (en dépit de son nom) est la plus importante&nbsp;: dans `software`, il y a "soft", par opposition à `hardware`. Si vous avez un produit qui fonctionne bien mais que le code est impossible à changer, vous
 risquez de vous faire dépasser par la concurrence, de ne pas réussir à rajouter de nouvelles fonctionnalités,
-de ne pas pouvoir corriger les bugs suffisament rapidement, etc.
+de ne pas pouvoir corriger les bugs suffisamment rapidement, etc.
 
 Ainsi, si le code de test n'a *a priori* pas d'effet sur la valeur *primaire* du code (après tout, l'utilisateur
-du produit n'est en général même pas *consient* de son existence), il a un effet très important sur la valeur *secondaire*, comme on le verra par la suite
+du produit n'est en général même pas *conscient* de son existence), il a un effet très important sur la valeur *secondaire*, comme on le verra par la suite
 
 # pytest
 
-On a vu plus haut comment écrire du code de test "à la main" avec assert. Étoffons un peu l'exemple:
+On a vu plus haut comment écrire du code de test "à la main" avec `assert`. Étoffons un peu l'exemple&nbsp;:
 
 ```python
 # dans calc.py
@@ -144,9 +142,9 @@ result = calc.add_two(5)
 assert result == 7
 ```
 
-Procéder ainsi est fastidieux:
+Procéder ainsi est fastidieux&nbsp;:
 
-* Les valeurs effectives ne sont pas affichées par défault
+* Les valeurs effectives ne sont pas affichées par défaut
 * Le programme de test va s'arrêter à la première erreur, donc si `calc_one` est cassé, on ne saura rien sur l'était de `calc_two`
 * On ne peut pas facilement isoler les tests à lancer
 
@@ -176,7 +174,7 @@ def test_add_two():
     assert result == 7
 ```
 
-... et on corrige les bugs:
+... et on corrige les bugs&nbsp;:
 
 ```python
 def add_one(x):
@@ -187,7 +185,7 @@ def add_two(x):
     return x + 2
 ```
 
-Enfin, on lance `pytest` en précisant le chemin de fichier de test:
+Enfin, on lance `pytest` en précisant le chemin de fichier de test&nbsp;:
 
 ```
 $ pytest test_calc.py
@@ -198,7 +196,7 @@ test_calc.py ..                                                          [100%]
 
 
 Chaque point après `test_calc.py` représente un test qui passe. Voyons ce qui arrive si
-on ré-introduit un bug:
+on ré-introduit un bug&nbsp;:
 
 
 ```python
@@ -226,15 +224,15 @@ E       assert 6 == 4
 test_calc.py:5: AssertionError
 ```
 
-À noter:
+À noter :
 
 * Le test pour `add_two` a quand même été lancé
 * La valeur *effective* est affiché sous la ligne d'assert
 * Le message de backtrace a été affiché
 * On a une vue du code qui a produit le bug
-* Le test qui a echoué est affiché avec un `F` majuscule
+* Le test qui a échoué est affiché avec un `F` majuscule
 
-On peut aussi dire à pytest de ne lancer *que les tests qui ont échoué* à la session précédente:
+On peut aussi dire à pytest de ne lancer *que les tests qui ont échoué* à la session précédente&nbsp;:
 
 ```
 $ pytest test_calc.py --last-failed
@@ -245,13 +243,13 @@ test_calc.py
 _________________________________ test_add_one _________________________________
 ```
 
-Cool, non?
+Cool, non ?
 
 # Limites des tests
 
 Avant de poursuivre, penchons-nous sur deux limitations importantes des tests.
 
-Premièrement, les tests peuvent échouer même si le code de production est correct:
+Premièrement, les tests peuvent échouer même si le code de production est correct :
 
 ```python
 def test_add_one():
@@ -259,11 +257,11 @@ def test_add_one():
    assert result == 4
 ```
 
-On a un *faux positif*. L'exmeple peut vous faire sourire, mais c'est un problème plus
+On a un *faux positif*. L'exemple peut vous faire sourire, mais c'est un problème plus
 fréquent que ce que l'on croit.
 
 Ensuite, les tests peuvent passer *en dépit* de bugs dans le code. Par exemple, si
-on oublie une assertion:
+on oublie une assertion&nbsp;:
 
 ```python
 def test_add_two():
@@ -272,9 +270,9 @@ def test_add_two():
 ```
 
 Ici, on a juste vérifié qu'appeler `add_two(3)` ne provoque pas d'erreur. On dit
-qu'on a un *faux positif*, on un *bug silencieux*.
+qu'on a un *faux positif*, ou un *bug silencieux*.
 
-Autre exemple:
+Autre exemple :
 
 ```python
 def fonction_complexe():
@@ -302,7 +300,7 @@ revenons sur les bénéfices des tests sur la valeur secondaire du code.
 
 On a vu comment les tests peuvent mettre en évidence des bugs présents dans le code.
 
-Ainsi, a tout moment, on peut lancer la suite de test pour vérifier (une partie) du
+Ainsi, à tout moment, on peut lancer la suite de tests pour vérifier (une partie) du
 comportement du code, notamment après toute *modification* du code de production.
 
 On a donc une chance de trouver des bugs bien avant que les utilisateurs du produit
@@ -331,19 +329,19 @@ de leur apparente simplicité, écrire des tests est *difficile*. Cela demande u
 de celui qu'on a quand on écrit du code de production. En fait, écrire des bons tests est une compétence
 qui s'apprend.
 
-Ce que je vous propose ici c'est une *discipline* : un ensemble de règles et une façon de faire qui vous
-aidera à déveloper cette compétence. Plus vous pratiquerez cette discipline, meilleur sera votre code
+Ce que je vous propose ici c'est une *discipline*&nbsp;: un ensemble de règles et une façon de faire qui vous
+aidera à développer cette compétence. Plus vous pratiquerez cette discipline, meilleur sera votre code
 de test, et, par extension, votre code de production.
 
-Commençons par les règles:
+Commençons par les règles&nbsp;:
 
-* Règle 1: Il est interdit d'écrire du code de production, *sauf* si c'est pour faire passer un test qui
+* Règle 1 : Il est interdit d'écrire du code de production, *sauf* si c'est pour faire passer un test qui
   a échoué.
-* Règle 2: Il est interdit d'ecrire plus de code que celui qui est nécessaire pour provoquer une erreur
+* Règle 2 : Il est interdit d'écrire plus de code que celui qui est nécessaire pour provoquer une erreur
   dans les tests (n'importe quelle erreur)
-* Règle 3: Il est interdit d'écrire plus de code que celui qui est nécessaire pour faire passer
+* Règle 3 : Il est interdit d'écrire plus de code que celui qui est nécessaire pour faire passer
   un test qui a échoué
-* Règle 4: Une fois que tous les tests passent, il est interdit de modifier le code sans s'arrêter
+* Règle 4 : Une fois que tous les tests passent, il est interdit de modifier le code sans s'arrêter
   pour considérer la possibilité d'un refactoring. [^4]
 
 Et voici une procédure pour appliquer ces règles: suivre le *cycle* de dévelopement suivant:
@@ -996,7 +994,7 @@ def test_one_spare():
     assert score == 16
 ```
 
-Ouf! Suffisasement de refactoring pour l'instant, retour au rouge.
+Ouf! Suffisasemment de refactoring pour l'instant, retour au rouge.
 
 <center>⁂RED⁂</center>
 
