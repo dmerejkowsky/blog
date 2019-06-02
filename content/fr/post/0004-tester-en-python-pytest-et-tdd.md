@@ -1233,5 +1233,4 @@ Voilà pour cette présentation sur le TDD. Je vous recommande d'essayer cette m
 [^4]: Les trois premières règles sont de Uncle Bob, la dernière est de moi.
 [^5]: Vous avez tout à fait le droit d'écrire du code en français. Mais au moindre doute sur la possibilité qu'un non-francophone doive lire votre code un jour, vous *devez* passer à l'anglais.
 [^6]: Si cette façon de commenter du code vous intrigue, vous pouvez lire [cet excellent article](https://hackaday.com/2019/03/05/good-code-documents-itself-and-other-hilarious-jokes-you-shouldnt-tell-yourself/) (en anglais) pour plus de détails.
-[^7]: On retrouve ce concept de dévelopement incrémental
 [^8]: Par exemple, quand on lance python avec l'option `-O`
