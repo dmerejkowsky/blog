@@ -20,35 +20,33 @@ notamment sa série de vidéos sur
 En guise d'introduction, penchons-nous un peu sur le mot-clé `assert`.
 
 ```python
-def faire_le_café():
+def faire_le_café(au_régime=False, sucre=True):
      if au_régime:
-         assert pas_de_sucre
+         assert not sucre
 
 ```
 
-Que se passe-t-il lorsque ce code tourne avec `au_régime` à `True` et `pas_de_sucre` à `False`&nbsp;?
+Que se passe-t-il lorsque ce code tourne avec `au_régime` à `True` et `sucre` à `True`&nbsp;?
 
 ```python
->>> au_régime = True
->>> pas_de_sucre = False
->>> faire_le_café()
+>>> faire_le_café(au_régime=True, sucre=True)
 Traceback (most recent call last):
   File "foo.py", line 7, in <module>
     faire_le_café()
   File "foo.py", line 5, in faire_le_café
-    assert pas_de_sucre
+    assert not sucre
 AssertionError
 ```
 
 
-On constate que `assert` a évalué la condition et comme celle-ci était "falsy", il a jeté une exception nommée `AssertionError`
+On constate que `assert` a évalué la condition et comme celle-ci était "falsy", il a levé une exception nommée `AssertionError`
 
 On peut modifier le message de l'assertion en rajoutant une chaîne de caractères après la virgule&nbsp;:
 
 ```python
-def faire_le_café():
+def faire_le_café(au_régime=False, sucre=True):
      if au_régime:
-         assert pas_de_sucre, "tu es au régime: pas de sucre dans le café!"
+         assert not sucre, "tu es au régime: pas de sucre dans le café!"
 ```
 
 Et on peut aussi vérifier que `assert` ne fait rien si la condition est "truthy":
@@ -441,7 +439,7 @@ On lance les tests:
 $ pytest test_bowling.py
 test_bowling.py:1: in <module>
     import bowling
-E   ModuleNotFoundError: No module named 'bowling'```
+E   ModuleNotFoundError: No module named 'bowling'
 ```
 
 On a une erreur, donc on arrête d'écrire du code de test (règle 2), et on passe
