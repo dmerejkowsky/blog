@@ -1,8 +1,8 @@
 ---
 authors: [dmerej]
 slug: tester-en-python-pytest-et-tdd
-date: 2019-05-18T17:21:28.749210+00:00
-draft: true
+date: 2019-06-01T17:21:28.749210+00:00
+draft: false
 title: "Écriture de tests en Python: pytest et TDD"
 tags: [python]
 ---
