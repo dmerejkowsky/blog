@@ -7,12 +7,8 @@ title: "Écriture de tests en Python: pytest et TDD"
 tags: [python]
 ---
 
-TODO:
 
-general proofread
-proofread snpippets, make sure they are consistent
-
-Note : cet article reprend en grande partie le cours donné à [l'École
+Note&nbsp;: cet article reprend en grande partie le cours donné à [l'École
 du Logiciel Libre](https://e2li.org) le 18 mai 2019.
 Il s'inspire également des travaux de Robert C. Martin (alias Uncle Bob) sur la question,
 notamment sa série de vidéos sur
@@ -30,7 +26,7 @@ def faire_le_café():
 
 ```
 
-Que se passe-t-il lorsque ce code tourne avec `au_régime` à True et `pas_de_sucre` à False?
+Que se passe-t-il lorsque ce code tourne avec `au_régime` à `True` et `pas_de_sucre` à `False`&nbsp;?
 
 ```python
 >>> au_régime = True
@@ -45,7 +41,7 @@ AssertionError
 ```
 
 
-On constate qu'en réalité, tout ce que `assert` a fait, c'est d'évaluer la condition et comme la condition était "falsy", il a jeté une exception.
+On constate que `assert` a évalué la condition et comme celle-ci était "falsy", il a jeté une exception nommée `AssertionError`
 
 On peut modifier le message de l'assertion en rajoutant une chaîne de caractères après la virgule&nbsp;:
 
@@ -55,12 +51,21 @@ def faire_le_café():
          assert pas_de_sucre, "tu es au régime: pas de sucre dans le café!"
 ```
 
+Et on peut aussi vérifier que `assert` ne fait rien si la condition est "truthy":
+
+```python
+>>> x = 42
+>>> assert x
+# rien
+```
+
+
 # À quoi servent les assertions
 
 Comme on l'a vu, utiliser `assert` ressemble fortement à lever une exception. Dans les deux cas, on veut signaler
 à celui qui appelle notre code que quelque chose ne va pas. Mais `assert` est différent par deux aspects&nbsp;:
 
-* Il peut arriver que l'appel à `assert` soit ignoré
+* Il peut arrive que la ligne contenant `assert` soit tout simplement ignorée [^8].
 * `assert` et souvent utilisé pour signaler qu'il y a une erreur *dans le code* qui a appelé la fonction, et
   non à cause d'une erreur "extérieure"
 
@@ -96,7 +101,7 @@ AssertionError: result != 4
 
 Notez que le message d'erreur ne nous indique pas la *valeur effective* de `result`, juste sa *valeur attendue*.
 
-Quoique il en soit, le code dans `test_calc.py` nous a permis de trouver un bug dans le `calc.py`
+Quoi qu'il en soit, le code dans `test_calc.py` nous a permis de trouver un bug dans la fonction `add_one` de  `calc.py`
 
 # Code de test et code de production
 
@@ -112,11 +117,11 @@ Une petite digression s'impose ici. Selon Robert C. Martin, le code possède une
 * La valeur secondaire est le fait que le code (et donc le produit) peut être *modifié*.
 
 Selon lui, la valeur secondaire (en dépit de son nom) est la plus importante&nbsp;: dans `software`, il y a "soft", par opposition à `hardware`. Si vous avez un produit qui fonctionne bien mais que le code est impossible à changer, vous
-risquez de vous faire dépasser par la concurrence, de ne pas réussir à rajouter de nouvelles fonctionnalités,
-de ne pas pouvoir corriger les bugs suffisamment rapidement, etc.
+risquez de vous faire de ne pas réussir à rajouter de nouvelles fonctionnalités,
+de ne pas pouvoir corriger les bugs suffisamment rapidement, et de vous faire dépasser par la concurrence.
 
 Ainsi, si le code de test n'a *a priori* pas d'effet sur la valeur *primaire* du code (après tout, l'utilisateur
-du produit n'est en général même pas *conscient* de son existence), il a un effet très important sur la valeur *secondaire*, comme on le verra par la suite
+du produit n'est en général même pas *conscient* de son existence), il a un effet très important sur la valeur *secondaire*, comme on le verra par la suite.
 
 # pytest
 
@@ -126,7 +131,7 @@ On a vu plus haut comment écrire du code de test "à la main" avec `assert`. É
 # dans calc.py
 
 def add_one(x):
-     return x + 1
+     return x + 2
 
 def add_two(x):
      return x + 2
@@ -142,15 +147,15 @@ result = calc.add_two(5)
 assert result == 7
 ```
 
-Procéder ainsi est fastidieux&nbsp;:
+On constate que tester le code ainsi est fastidieux&nbsp;:
 
 * Les valeurs effectives ne sont pas affichées par défaut
-* Le programme de test va s'arrêter à la première erreur, donc si `calc_one` est cassé, on ne saura rien sur l'était de `calc_two`
+* Le programme de test va s'arrêter à la première erreur, donc si `calc_one` est cassé, on ne saura rien sur l'état de `calc_two`
 * On ne peut pas facilement isoler les tests à lancer
 
 C'est là que `pytest` entre en jeu.
 
-On commence par créer un virtualenv pour `calc` et installer `pytest` dedans [^2]
+On commence par créer un virtualenv pour `calc` et par installer `pytest` dedans [^2]
 
 ```bash
 $ mkdir -p venvs && cd venvs
@@ -228,7 +233,7 @@ test_calc.py:5: AssertionError
 
 * Le test pour `add_two` a quand même été lancé
 * La valeur *effective* est affiché sous la ligne d'assert
-* Le message de backtrace a été affiché
+* La backtrace a été affiché
 * On a une vue du code qui a produit le bug
 * Le test qui a échoué est affiché avec un `F` majuscule
 
@@ -253,17 +258,20 @@ Premièrement, les tests peuvent échouer même si le code de production est cor
 
 ```python
 def test_add_one():
-   result = add_one(1, 2)
+   result = add_one(2)
    assert result == 4
 ```
 
-On a un *faux positif*. L'exemple peut vous faire sourire, mais c'est un problème plus
+Ici on a un *faux positif*. L'exemple peut vous faire sourire, mais c'est un problème plus
 fréquent que ce que l'on croit.
 
 Ensuite, les tests peuvent passer *en dépit* de bugs dans le code. Par exemple, si
 on oublie une assertion&nbsp;:
 
 ```python
+def add_two(x):
+    return x + 3
+
 def test_add_two():
     result = calc.add_two(3)
     # fin du test
@@ -314,18 +322,16 @@ Imaginez un code avec un comportement assez complexe. Vous avez une nouvelle fon
 rajouter, mais le code dans son état actuel ne s'y prête pas.
 
 Une des solutions est de commencer par effectuer un *refactoring*, c'est-à dire de commencer
-par *adapter* le code mais *sans changer son comportement*. Une fois ce refactoring effectué,
+par *adapter* le code mais *sans changer son comportement* (donc sans introduire de bugs). Une fois ce refactoring effectué,
 le code sera prêt à être modifié et il deviendra facile d'ajouter la fonctionnalité.
 
-On voit ici que disposer d'une batterie de tests qui vérifie le comportement du programme automatiquement
-est très utile. Si, à la fin du refactoring vous pouvez lancer les tests et constater qu'ils passent tous,
-vous aurez plus de confiance dans votre refactoring.
+Ainsi, disposer d'une batterie de tests qui vérifient le comportement du programme automatiquement et de manière exhaustive
+est très utile. Si, à la fin du refactoring vous pouvez lancer les tests et constater qu'ils passent tous, vous serez plus confiant sur le fait que votre refactoring n'a pas introduit de nouveaux bugs.
 
 
 # Une discipline
 
-Jusqu'ici, on a parlé des effets bénéfiques des tests. Ce que je ne vous ai pas dit, c'est qu'en dépit
-de leur apparente simplicité, écrire des tests est *difficile*. Cela demande un état d'esprit différent
+Cela peut paraître surprenant, surtout à la lumière des exemples basiques que je vous ai montrés, mais écrire des tests est un art *difficile* à maîtriser. Cela demande un état d'esprit *différent*
 de celui qu'on a quand on écrit du code de production. En fait, écrire des bons tests est une compétence
 qui s'apprend.
 
@@ -382,7 +388,7 @@ On peut se dire que pour calculer le score, une bonne façon sera d'avoir une cl
 * `roll()`, qui sera appellée à chaque lancer avec le nombre de quilles renversées en paramètre
 * `score()`, qui renvera le score final
 
-Au niveau du découpage en classes, on pourrait partir du diagramme suivant:
+Au niveau du découpage en classes, on peut partir du diagramme suivant:
 
 
 ![class diagram](/pics/bowling.png)
@@ -458,11 +464,9 @@ Bon, clairement ici il n'y a rien à refacter (règle 4), donc on repart au déb
 
 <center>⁂ RED⁂</center>
 
-Ici on cherche à faire échouer le test le plus simplement possible. Vu qu'on sait qu'on
-a une classe `Game` avec deux méthodes, il est naturel de commence par un test qui
-construit une class `Game`, puis de tester les deux méthodes une par une.
+Ici on cherche à faire échouer le test le plus simplement possible.
 
-Commençons donc par:
+Commençons simplement par véfier qu'on peut instancier la class Game&nbsp;:
 
 ```python
 import bowling
@@ -482,7 +486,7 @@ Le test échoue, faisons-le passer:
 <center>⁂GREEN⁂</center>
 
 ```python
-class Bowling:
+class Game:
     pass
 ```
 
@@ -521,7 +525,7 @@ et 3 lignes de code de production ...
 
 <center>⁂RED⁂</center>
 
-On continue à tester les méthodes de la classe Game, de la façon la plus simple possible:
+On continue à tester les méthodes de la classe Game, de la façon la plus simple possible&nbsp;:
 
 ```python
 def test_can_score():
@@ -538,7 +542,7 @@ E       AttributeError: 'Game' object has no attribute 'roll'
 
 <center>⁂GREEN⁂</center>
 
-On fait passer le test, toujours de la façon la plus simple
+On fait passer le test, toujours de la façon la plus simple possible&nbsp;:
 
 ```python
 class Game:
@@ -551,7 +555,7 @@ class Game:
 
 <center>⁂ REFACTOR⁂</center>
 
-Le code production a l'air impossible à refactore, mais jetons un oeil aux tests:
+Le code production a l'air impossible à refactorer, mais jetons un œil aux tests:
 
 ```python
 import bowling
@@ -578,7 +582,7 @@ peuvent être supprimés.
 
 <center>⁂RED⁂</center>
 
-En y réflchéssant, `can_score()` ne vérifie même pas la valeur de retour de `score()`. Écrivons un test légèrement différent:
+En y réflchéssant, `can_score()` ne vérifie même pas la valeur de retour de `score()`. Écrivons un test légèrement différent&nbsp;:
 
 ```python
 def test_score_is_zero_after_gutter():
@@ -610,10 +614,9 @@ class Game:
         return 0
 ```
 
-Notez aussi qu'on a fait passer le test en écrivant du code que l'on *sait* être incorrect. Mais la règle 3 nous interdit d'aller plus loin.
+Notez qu'on a fait passer le test en écrivant du code que l'on *sait* être incorrect. Mais la règle 3 nous interdit d'aller plus loin.
 
-Vous pouvez voir cela comme une contrainte arbitraire (et vous auriez
-raison), mais j'aimerais vous faire remarquer qu'on en a fait *spécifié*
+Vous pouvez voir cela comme une contrainte arbitraire (et c'en est est une), mais j'aimerais vous faire remarquer qu'on en a fait *spécifié*
 l'API de la classe Game. Le test, bien qu'il ne fasse que quelques lignes,
 nous indique l'existence des métode `roll()` et `score()`, les paramètres
 qu'elles attendent et, à un certain point, la façon dont elles intéragissent
@@ -626,7 +629,7 @@ vous avez la possibilité de vous concentrer *uniquement* sur l'API de votre cod
 sans vous soucier de l'implémentation.
 
 Bon, on a enlevé plein de tests, du coup il n'y a encore plus grand-chose à refactorer,
-passons au prochain test
+passons au prochain.
 
 <center>⁂RED⁂</center>
 
@@ -691,11 +694,11 @@ def test_all_ones():
 ```
 
 Ces deux tests nous montre une *ambiguïté* dans les specifications. Veut-on pouvoir obtenir le score en temps réel, ou voulons-nous
-simplement appeler `score` à la fin de la partie?
+simplement appeler `score` à la fin de la partie&nbsp;?
 
-On retrouve ce lien intéressant entre tests et API: aurions-nous découvert cette ambiguïté sans avoir écrit aucun test?
+On retrouve ce lien intéressant entre tests et API: aurions-nous découvert cette ambiguïté sans avoir écrit aucun test&nbsp;?
 
-Ici, on va décider que `score()` n'est appelé qu'à la fin de la partie, et donc réécrire les tests ainsi:
+Ici, on va décider que `score()` n'est appelé qu'à la fin de la partie, et donc réécrire les tests ainsi&nbsp;:
 
 ```python
 def test_gutter_game():
@@ -714,7 +717,7 @@ def test_all_ones():
     assert score == 20
 ```
 
-Les tests continuent à passer. On peut maintenant réduire la duplication en introduisant une fonction `roll_many`:
+Les tests continuent à passer. On peut maintenant réduire la duplication en introduisant une fonction `roll_many`&nbsp;:
 
 ```python
 def roll_many(game, count, value):
@@ -738,7 +741,7 @@ def test_all_ones():
 
 <center>⁂RED⁂</center>
 
-L'algorithme utilisé (rajouter les quilles renversées au score à chaque lancer) semble fonctionné tant qu'il n'y a ni spare ni strike.
+L'algorithme utilisé (rajouter les quilles renversées au score à chaque lancer) semble fonctionner tant qu'il n'y a ni spare ni strike.
 
 Du coup, rajoutons un test sur les spares:
 
@@ -772,9 +775,9 @@ Et là, on se retrouve *coincé*. Il semble impossible d'implémenter la gestion
         self.knocked_pins += pins
 ```
 
-C'est un état dans lequel on peut parfois se retrouver. La solution? Faire un pas en arrière pour prendre du recul.
+C'est un état dans lequel on peut parfois se retrouver. La solution&nbsp;? Faire un pas en arrière pour prendre du recul.
 
-On peut commencer par désactiver le test qui nous ennuie:
+On peut commencer par désactiver le test qui nous ennuie&nbsp;:
 
 ```python
 import pytest
@@ -785,7 +788,7 @@ def test_one_spare():
    ...
 ```
 
-Ensuite, on peut regarder le code de production dans le blanc des yeux:
+Ensuite, on peut regarder le code de production dans le blanc des yeux&nbsp;:
 
 ```python
     def roll(self, pins):
@@ -795,7 +798,7 @@ Ensuite, on peut regarder le code de production dans le blanc des yeux:
         return self.knocked_pins
 ```
 
-Ce code a un problème: en fait, c'est la méthode `roll()` qui calcule le score, et non la fonction `score()`!
+Ce code a un problème&nbsp;: en fait, c'est la méthode `roll()` qui calcule le score, et non la fonction `score()`&nbsp;!
 
 On comprend que `roll()` doit simplement enregistrer l'ensemble des résultats des lancers, et qu'ensuite seulement,
 `score()` pourra parcourir les frames et calculer le score.
@@ -830,7 +833,7 @@ du début de partie (donc 20 lancers, 2 pour chacune des 10 premières frame)
 * strike: par défnition, on n'a fait qu'un lancer à la dernière frame, donc au plus 19 lancers, et 19 plus 2 font bien 21.
 * sinon: pas de lancer supplémentaire, on reste à 20 lancers.
 
-Relançons les tets:
+Relançons les tests:
 
 ```
 test_bowling.py ..s                                                      [100%]
@@ -872,15 +875,15 @@ une variable `i` qui vaut l'index du premier lancer de la prochaine frame:
         return result
 ```
 
-Mon Dieu que c'est moche! Mais cela me permet d'aborder un autre aspect du TDD. Ici, on était dans la phase "green". On a fait tout ce qu'on pouvait
-pour faire passer les tests. C'est un état d'esprit particulier, on était concentré sur l'algorithme en lui même.
+Mon Dieu que c'est moche! Mais cela me permet d'aborder un autre aspect du TDD. Ici, on est dans la phase "green". On fait tout ce qu'on peut
+pour faire passer le tests et rien d'autre. C'est un état d'esprit particulier, on était concentré sur l'algorithme en lui même.
 
 
 <center>⁂REFACTOR⁂</center>
 
-Par contraste, ici on *sait* que l'algorithme est correct. Notre *unique* objectif est de rendre le code plus lisible. Un des avantages de TDD est qu'on jongle entre des objectifs divers, au lieu d'essayer de tout faire en même temps.
+Par contraste, ici on *sait* que l'algorithme est correct. Notre *unique* objectif est de rendre le code plus lisible. Un des avantages de TDD est qu'on passe d'un objectif précis à l'autre, au lieu d'essayer de tout faire en même temps.
 
-Bref, une façon de refactorer est d'introduire une nouvelle méthode:
+Bref, une façon de refactorer est d'introduire une nouvelle méthode&nbsp;:
 
 ```python
     # note: i represents the index of the
@@ -903,8 +906,8 @@ Bref, une façon de refactorer est d'introduire une nouvelle méthode:
 
 ```
 
-En passant, on s'est débarrassé du commentaire "# spare" à la fin du `if`, vu qu'il n'était plus utile. En revanche, on a gardé un commentaire au-dessu
-de la méthode `is_spare()` parce qu'il n'est évident nulle part de quoi `i` est l'index. [^6]
+En passant, on s'est débarrassé du commentaire "# spare" à la fin du `if`, vu qu'il n'était plus utile. En revanche, on a gardé un commentaire au-dessus
+de la méthode `is_spare()`. En effet, il n'est pas évident de comprendre la valeur représentée par l'index `i` juste en lisant le code. [^6]
 
 On voit aussi qu'on a gardé un peu de duplication. Ce n'est pas forcément très grave, surtout que l'algorithme est loin d'être terminé. Il faut encore gérer les strikes et la dernière frame.
 
@@ -921,7 +924,7 @@ def test_one_spare():
     assert score == 16
 ```
 
-On a le même genre de commentaire qui nous suggère qu'il manque une abstraction quelque part: une fonction `roll_spare`:
+On a le même genre de commentaire qui nous suggère qu'il manque une abstraction quelque part&nbsp;: une fonction `roll_spare`:
 
 
 ```python
@@ -951,9 +954,9 @@ Les tests continuent à passer, tout va bien.
 
 Mais le code de test peut *encore* être amélioré. On voit qu'on a deux fonctions qui prennent chacune le même paramètre en premier argument.
 
-Souvent, c'est le sigen qu'une classe se cache quelque part.
+Souvent, c'est le signe qu'une classe se cache quelque part.
 
-On peut créer une classe `GameTest` qui hérite de game et contient les méthodes `roll_many()` et `roll_index()`:
+On peut créer une classe `GameTest` qui hérite de `Game` et contient les méthodes `roll_many()` et `roll_spare()`&nbsp;:
 
 
 ```python
@@ -998,7 +1001,7 @@ Ouf! Suffisasemment de refactoring pour l'instant, retour au rouge.
 
 <center>⁂RED⁂</center>
 
-Avec notre nouvelle classe spécifique au test (au dit souvent "test helper"), on peut rajouter le test sur les strikes facilement:
+Avec notre nouvelle classe définie au sein de `test_bowling.py` (au dit souvent "test helper"), on peut facilement rajouter le test sur les strikes&nbsp;:
 
 
 ```python
@@ -1012,7 +1015,7 @@ def test_one_strike():
     assert score == 24
 ```
 
-Bon a piori tous les tests devraient passer, sauf le dernier, et on devrait avoir une erreur de genre `x != 24`, avec x légèrement en-dessous de 24:
+A piori, tous les tests devraient passer sauf le dernier, et on devrait avoir une erreur de genre `x != 24`, avec x légèrement en-dessous de 24:
 
 ```
 ________________________________ test_all_ones _________________________________
@@ -1036,15 +1039,30 @@ E       assert 17 == 24
 test_bowling.py:48: AssertionError
 ```
 
-Oups, deux erreurs! Il se trouve qu'on a oublié de lancer les tests à la fin du dernier refactoring, il y a une ligne qui a été changée de façon incorrecte: ``` game = bowling.GameTest()``` au lieu de ```game = GameTest()```. L'aviez-vous remarqué?
+Oups, deux erreurs! Il se trouve qu'on a oublié de lancer les tests à la fin du dernier refactoring. En fait, il y a une ligne qui a été changée de façon incorrecte: ``` game = bowling.GameTest()``` au lieu de ```game = GameTest()```. L'aviez-vous remarqué?
 
 Cela illustre deux points:
 
 1. Il faut toujours avoir une vague idée des tests qui vont échouer et de quelle manière
-2. Il est important de garder le cycle de TDD court. En effet, ici on *sait* que seuls les tests ont changé depuis la dernière session de test, donc on *sait* que le problème vient des tests et nom du code.
+2. Il est important de garder le cycle de TDD court. En effet, ici on *sait* que seuls les tests ont changé depuis la dernière session de test, donc on *sait* que le problème vient des tests et non du code de production.
 
 On peut maintenant corriger notre faux positif, relancer les tests, vérifier qu'ils échouent *pour la bonne raison* et passer à l'étape suivante.
 
+```
+______________________________ test_one_strike ________________________________
+
+    def test_one_strike():
+        game = GameTest()
+        game.roll_strike()
+        game.roll(3)
+        game.roll(4)
+        game.roll_many(16, 0)
+        score = game.score()
+>       assert score == 24
+E       assert 17 == 24
+
+test_bowling.py:48: AssertionError
+```
 
 <center>⁂GREEN⁂</center>
 
@@ -1086,7 +1104,7 @@ J'espère que vous ressentez ce sentiment que le code "s'écrit tout seul". Par 
 
 <center>⁂REFACTOR⁂</center>
 
-On a mantenant une boucle avec *trois* branches. Il est plus facile maintenant de finir le refactoring commencé précédement, et d'isoler les lignes qui se ressemblent des lignes qui différent:
+On a mantenant une boucle avec *trois* branches. Il est plus facile maintenant de finir le refactoring commencé précédement, et d'isoler les lignes qui se ressemblent des lignes qui différent&nbsp;:
 
 ```python
 class Game:
@@ -1128,10 +1146,9 @@ On approche du but, il ne reste plus qu'à gérer la dernière frame.
 
 <center>⁂RED⁂</center>
 
-Un test qu'on peut écrire, c'est celui du jeu parfait, que des strikes! Il y a donc 10 frames de strikes, et on finit par deux strikes avec
-les deux derniers lancers de la dernière frame, soit 12 strikes en tout.
+Écrivons maintenant le test du jeu parfait, on le joueur fait un stirke à chaque essai. Il y a donc 10 frames de strike, puis deux strikes (pour les deux derniers lancers de la dernière frame) soit 12 strikes en tout.
 
-Et comme tout joueur de bowling le sait, le score maximum au bowling est 300:
+Et comme tout joueur de bowling le sait, le score maximum au bowling est 300&nbsp;:
 
 ```python
 def test_perfect_game():
@@ -1153,7 +1170,7 @@ test_bowling.py .....                                                          [
 Ils passent?
 
 Ici je vais vous laisser 5 minutes de refléxion pour vous convaincre qu'en realité, la dernière
-frame n'a absolument rien de spéciale, et que c'est la raison pour laquelle notre algorithme
+frame n'a absolument rien de spécial, et que c'est la raison pour laquelle notre algorithme
 fonctionne.
 
 # Conclusions
@@ -1180,7 +1197,7 @@ D'abord, je trouve qu'on peut être fier du code auquel on a abouti:
 Le code se "lit" quasiment comme les règles du bowling. Il a l'air correct, et il *est* correct.
 
 Ensuite, même si notre refléxion initiale nous a guidé (notamment avec la classe Game et ses deux méthodes),
-notez qu'on a pas eu besoin de class Frame ou Roll, ni de la classe fille TenthFrame! En ce sens, on peut dire que TDD est égalemnent
+notez qu'on a pas eu besoin des classes `Frame` ou `Roll`, ni de la classe fille `TenthFrame`. En ce sens, on peut dire que TDD est égalemnent
 une façon de *concevoir* le code, et pas juste une façon de faire évoluer le code de production et le code de test en parralèle.
 
 Enfin, on avait un moyen de savoir quand le code était *fini*. Quand on pratique TDD, on sait qu'on peut s'arrêter dès que tous les tests
@@ -1191,9 +1208,9 @@ passent. Et, d'après l'ensemble des règles, on sait qu'on a écrit *uniquement
 
 Plusieurs remarques:
 
-* La méthode `roll()` peut être appelée un nombre trop grand de fois, comme le prouve le test suivant:
+1/ La méthode `roll()` peut être appelée un nombre trop grand de fois, comme le prouve le test suivant:
 
-```
+```python
 def test_two_many_rolls():
    game = GameTest()
    game.roll_many(21, 1)
@@ -1202,9 +1219,15 @@ def test_two_many_rolls():
 
 Savoir ci c'est un bug ou non dépend des spécifications.
 
-* Il y a probablement une classe ou une méthode cachée dans la classe Game. En effet, on a plusieurs méthodes qui prennent toutes un index en premier paramètre, et le paramètre en question nécessite un commentaire pour être compris.
+2/ Il y a probablement une classe ou une méthode cachée dans la classe `Game`. En effet, on a plusieurs méthodes qui prennent toutes un index en premier paramètre, et le paramètre en question nécessite un commentaire pour être compris.
 
 Résoudre ces deux problèmes sera laissé en exercice au lecteur :P
+
+# Conclusion
+
+Voilà pour cette présentation sur le TDD. Je vous recommande d'essayer cette méthode par vous-mêmes. En ce qui me concerne elle a changé ma façon d'écrire du code en profondeur, et après plus de 5 ans de pratique, j'ai du mal à envisager de coder autrement.
+
+À +
 
 [^1]: C'est payant, c'est en anglais, les exemples sont en Java, mais c'est vraiment très bien.
 [^2]: Voir [cet article]({{< relref "0002-bibliotheques-tierces-python.md" >}}) pour comprendre pourquoi on procède ansi.
@@ -1212,4 +1235,5 @@ Résoudre ces deux problèmes sera laissé en exercice au lecteur :P
 [^4]: Les trois premières règles sont de Uncle Bob, la dernière est de moi.
 [^5]: Vous avez tout à fait le droit d'écrire du code en français. Mais au moindre doute sur la possibilité qu'un non-francophone doive lire votre code un jour, vous *devez* passer à l'anglais.
 [^6]: Si cette façon de commenter du code vous intrigue, vous pouvez lire [cet excellent article](https://hackaday.com/2019/03/05/good-code-documents-itself-and-other-hilarious-jokes-you-shouldnt-tell-yourself/) (en anglais) pour plus de détails.
-[^7]: On retrouve ce ce concept de dévelopement incrémental
+[^7]: On retrouve ce concept de dévelopement incrémental
+[^8]: Par exemple, quand on lance python avec l'option `-O`
