@@ -260,7 +260,7 @@ def test_add_one():
    assert result == 4
 ```
 
-Ici on a un *faux positif*. L'exemple peut vous faire sourire, mais c'est un problème plus
+Ici on a un *faux négatif*. L'exemple peut vous faire sourire, mais c'est un problème plus
 fréquent que ce que l'on croit.
 
 Ensuite, les tests peuvent passer *en dépit* de bugs dans le code. Par exemple, si
