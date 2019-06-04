@@ -654,7 +654,7 @@ E       assert 0 == 20
 
 Ici la boucle dans le test nous force à *changer* l'état de la
 class Game à chaque appel à `roll()`, ce que nous pouvouns faire
-en rajoutant un attribut qui conmpte le nombre de quilles
+en rajoutant un attribut qui compte le nombre de quilles
 renversées
 
 ```python
@@ -673,7 +673,7 @@ Les deux tests passent, mission accomplie.
 
 <center>⁂REFACTOR⁂</center>
 
-Encore une fois, concentrous-nous sur les tests.
+Encore une fois, concentrons-nous sur les tests.
 
 ```python
 def test_score_is_zero_after_gutter():
@@ -812,8 +812,8 @@ class Game:
         self.roll_index = 0
 
     def roll(self, pins):
-        self.rolls[self.current_roll] = pins
-        self.current_roll += 1
+        self.rolls[self.roll_index] = pins
+        self.roll_index += 1
 
     def score(self):
         result = 0
@@ -999,10 +999,19 @@ Ouf! Suffisasemment de refactoring pour l'instant, retour au rouge.
 
 <center>⁂RED⁂</center>
 
-Avec notre nouvelle classe définie au sein de `test_bowling.py` (au dit souvent "test helper"), on peut facilement rajouter le test sur les strikes&nbsp;:
+Avec notre nouvelle classe définie au sein de `test_bowling.py` (on dit souvent "test helper"), on peut facilement rajouter le test sur les strikes&nbsp;:
 
 
 ```python
+class GameTest:
+    ...
+    def roll_spare(self):
+        ...
+
+    def roll_strike(self):
+        self.roll(10)
+
+
 def test_one_strike():
     game = GameTest()
     game.roll_strike()
@@ -1013,7 +1022,7 @@ def test_one_strike():
     assert score == 24
 ```
 
-A piori, tous les tests devraient passer sauf le dernier, et on devrait avoir une erreur de genre `x != 24`, avec x légèrement en-dessous de 24:
+A priori, tous les tests devraient passer sauf le dernier, et on devrait avoir une erreur de genre `x != 24`, avec x légèrement en-dessous de 24:
 
 ```
 ________________________________ test_all_ones _________________________________
@@ -1144,7 +1153,7 @@ On approche du but, il ne reste plus qu'à gérer la dernière frame.
 
 <center>⁂RED⁂</center>
 
-Écrivons maintenant le test du jeu parfait, on le joueur fait un stirke à chaque essai. Il y a donc 10 frames de strike, puis deux strikes (pour les deux derniers lancers de la dernière frame) soit 12 strikes en tout.
+Écrivons maintenant le test du jeu parfait, on le joueur fait un strike à chaque essai. Il y a donc 10 frames de strike, puis deux strikes (pour les deux derniers lancers de la dernière frame) soit 12 strikes en tout.
 
 Et comme tout joueur de bowling le sait, le score maximum au bowling est 300&nbsp;:
 
