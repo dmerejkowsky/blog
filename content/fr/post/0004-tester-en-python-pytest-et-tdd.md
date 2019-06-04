@@ -909,7 +909,7 @@ de la méthode `is_spare()`. En effet, il n'est pas évident de comprendre la va
 
 On voit aussi qu'on a gardé un peu de duplication. Ce n'est pas forcément très grave, surtout que l'algorithme est loin d'être terminé. Il faut encore gérer les strikes et la dernière frame.
 
-Mais avant cela, revons sur les tests (règle 4)
+Mais avant cela, revenons sur les tests (règle 4)
 
 ```python
 def test_one_spare():
