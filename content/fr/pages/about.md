@@ -45,6 +45,10 @@ Choses à savoir:
   en cas de besoin. Notez que vous ne serez *pas* notifié des réponses à vos commentaires par e-mail.
 * Une fois votre commentaire soumis, vous aurez 15 minutes pour le modifier ou le supprimer.
 
+## Suggérer des corrections
+
+Si vous trouvez des typos ou des erreurs similaires dans le contenu des articles et que vous avez un compte GitHub, le plus pratique pour moi est de créer une pull request en cliquant sur le lien correspondant en haut de chaque article. Vous êtes bien sûr libres d'envoyer les corrections de la façon que *vous* préfèrez&nbsp;: je suis toujours content quand des lecteurs attentifs me permettent d'améliorer mon contenu&nbsp;!
+
 ## e-mail
 
 Voici mon addresse e-mail, chiffrée avec un puissant algorithme :

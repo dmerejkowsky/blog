@@ -44,6 +44,12 @@ Here are a few things you need to know:
 * After you submit your comment, you'll have 15 minutes to edit or delete it
   (If you are wondering, this works with a secret token stored in a cookie).
 
+## Suggest an edit
+
+At the top of each article, you'll find a link allowing you to suggest an edit on Github.
+This is what works best *for me*, but you are free to use any method that works best *for you*.
+I'm always grateful when attentive readers allow me to improve my work!
+
 ## Mastodon
 
 I have a [Mastodon](https://mastodon.social/about) account:
