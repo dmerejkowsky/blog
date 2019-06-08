@@ -39,7 +39,7 @@ languages:
         info:
           description: ~
         settings:
-          dateFormat: 02/01 2006
+          dateFormat: 02/01/2006
           showReadingTime: true
       menu:
         main:
