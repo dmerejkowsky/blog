@@ -18,7 +18,7 @@ n'en tire aucun revenu.
 Le serveur est hébergé chez [Digital Ocean](https://www.digitalocean.com/), qui pourra vous
 transmettre mes coordonnées si nécessaire.
 
-Le service de commentaires utilise des cookies pour vous permettre d'éditer vos
+Le [service de commentaires](https://posativ.org/isso/) utilise des cookies pour vous permettre d'éditer vos
 commentaires et est capable de stocker votre e-mail si vous le lui donnez.
 
 En cas de besoin, ces informations peuvent être modifiées ou supprimées sur
