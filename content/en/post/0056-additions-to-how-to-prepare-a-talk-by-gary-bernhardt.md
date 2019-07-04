@@ -12,9 +12,11 @@ Recently, Gary Bernhardt, from [destroyallsoftware](https://www.destroyallsoftwa
 
 I highly recommend you read it, it contains lots of good advice.
 
-I myself have given quite a few talks, but in a slightly different context: I was sent by my company.
+I myself have given quite a few talks, but in a different context: I was sent by my company. This causes the preparation to be different, because you can do it *with your team*.
 
-This changes a couple of minor things, so I though I could add a few points to the original article.
+Also, I just *love* answering questions on stage (but that's a matter of personal taste).
+
+So with this in mind, here are a few points I would like to discuss in addition to the original article. Let's get started.
 
 <!--more-->
 
@@ -29,19 +31,21 @@ I made my company pay for one that looks just like the above picture. It comes w
 By using this, you won't have to point to things at the screen with your hand, and you won't have to go back to your computer every time you need to switch to the next slide. This will help you achieve a more steady flow.
 
 
-# Rehearsal
+# How to get feedback on the slides
 
-After you've done enough repetitions to have a talk _you_ like, and before the actual event, I suggest you do at least two rehearsals with some team mates.
+Once you've done all the repetitions by yourself and you are confident your talk won't change much, it's time to get feedback on your slides. I recommend using something like Google Docs so you can quickly gather comments on both the text and design of the slides.
 
-## First rehearsal
+Next comes the time to rehearse your talk in front of a live audience - you can use your team mates for that :)
 
-### Preparation
+# First rehearsal
+
+## Preparation
 
 * Book a room for about twice the expected time of your talk.
 * Make sure each slide is numbered.
 * Ask each participant to come with pen and paper.
 
-### Talk itself
+## Talk itself
 
 Give the talk as you would in front of a live audience. Assume your team mates know almost nothing about what you are talking about and who you are.
 
@@ -50,7 +54,7 @@ Ask one of them to time the rehearsal so that know if you still need to cut some
 If your talk contains jokes, questions, or any other interaction with the audience, it's a good way to make sure they work.
 
 
-### Feedback
+## Feedback
 
 Once the talk is done, it's time to get feedback.
 
@@ -65,7 +69,7 @@ Instead, go back to the beginning of your slides, show them one by one, and ask 
 * If they agree about something, they'll say it together and you're more likely to remember it.
 * If they disagree, you'll have an opportunity to discuss things right on the spot.
 
-## Second rehearsal
+# Second rehearsal
 
 
 The second rehearsal is a way for you to reflect on the feedback, do more work by your own and finally do one last repetition.
@@ -79,7 +83,6 @@ Resist the urge to change too much things after this point. It's probably too la
 
 
 # The big day
-
 
 ## Be there early
 
