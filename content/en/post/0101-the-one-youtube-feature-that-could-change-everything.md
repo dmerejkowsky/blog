@@ -37,6 +37,6 @@ I choose to not pay for this video   |  I want to pay for this video, and
 
 This is what we call "prix libre" in French. The litteral translation (free price) means [something different](). I guess we could call it a pay-what-you-want system.
 
-# What this will changed
+# What this will change
 
 I think a mechanism like this will change the incentive for YouTube

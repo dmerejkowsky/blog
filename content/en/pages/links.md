@@ -330,6 +330,7 @@ to keep easily available.
 * [Kite - Programming copilot](https://kite.com/)
 * [Knox: Secret management service](https://github.com/pinterest/knox)
 * [Lektor: Static File Content Management System](https://www.getlektor.com)
+* [LocalStack: Develop and test your AWS apps offline](https://localstack.cloud/)
 * [MachoView: Visual Mach-O file browser](https://sourceforge.net/projects/machoview)
 * [Mail-in-a-box](https://mailinabox.email/)
 * [mas - Apple Store Automation](https://github.com/mas-cli/mas)
