@@ -23,11 +23,6 @@ q.zrerw@tznvy.pbz
 If you can't decrypt this, feel free to leave a comment anywhere with your
 e-mail address and I'll get back to you.
 
-## GPG key
-
-Speak of encryption, you can find my publig GPG key at https://dmerej.info/pub/dmerej.gpg. So far
-it has not been signed by anyone, so use at your own risk ...
-
 
 ## Comments
 
@@ -78,3 +73,9 @@ Among other projects, you can find the [sources of this blog](https://github.com
 ## dev.to
 
 I cross-post most of my blog posts to [dev.to](https://dev.to/dmerejkowsky). You can reach me there if you like.
+
+
+## GPG
+
+Finally, I have a [keybase.io](https://keybase.io/dmerej) account. You'll find my public GPG keys and their
+proof of ownership there.
