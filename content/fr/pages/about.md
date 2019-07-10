@@ -24,6 +24,8 @@ commentaires et est capable de stocker votre e-mail si vous le lui donnez.
 En cas de besoin, ces informations peuvent être modifiées ou supprimées sur
 simple demande.
 
+# Qui je suis
+
 En quelques mots: je travaille dans l'informatique depuis une petite dizaine d'années. J'ai ouvert ce blog pour partager mes connaissances et apprendre au contact d'autres personnes. J'aime Python3, écrire des tests, et coller des post-its sur des tableaux (beaucoup de posts-its).
 
 # Me contacter
