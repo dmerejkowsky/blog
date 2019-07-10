@@ -60,10 +60,6 @@ q.zrerw@tznvy.pbz
 ```
 Si vous n'arrivez pas à la déchiffrer, laissez simplement un commentaire n'importe où contenant votre propre adresse et je vous écrirai.
 
-
-Vous trouverez ma clé GPG ici : https://dmerej.info/pub/dmerej.gpg. Pour l'instant, elle n'a été signée par personne - utilisez la
-à vos riqsues et périls.
-
 ## Mastodon
 
 Je dispose d'un compte [Mastodon](https://mastodon.social/about): `@dmerej@mamot.fr`
