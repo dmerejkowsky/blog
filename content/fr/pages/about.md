@@ -33,19 +33,22 @@ En quelques mots: je travaille dans l'informatique depuis une petite dizaine d'a
 Quelques moyens de me contacter ci-dessous. Notez que j'observe [les règles de Croker](http://sl4.org/crocker.html), donc n'hésitez pas à
 me dire ce que vous pensez vraiment!
 
-## Commentaires
+## Commentaires / GDPR
 
-J'utilise [isso](https://posativ.org/isso/) pour la gestion des commentaires.
+J'utilise [isso](https://posativ.org/isso/) pour la gestion des commentaires et donc suis contraint à respecter la directive GDPR.
 
 Choses à savoir:
 
-* Vous commentaires sont stockés directement sur mon serveur personnel. Je fais des backups réguliers.
+* Vous commentaires sont stockés directement sur mon serveur personne dans une base de données. J'en fais des backups réguliers.
 * Désolé, mais vous ne pouvez pas les voir ou les poster si vous n'avez pas activé JavaScript sur mon site.
   (Cela me permet de limiter grandement le spam, sans avoir besoin de CAPTCHA)
-* Quand vous laissez un commentaire, vous avez le choix de remplir le champ 'e-mail' dans le formulaire ou non.
-  Je ne partage vos e-mails avec personne, et je m'en sers simplement pour vous contacter directement
+* Quand vous laissez un commentaire, vous avez le choix de remplir le champ 'e-mail' dans le formulaire ou non. Si
+  le champ e-mail est rempli, celui-ci sera stocké sur mon serveur en même temps que le contenu de votre commentaire.
+  Je ne partage ces e-mails avec personne, et je m'en sers simplement pour vous contacter directement
   en cas de besoin. Notez que vous ne serez *pas* notifié des réponses à vos commentaires par e-mail.
-* Une fois votre commentaire soumis, vous aurez 15 minutes pour le modifier ou le supprimer.
+  Vous pouvez bien sûr demander à n'importe quel moment que votre e-mail soit supprimé de la base de données.
+* Une fois votre commentaire soumis, vous aurez 15 minutes pour le modifier ou le supprimer. Ceci fonctionne grâce à
+  un cookie de durée de vie éhpémère.
 
 ## Suggérer des corrections
 
