@@ -33,7 +33,7 @@ En quelques mots: je travaille dans l'informatique depuis une petite dizaine d'a
 Quelques moyens de me contacter ci-dessous. Notez que j'observe [les règles de Croker](http://sl4.org/crocker.html), donc n'hésitez pas à
 me dire ce que vous pensez vraiment!
 
-## Commentaires / GDPR
+## Commentaires
 
 J'utilise [isso](https://posativ.org/isso/) pour la gestion des commentaires et donc suis contraint à respecter la directive GDPR.
 
