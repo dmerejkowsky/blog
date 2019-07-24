@@ -9,7 +9,7 @@ tags: [python, guest]
 
 _Today's article has been written by guest Abdur-Rahmaan Janhangeer. He is Organising Member of the [Python Mauritius User Group](http://www.pymug.com), Arabic Coordinator for the docs and maintainer of [pythonmembers.club](http://www.pythonmembers.club) and was kind enough to submit this article to be posted there._
 
-Requests is a popular Python library. It has particularly been praised for it's intuitive programming API. If you are new to Python, this should be a top priority in your learning path. Today we are going to give you some useful blocks to immediately get started! Have fun!
+Requests is a popular Python library. It has particularly been praised for its intuitive programming API. If you are new to Python, this should be a top priority in your learning path. Today we are going to give you some useful blocks to immediately get started! Have fun!
 
 ## Just How Popular Is Requests?
 
@@ -89,9 +89,9 @@ req = r.get('http://modifyme.org', params={'name':'dimitri'})
 
 and you will get the same thing.
 
-## Getting Json data
+## Getting JSON data
 
-Json data are similar to Python dictionaries. Here is a snippet to try out:
+JSON data are similar to Python dictionaries. Here is a snippet to try out:
 
 ```python
 import requests as r
@@ -100,7 +100,7 @@ req = r.get("https://randomuser.me/api/")
 print(req.json())
 ```
 
-It's an api that generates fake user data. req.json() returns a Python dictionary ready to use.
+It's an api that generates fake user data. `req.json()` returns a Python dictionary ready to use.
 
 ## Download File
 
@@ -114,7 +114,7 @@ def download_file(file_url, path):
     open(path, 'wb').write(r.content)
 ```
 
-Since r.content returns a byte object, we write the file in wb (write binary) mode, thus getting our file. It works for any file url. Try it!
+Since `r.content` returns a byte object, we write the file in `wb` (write binary) mode, thus getting our file. It works for any file url. Try it!
 
 ## Upload File
 
