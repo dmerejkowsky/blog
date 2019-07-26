@@ -487,6 +487,7 @@ to keep easily available.
 * [Bradley M. Kuhn: Considering the Future of Copyleft](https://www.youtube.com/watch?v=Fox1CuoP2DQ)
 * [Bradley M. Kuhn: Fighting a GPL Violation By Coding Instead](https://www.youtube.com/watch?v=WteChXNaU0I)
 * [Brian Kernighan on successful language design](https://www.youtube.com/watch?v=Sg4U4r_AgJU)
+* [Bryan Cantrill: Is It Time to Rewrite the Operating System in Rust?](https://www.youtube.com/watch?v=HgtRAbE1nBM)
 * [Cory Benfield: Requests Under the Hood](
   https://www.youtube.com/watch?v=ptbCIvve6-k)
 * [C++ on Mars](https://www.youtube.com/watch?v=3SdSKZFoUa8)
