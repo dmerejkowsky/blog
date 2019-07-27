@@ -20,7 +20,7 @@ It is a powerful metaphor, although if you read the [Wikipedia article](https://
 
 But I think there's still some truth it in: if you experience some increasing pain gradually enough, you may not realizing how much you are actually suffering until it's too late. At least it's what happened to me.
 
-Let's start at the beginning, before we start talking about Rust, refactoring, performance bugs and the weaknesses of the human mind.
+Let's start at the begining, before we start talking about Rust, refactoring, performance bugs and the weaknesses of the human mind.
 
 # Part 1: The setup
 
@@ -28,14 +28,14 @@ A long time ago, I realized I spent far too much time typing `cd` to navigate be
 
 Then I realized I could solve both of those problems by writing two very similar commands: `cwd-history` and `cmd-history`.
 
-Let's talk about the former. It's a command line tool that takes two actions, `add`  and `list`. Here's how it works:
+Let's talk about the former. It's a command-line tool that takes two actions, `add`  and `list`. Here's how it works:
 
 * `cmd-history add` takes one parameter and adds it to a "database" in `~/.local/share/dm-tools/commands-history`. The database is just a file with one command per line.
 * `cmd-history list` simply dumps the contents of the database to `stdout`.
 * Then,  there's a `zsh` hook to run right after a command has been read and is about to be executed. In the hook, `cmd-history add` is called with the text of the last command.
 * Finally, `zsh` is configured so that when `ctrl-r` is pressed, the output of `cmd-history list` is piped through `fzf` and then the selected command is run.
 
-I use a similar program called `cwd-history` that does exactly the same thing but for the working directories. It runs in an other zsh hook called `chpwd`, and is triggered by typing the command `z`[^1].
+I use a similar program called `cwd-history` that does exactly the same thing but for the working directories. It runs in another zsh hook called `chpwd`, and is triggered by typing the command `z`[^1].
 
 There are a few specificities like making sure the entries are not duplicated or ensuring that every symlink in the added path is resolved, but we'll get to that later.
 
@@ -51,7 +51,7 @@ A few months ago, I switched from Nevoim to [Kakoune](https://kakoune.org/) for 
 
 Kakoune does not have any persisting state by design, and I was missing a particular vim feature that allowed me to quickly select any recently opened file (aka. <abbr title="Most Recently Used">MRU</abbr> files).
 
-But I already knew how to solve that! I wrote yet another tool called `mru-files` for reading and writing the MRU files in an other database, and write a bit of Kakoune script:
+But I already knew how to solve that! I wrote yet another tool called `mru-files` for reading and writing the MRU files in another database, and write a bit of Kakoune script:
 
 
 ```bash
@@ -60,11 +60,11 @@ hook global BufOpenFile .* %{ nop %sh{ mru-files add  "${kak_hook_param}" } }
 
 # Call `mru files list` when pressing <leader key>o:
 map global user o
-  -docstring 'open old files
+  -docstring 'open old files'
   ':evaluate-commands %sh{ mru-files list --kakoune }<ret>'
 ```
 
-Note the `--kakoune` option when calling `mru-files list`: we need to call the `menu` command so that we can present the list of MRU files to the user and open the file when its selected.
+Note the `--kakoune` option when calling `mru-files list`: we need to call the `menu` command so that we can present the list of MRU files to the user and open the file when it's selected.
 
 It looks like this:
 
@@ -236,7 +236,7 @@ fn main() {
 
 And that was my first mistake: I forgot to measure performance *after* the refactoring. I was *sure* the code was correct. After all, if it compiles, it works, right?
 
-And sure enough, the code *did* work. I could open MRU files and old project directories from kakoune, and I was quite pleased with myself.
+And sure enough, the code *did* work. I could open MRU files and old project directories from Kakoune, and I was quite pleased with myself.
 
 Of course, by now you should have guessed there's a horrible performance bug in the code above. Did you spot it? If you did, congrats! I certainly did not at the time.
 
@@ -274,7 +274,7 @@ impl Storage {
 
 We're reading each line of the database file, and passing it to `EntriesCollection.add()`. This means we keep calling the `add()` method over and over. It does not do much, but it still has to go through *all* the entries when performing deduplication. This is a classic case of the [Shlemiel algorithm](https://www.joelonsoftware.com/2001/12/11/back-to-basics/) and it explains the abysmal performance of the tool as soon as the database gets big enough.
 
-I believe I wrote the code that way because I thought it would be nice to somehow "validate" the entries when reading the database. That way, if the algorithm in the `add` method changed, the database will be migrated automatically. An other classical mistake named *<abbr title="You Ain't Gonna Need It">YAGNI<abbr>*: it's doubtful I'll ever need to migrate the database, and when I need to, I'll probably just have to write a tiny throw-away script to do it.
+I believe I wrote the code that way because I thought it would be nice to somehow "validate" the entries when reading the database. That way, if the algorithm in the `add` method changed, the database will be migrated automatically. Another classical mistake named *<abbr title="You Ain't Gonna Need It">YAGNI<abbr>*: it's doubtful I'll ever need to migrate the database, and when I need to, I'll probably just have to write a tiny throw-away script to do it.
 
 Anyway, now that we've decided the "automigrating" feature can go away, we can solve our performance issue by adding an `add_all` method to the trait, and replacing the `for` loop in the `Storage` constructor:
 
@@ -343,7 +343,7 @@ Well, because we need access to the `entries` field of the struct, and there's n
 
 * First, the code duplication is not that a problem since there's only one line of code.
 * Second, the duplication is *incidental*. We could imagine using a `Set` instead of a `Vec` to store the entries, and the trait does not need to know about this. Ditto if we decide to rename the field.
-* Third, I can tell myself that this lacking feature is a good thing[^3] because I've often been bitten in other languages when sharing class members through inheritence (both in C++ and Python).
+* Third, I can tell myself that this lacking feature is a good thing[^3] because I've often been bitten in other languages when sharing class members through inheritance (both in C++ and Python).
 
 Take those how you want: I can tell myself those are good arguments, but you don't have to believe me :)
 
@@ -353,9 +353,9 @@ Here are my takeaways:
 
 * When performance matters, don't forget to measure it constantly, especially after refactorings (or even after each commit if you can afford to)
 * The boiling frog metaphor is actually a good one, and you may be inside some boiling water without realizing it.
-* And finally, listen to what people say to you when they tell you about something bad in your life. I actually felt something was off with my machine those last 6 months, but it took an other person to help me take a step back and understanding what was wrong.
+* And finally, listen to what people say to you when they tell you about something bad in your life. I actually felt something was off with my machine those last 6 months, but it took an other person to help me take a step back and understand what was wrong.
 
-Take care and see you an other time!
+Take care and see you another time!
 
 [^1]: That's because I was using a tool named `z` before I decided to [re-implement it myself]({{< relref "0041-rewriting-z-from-scratch.md" >}}).
 [^2]: If you are wondering why, go read *[The Rule of Three](https://blog.codinghorror.com/rule-of-three/)* on the Coding Horror blog.
