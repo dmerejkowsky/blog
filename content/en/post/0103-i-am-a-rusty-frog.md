@@ -47,7 +47,7 @@ But something was bugging me. There was a small noticeable delay whenever I was 
 
 # Part 3: the switch to Kakoune
 
-A few months ago, I switched from Nevoim to [Kakoune](https://kakoune.org/) for my main text editor and was faced with a problem.
+A few months ago, I switched from Neovim to [Kakoune](https://kakoune.org/) for my main text editor and was faced with a problem.
 
 Kakoune does not have any persisting state by design, and I was missing a particular vim feature that allowed me to quickly select any recently opened file (aka. <abbr title="Most Recently Used">MRU</abbr> files).
 
