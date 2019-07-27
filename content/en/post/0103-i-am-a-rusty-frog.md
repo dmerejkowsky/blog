@@ -45,7 +45,7 @@ The two programs were written in Python and shared a ton of functionality but si
 
 But something was bugging me. There was a small noticeable delay whenever I was using them, particularly on old hardware. So I decided to try and rewrite them in Rust. And surely when I measured the performance, there was a *huge* difference in the startup time: Rust compiles directly to machine code, and there was no need to wait for the Python interpreter to start. I was happy.
 
-# Part 3: the Kakoune switch
+# Part 3: the switch to Kakoune
 
 A few months ago, I switched from Nevoim to [Kakoune](https://kakoune.org/) for my main text editor and was faced with a problem.
 
