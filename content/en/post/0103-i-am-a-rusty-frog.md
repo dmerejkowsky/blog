@@ -20,7 +20,7 @@ It is a powerful metaphor, although if you read the [Wikipedia article](https://
 
 But I think there's still some truth it in: if you experience some increasing pain gradually enough, you may not realizing how much you are actually suffering until it's too late. At least it's what happened to me.
 
-Let's start at the begining, before we start talking about Rust, refactoring, performance bugs and the weaknesses of the human mind.
+Let's start at the beginning, before we start talking about Rust, refactoring, performance bugs and the weaknesses of the human mind.
 
 # Part 1: The setup
 
@@ -276,7 +276,7 @@ We're reading each line of the database file, and passing it to `EntriesCollecti
 
 I believe I wrote the code that way because I thought it would be nice to somehow "validate" the entries when reading the database. That way, if the algorithm in the `add` method changed, the database will be migrated automatically. Another classical mistake named *<abbr title="You Ain't Gonna Need It">YAGNI<abbr>*: it's doubtful I'll ever need to migrate the database, and when I need to, I'll probably just have to write a tiny throw-away script to do it.
 
-Anyway, now that we've decided the "automigrating" feature can go away, we can solve our performance issue by adding an `add_all` method to the trait, and replacing the `for` loop in the `Storage` constructor:
+Anyway, now that we've decided the "auto migrating" feature can go away, we can solve our performance issue by adding an `add_all` method to the trait, and replacing the `for` loop in the `Storage` constructor:
 
 {{< highlight rust "hl_lines=3" >}}
  pub trait EntriesCollection {
