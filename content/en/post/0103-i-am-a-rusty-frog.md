@@ -244,7 +244,7 @@ Of course, by now you should have guessed there's a horrible performance bug in 
 
 The refactoring took place 6 months ago. I am using those tools at work, which means I was using those commands for 6 months, 5 days a week. The database files contained thousands of entries. The horrible bug was still there, consuming CPU cycles without a care in the world, and I did not notice anything.
 
-Fortunately, I did a peer programming session with one of my colleagues and something weird happened. It got *bored* watching my zsh prompt getting stuck when I was using the `z` and `ctrl-r` shortcuts.
+Fortunately, I did a peer programming session with one of my colleagues and something weird happened. He got *bored* watching my zsh prompt getting stuck when I was using the `z` and `ctrl-r` shortcuts.
 
 I then measured the performance of my tools again and I found  that the `cmd-history list` command took 1.7 **seconds** to run.  That's *one thousand and seven hundred* milliseconds. It's a **very long** time. No wonder my colleague got bored! What's amazing though is that I did *not* notice anything wrong until he told me about it.
 
