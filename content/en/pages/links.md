@@ -95,6 +95,7 @@ to keep easily available.
   https://m.signalvnoise.com/programming-languages-arent-a-zero-sum-game-5fe811f7b76e)
 * [Quit Social Media. Your Career May Depend on It](
   http://mobile.nytimes.com/2016/11/20/jobs/quit-social-media-your-career-may-depend-on-it.html)
+* [Setting expectations for open source participation](https://snarky.ca/setting-expectations-for-open-source-participation/)
 * [So a product manager asks you to fix a bug…](
   https://medium.freecodecamp.com/youre-asked-to-make-a-fix-e156b802ad92)
 * [So you want to write a package manager](
