@@ -64,7 +64,7 @@ addsitedir
 * `install -e`
 * `requirements.txt`
 
-# pipenv
+# Cas pratique: lancer les tests d'un projet Python
 
 Dans la première partie j'ai expliqué qu'il était préferable de toujours utiliser `pip` dans un virtualenv, et d'utiliser un virtualenv par projet et par version de python.
 
@@ -75,6 +75,23 @@ Admettons que vous vouliez travailler sur le projet `flask` avec Python3.7, et p
 * Installer les dépendances listées dans le fichier `setup.py` du projet `flask`
 * Installer les dépendances spécifiques aux tests - donc typiquement, une *autre* liste que celle spécifiée dans la section `install_requires` de `setup.py`.
 
-Voici ce que ça donnerait:
+Voici ce que ça donnerait, en supposant qu'il exist un répertoire nommé `venvs` dans votre répertoire personnel:
+
+```bash
+$ cd flask
+$ python3 -m venv ~/venv/flask-3.7
+$ source ~/venvs/flask-3.7/bin/activate
+$ python setup.py develop
+$ pytest
+```
+
+C'est assez fastidieux. Heureusement, des alternatives existent.
+
+# poetry
+
+# tox
+
+# dmenv
 
 # pipenv
+
