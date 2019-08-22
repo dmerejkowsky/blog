@@ -455,4 +455,4 @@ Dans un futur article, nous approfondirons la question, en évoquant d'autres su
 [^2]: Presque. Il peut arriver que l'utilisateur courant ait les droits d'écriture dans *tous* les segments de `sys.path`, en fonction de l'installation de Python. Cela dit, c'est plutôt l'exception que la règle.
 [^3]: Cela peut vous paraître étrange à première vue. Il y a de nombreuses raisons historiques à ce comportement, et il n'est pas sûr qu'il puisse être changé un jour.
 [^4]: Presque. Parfois il faut installer un paquet supplémentaire, notamment sur les distributions basées sur Debian
-[^5]: Je n'ai pas réussi à trouver une explication satisfaisante à ce choix des mainteneurs Debian. Si vous avez des informations à ce sujet, je suis preneur.
+[^5]: Je n'ai pas réussi à trouver une explication satisfaisante à ce choix des mainteneurs Debian. Si vous avez des informations à ce sujet, je suis preneur. _Mise à jour: Il se trouve que cette décision s'inscrit au sein de la "debian policy", c'est à dire une liste de règles que doivent respecter tous les programmes maintenus par Debian._ TODO: link from tim
