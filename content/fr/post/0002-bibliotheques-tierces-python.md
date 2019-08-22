@@ -6,6 +6,7 @@ title: "Utiliser des bibliothèques tierces avec Python"
 tags: ["python"]
 authors: [dmerej]
 feedback: true
+summary: "Introduction aux bibliothèques tierces en Python - pip, virtualenv"
 ---
 
 Note : cet article reprend en grande partie le cours donné à [l'École du Logiciel Libre](https://e2li.org) le 4 mai 2019.
