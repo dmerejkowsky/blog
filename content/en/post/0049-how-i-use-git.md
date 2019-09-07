@@ -31,7 +31,7 @@ Since this article is quite long, here's a table of contents:
 ## Talk is cheap, show me the code
 
 Everything can be found in my [dotfiles repo](
-https://github.com/dmerejkowsky/dotfiles/blob/master/gitconfig).
+https://github.com/dmerejkowsky/dotfiles/blob/master/configs/git/config).
 
 Feel free to read, but please don't use it directly: the code was written to be
 used by only one person: me. Unless you are my hidden tween brother, it's very
