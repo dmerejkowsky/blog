@@ -112,7 +112,8 @@ Edit the project settings, under "General" and switch the Host application form 
 
 ![select test host](/pics/xcode/select-test-host-app.png)
 
-And it works: a simulator is started and the tests run.
+
+And it works: a simulator is started and the tests run [^4].
 
 
 ### Cross-compiling ChuckNorris for iOS
@@ -522,3 +523,4 @@ That's the end of the Chuck Norris series. I hope you had fun, I hope you learne
 [^1]: I heard Carthage is also a good option. Did not try it, though.
 [^2]: This recipe was written and shared by my nice colleague Théo Delrieu from [tanker.io](https://tanker.io). Say thanks!
 [^3]: Which is not far from [the CI script]({{< ref "/post/0082-introducing-tips-from-a-build-farmer.md" >}}) we use at work by the way.
+[^4]: That is, if you already generated a signing certificate. If not, follow the instructions printed in the logs.
