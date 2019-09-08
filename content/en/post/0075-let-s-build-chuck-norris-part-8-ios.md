@@ -35,6 +35,12 @@ So, here's the plan:
 
 # The Bindings
 
+`cocoapods` is written in Ruby and can be installed with gem:
+
+```
+gem install cocoapods
+```
+
 We run `pod lib create ChuckNorrisBindings` and answer a few questions:
 
 ```
