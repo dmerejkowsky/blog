@@ -150,4 +150,42 @@ ChuckNorris *chuck_norris_init(void);
 char *chuck_norris_version(void);
 ```
 
-Note how cbindgen just had to parse the `pub` declarations :)
+Note how cbindgen just had to parse the `pub` declarations and the rust docstrings :)
+
+# Python
+
+No need for parsing json stuff, we just need:
+
+```python
+ ffibuilder.set_source(
+     "_chucknorris",
+     """
+     #include <chucknorris.h>
+     """,
+    include_dirs = ["../rust/target/c/"],
+    extra_objects=["../rust/target/debug/libchucknorris.a"],
+```
+
+# Java
+
+We need a `.so` for JNA:
+
+```toml
+[lib]
+name = "chucknorris"
+crate-type = ["staticlib", "dylib"]
+```
+
+That way `cargo build` builds both the `.a` and the `.so` :)
+
+# Android
+
+* We can do it in two commands:
+
+```
+rustup target add x86_64-linux-androideabi
+cargo build --target x86_64-linux-androideabi
+```
+
+* We don't need to worry about libstdc++
+
