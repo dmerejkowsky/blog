@@ -27,7 +27,7 @@ You will find all the source code on [GitHub](https://github.com/dmerejkowsky/ch
 
 # Let's build Chuck Norris!
 
-"Let's Build Chuck Norris!" is a series of blog posts aiming at exploring various topics about C++ and build systems.
+"Let's Build Chuck Norris!" is a series of blog posts aiming at exploring various topics about C++ and build systems, and providing an example of the [Salami method](http://videocortex.io/2017/salami-method/) described by Adi Shavit.
 
 Here are all of them, in chronological order. Enjoy!
 
