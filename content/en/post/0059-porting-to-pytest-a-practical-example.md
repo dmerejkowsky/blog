@@ -593,7 +593,7 @@ class Browser
         return self.driver.page_source
 ```
 
-And if we need to call a method directly to the underlying object, we can just forward tho call:
+And if we need to call a method directly to the underlying object, we can just forward the call:
 
 ```python
     def close(self):
