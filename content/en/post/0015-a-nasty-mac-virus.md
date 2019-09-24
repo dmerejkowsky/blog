@@ -230,11 +230,11 @@ First, I'm going to reformat and re-install the operating system using
 sister so this does not happen again.
 
 Don't tell me to install an antivirus, I know [it won't work](
-http://www.ranum.com/security/computer_security/editorials/dumb/)
+http://www.ranum.com/security/computer_security/editorials/dumb/).
 
 People tell me there's a GUI from `homebrew`, I'll try that, but if you have
 some ideas, (besides only using the Apple Store for now), I'd love to
-[hear from you]({{< ref "/pages/contact.md" >}})
+[hear from you]({{< ref "/pages/contact.md" >}}) ;)
 
 There's also the option of only allowing apps from the AppStore
 (not even those which are signed with a developer key)
