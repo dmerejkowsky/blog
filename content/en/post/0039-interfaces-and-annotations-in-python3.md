@@ -350,7 +350,8 @@ That way, if you don't implement all the abstract methods, you'll get an error
 when the daughter class is instantiated:
 
 ```text
-TypeError: Can't instantiate abstract class FakeRepository with abstract methods get_employee
+TypeError: Can't instantiate abstract class FakeRepository with
+abstract methods get_employee
 ```
 
 ## Documenting
