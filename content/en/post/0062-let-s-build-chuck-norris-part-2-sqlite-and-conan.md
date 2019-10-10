@@ -69,7 +69,7 @@ INSERT INTO chucknorris (fact) VALUES
   ...
   )";
 
-  auto res = sqlite3_exec(db, sql, 0, 0, nullptr);
+  sqlite3_exec(_db, sql, 0, 0, nullptr);
 }
 
 ChuckNorris::~ChuckNorris()
