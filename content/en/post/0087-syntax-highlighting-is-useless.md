@@ -30,7 +30,7 @@ Take a quick look. Do you see what's wrong?
 
 For quite some time I did not think to much about this situation, until I read *[A case against syntax highlighting](http://www.linusakesson.net/programming/syntaxhighlighting/)*, by Linus Åkesson.
 
-So one day I decided to try to turn the syntax highlighting off:
+So one day I decided to try and turn the syntax highlighting off:
 
 ![Un-colored markdown file](/pics/markdown-plain.png)
 
