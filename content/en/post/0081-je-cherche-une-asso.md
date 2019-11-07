@@ -8,6 +8,8 @@ feedback: false
 tags: [python]
 ---
 
+*Mise à jour: J'ai trouvé :) Je donne dorénavant un cours sur Python  un samedi sur 2 à [l'École du Logiciel Libre](https://www.e2li.org/). Merci à tous ceux qui m'ont répondu et ont fait circuler ce message!*
+
 Bonjour chers lecteurs!
 
 Un article un peu spécial aujourd'hui, en Français pour changer.
@@ -35,8 +37,4 @@ Si vous connaissez une association qui convienne ou semblable, que vous souhaite
 
 Si le cœur vous en dit, vous pouvez aussi faire circuler ce message autour de vous.
 
-Comme d'habitude, merci de m'avoir lu jusqu'au bout et à la prochaine! [^1]
-
-[^1]: Pas de panique, la suite de "Bye, bye Pylint" arrive très bientôt.
-
-*Mise à jour: J'ai trouvé :) J'interviendrai prochainement à [l'École du Logiciel Libre](https://www.e2li.org/). Merci à tous ceux qui m'ont répondu et ont fait circuler ce message!*
+Comme d'habitude, merci de m'avoir lu jusqu'au bout et à la prochaine!
