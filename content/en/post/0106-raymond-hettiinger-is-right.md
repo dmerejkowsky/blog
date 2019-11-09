@@ -9,6 +9,8 @@ summary: |
     TODO
 ---
 
+From @raymonh: core Python devs should try teaching Python to newcomers
+
 Say you are teaching Python and you want to explain methods to newcomers.
 
 Here are the steps
