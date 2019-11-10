@@ -11,7 +11,7 @@ summary: |
 
 # Introduction
 
-A long time ago I received a lecture about the usage of databases and software design. More specifically, how to translate relationships like "one-to-one", "many-to-many", or "one-to-many" inside databases schema.
+A long time ago I received a lecture about the usage of databases and software design. More specifically, how to translate relationships like "one-to-one", "many-to-many", or "one-to-many" inside databases schemas.
 
 Ten years later, I still remember one thing the teacher said at the beginning of the course:
 
@@ -23,7 +23,7 @@ This is not new, of course, but it raises some interesting questions: how can we
 
 In these two parts series, we'll try and answer the last question.
 
-We will use an exercise I've stolen from the [exercism.io](https://exercism.io/), and the two parts will argue opposing points of view.
+We will use an exercise I've stolen from the [exercism.io](https://exercism.io/), website, and the two parts will argue opposing points of view.
 
 Let's start with part one: *classes suck*. Bear in mind there we'll be a part two called *classes rock*, so don't leave angry comments below just yet :)
 
@@ -99,7 +99,7 @@ class Robot:
         return None
 ```
 
-For the next test we need a `start` method that will cause the name to change. Let's store the name in a private attribute `_name` and adapt the rest of the code:
+For the next test, we need a `start` method that will cause the name to change. Let's store the name in a private attribute `_name` and adapt the rest of the code:
 
 ```python
 def generate_name():
@@ -148,7 +148,7 @@ E         + JO813
 
 # Making the test about reboot pass - first attempt
 
-Clearly, we have a bug in our implementation. The robot names must not change when it's rebooted.
+Clearly, we have a bug in our implementation. The robot's name must not change when it's rebooted.
 
 If we follow the "code objects must reflect real-world objects" rule, we may be tempted to say that robots have a *state* and that this state can be used to know when the name must be regenerated.
 
@@ -173,13 +173,13 @@ class Robot:
         self.stopped = True
 ```
 
-And that's where classes have failed us. This `stopped` boolean does not help *at all* making the test pass.
+And that's where classes have failed us. This `stopped` attribute does not help *at all* making the test pass.
 
 We tried and model the real world in our class but it was useless. And then we realize that there's no so such thing as a "boolean" in the real world. In the real world, robots have LEDs that are turned on or turned off!
 
 # Making the test about reboot pass - second try
 
-Let's revert the change that introduced the stopped boolean, and look at the implementation again. It becomes clear that to make the test pass, we just need an if in the `start` method:
+Let's revert the change that introduced the `stopped` attribute, and look at the implementation again. It becomes clear that to make the test pass, we just need an if in the `start` method:
 
 {{< highlight python "hl_lines=9-10" >}}
 class Robot:
