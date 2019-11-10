@@ -15,26 +15,26 @@ A long time ago I received a lecture about the usage of databases and software d
 
 Ten years later, I still remember one thing the teacher said at the beginning of the course:
 
-> When you are designing your database schema, your enemy is the real world. Real world is *always* more complicated than you anticipated.
+> When you are designing your database schema, your enemy is the real world. The real world is *always* more complicated than you anticipated.
 
 This is not new, of course, but it raises some interesting questions: how can we model the real world in our code? Is it worth it? Is not all software made of abstract objects? Are classes and instances the correct way to do it?
 
 # A two-part exploration
 
-In this two parts series, we'll try and answer the last question.
+In these two parts series, we'll try and answer the last question.
 
 We will use an exercise I've stolen from the [exercism.io](https://exercism.io/), and the two parts will argue opposing points of view.
 
 Let's start with part one: *classes suck*. Bear in mind there we'll be a part two called *classes rock*, so don't leave angry comments below just yet :)
 
-One last thing: this is a story based a real events: the code I'm about to show below was written this way by students I've just taught about instances and classes in Python.
+One last thing: this is a story based on real events: the code I'm about to show below was written this way by students I've just taught about instances and classes in Python.
 
 
 # The Robot factory exercise
 
 Here are the specifications of the exercise:
 
-> Your are a developer inside a robot factory. You task is to manage robot settings. Here are the rules:
+> Your are a developer inside a robot factory. Your task is to manage robot settings. Here are the rules:
 >
 > * When robots come off the factory floor, they have no name.
 >
@@ -175,7 +175,7 @@ class Robot:
 
 And that's where classes have failed us. This `stopped` boolean does not help *at all* making the test pass.
 
-We tried and model the real world in our class but it was useless. And the we realize that there's no so such thing as a "boolean" in the real world. In the real world, robots have LEDs that are turned on or turned off!
+We tried and model the real world in our class but it was useless. And then we realize that there's no so such thing as a "boolean" in the real world. In the real world, robots have LEDs that are turned on or turned off!
 
 # Making the test about reboot pass - second try
 
@@ -222,8 +222,8 @@ Now all test pass and we're done.
 
 # (Temporary) conclusion
 
-Looking at the code, it looks like our object has nothing to do with the real world. The closest connection with the real word is the `._name` attribute which is probably just a bunch of zeros and ones inside the memory chip of the robot.
+Looking at the code, it looks like our object has nothing to do with the real world. The closest connection with the real world is the `._name` attribute which is probably just a bunch of zeros and ones inside the memory chip of the robot.
 
 Let's face it, using classes to represent the real world is a myth, probably spread by overzealous Java developers, or clueless researchers locked inside their ivory towers.
 
-Or is it? Stay tune for part two to find out!
+Or is it? Stay tuned for part two to find out!
