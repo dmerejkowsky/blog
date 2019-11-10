@@ -1,9 +1,9 @@
 ---
 authors: [dmerej]
-slug: raymond-hettiinger-is-right
+slug: raymond-hettinger-is-right
 date: 2019-11-09T18:59:50.826187+00:00
 draft: true
-title: "Raymond Hettiinger is right"
+title: "Raymond Hettinger was right"
 tags: [python]
 summary: |
     TODO
