@@ -1,75 +1,109 @@
 ---
 authors: [dmerej]
-slug: classes-lie
+slug: classes-suck
 date: 2019-11-09T19:06:44.665034+00:00
-draft: true
-title: "Classes lie"
+draft: false
+title: "Classes suck"
 tags: [python]
-summary: TODO
+summary: |
+  Are instances and classes the correct way to represent real-world objects?
 ---
 
-The lie is: object from the programming world matches objects from real life.
+# Introduction
 
-Subject - stolen from exercism.io
+A long time ago I received a lecture about the usage of databases and software design. More specifically, how to translate relationships like "one-to-one", "many-to-many", or "one-to-many" inside databases schema.
 
-```
-Manage robot factory settings.
+Ten years later, I still remember one thing the teacher said at the beginning of the course:
 
-When robots come off the factory floor, they have no name.
+> When you are designing your database schema, your enemy is the real world. Real world is *always* more complicated than you anticipated.
 
-The first time you boot them up, a random name is generated in the format
-of two uppercase letters followed by three digits, such as RX837 or BC811.
+This is not new, of course, but it raises some interesting questions: how can we model the real world in our code? Is it worth it? Is not all software made of abstract objects? Are classes and instances the correct way to do it?
 
-Every once in a while we need to reset a robot to its factory settings,
-which means that their name gets wiped. The next time you ask, it will
-respond with a new random name.
-```
+# A two-part exploration
 
-Test:
+In this two parts series, we'll try and answer the last question.
 
-*(side note: don't write tests like this, please)*
+We will use an exercise I've stolen from the [exercism.io](https://exercism.io/), and the two parts will argue opposing points of view.
+
+Let's start with part one: *classes suck*. Bear in mind there we'll be a part two called *classes rock*, so don't leave angry comments below just yet :)
+
+One last thing: this is a story based a real events: the code I'm about to show below was written this way by students I've just taught about instances and classes in Python.
+
+
+# The Robot factory exercise
+
+Here are the specifications of the exercise:
+
+> Your are a developer inside a robot factory. You task is to manage robot settings. Here are the rules:
+>
+> * When robots come off the factory floor, they have no name.
+>
+> * The first time you boot them up, a random name is generated in the format
+>   of two uppercase letters followed by three digits, such as RX837 or BC811.
+>
+> * Every once in a while we need to reset a robot to its factory settings,
+>   which means that their name gets wiped. The next time you ask, it will
+>   respond with a new random name.
+
+And here's the code we're given a starting point:
 
 ```python
-from robot import Robot
-def test_everything():
-    robot = Robot()
+class Robot:
+    # Put your code here:
+    pass
 
-    # Name should be None when robot comes off the factory flow:
+def test_name_is_not_set_at_first():
+    robot = Robot()
     assert robot.name() is None
 
-    robot.start()
-    # Started robot should have a name
-    first_name = assert robot.name()
-    assert first_name is not None
-    # ... and its name must follow the pattern
-    assert re.match("^[A-Z]{2}\d{3}$", first_name)
 
-    # Name must not change when the robot is re-booted
+def test_started_robots_have_a_name():
+    robot = Robot()
+    robot.start()
+    actual_name = robot.name()
+    assert re.match(r"^[A-Z]{2}\d{3}$", actual_name)
+
+
+def test_name_does_not_change_when_rebooted():
+    robot = Robot()
+    robot.start()
+    name1 = robot.name()
+
     robot.stop()
     robot.start()
-    assert robot.name() == first_name
+    name2 = robot.name()
+    assert name1 == name2
 
-    # Name is None when the robot is reset
-    # to factory settings
-    robot.reset()
-    assert robot.name() is None
 
-    # New name is generated when the robot starts
+def test_name_changes_after_a_reset():
+    robot = Robot()
     robot.start()
-    assert robot.name() is not None
+    name1 = robot.name()
+
+    robot.stop()
+    robot.reset()
+    robot.start()
+    name2 = robot.name()
+    assert name1 != name2
 ```
 
-Pretty simple, right?:
+Let's try to fix tests one by one, starting with the first one.
+
+# Making the first tests pass
+
+All we need is a `name()` method that returns `None`:
 
 ```python
-import strings
+class Robot:
+    def name(self):
+        return None
+```
+
+For the next test we need a `start` method that will cause the name to change. Let's store the name in a private attribute `_name` and adapt the rest of the code:
+
+```python
 def generate_name():
-    first = "".join(random.choice(string.ascii_uppercase) for _ in range (0, 3))
-    second = random.randint(0, 1000)
-    return f"{first}{second}"
-
-# Side note: I prefer functions like this outside the class,
-# but that's a topic for another day
+    # implementation omitted for brevity
 
 class Robot:
     def __init__(self):
@@ -80,40 +114,74 @@ class Robot:
 
     def start(self):
         self._name = generate_name()
-        return self._name
 ```
 
-Now test fails. We need to implement stop(). And the name changes when the
-robot is rebooted, so we need to store the 'stopped' state somewhere. Why not a `stopped`  boolean
+To fix the next test, we need to implement `stop`:
 
-```
+```python
+def generate_name():
+    ...
+
 class Robot:
     def __init__(self):
         self._name = None
-        self.stopped = True # would be really bad
-                            # if the robot was started when
-                            # just built ....
 
     def name(self):
         return self._name
 
     def start(self):
         self._name = generate_name()
+
+    def stop(self):
+        pass
+```
+
+And then we get:
+
+```
+test_name_does_not_change_when_rebooted:
+>       assert name1 == name2
+E       AssertionError: assert 'KJ721' == 'JO813'
+E         - KJ721
+E         + JO813
+```
+
+# Making the test about reboot pass - first attempt
+
+Clearly, we have a bug in our implementation. The robot names must not change when it's rebooted.
+
+If we follow the "code objects must reflect real-world objects" rule, we may be tempted to say that robots have a *state* and that this state can be used to know when the name must be regenerated.
+
+And we can choose to represent the state of the robot with a `stopped` attribute inside the `Robot` class:
+
+```python
+class Robot:
+    def __init__(self):
+        self._name = None
+        # Better make sure robots are stopped when
+        # they come out of the factory floor :)
+        self.stopped =  True
+
+    def name(self):
         return self._name
+
+    def start(self):
+        self._name = generate_name()
         self.stopped = False
 
-     def stop(self):
+    def stop(self):
         self.stopped = True
 ```
 
-Congrats! You've model the real world inside your class.
+And that's where classes have failed us. This `stopped` boolean does not help *at all* making the test pass.
 
-But you've got nothing *close* to solving the bug, and the `stopped` attribute won't help you!
+We tried and model the real world in our class but it was useless. And the we realize that there's no so such thing as a "boolean" in the real world. In the real world, robots have LEDs that are turned on or turned off!
 
+# Making the test about reboot pass - second try
 
-The realy fix is:
+Let's revert the change that introduced the stopped boolean, and look at the implementation again. It becomes clear that to make the test pass, we just need an if in the `start` method:
 
-```class
+{{< highlight python "hl_lines=9-10" >}}
 class Robot:
     def __init__(self):
         self._name = None
@@ -125,21 +193,37 @@ class Robot:
         if self._name is None:
             self._name = generate_name()
 
-     def reset(self):
+    def stop(self):
+        pass
+{{< / highlight >}}
+
+Making the last test pass is easy: we only need to reset the `._name` attribute when the robot is reset:
+
+```python
+class Robot:
+    def __init__(self):
         self._name = None
 
-     def stop(self):
+    def name(self):
+        return self._name
+
+    def start(self):
+        if self._name is None:
+            self._name = generate_name()
+
+    def stop(self):
         pass
-        # nothing to do here yet - neither
-        # the tests nor the spec ask us
-        # to have this non-empty
+
+   def reset(self):
+        self._name = None
 ```
 
-The only "physical" stuff the code matches is _the spec itself_, *not* the real world!
+Now all test pass and we're done.
 
-And `_name` is just a pile of bytes by the way.
+# (Temporary) conclusion
 
+Looking at the code, it looks like our object has nothing to do with the real world. The closest connection with the real word is the `._name` attribute which is probably just a bunch of zeros and ones inside the memory chip of the robot.
 
+Let's face it, using classes to represent the real world is a myth, probably spread by overzealous Java developers, or clueless researchers locked inside their ivory towers.
 
-
-
+Or is it? Stay tune for part two to find out!
