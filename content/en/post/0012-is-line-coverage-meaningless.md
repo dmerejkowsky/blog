@@ -30,8 +30,7 @@ They are often split in different files or directories.
 
 In the Java world, the layout looks like this:
 
-<pre>
-
+```text
 src
   main
     java
@@ -44,7 +43,7 @@ src
         example
           TestHello.java
 
-</pre>
+```
 
 To measure line coverage, you have to somehow convince the production code
 to emit data about which line is executed when the code runs.

@@ -148,9 +148,9 @@ information.
 
 Often, in error messages you get something like:
 
-<pre>
+```text
 /path/to/foo.cpp:42: 'spam' was not declared in this scope
-</pre>
+```
 
 There's the filename, followed by a colon (`:`), followed by a line number.
 

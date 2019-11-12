@@ -150,9 +150,9 @@ end)
 
 I then run the test and was please to see it fail:
 
-<pre>
+```text
 expecting: '\nentered' but got ''
-</pre>
+```
 
 Confident I was on the right track, I opened an issue on `Neovim` bug tracker stating
 I found a bug, wrote a test to reproduce it and asking for clues on how to fix it.

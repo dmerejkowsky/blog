@@ -18,22 +18,22 @@ options come in two forms: long and short options.
 
 For instance, if you run `ls --help` you'll see something like:
 
-<pre>
+```text
 $ ls --help
 Usage: ls [OPTION]... [FILE]...
 ...
   -a, --all                  do not ignore entries starting with .
-</pre>
+```
 
 So you have two ways to list all files in the current directory, even when they
 start with a dot:
 
-<pre>
+```text
 $ ls -a
 ./  ../  .cache  foo/
 $ ls --all
 ./  ../  .cache  foo/
-</pre>
+```
 
 Question is: when you should you use the short version, and when you should you
 use the long version?

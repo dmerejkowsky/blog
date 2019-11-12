@@ -104,7 +104,7 @@ for this problem, so I thought I'd share this process with you.
 
 Vim has an option for this. Here's the documentation:
 
-<pre>
+```text
 'autochdir' 'acd'	boolean (default off)
 			global
 	When on, Vim will change the current working directory whenever you
@@ -112,7 +112,7 @@ Vim has an option for this. Here's the documentation:
 	It will change to the directory containing the file which was opened
 	or selected.
 	Note: When this option is on some plugins may not work.
-</pre>
+```
 
 That was my first try.
 
@@ -126,8 +126,8 @@ subproject called `baz`.
 
 Here's what your source code looks like:
 
-<pre>
-&lt;foo&gt;
+```text
+<foo>
   src
     bar.h
     bar.c
@@ -137,7 +137,7 @@ Here's what your source code looks like:
       index.html
       baz
           baz.html
-</pre>
+```
 
 When you are editing `bar.h`, you can type `:e baz/baz.c` and it feels natural.
 
@@ -164,7 +164,7 @@ Vim has a command to change the working directory as well.
 
 So back to our example, you can do:
 
-<pre>
+```text
 :cd /path/to/foo
 :cd src
 :e bar.c
@@ -172,7 +172,7 @@ So back to our example, you can do:
 :tabnew
 :cd ../doc
 :e index.html
-</pre>
+```
 
 Well that's much better! There's still a problem though: `:cd` changes the
 working directory for the whole vim process.
@@ -188,24 +188,24 @@ window: `:lcd`. So I started using that.
 And then I realized I often started vim directly from my home directory, so I
 had to type things like:
 
-<pre>
+```text
 :e /path/to/foo/src.c
 # Ah, I need to change the working directory...
 :cd /path/to/foo/
-</pre>
+```
 
 That's awful. You type the same path twice!
 
 Or I used to type:
 
-<pre>
+```text
 :cd /path/to/foo/src
 :e foo.h
 # Time to fix the doc
 :tabnew ../doc
 :cd ../doc
 # Ah crap, I meant :lcd ...
-</pre>
+```
 
 ### Step 4: using a custom command
 
@@ -265,23 +265,23 @@ Explanation:
 
 Here's how you use it
 
-<pre>
+```text
 :e /some/long/path/to/foo.c
-&lt;leader&gt;ew foo.h
+<leader>ew foo.h
 # opens /some/long/path/to/foo.h
-</pre>
+```
 
 ### Step 6: using :TabNew
 
 After a while, I realized I really liked having one working directory per tab.
 I found myself typing stuff like:
 
-<pre>
+```text
 :tabnew /some/path
 :e some-path-at-the-top
 <leader>cd
 :e subdir/otherfile.c
-</pre>
+```
 
 I was opening a file at the top of the project **just** to be able to use my
 `<leader>cd` command and start thinking of better ways.

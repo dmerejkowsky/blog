@@ -137,7 +137,7 @@ directories were not removed by default ...
 So I took a closer look at the files `py.test` was creating "behind my
 back"
 
-<pre>
+```text
 ── pytest-70
 │   └── test_warn_on_default_change0
 ├── pytest-71
@@ -149,7 +149,7 @@ back"
 │   ├── test_does_not_store_if_setup_fails0
 │   └── test_new_project_under_code_review0
 ├── pytest-dmerejkowsky -> /tmp/pytest-73/test_new_project_under_code_review0
-</pre>
+```
 
 Actually this is very nice!
 
