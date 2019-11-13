@@ -5,11 +5,38 @@ date: 2019-11-09T19:26:27.902842+00:00
 draft: true
 title: "Classes Rock"
 tags: [python]
+summary: |
+  Are instances and classes the correct way to represent real-world objects? (part 2)
 ---
 
-Let's go back to the spec:
+This is the second article in a 2-part series of blog posts that examine the complicated relationships between the real world and object-oriented code. If you haven't already, you should the first part: [classes suck]({{< relref "./0107-classes-suck.md" >}}) first.
 
-Notice this just one line:
+# Taking a second look at the code
+
+Let's look at the code again:
+
+```python
+class Robot:
+    def __init__(self):
+        self._name = None
+
+    def name(self):
+        return self._name
+
+    def start(self):
+        if self._name is None:
+            self._name = generate_name()
+
+    def stop(self):
+        pass
+
+   def reset(self):
+        self._name = None
+```
+
+
+# A single line telling a whole story
+
 
 ```python
 class Robot:
