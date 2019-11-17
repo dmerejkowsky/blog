@@ -226,4 +226,4 @@ Looking at the code, it looks like our object has nothing to do with the real wo
 
 Let's face it, using classes to represent the real world is a myth, probably spread by overzealous Java developers, or clueless researchers locked inside their ivory towers.
 
-Or is it? Stay tuned for part two to find out!
+Or is it? Let's find out in [part two]({{< relref "./0108-classes-rock.md" >}})!.
