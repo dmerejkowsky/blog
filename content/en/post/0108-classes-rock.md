@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: classes-rock
-date: 2019-16-09T19:26:27.902842+00:00
+date: 2019-11-16T19:26:27.902842+00:00
 draft: false
 title: "Classes Rock"
 tags: [python]
