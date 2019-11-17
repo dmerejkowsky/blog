@@ -18,7 +18,7 @@ Let's recap: we used a `Robot` class to implement the
 client specifications. It worked well, until we tried to model the
 `start` and `stop` methods with a mutable state. We concluded that
 blindly using classes (with methods and mutable attributes)
-to represent real worlds objects was a mistake.
+to represent real-worlds objects was a mistake.
 
 # Taking a second look at the code
 
@@ -95,11 +95,11 @@ But that's again about the specification. What does it mean to have `_name` as a
 Let's imagine we are writing software inside a big company with several
 teams. Reading the specification again, it's clear that the client is
 *extremely* worried about robot names: each and every line of the specification
-talks about it! Ff there is a bug affecting the robot name, the client is
+talks about it! If there is a bug affecting the robot name, the client is
 going to get pissed.
 
 And that's where using _encapsulation_ makes sense: by "hiding" the `name` attribute from the users of the Robot class,
-we are actually covering our bases. If someone from an other team writes `robot._name = "something-else"`,
+we are actually covering our bases. If someone from another team writes `robot._name = "something-else"`,
 the client will get mad (the robot name no longer has the correct format), but we can  tell him it's not our fault:
 the other team should not have broken the encapsulation without asking us first!
 
@@ -107,20 +107,20 @@ the other team should not have broken the encapsulation without asking us first!
 
 So, which is it? Do classes rock or suck at modeling the real world?
 
-Well, it all depend of what you mean by "the real world". My advice to you is:
+Well, it all depends on what you mean by "the real world". My advice to you is:
 
 * clarify specifications as much as possible
-* write code that closely resemble the specification
+* write code that closely resembles the specification
 * use encapsulation when necessary to protect yourself against misuses of your code
 
 When used correctly, classes are a great way to accomplish all of the above, but
 they are also easy to misuse.
 
-Finally, let's go back at our original question: "is modeling the real world
+Finally, let's go back to our original question: "is modeling the real world
 in code worth it?".
 
 Well, if it allows you to implement the specifications correctly and makes
-things easier for you and your team mates, then yes, it's definitely worth it.
+things easier for you and your teammates, then yes, it's definitely worth it.
 
 It's hard, but trying and solve this challenge is what I love about programming.
 
