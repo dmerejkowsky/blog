@@ -71,7 +71,7 @@ Notez également que `sys.path` commence par une chaîne vide. En pratique, cela
 
 Ainsi, si vous avez un fichier `random.py` dans votre répertoire courant, et que vous lancez un script `foo.py` dans ce même répertoire, vous vous retrouvez à utiliser le code dans `random.py`, et non celui de la bibliothèque standard ! Pour information, la liste de tous les modules de la bibliothèque standard est présente dans [la documentation](https://docs.python.org/fr/3/library/index.html).
 
-Un autre aspect notable de `sys.path` est qu'il ne contient que deux répertoires dans lesquel l'utilisateur courant peut potentiellement écrire : le chemin courant et le chemin dans `~/.local/lib`. Tous les autres (`/usr/lib/python3.7/`, etc.) sont des chemins "système" et ne peuvent être modifiés que par un compte administrateur (avec `root` ou `sudo`, donc).
+Un autre aspect notable de `sys.path` est qu'il ne contient que deux répertoires dans lesquels l'utilisateur courant peut potentiellement écrire : le chemin courant et le chemin dans `~/.local/lib`. Tous les autres (`/usr/lib/python3.7/`, etc.) sont des chemins "système" et ne peuvent être modifiés que par un compte administrateur (avec `root` ou `sudo`, donc).
 
 La situation est semblable sur macOS et Windows [^2].
 
@@ -455,4 +455,4 @@ Dans un futur article, nous approfondirons la question, en évoquant d'autres su
 [^2]: Presque. Il peut arriver que l'utilisateur courant ait les droits d'écriture dans *tous* les segments de `sys.path`, en fonction de l'installation de Python. Cela dit, c'est plutôt l'exception que la règle.
 [^3]: Cela peut vous paraître étrange à première vue. Il y a de nombreuses raisons historiques à ce comportement, et il n'est pas sûr qu'il puisse être changé un jour.
 [^4]: Presque. Parfois il faut installer un paquet supplémentaire, notamment sur les distributions basées sur Debian
-[^5]: Je n'ai pas réussi à trouver une explication satisfaisante à ce choix des mainteneurs Debian. Si vous avez des informations à ce sujet, je suis preneur. _Mise à jour: Il se trouve que cette décision s'inscrit au sein de la "debian policy", c'est à dire une liste de règles que doivent respecter tous les programmes maintenus par Debian._ TODO: link from tim
+[^5]: Je n'ai pas réussi à trouver une explication satisfaisante à ce choix des mainteneurs Debian. Si vous avez des informations à ce sujet, je suis preneur. _Mise à jour: Il se trouve que cette décision s'inscrit au sein de la "debian policy", c'est à dire une liste de règles que doivent respecter tous les programmes maintenus par Debian._
