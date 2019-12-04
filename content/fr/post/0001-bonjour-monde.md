@@ -12,8 +12,9 @@ Bonjour à tous et bienvenue !
 
 Cet article est le premier d'un tout nouveau blog (sur https://dmerej.info/blog/fr), contenant exclusivement des articles en français.
 
-Il est complémentaire de mon blog anglophone, qui lui est toujours disponible sur https://dmerej.info/blog.
-
-Vous y trouverez des articles similaires, mais pour l'instant les deux blogs sont complémentaires - chacun contenant des articles différents.
+Notez l'existence de mon blog anglophone, qui est disponible sur
+https://dmerej.info/blog. Pour l'instant, les deux blogs sont complémentaires:
+aucun article n'est la traduction directe d'un autre, mais
+cela pourra changer un jour, qui sait ?
 
 Sans plus attendre, vous pouvez lire mon [premier article sur Python et les bibliothèques tierces]({{< relref "0002-bibliotheques-tierces-python.md" >}}).
