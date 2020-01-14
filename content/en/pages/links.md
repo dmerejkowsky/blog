@@ -453,6 +453,7 @@ to keep easily available.
   http://python-future.org/)
 * [Hypothesis: test framework](https://hypothesis.readthedocs.org/en/master/)
 * [kivy:Toolkit for UIs on Linux, Mac, Windows, Android, iOS](https://kivy.org/#home)
+* [maturin: Build rust binaries as python packages - PyO3 wrapper](https://pypi.org/project/maturin/)
 * [pies: polyglot Python](https://github.com/timothycrosley/deprecated.pies)
 * [pdbpp: Improved debugger](https://pypi.python.org/pypi/pdbpp/)
 * [pyotp: One-Time Password library](https://github.com/pyotp/pyotp)
