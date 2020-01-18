@@ -1,10 +1,12 @@
 ---
 authors: [dmerej]
-slug: trying-mypy
+slug: i-dont-need-types
 date: 2018-05-27T10:17:17.789657+00:00
 draft: false
 title: I don't need types
 tags: [rust, python]
+aliases:
+  - trying-mypy
 ---
 
 This is a story about me being wrong about tests and type systems.
