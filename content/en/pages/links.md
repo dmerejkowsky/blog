@@ -60,6 +60,7 @@ to keep easily available.
   https://pchiusano.github.io/2016-02-25/tech-adoption.html)
 * [Developer Driven Developemnt](
   https://dev.to/isaacandsuch/developer-driven-development)
+* [Everything is broken](https://medium.com/message/everything-is-broken-81e5f33a24e1)
 * [Ethical, easy-to-use and privacy-conscious alternatives](https://switching.social)
 * [Execution in the Kingdom of Nouns (a Java rant)](
   http://steve-yegge.blogspot.fr/2006/03/execution-in-kingdom-of-nouns.html)
