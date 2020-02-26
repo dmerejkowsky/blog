@@ -99,6 +99,7 @@ to keep easily available.
 * [Quit Social Media. Your Career May Depend on It](
   http://mobile.nytimes.com/2016/11/20/jobs/quit-social-media-your-career-may-depend-on-it.html)
 * [The Real Life Risks of Re Using The Same Passwords](https://pixelprivacy.com/resources/reusing-passwords/)
+* [RESTful API Design: 13 Best Practices to Make Your Users Happy](https://florimond.dev/blog/articles/2018/08/restful-api-design-13-best-practices-to-make-your-users-happy/)
 * [Setting expectations for open source participation](https://snarky.ca/setting-expectations-for-open-source-participation/)
 * [So a product manager asks you to fix a bug…](
   https://medium.freecodecamp.com/youre-asked-to-make-a-fix-e156b802ad92)
