@@ -93,3 +93,5 @@ Almost 2 years ago, I decided to try
 
 
 [^1]: And by then we did not have the enhanced for loop - I completly forgot what we used back then, to be honest
+
+Actually, I went through Ruby and Perl before falling in love with Python - don't tell anyone
