@@ -81,6 +81,7 @@ to keep easily available.
   https://dev.to/jlhcoder/how-to-set-the-technical-direction-for-your-team)
 * [How to spy on a Ruby program](
   http://jvns.ca/blog/2016/06/12/a-weird-system-call-process-vm-readv)
+* [How to Write Good Error Messages](https://uxplanet.org/how-to-write-good-error-messages-858e4551cd4)
 * [Keep a CHANGELOG](http://keepachangelog.com/en)
 * [I don't like computers](
   https://www.happyassassin.net/2016/11/04/i-dont-like-computers)
