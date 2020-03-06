@@ -44,9 +44,9 @@ Now let's see a few problems I've encountered while using pylint.
 
 Initial setup of pylint is always a bit painful. However, if you follow [some advice]({{< ref "/post/0018-some-pylint-tips.md" >}}) you can get through it.
 
-## False negatives
+## False positives
 
-A recurring issue with pylint is the amount of false negatives. That is, when pylint thinks something is wrong but the code is perfectly OK.
+A recurring issue with pylint is the amount of false positives. That is, when pylint thinks something is wrong but the code is perfectly OK.
 
 For instance, I like using the [attrs](http://www.attrs.org/en/stable/overview.html) library whenever I have a class that mostly contains data, like so:
 
