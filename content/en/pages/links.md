@@ -449,8 +449,8 @@ to keep easily available.
 * [ecoutils: Python ecosystem management](http://sedimental.org/managing_python_ecosystems.html)
 * [hug: Embrace the APIs of the future](http://www.hug.rest/website/latest)
 * [invoke: Pythonic task execution](http://www.pyinvoke.org)
-* [logzero: Python logging made easy](
-  https://logzero.readthedocs.io/en/latest/)
+* [faust: Python Stream Processing](https://pypi.org/project/faust/)
+* [loguru: Python logging made simple](https://pypi.org/project/loguru/)
 * [pip-tools](https://github.com/nvie/pip-tools)
 * [pydantic: Data validation using Python3 type hints](
   https://pydantic-docs.helpmanual.io/)
@@ -459,6 +459,7 @@ to keep easily available.
 * [Hypothesis: test framework](https://hypothesis.readthedocs.org/en/master/)
 * [kivy:Toolkit for UIs on Linux, Mac, Windows, Android, iOS](https://kivy.org/#home)
 * [maturin: Build rust binaries as python packages - PyO3 wrapper](https://pypi.org/project/maturin/)
+* [mode: AsyncIO Service-based programming](https://pypi.org/project/mode/)
 * [pies: polyglot Python](https://github.com/timothycrosley/deprecated.pies)
 * [pdbpp: Improved debugger](https://pypi.python.org/pypi/pdbpp/)
 * [pyotp: One-Time Password library](https://github.com/pyotp/pyotp)
