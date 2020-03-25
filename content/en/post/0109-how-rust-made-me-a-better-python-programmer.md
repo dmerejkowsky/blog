@@ -53,7 +53,7 @@ Now imagine how I fell when I dicovered I could achieve the same result with:
 ```python
 scores = {"Alice": 5, "Bob": 4}
 for name, value in scores.items():
-    print name, ":", value
+    print(name, ":", value)
 ```
 
 This feld so much easier! I was wondering why on earth you would spend so much time
