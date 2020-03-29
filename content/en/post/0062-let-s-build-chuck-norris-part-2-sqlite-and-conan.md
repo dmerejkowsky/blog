@@ -55,6 +55,7 @@ Then, in the `getFact()` method, we run a simple SQL query:
 // Note: Error handling omitted for brevity.
 
 #include <sqlite3.h>
+#include <ChuckNorris.hpp>
 
 ChuckNorris::ChuckNorris()
 {
