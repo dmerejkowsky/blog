@@ -33,7 +33,7 @@ Now let's compile a simple C program:
 
 int main() {
   printf("Hello, world\n");
-  retrun 0;
+  return 0;
 }
 ```
 
