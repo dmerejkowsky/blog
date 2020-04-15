@@ -133,7 +133,7 @@ ${NDK_ROOT}/toolchains/llvm/prebuilt/linux-x86_64/bin/clang
   --gcc-toolchain=${NDK_ROOT}/toolchains/x86_64-4.9/prebuilt/linux-x86_64
   --sysroot=${NDK_ROOT}/sysroot
   -isystem ${NDK_ROOT}/sysroot/usr/include/x86_64-linux-android
-  -pie -o  hello.c.o -c hello.c
+  -o  hello.c.o -c hello.c
 
 ${NDK_ROOT}/toolchains/llvm/prebuilt/linux-x86_64/bin/clang
   --target=x86_64-none-linux-android
@@ -167,7 +167,6 @@ ${NDK_ROOT}/toolchains/llvm/prebuilt/linux-x86_64/bin/clang
   --gcc-toolchain=${NDK_ROOT}/toolchains/arm-linux-androideabi-4.9/...
   --sysroot=${NDK_ROOT}/sysroot
   -isystem ${NDK_ROOT}/sysroot/usr/include/arm-linux-androideabi
-  -pie
   -o  hello.c.o -c hello.c
 
 ${NDK_ROOT}/toolchains/llvm/prebuilt/linux-x86_64/bin/clang
