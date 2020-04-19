@@ -33,8 +33,8 @@ Why do I cry - it looks like the problem is solved, right?
 * there was already a symlink from `libfoo.so` to `libfoo.so.6` anyway!
 
 Well, despite the appearances, the problem is *not* solved, and doing this
-is a *terrible idea* in general - doing this is like planting a ticking time
-bomb at the heart of your Linux installation.
+is a *terrible idea* in general - like planting a ticking time bomb in the
+street you live or shooting yourself in the foot because you've got a plantar wart.
 
 But to understand why, we need to talk about the language C, shared libraries,
 soname bumps, Linux distributions and package management.
@@ -77,7 +77,7 @@ $ gcc -shared libanswer.so answer.c
 
 That way, everyone who needs to get the answer to the Ultimate Question of Life, the
 Universe and Everything can buy the `libanswer.so` compiled library and the `answer.h` header
-and then call the `get_answer()` function - let's see how.
+and call the `get_answer()` function - let's see how.
 
 # Using the library from The Experts
 
@@ -96,7 +96,7 @@ int main() {
 }
 ```
 
-You were told that `gcc` can compile C code and *link with* shared libraries
+You were told that `gcc` can compile C code and *link against* shared libraries
 if you put them on the command line, so your try and run this:
 
 ```console
@@ -112,13 +112,13 @@ print-answer.c:2:10: fatal error: answer.h: No such file or directory
 Wait a minute - the `answer.h` file is *right there* - what does that mean,
 "No such file or directory"?.
 
-After a bit of research, you discover is that `gcc` uses a list of paths called
+After a bit of research, you discover that `gcc` uses a list of paths called
 the "include path" where it looks for headers. You check on your machine,
 and sure enough, `/usr/include/` is one of the elements of this list, and `stdio.h`
 is in `/usr/include/stdio.h`, which explains why `gcc` did not complain
 about the first include.
 
-So, to fix the compilation error, you add the `-I .` option to the command line
+To fix the compilation error, you add the `-I .` option to the command line
 so that current directory is added to the list of include paths:
 
 ```console
@@ -140,7 +140,7 @@ system is lying to us**. The file `libanswer.so` is right there!  What's happeni
 
 After more investigation, you figure it out :  when you compiled the `print-answer`
 executable, there was a small piece of binary inside it that recorded the *name*
-of the `.so` file we used. You can check it by running the `readelf` command and display
+of the `.so` file it was linked against. You can check it by running the `readelf` command and display
 the *dynamic section* of your program:
 
 ```console
@@ -158,21 +158,29 @@ really *is*. [^5]
 
 Then, when you run `./print-answer`, the operating systems sees the name of the shared library in the
 dynamic section and tries to locate it. Like `gcc`, it finds `libc.so.6` by itself (in
-`/usr/lib/libc.so.6` on my machine) - but it's unable to find the `libanswer.so` shared
+`/usr/lib/libc.so.6` for instance) - but it's unable to find the `libanswer.so` shared
 library in the current directory.
 
-Fortunalety, you can fix that by using a sepcial environment variable called `LD_LIBRARY_PATH`:
+Fortunately, you can fix that by using a special environment variable called `LD_LIBRARY_PATH`:
 
 ```console
 $ LD_LIBRARY_PATH=. ./print-answer
 The answer is 42
 ```
 
-This time, the operating system looked for `libanswer.so` in the current directory, found it, and
-when required, it called the code for the `get_answer()` function inside the shared library
-`libanswer.so` .
+This time, the operating system looks for `libanswer.so` in the current directory, finds it, and
+when required, invokes the code for the `get_answer()` function from the shared library.
 
-# Looking for an other way
+That gets you thinking - you did not have to do any of this for `print-answer` to find the
+`libc.so` library and the `stdio.h` header.
+
+* What if it was possible to compile `libanswer.so` once and for all?
+* And what if if there was a way to compile the `print-answer.c` source file
+without having to copy/paste the header and the shared library, and remember
+all the various `gcc` options?
+
+
+# Becoming a packager
 
 Let's assume The Experts realized that their business model was not going
 to work and decided to publish their source files for free instead. Yay
@@ -194,13 +202,6 @@ char * get_answer() {
 }
 ```
 
-That gets you thinking:
-
-* What if it was possible to compile `libanswer.so` once and for all?
-* And what if if there was a way to compile the `print-answer.c` source file
-without having to copy/paste the header and the shared library, and remember
-all the various `gcc` options?
-
 Since you are an Arch Linux user,  you decide to lookup documentation about the `pacman` package manager
 and how generate and publish Arch Linux packages [^1].
 
@@ -221,8 +222,8 @@ build() {
 package ()
 {
   mkdir -p $pkgdir/usr/{include,lib}
-  install -p answer.h $pkgdir/usr/include/
-  install -p libanswer.so $pkgdir/usr/lib
+  install answer.h $pkgdir/usr/include/
+  install libanswer.so $pkgdir/usr/lib
 }
 ```
 
@@ -235,7 +236,7 @@ $ makepkg
 ==> Finished making: libanswer 1.0-1
 ```
 
-Everything went well, and you now have a file named `libanswer-1.0-1-x86_64.pkg.tar.xz`
+Everything goes well, and you now have a file named `libanswer-1.0-1-x86_64.pkg.tar.xz`
 next to your `PGKBUILD`.
 
 You install the package with `pacman`:
@@ -258,7 +259,7 @@ This time you need only the *name* of the library (the part without the
 have to worry about include paths or use the `LD_LIBRARY_PATH` environment
 variable -  neat!
 
-What you've accomplished is called *packaging he `answer` library*, and it's
+What you've accomplished is called *packaging the `answer` library*, and it's
 what  *package maintainers* do - well done.
 
 Impressed by your packaging skills[^2], the Arch Linux maintainers allow
@@ -302,7 +303,7 @@ That's where Linux distributions really shine (and the whole reason we use
 shared libraries in the first place).  Once the new package is published,
 *any* Arch Linux user who installs it will get the latest version
 of `libanswer.so` in their system, and all the programs that were linked
-with it will use the latest version - this is especially important if the
+against it will use the latest version - this is especially important if the
 new version contains a security bug fix for instance.
 
 
@@ -385,7 +386,7 @@ $ makepg
 $ sudo pacman -U libanswer-2.0-1-x86_64.pkg.tar.xz
 ```
 
-Easy as pie - that was a productive day - time to go to bed.
+Easy as pie - satisfied, you publish the new package and go to bed.
 
 
 # When shit hits the fan
@@ -408,15 +409,15 @@ Downgrading the `libanswer` package fixes the problem. Please advise.
 Signed: Bob
 ```
 
-Welcome to the joy of packaging!
+Welcome to the joys of packaging!
 
 You've never heard of the `display-answer-pp` package - what is going on?
 
 After a bit of research, you find out that someone wrote a `display-answer-pp`
-program, this time in C++, and published it on the official Arch Linux
+program using your `libanswer` package and published it on the official Arch Linux
 repositories a few days ago.
 
-Here's what the code for `display-answer-pp` looks like - it's a single `display-answer.cpp` file:
+Here's what the code for `display-answer-pp` looks like - it's a single `C++` file:
 
 ```cpp
 #include <answer.h>
@@ -424,7 +425,7 @@ Here's what the code for `display-answer-pp` looks like - it's a single `display
 
 int main() {
     auto answer = get_answer();
-    std::cout << "The answer is: '" << answer << "'" << std::endl;
+    std::cout << "The answer is: " << answer << std::endl;
     return 0;
 }
 ```
@@ -455,15 +456,16 @@ to libraries updates:
 * If the new version of the library is ABI-compatible with the previous one, end users should be able to get it
   by simply update *the one package* that contains it.
 
-* If not, they want to make sure *none of the programs that depends on the library* breaks when the update is made.
+* If not, they need to make sure *none of the programs that depends on the library* break when the update is made.
 
 ## The Arch Way
 
 Here's how Arch maintainers solves this problem. In our example, they would have published `libanswer` v2
 in a special repository named "staging". Then, they would have rebuild every package that depends
-on `libanswer` (so both `print-answer` and `display-answer-pp`) in the staging repositories.
+on `libanswer` (so both `print-answer` and `display-answer-pp`) and pushed those to the staging repository.
+
 Finally, after a period of testing, they would have moved `libanswer`, `print-answer` and `display-answer-pp`
-in the "official" repositories in one swift update. They would have use a *to do list* like
+in the official repositories in one swift update. They would have use a *to do list* like
 [this one](https://www.archlinux.org/todo/hdf5-1120-release/) to coordinate the packaging tasks.
 
 This means that if you try and update `libanswer` without upgrading *every
@@ -476,7 +478,7 @@ Debian maintainers use an other strategy. When they package a library,
 they include its version number in the name of the package. What's more,
 they have a separate *development* package that contains the files required for
 compiling programs that use the library. They also use a compilation trick
-called the `soname` option
+called the `soname` option.
 
 Let's see how this works.
 
@@ -561,13 +563,14 @@ of the soname to be updated. [^8]
 Now you know - different versions of a library have various sonames, and
 the symlinks are carefully crafted by distribution maintainers.
 
-So, when you create a symlink your self, you are taking a huge risk, especially
-when creating links between libraries that have a different leading digit!
+So, when you create a symlink yourself, you are taking a huge risk, especially
+when creating links between libraries that have a different leading digit in
+their soname!
 
 As we saw, using the incorrect library at runtime can cause crashes, and if
 you break an essential binary (like `bash` for instance), you may no longer
-log in, which means your only choice will be to re-install your whole system
-from scratch. This is not theoretical by the way : it happened to me a long time ago,
+be able to log in, which means your only choice may be to re-install your whole system
+from scratch. This is not theoretical by the way : it happened to me *years ago*,
 and I still remember it to this day.
 
 So, what to do if you get this error?
