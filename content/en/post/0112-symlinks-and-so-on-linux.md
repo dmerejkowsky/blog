@@ -34,8 +34,8 @@ Well, despite the appearances, the problem is *not* solved, and doing this
 is a *terrible idea* in general - like planting a ticking time bomb in the
 street you live or shooting yourself in the foot because you've got a plantar wart.
 
-But to understand why, we need to talk about the language C, shared libraries,
-soname bumps, Linux distributions and package management.
+But to understand why we need to talk about the language C, shared libraries,
+soname bumps, Linux distributions, and package management.
 
 And because I love telling stories, *you*, dear reader, will be the hero
 in this one.
@@ -44,7 +44,7 @@ in this one.
 
 Let's assume a group of people you don't really know (let's called them
 *The Experts*), wrote a piece of C code than can get the answer to the
-Ultimate Question of Life, the Universe and Everything.
+Ultimate Question of Life, the Universe, and Everything.
 
 For obvious reasons, they want to keep the source code private, so here's
 what they did:
@@ -74,7 +74,7 @@ $ gcc -shared libanswer.so answer.c
 ```
 
 That way, everyone who needs to get the answer to the Ultimate Question of Life, the
-Universe and Everything can buy the `libanswer.so` compiled library and the `answer.h` header
+Universe, and Everything can buy the `libanswer.so` compiled library and the `answer.h` header
 and call the `get_answer()` function - let's see how.
 
 # Using the library from The Experts
@@ -95,7 +95,7 @@ int main() {
 ```
 
 You were told that `gcc` can compile C code and *link against* shared libraries
-if you put them on the command line, so your try and run this:
+if you put them on the command line, so you try and run this:
 
 ```console
 $ gcc libanswer.so print-answer.c -o print-answer
@@ -133,10 +133,10 @@ $ ./print-answer
  cannot open shared object file: No such file or directory
 ```
 
-It's the same error message as in the introduction, and **the operating
+It's the same error message as in the introduction and **the operating
 system is lying to us**. The file `libanswer.so` is right there!  What's happening there?
 
-After more investigation, you figure it out :  when you compiled the `print-answer`
+After more investigation, you figure it out:  when you compiled the `print-answer`
 executable, there was a small piece of binary inside it that recorded the *name*
 of the `.so` file it was linked against. You can check it by running the `readelf` command and display
 the *dynamic section* of your program:
@@ -150,11 +150,11 @@ Dynamic section at offset 0x2de8 contains 27 entries:
  ...
 ```
 
-In a way, the `print-answer` program "knows" that it *needs* `libanswer.so`,
-to run. Crucially, it does not know nor care about where `libanswer.so`
+In a way, the `print-answer` program "knows" that it *needs* `libanswer.so`
+to run. Crucially, it does not know nor cares about where `libanswer.so`
 really *is*. [^5]
 
-Then, when you run `./print-answer`, the operating systems sees the name of the shared library in the
+Then, when you run `./print-answer`, the operating system sees the name of the shared library in the
 dynamic section and tries to locate it. Like `gcc`, it finds `libc.so.6` by itself (in
 `/usr/lib/libc.so.6` for instance) - but it's unable to find the `libanswer.so` shared
 library in the current directory.
@@ -173,7 +173,7 @@ That gets you thinking - you did not have to do any of this for `print-answer` t
 `libc.so` library and the `stdio.h` header.
 
 * What if it was possible to compile `libanswer.so` once and for all?
-* And what if if there was a way to compile the `print-answer.c` source file
+* And what if there was a way to compile the `print-answer.c` source file
 without having to copy/paste the header and the shared library, and remember
 all the various `gcc` options?
 
@@ -182,7 +182,7 @@ all the various `gcc` options?
 
 Let's assume The Experts realized that their business model was not going
 to work and decided to publish their source files for free instead. Yay
-open source !
+open source!
 
 Here's the contents of their `answer.c` file:
 
@@ -275,7 +275,7 @@ char* get_answer() {
 }
 ```
 
-Since you are responsible of the `libanswer` package, you quickly update
+Since you are the maintainer of the `libanswer` package, you quickly update
 the PKGBUILD and publish a new release.
 
 
@@ -305,10 +305,10 @@ against it will use the latest version - this is especially important if the
 new version contains a security bug fix for instance.
 
 
-# An other change
+# Another change
 
-A week later, The Experts realize they don't need a whole string for the
-answer function, and that a simple `int` would suffice.
+A week later, The Experts realize they don't really need to return a string
+from the ` get_answer()`  function, and that a simple `int` would suffice.
 
 So they modify both their header and source files:
 
@@ -321,8 +321,7 @@ So they modify both their header and source files:
 #include <answer.h>
 
 int get_answer() {
-  int r = 6*7;
-  return r;
+  return 42;
 }
 ```
 
@@ -445,25 +444,25 @@ In other terms, the *application _binary_ interface* (or ABI for short) of the `
 
 # You break it, you fix it
 
-Unfortunately, there's only one way to fix an ABI breakage : you need to
+Unfortunately, there's only one way to fix an ABI breakage: you need to
 *recompile* everything that was linked against the old version of the library.
 
 That's one of the main issues package maintainers have to solve. They need two very different features when it comes
 to libraries updates:
 
-* If the new version of the library is ABI-compatible with the previous one, end users should be able to get it
-  by simply update *the one package* that contains it.
+* If the new version of the library is ABI-compatible with the previous one, end-users should be able to get it
+  by simply updating *the one package* that contains it.
 
-* If not, they need to make sure *none of the programs that depends on the library* break when the update is made.
+* If not, they need to make sure *none of the programs that depend on the library* break when the update is made.
 
 ## The Arch Way
 
-Here's how Arch maintainers solves this problem. In our example, they would have published `libanswer` v2
+Here's how Arch maintainers solve this problem. In our example, they would have published `libanswer` v2
 in a special repository named "staging". Then, they would have rebuild every package that depends
 on `libanswer` (so both `print-answer` and `display-answer-pp`) and pushed those to the staging repository.
 
 Finally, after a period of testing, they would have moved `libanswer`, `print-answer` and `display-answer-pp`
-in the official repositories in one swift update. They would have use a *to do list* like
+in the official repositories in one swift update. They would have used a *to do list* like
 [this one](https://www.archlinux.org/todo/hdf5-1120-release/) to coordinate the packaging tasks.
 
 This means that if you try and update `libanswer` without upgrading *every
@@ -472,7 +471,7 @@ and that's why partial updates are not supported on Arch Linux.
 
 ## The Debian Way
 
-Debian maintainers use an other strategy. When they package a library,
+Debian maintainers use another strategy. When they package a library,
 they include its version number in the name of the package. What's more,
 they have a separate *development* package that contains the files required for
 compiling programs that use the library. They also use a compilation trick
@@ -514,7 +513,7 @@ the shared library with an appropriate soname:
 $ gcc -I . answer.c -shared -Wl,-soname=libanswer.so.2 -o libanswer.so.2
 ```
 
-They use the outcome of the build to *update* the `libanswer-dev` package, and to create
+They use the outcome of the build to *update* the `libanswer-dev` package and to create
 a *brand new* `libanswer2` package.
 
 At this point:
@@ -541,7 +540,7 @@ Let's sum up:
 * Both `libanswer1` and `libanswer2` packages can co-exist in the same system,
   since they contain different filenames
 * The `libanswer-dev` package does not need to be installed for
-  `display-answer-pp` to run, since the program contain the versioned soname
+  `display-answer-pp` to run since the program contain the versioned soname
   in its dynamic section
 * If you want to rebuild a program when a new version of the library is out,
   you just install the latest `libanswer-dev` package - the command used for
@@ -568,7 +567,7 @@ their soname!
 As we saw, using the incorrect library at runtime can cause crashes, and if
 you break an essential binary (like `bash` for instance), you may no longer
 be able to log in, which means your only choice may be to re-install your whole system
-from scratch. This is not theoretical by the way : it happened to me *years ago*,
+from scratch. This is not theoretical by the way: it happened to me *years ago*,
 and I still remember it to this day.
 
 So, what to do if you get this error?
@@ -592,4 +591,4 @@ put an end to this bad, bad, advice. Thank you!
       is usable from C++ too.
 [^5]: By the way, it needs `libc.so` because the compiled code for `printf` lives there.
 [^7]: Actually, this is often done automatically by whatever build system the library is using
-[^8]: Sadly it's not always the case : `lua` and `libpng` are notable exceptions.
+[^8]: Sadly it's not always the case: `lua` and `libpng` are notable exceptions.
