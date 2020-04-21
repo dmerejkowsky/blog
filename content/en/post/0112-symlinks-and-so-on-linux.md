@@ -271,7 +271,7 @@ A few days later, The Experts release a new version of their library (1.1), cont
 
 ```c
 char* get_answer() {
-  return "42";
+  return strdup("42");
 }
 ```
 
