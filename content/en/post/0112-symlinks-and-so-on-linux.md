@@ -2,13 +2,11 @@
 authors: [dmerej]
 slug: symlinks-and-so-files-on-linux
 date: 2020-04-18T14:03:19.615132+00:00
-draft: true
-title: "symlinks and .so files on linux - what you need to know"
+draft: false
+title: symlinks and .so files on linux - what you need to know
 tags: [linux]
 summary: |
-  Everything you need to know about symlinks and
-  .so files on Linux - except if you don't mind
-  breaking your installation beyond all repair.
+  Everything you need to know about symlinks and .so files on Linux
 ---
 
 
@@ -523,7 +521,7 @@ At this point:
 * `libanswer-dev` contains a symlink `libanswer.so -> libanswer.so.2` and the updated `answer.h` header
 * `libanswer2` contains only the `libanswer.so.2` file
 
-Then, they build `display-answer-pp` for the  second time, using the updated `libanswer-dev` package:
+Then, they build `display-answer-pp` for the second time, using the updated `libanswer-dev` package:
 
 ```console
 $ g++ -lanswer display-answer.cpp -o ./display-answer
