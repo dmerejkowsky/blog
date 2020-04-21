@@ -477,6 +477,7 @@ to keep easily available.
 
 * [AppImage](http://appimage.org/)
 * [AppStream](https://www.freedesktop.org/wiki/Distributions/AppStream/)
+* [CARE: create re-usable executions contexts using PRoot](https://proot-me.github.io/care/)
 * [Flatpak](http://flatpak.org)
 * [Glick2](https://people.gnome.org/~alexl/glick2/)
 * [Limba](https://people.freedesktop.org/~mak/limba/)
