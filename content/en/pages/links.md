@@ -454,8 +454,8 @@ to keep easily available.
 * [pip-tools](https://github.com/nvie/pip-tools)
 * [pydantic: Data validation using Python3 type hints](
   https://pydantic-docs.helpmanual.io/)
-* [python-future: Easy, clean, reliable Python 2/3 compatibility](
-  http://python-future.org/)
+* [python-future: Easy, clean, reliable Python 2/3 compatibility](  http://python-future.org/)
+* [pyxel: retro game engine](https://github.com/kitao/pyxel)
 * [Hypothesis: test framework](https://hypothesis.readthedocs.org/en/master/)
 * [kivy:Toolkit for UIs on Linux, Mac, Windows, Android, iOS](https://kivy.org/#home)
 * [maturin: Build rust binaries as python packages - PyO3 wrapper](https://pypi.org/project/maturin/)
