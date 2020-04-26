@@ -8,7 +8,7 @@ tags: [python, testing]
 summary: Improve your Python tests with these simple tips
 ---
 
-Today, I'd like to share with you a list of small tips to help you write better tests when using Python. No that the tips often improve both the readability of the test implementation, *and* of the failure messages (which is pretty important too).
+Today, I'd like to share with you a list of small tips to help you write better tests when using Python. Note that the tips often improve both the readability of the test implementation, *and* of the failure messages (which is pretty important too).
 
 # Use pytest
 
@@ -33,7 +33,7 @@ E        +  and   5 = bar(2)
 test.py:11: AssertionError
 ```
 
-Note how much information you get about what went wrong, like the entire body of the function up to the assertion that failed,or when the values that were compared came from.
+Note how much information you get about what went wrong, like the entire body of the function up to the assertion that failed, or when the values that were compared came from.
 
 It gets even better - take this other assertion:
 
@@ -72,7 +72,7 @@ def test_can_update_local_file(remote, local):
     assert actual_contents == new_contents
 ```
 
-_Side note: I usually split my tests into three *arrange* /*act* / *assert* parts and I visualize them using vertical space (this tip is free)_.
+_Quick tip: I usually split my tests into three *arrange* /*act* / *assert* parts and I visualize them using vertical space_.
 
 # Add context to assertions
 
@@ -96,10 +96,9 @@ E         + new contents
 
 ```
 
-you get that:
+you get this message, which contains a clue about where the diff actually comes from:
 
 ```
->       assert actual_contents == new_contents, "a.txt should have been updated"
 E       AssertionError: a.txt should have been updated
 E       assert 'old contents\n' == 'new contents'
 E         - old contents
@@ -139,7 +138,7 @@ def assert_was_created(path):
 ```
 # Use docstrings to describe tests scenarios
 
-This is my favorite tip ever: if you are testing something complex, *add a human-readable description* of the test inside the doc string.
+This is my favorite tip ever: if you are testing something complex, *add a human-readable description* of the test inside the docstring.
 
 Still using our `test_can_update_local_file` example:
 
@@ -155,9 +154,9 @@ def test_can_update_local_file():
     ....
 ```
 
-There are two advantages with this approach:
+There are two advantages to this approach:
 
-* It can be helpful to have a human readable description of what the test is supposed to be doing when reading the implementation of the code - like any docstring
+* It can be helpful to have a human-readable description of what the test is supposed to be doing when reading the implementation of the code - like any docstring
 * Since pytest displays the entire block of the function block that caused the assertion to fail, you get a reminder of what the test was about when reading the failure message.
 
 # Reflections on the last tip
@@ -168,12 +167,11 @@ What changed my mind? In two words: **code review**. let me elaborate.
 
 ## Getting feedback
 
-I've had the chance to get my Python test code reviewed by some team mates who did not know pytest very well but were used to frameworks like Mocha or Cucumber. They help me realize this simple truth: using only function names and implementation (in other words, *code*) to express all the subtlety of what the tests are about *cannot* be enough - kind of obvious when you say it like that, right?
+I've had the chance to get my Python test code reviewed by some teammates who did not know pytest very well but were used to frameworks like Mocha or Cucumber. They help me realize this simple truth: using only function names and implementation (in other words, *code*) to express all the subtlety of what the tests are about *cannot* be enough - kind of obvious when you say it like that, right?
 
-But in this case code review can only see you _what_ needs to be improved, but
-not always _how_.
+But in this case code review can only see you _what_ needs to be improved, but not always _how_.
 
-So I did what I had to: I took a closer look on those other frameworks.
+So I did what I had to: I took a closer look at those other frameworks.
 
 ## Getting to know other frameworks
 
@@ -195,7 +193,7 @@ describe('sync', function() {
 And here's an implementation using [Cucumber](https://cucumber.io):
 
 ```gherkin
-# in synchronization.feature
+# in synchronization.feature - the syntax is called Gherkin
 Feature: Synchronization
 
 Scenario: file updated remotely
@@ -226,16 +224,20 @@ Quite different styles, right?
 
 And there you have it: I came up with using docstrings with pytest because it was a nice middle ground between those two approaches.
 
-* In Mocha, you usually write short text in `it()` and `describe()` - rarely several lines, but with docstrings the description can be as long as you need.
+* With Mocha, you write short descriptions in `it()` and `describe()` and there's no such thing as a "test name".
+* With Cucumber, you write long and detailed text using the English natural languages.
 
-* In Cucumber, your English text is in a different file than your supporting code and has to follow some kind of custom syntax, but with docstrings you can have no constraints at all for the formatting of your description, and it lives right next to the accompanying code
+I prefer the docstring solution to the ones above because:
+
+* docstrings can be as long as you want (you rarely see descriptions larger than one line in Mocha tests)
+* contrary to Cucumber, you are not forced to use any formatting or syntax in your description, and they live right next to the accompanying code
 
 
 ## Conclusion
 
 So what did we learn?
 
-* Being reviewed helps keeping your code readable - but you already knew that, right?
+* Being reviewed helps to keep your code readable - but you already knew that, right?
 * Exploring new languages and frameworks gives you insights on how to improve your code
 * If you are in a team that contains people who use different languages and frameworks than yours and you get them to review your code, it will lead to even better code because you'll be combining the two effects from above!
 
