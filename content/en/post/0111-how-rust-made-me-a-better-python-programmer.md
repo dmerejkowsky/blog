@@ -17,7 +17,7 @@ I wrote my first substantial project in Caml Light in 2005.
 Afterwards I went to engineering school. Most of the teaching was using Java.
 
 I still remember looking at this code and thinking: wow, this looks
-needlessly complicaed [^1] for just printing out a score table
+needlessly complicated [^1] for just printing out a score table
 
 ```java
 import java.util.HashMap;
@@ -90,6 +90,36 @@ try something else and maybe you'll like it!"
 # Rust
 
 Almost 2 years ago, I decided to try
+
+
+# Patches
+
+```
+# old
+class Widget:
+     def __init__(self);
+         self.components = []
+         self.fixed = None
+
+
+     def set_components(self, components):
+         self.components = components
+         fixed = [x for x in components if x.fixed = True]
+         assert len(fixed) == 1
+         self.fixed = fixed[0]
+```
+
+```
+# new
+class Widget:
+     def __init__(self, components);
+         self.components = components
+         fixed = [x for x in components if x.fixed = True]
+         assert len(fixed) == 1
+         self.fixed = fixed[0]
+# No mutation, no optional!
+```
+
 
 
 [^1]: And by then we did not have the enhanced for loop - I completly forgot what we used back then, to be honest
