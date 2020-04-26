@@ -2,7 +2,7 @@
 authors: [dmerej]
 slug: python-tests-tips
 date: 2020-04-25T14:20:47.807992+00:00
-draft: true
+draft: false
 title: Tips for better Python tests
 tags: [python, testing]
 summary: Improve your Python tests with these simple tips
