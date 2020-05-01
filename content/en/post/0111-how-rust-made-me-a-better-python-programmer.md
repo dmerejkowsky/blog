@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: how-rust-made-me-a-better-python-programmer
-date: 2020-02-27T12:19:25.455275+00:00
+date: 2020-05-01T12:19:25.455275+00:00
 draft: true
 title: "How Rust made me a better Python programmer"
 tags: [python, rust]
@@ -10,118 +10,147 @@ summary: |
   than the one you are used to
 ---
 
-# Introduction: my learning years
 
-I wrote my first substantial project in Caml Light in 2005.
+# Getting out of my comfort zone
 
-Afterwards I went to engineering school. Most of the teaching was using Java.
+I've been written Python code for
+almost 10 years now. It's the language I [fell in
+love](https://medium.com/signal-v-noise/how-i-fell-in-love-with-a-programming-language-8933d5e749ed)
+with.
 
-I still remember looking at this code and thinking: wow, this looks
-needlessly complicated [^1] for just printing out a score table
+One day, I decided to try Rust and it changed everything.
 
-```java
-import java.util.HashMap;
-import java.util.Map;
+Why am I telling you about this?
 
-public class Hello {
-  public static void main(String [] args) {
-    System.out.println("Hello, world");
-    Map<String, Integer> scores = new HashMap<>();
-    scores.put("Alice", 5);
-    scores.put("Bob", 4);
-    for (Map.Entry<String, Integer> entry : scores.entrySet()) {
-        System.out.println(entry.getKey() + " : " + entry.getValue());
-    }
-  }
-}
-```
+Well, I've often read articles telling me to "try now things", or
+"get out of my comfort zone", but  but those articles seldom gave *concrete
+examples* of the benefits of learning a different programming language.
 
-And then I discovered the code had to be compiled to be run, which involved either:
-* Using a _huge_ GUI programm called an IDE
-* Or running something like:
+So, how did Rust made me a better Python programmer?
 
-```console
-$ javac Hello.java
-$ java -cp . Hello
-```
+But it also had a direct effect on how I write Python code, so let's see a few examples.
 
-So naturally, I wanted to see what other "scripting" languages were about, and I decided to
-take a look at Perl, Ruby and Python.
+# Types are good
 
-Now imagine how I fell when I dicovered I could achieve the same result with:
+First, it changed my mind about type systems and tests - I've already talked
+about this in [I don't need types]({{< relref "0070-i-don-t-need-types.md"
+>}}) and [giving mypy a go]({{< relref "./0071-giving-mypy-a-go.md" >}}),
+so there's *that*.
+
+I now use `mypy` with `--strict-optional` as often as I can, both for personal Python projects
+and at work.
+
+# More upfront design
+
+When you are writing Rust, you first try to get the compiler to accept your code, and *then*
+you have to satisfy the borrow checker.
+
+That means that even though it's still possible to do TDD in Rust, your cycles are going to get a
+bit longer, and that means you'll probably have to spend a bit more time in
+upfront design.  For instance, you have to think about *data ownership*.
+
+Let's see this in practice.
+
+A while back, I was writing a command-line tool that would manage workspaces
+and projects [^1].
+
+Here's what my initial design looked like:
 
 ```python
-scores = {"Alice": 5, "Bob": 4}
-for name, value in scores.items():
-    print(name, ":", value)
-```
+class Workspace:
+    """ A workspace contains a collection of named projects
+    and a config
 
-This feld so much easier! I was wondering why on earth you would spend so much time
-typing all that code and waiting for the compilation to finish, and deal with the JDK/JRE,
-and all that __shtuff__.
-
-# My first job
-
-My first real job involved writing a _lot_ of `C++` and a tiny bit of Python.
-
-I was told that "serious" code was to be written in C++ because of performance,
-and I ....
+    """
+    def __init__(root_path):
+        self.root_path = root_path
+        self.config = ...  # read config from root path
+        self.projects = ....  # build a list of projects from the config
 
 
+    def build_project(self, name):
+        project_path = self.root_path / name
+        return Project(name, path=project_path)
 
-I've been writing Python code for a very long time (almost 10 years). To
-this day, it is my favorite language. I feel productive writing it,
-I love its ecosystem, its gouvernance, its features, its tooling, its
-syntax and everything else.
-
-
-But I also recognize a few of its shortcomings:
-
-* It's slow
-* It has a garbage collector
-* It's easy to make a mess - maintaining clean Python code in a big codebase is hard
-* It's a bit ackward to write concurrent code in it (but it's definitely possible, in practice
-  the GIL is not that big a deal)
-
-For quite a long time I heard the phrase : "You should learn many programming languages", so
-I always had this little voice in my head "Your attachement to Python is not rational, you should
-try something else and maybe you'll like it!"
-
-# Rust
-
-Almost 2 years ago, I decided to try
+    def __repr__(self):
+        project_list = ",".join(str(x) for x in self.projects)
+        return f"<Workspace in {self.root_path} with projects {project_list}>"
 
 
-# Patches
+class Project:
+    """ A project has a name and a path
+
+    """
+    def __init__(self, name, *, path):
+        self.name = name
+        self.path = path
+
+    def __repr__(self):
+        return f"<Project {self.name} in {self.path}>"
 
 ```
-# old
-class Widget:
-     def __init__(self);
-         self.components = []
-         self.fixed = None
 
+So far so good.
 
-     def set_components(self, components):
-         self.components = components
-         fixed = [x for x in components if x.fixed = True]
-         assert len(fixed) == 1
-         self.fixed = fixed[0]
+Then I realized that some projects methods like `.build()` would need access to the workspace configuration, so that's
+I changed:
+
+```diff
+    def build_project(self, name):
+-       project_path = self.root_path / name
++       return Project(name, path=project_path, workspace=self)
+
+class Project:
+    """ A project has a name and a path
+
+    """
+-    def __init__(self, name, *, path):
++    def __init__(self, name, *, path, workspace):
+        self.name = name
+        self.path = path
+        self.workspace = workspace
+
++    def build(self):
++        workspace_config = self.workspace.config
 ```
 
+Easy, right? The config is inside the workspace, so let's pass a reference to the Workspace inside the Project
+constructor and then use it's config in the `build()` method.
+
+In case this is not obvious, here's one problem with this design : there's a cyclic reference : Workspace contains
+projects that contains references to workspaces.
+
+You can make the code blow up just by modifying Project's `__repr__` method:
+
+```diff
+class Project:
+    ....
+
+    def __repr__(self):
+-        return f"<Project {self.name} in {self.path}>"
++        return f"<Project {self.name} inside {self.workspace}>"
 ```
-# new
-class Widget:
-     def __init__(self, components);
-         self.components = components
-         fixed = [x for x in components if x.fixed = True]
-         assert len(fixed) == 1
-         self.fixed = fixed[0]
-# No mutation, no optional!
+
+```text
+workspace = Workspace(Path("path/to/workspace"))
+print(workspace)
+
+  ....
+  File "bad.py", line 46, in __repr__
+    return f"<Project {self.name} inside {self.workspace}>"
+  File "bad.py", line 31, in __repr__
+    project_list = ",".join(repr(x) for x in self.projects)
+  File "bad.py", line 31, in <genexpr>
+    project_list = ",".join(repr(x) for x in self.projects)
+RecursionError: maximum recursion depth exceeded while
+getting the repr of an object
 ```
 
+This is pretty bad because you often never write tests for the `__repr__` method - you use it only
+when debugging something!
+
+Writing Rust code made me *avoid* those kind of designs like the plague. You *can* create circular references but
+it will be *much* easier to use plain, cheap, immutable references when you can.
 
 
-[^1]: And by then we did not have the enhanced for loop - I completly forgot what we used back then, to be honest
-
-Actually, I went through Ruby and Perl before falling in love with Python - don't tell anyone
+[^1]: The code is still on [GitHub](https://github.com/aldebaran/qibuild) and I feel kind of bad about it today :P
