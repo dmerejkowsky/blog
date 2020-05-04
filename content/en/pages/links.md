@@ -251,6 +251,7 @@ to keep easily available.
 * [FDN](http://blog.fdn.fr)
 * [Go, Arch Linux and Programming](http://blog.roboticoverlords.org/)
 * [guyzmo](http://i.got.nothing.to/blog)
+* [Hillel Wayne](https://hillelwayne.com)
 * [HTeuMeuLeu](http://www.hteumeuleu.fr/)
 * [In Pursuit of Laziness](https://manishearth.github.io)
 * [Jacques Mattheij](http://jacquesmattheij.com/)
