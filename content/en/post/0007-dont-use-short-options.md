@@ -119,8 +119,9 @@ cmd = ["rsync",
 subprocess.check_call(cmd)
 ```
 
-Note how in the short version we have a string that makes absolutely no sense
-to the reader: `rlptc`, unless he knows the man page of `rsync` by heart.
+Note how in the short version we have a string (`rlptc`) that makes absolutely
+no sense to the reader - unless of course they know the entier man page of `rsync`
+by heart.
 
 Also note that having one (long) option per line has at least two advantages:
 
