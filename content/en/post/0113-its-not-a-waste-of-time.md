@@ -2,7 +2,7 @@
 authors: [dmerej]
 slug: its-not-a-waste-of-time
 date: 2020-05-30T10:18:46.601899+00:00
-draft: true
+draft: false
 title: "\"It's a waste of time!\""
 tags: [misc]
 summary: Stop saying that if you're not sure.
