@@ -153,4 +153,44 @@ Writing Rust code made me *avoid* those kind of designs like the plague. You *ca
 it will be *much* easier to use plain, cheap, immutable references when you can.
 
 
+
+Other exemple:
+
+```python
+class Workspace:
+    def __init__(self, root_path: Path) -> None:
+        local_manifest_path = root_path / ".tsrc" / "manifest"
+        self.cfg_path = root_path / ".tsrc" / "config.yml"
+        self.root_path = root_path
+        self.local_manifest = LocalManifest(local_manifest_path)
+        copy_cfg_path_if_needed(root_path)
+        if not self.cfg_path.exists():
+            raise WorkspaceNotConfigured(root_path)
+
+        self.config = WorkspaceConfig.from_file(self.cfg_path)
+
+```
+
+This does too many things and is hard to test.
+
+In Rust, I would have to consider making `Workspace::new` return a Result, or most likely
+
+```rust
+impl Workspace
+
+ fn new(config: Config, manifest: manifest ) {
+
+ }
+
+ fn open(path: Path) -> Result<Self> {
+
+ }
+
+}
+`
+
+
 [^1]: The code is still on [GitHub](https://github.com/aldebaran/qibuild) and I feel kind of bad about it today :P
+
+
+
