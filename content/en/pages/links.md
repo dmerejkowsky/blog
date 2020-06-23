@@ -86,6 +86,7 @@ to keep easily available.
 * [Keep a CHANGELOG](http://keepachangelog.com/en)
 * [I don't like computers](
   https://www.happyassassin.net/2016/11/04/i-dont-like-computers)
+* [The ISTQB is wrong about the future of software testing and here's why](https://www.linkedin.com/pulse/istqb-wrong-future-software-testing-heres-why-djuka-selendic/)
 * [Magic Ink: Information Software and the Graphical Interface](
   http://worrydream.com/MagicInk/)
 * [Maintainers Matter](http://kmkeen.com/maintainers-matter)
