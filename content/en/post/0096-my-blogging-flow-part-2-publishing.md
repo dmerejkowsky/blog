@@ -62,7 +62,7 @@ When a brand new article has just been published, I run yet an other Python scri
 * Parse the RSS feed and find out the URL and title of the latest article
 * Write an automatic tweet like [this one](https://twitter.com/d_merej/status/1092029859864416259) (the additional hashtags at the end are given on the command line)
 * Write a toot on mastodon with similar content
-* Send an email to the people who subscribed to [the newsletter]({{< ref "/post/0031-introducing-dmerej-newsletter.md" >}}).
+* Send an email to the people who subscribed to [the newsletter]({{< ref "/post/0031-introducing-dmerej-newsletter.md" >}}). I manually maintain a list of subscribers inside a configuration file for now, since there's no subscription form on the blog.
 
 # dev.to
 
@@ -79,3 +79,5 @@ Thanks to isso I get notified when new comments are posted. I also of course get
 When I'm lucky, [@thepracticaldev](https://twitter.com/thepracticaldev) tweets a link to my article, and I get new followers and more views. This is nice :)
 
 That's all folks! If you have any other questions regarding how the blog works, don't be afraid to ask in the comments below!
+
+_2020-07-20 update: I've published a [gist on GitHub](https://gist.github.com/dmerejkowsky/d105bbf82b7746bf60b044ebd1c5fef8) containing the relevant part of the Python code mentioned above_.
