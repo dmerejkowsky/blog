@@ -63,7 +63,7 @@ Configuring `php` for Dotclear was a bit tedious, but once it was done I must ad
 
 But I still I had a problem: I was receiving many notifications about comments but *almost all of them were spam* :/
 
-This was depressing, so I shot down the comment service and started looking for an alternative.
+This was depressing, so I shut down the comment service and started looking for an alternative.
 
 ## The Hugo period
 
@@ -75,7 +75,7 @@ I immediately liked it:
 * Hugo is easy to install (just one binary)
 * Its documentation is complete and easy to follow
 * I no longer had to setup `php` on my server. Just a few lines of `nginx` configuration was enough.
-* Plus it is ridiculously *fast*. More than one hundred pages in less than one second.
+* Plus it is ridiculously *fast*. It can build more than one hundred pages in less than one second.
 
 To work, Hugo need a *theme*.  A Hugo theme is made of various *templates*, which control how the HTML gets produced, and some *static files* (like CSS or images) that needs to be copied along the generated files.
 
@@ -164,11 +164,7 @@ If you take a look at the [sources of the blog](https://github.com/dmerejkowsky/
 ...
 ```
 
-I like this scheme for several reasons:
-
-* Posts naturally appeared sorted everywhere (even with `ls`)
-* I will get this nice feeling of accomplishment when I write my 100th post
-* I can easily auto complete filenames from my editor (I just need to remember the post number)
+I like this scheme because posts are naturally sorted by time, and because I know immediately know how much articles I've written. (More than 100 today!)
 
 Since I don't really want the internal number to be seen outside, all the articles have a `slug` in the "front matter":
 
