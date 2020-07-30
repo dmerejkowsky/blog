@@ -12,7 +12,7 @@ summary: Introducing ruplacer, a command line tool that finds and replaces text 
 
 Today I'd like to talk about a command-line tool I've been working on.
 
-It's called [ruplacer](https://github.com/SuperTanker/ruplacer) and as the name suggest, it's *rually* cool and written in Rust.
+It's called [ruplacer](https://github.com/TankerHQ/ruplacer) and as the name suggest, it's *rually* cool and written in Rust.
 
 Basically, it finds and replaces text in source files. Here's a screenshot of ruplacer in action:
 
@@ -66,6 +66,6 @@ Because I wanted better cross-platform support, a dry-run mode and a colorful ou
 
 Finally, after hearing about ripgrep and [fd](https://github.com/sharkdp/fd), I decided to give Rust a go, and that's how ruplacer, the third incarnation of this tool, was born. This makes me confident it's good enough for *you* to try.
 
-If you have `cargo` installed, you can get ruplacer by running `cargo install ruplacer`. Otherwise, you will find the [source code](https://github.com/SuperTanker/ruplacer/tree/master/src) and [pre-compiled binaries](https://github.com/SuperTanker/ruplacer/releases) on GitHub.
+If you have `cargo` installed, you can get ruplacer by running `cargo install ruplacer`. Otherwise, you will find the [source code](https://github.com/TankerHO/ruplacer/tree/master/src) and [pre-compiled binaries](https://github.com/TankerHQ/ruplacer/releases) on GitHub.
 
 Cheers!

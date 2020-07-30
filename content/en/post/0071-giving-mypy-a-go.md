@@ -92,7 +92,7 @@ I know the second question is a bit subjective. I'm still going to use this metr
 
 ## Choosing a project
 
-To test this hypothesis, I needed an existing project. I used [tsrc](https://github.com/SuperTanker/tsrc), the command-line tool we use [at work](https://tanker.io) to manage multiple git repositories and automate GitHub and GitLab review automation.[^1]
+To test this hypothesis, I needed an existing project. I used [tsrc](https://github.com/TankerHQ/tsrc), the command-line tool we use [at work](https://tanker.io) to manage multiple git repositories and automate GitHub and GitLab review automation.[^1]
 
 I chose it because:
 
@@ -475,7 +475,7 @@ So to have a clean implementation of the `GitServer` I of course used the best t
 
 ![yo dawg tests](/pics/yo-dawg-test.jpg)
 
-You can find them in the [test_test_helpers.py](https://github.com/SuperTanker/tsrc/blob/master/tsrc/test/test_test_helpers.py) file.
+You can find them in the [test_test_helpers.py](https://github.com/TankerHQ/tsrc/blob/master/tsrc/test/test_test_helpers.py) file.
 
 Anyway, I was writing an end-to-end test for tsrc that involved tags.
 
@@ -836,7 +836,7 @@ That alone would be a good reason to use mypy I think :)
 # What's next
 
 
-Well, the `mypy` changes have [been merged](https://github.com/SuperTanker/tsrc/pull/110) and the CI now runs `mypy` in strict mode on every pull request.
+Well, the `mypy` changes have [been merged](https://github.com/TankerHQ/tsrc/pull/110) and the CI now runs `mypy` in strict mode on every pull request.
 
 I'm still curious about the other benefits of type annotations I could not check (maintainability, code comprehension, ease of refactorings ...).
 
