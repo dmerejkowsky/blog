@@ -842,6 +842,8 @@ I'm still curious about the other benefits of type annotations I could not check
 
 I guess we'll see how the next refactoring in tsrc goes.
 
+_Update, a few months later_: Well, the next refactoring in tsrc went really well and mypy caught a ton of problems very early. I'm now using `mypy` in strict mode in almost all of my projects.
+
 # Conclusion
 
 We saw how mypy, while stilling making relative few false positives, still found inconsistencies, a few bugs, and even design problems.
