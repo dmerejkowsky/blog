@@ -333,6 +333,7 @@ to keep easily available.
 * [Elixr: browsing source code online](
   https://github.com/free-electrons/elixir)
 * [ffind: A sane replacement for find](https://github.com/jaimebuelta/ffind)
+* [frictionless: Extract data from ill-formatted csv files](https://frictionlessdata.io/)
 * [Kinto formbuilder: Generate online forms](https://www.fourmilieres.net/)
 * [gien: export Github issue tracker contents to local email storage](https://github.com/2ion/gien)
 * [git-repo: CLI utility to manage git services from your workspace](
