@@ -7,8 +7,6 @@ weight: -230
 date: "2016-06-21T23:55:04+02:00"
 ---
 
-# About me
-
 My name is Dimitri Merejkowsky (not to be confused with the Russian author with
 the same name :)
 
