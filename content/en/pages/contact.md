@@ -61,8 +61,7 @@ message.
 
 ## IRC
 
-You can also find me on freenode, and `irc.mozilla.org`.
-On both servers my nick is `dmerejkowsky`
+You can also find me on freenode,  my nick there is `dmerejkowsky`
 
 ## GitHub
 
