@@ -11,7 +11,7 @@ TEMPLATE = """\
 ---
 authors: [dmerej]
 slug: {slug}
-date: {full_date}
+date: "{full_date}"
 draft: true
 title: "{title}"
 tags:
