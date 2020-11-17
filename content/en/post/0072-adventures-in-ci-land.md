@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: adventures-in-ci-land
-date: 2018-06-04T18:21:30.504290+00:00
+date: "2018-06-04T18:21:30.504290+00:00"
 draft: false
 title: "Adventures in CI land"
 tags: [ci, python]

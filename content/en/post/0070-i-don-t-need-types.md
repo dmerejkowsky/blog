@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: i-dont-need-types
-date: 2018-05-27T10:17:17.789657+00:00
+date: "2018-05-27T10:17:17.789657+00:00"
 draft: false
 title: I don't need types
 tags: [rust, python]

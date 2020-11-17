@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: python-tests-tips
-date: 2020-04-25T14:20:47.807992+00:00
+date: "2020-04-25T14:20:47.807992+00:00"
 draft: false
 title: Tips for better Python tests
 tags: [python, testing]

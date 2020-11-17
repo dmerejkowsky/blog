@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: chuck-norris-part-4-python-ctypes
-date: 2018-03-31T12:44:43.054886+00:00
+date: "2018-03-31T12:44:43.054886+00:00"
 draft: false
 title: "Let's Build Chuck Norris! - Part 4: Python and ctypes"
 tags: [c++, python]

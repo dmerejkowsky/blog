@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: introducing-tsrc
-date: 2017-07-31T12:11:39.599298+00:00
+date: "2017-07-31T12:11:39.599298+00:00"
 draft: false
 title: Introducing tsrc
 tags: ['python', 'git']

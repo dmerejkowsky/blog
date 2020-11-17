@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: introducing-tips-from-a-build-farmer
-date: 2018-08-18T08:34:50.667783+00:00
+date: "2018-08-18T08:34:50.667783+00:00"
 draft: false
 title: 'Introducing "Tips From a Build Farmer"'
 tags: [ci]

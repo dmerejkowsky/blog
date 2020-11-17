@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: symlinks-made-easier
-date: 2017-01-31T19:25:05.009506+00:00
+date: "2017-01-31T19:25:05.009506+00:00"
 draft: false
 title: symlinks made easier
 tags: ["python"]

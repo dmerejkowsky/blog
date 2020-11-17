@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: chuck-norris-part-8-ios
-date: 2018-09-18T16:53:30.882200+00:00
+date: "2018-09-18T16:53:30.882200+00:00"
 draft: false
 title: "Let's Build Chuck Norris! - Part 8: Using C++ in an iOS application"
 tags: [c++]

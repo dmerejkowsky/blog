@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: chuck-norris-part-2-sqlite-conan
-date: 2018-03-18T14:29:21.238943+00:00
+date: "2018-03-18T14:29:21.238943+00:00"
 draft: false
 title: "Let's Build Chuck Norris! - Part 2: SQLite and conan"
 tags: [c++]

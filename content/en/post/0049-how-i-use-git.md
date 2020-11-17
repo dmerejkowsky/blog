@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: how-i-use-git
-date: 2017-07-22T08:58:57.132376+00:00
+date: "2017-07-22T08:58:57.132376+00:00"
 draft: false
 title: How I Use Git
 tags: ["git"]

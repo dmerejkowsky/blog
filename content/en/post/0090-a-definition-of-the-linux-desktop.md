@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: a-definition-of-the-linux-desktop
-date: 2019-01-02T09:56:30.925105+00:00
+date: "2019-01-02T09:56:30.925105+00:00"
 draft: false
 title: "A definition of the Linux desktop"
 tags: [linux]

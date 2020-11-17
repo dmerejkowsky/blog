@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: syntax-highlighting-is-useless
-date: 2018-10-04T13:30:31.118512+00:00
+date: "2018-10-04T13:30:31.118512+00:00"
 draft: false
 title: "Syntax Highlighting Is Useless"
 tags: [neovim]

@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: comparing-directories
-date: 2018-09-08T12:36:50.239552+00:00
+date: "2018-09-08T12:36:50.239552+00:00"
 draft: false
 title: "Comparing directories: a case study"
 tags: [misc]

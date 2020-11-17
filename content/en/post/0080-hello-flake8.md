@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: hello-flake8
-date: 2018-08-13T14:12:44.006921+00:00
+date: "2018-08-13T14:12:44.006921+00:00"
 draft: false
 title: "Hello flake8"
 tags: [python]

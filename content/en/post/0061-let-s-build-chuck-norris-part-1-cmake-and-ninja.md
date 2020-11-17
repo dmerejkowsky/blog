@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: chuck-norris-part-1-cmake-ninja
-date: 2018-03-10T14:22:53.387235+01:00
+date: "2018-03-10T14:22:53.387235+01:00"
 draft: false
 title: "Let's Build Chuck Norris! - Part 1: CMake and Ninja"
 tags: [c++]

@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: test-driving-a-gitlab-helper-part-one
-date: 2017-06-25T12:06:44.510819+00:00
+date: "2017-06-25T12:06:44.510819+00:00"
 draft: true
 title: Test Driving a GitLab Helper, Part One
 tags: ['python', 'test']

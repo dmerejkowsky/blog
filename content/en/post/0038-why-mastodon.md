@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: why-mastodon
-date: 2017-05-01T11:16:14.779697+00:00
+date: "2017-05-01T11:16:14.779697+00:00"
 draft: false
 title: Why Mastodon
 ---

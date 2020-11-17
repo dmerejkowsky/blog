@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: symlinks-and-so-files-on-linux
-date: 2020-04-18T14:03:19.615132+00:00
+date: "2020-04-18T14:03:19.615132+00:00"
 draft: false
 title: symlinks and .so files on linux - what you need to know
 tags: [linux]

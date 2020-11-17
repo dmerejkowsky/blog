@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: porting-to-pytest-a-practical-example
-date: 2018-03-01T16:34:19.584239+00:00
+date: "2018-03-01T16:34:19.584239+00:00"
 draft: false
 title: "Porting to pytest: a practical example"
 tags: [python, testing]

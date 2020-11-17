@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: the-virtue-of-incremental-development
-date: 2019-04-21T12:10:49.553858+00:00
+date: "2019-04-21T12:10:49.553858+00:00"
 draft: false
 title: "The virtue of incremental development"
 tags: [misc]

@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: chuck-norris-part-3-a-c-wrapper
-date: 2018-03-25T16:50:30.882200+00:00
+date: "2018-03-25T16:50:30.882200+00:00"
 draft: false
 title: "Let's Build Chuck Norris! - Part 3: A C wrapper"
 tags: [c++]

@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: please-verify-your-email-on-pypiorg-and-testpypiorg
-date: 2018-07-17T20:52:02.192022+00:00
+date: "2018-07-17T20:52:02.192022+00:00"
 draft: false
 title: "Please verify your email on pypi.org and test.pypi.org"
 tags: [python]

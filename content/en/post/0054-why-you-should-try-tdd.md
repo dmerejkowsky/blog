@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: why-you-should-try-tdd
-date: 2017-09-17T10:11:06.837753+00:00
+date: "2017-09-17T10:11:06.837753+00:00"
 draft: false
 title: Why You Should Try TDD
 tags: [testing]

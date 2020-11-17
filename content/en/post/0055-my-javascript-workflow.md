@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: my-javascript-workflow
-date: 2017-10-18T12:50:41.477085+00:00
+date: "2017-10-18T12:50:41.477085+00:00"
 draft: false
 title: My Javascript Workflow
 tags: [javascript, neovim]

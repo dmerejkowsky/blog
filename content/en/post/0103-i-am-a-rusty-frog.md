@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: i-am-a-rusty-frog
-date: 2019-07-27T09:46:51.113571+00:00
+date: "2019-07-27T09:46:51.113571+00:00"
 draft: false
 title: "I am a rusty frog"
 tags: [misc, rust]

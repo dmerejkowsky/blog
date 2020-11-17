@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: the-one-youtube-feature-that-could-change-everything
-date: 2019-07-04T11:30:19.700119+00:00
+date: "2019-07-04T11:30:19.700119+00:00"
 draft: true
 title: "The one YouTube feature that could change everything"
 tags: [ideas]

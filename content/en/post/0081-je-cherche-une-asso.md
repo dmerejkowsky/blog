@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: je-cherche-une-asso
-date: 2018-08-09T17:31:47.310264+00:00
+date: "2018-08-09T17:31:47.310264+00:00"
 draft: false
 title: "Je cherche une asso"
 feedback: false

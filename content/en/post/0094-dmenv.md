@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: dmenv
-date: 2019-02-04T14:34:30.324519+00:00
+date: "2019-02-04T14:34:30.324519+00:00"
 draft: true
 title: "dmenv"
 tags: [python]

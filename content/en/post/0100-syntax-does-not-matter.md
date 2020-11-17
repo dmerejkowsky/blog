@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: syntax-does-not-matter
-date: 2019-04-27T13:40:16.644249+00:00
+date: "2019-04-27T13:40:16.644249+00:00"
 draft: true
 title: "Syntax does not matter"
 tags: [misc]

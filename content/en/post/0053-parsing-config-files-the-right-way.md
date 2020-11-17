@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: parsing-config-files-the-right-way
-date: 2017-09-09T10:54:46.595128+00:00
+date: "2017-09-09T10:54:46.595128+00:00"
 draft: false
 title: Parsing Config Files The Right Way
 tags: ['python']

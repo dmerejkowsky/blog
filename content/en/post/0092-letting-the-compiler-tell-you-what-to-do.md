@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: letting-the-compiler-tell-you-what-to-do
-date: 2019-01-12T12:26:27.325275+00:00
+date: "2019-01-12T12:26:27.325275+00:00"
 draft: false
 title: "Letting the compiler tell you what to do - an example using Rust"
 tags: [rust]

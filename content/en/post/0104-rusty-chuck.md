@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: rusty-chuck
-date: 2019-09-08T12:54:35.332456+00:00
+date: "2019-09-08T12:54:35.332456+00:00"
 draft: true
 title: "Rusty Chuck"
 tags: [rust]

@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: twitter-timeline-cleaner
-date: 2018-07-07T13:13:13.346483+00:00
+date: "2018-07-07T13:13:13.346483+00:00"
 draft: false
 title: "Twitter Timeline Cleaner"
 tags: [ideas]

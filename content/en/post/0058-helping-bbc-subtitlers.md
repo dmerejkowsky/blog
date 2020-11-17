@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: helping-bbc-subtitlers
-date: 2018-02-18T13:52:40.203284+00:00
+date: "2018-02-18T13:52:40.203284+00:00"
 draft: false
 title: Helping BBC subtitlers
 tags: [ideas]

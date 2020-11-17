@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: tips-from-a-build-farmer-part-2-some-concepts
-date: 2018-10-18T18:17:04.151310+00:00
+date: "2018-10-18T18:17:04.151310+00:00"
 draft: true
 title: "Tips From a Build Farmer - Part 3: Use Python"
 tags: [ci]

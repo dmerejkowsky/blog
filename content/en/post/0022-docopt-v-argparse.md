@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: "docopt-v-argparse"
-date: 2016-09-24T13:53:16+02:00
+date: "2016-09-24T13:53:16+02:00"
 description: ""
 draft: false
 tags: ["python"]

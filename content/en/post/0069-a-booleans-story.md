@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: a-booleans-story
-date: 2018-05-18T13:50:38.605961+00:00
+date: "2018-05-18T13:50:38.605961+00:00"
 draft: false
 title: "A boolean's story"
 tags: [rust]

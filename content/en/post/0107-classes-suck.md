@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: classes-suck
-date: 2019-11-09T19:06:44.665034+00:00
+date: "2019-11-09T19:06:44.665034+00:00"
 draft: false
 title: "Classes Suck"
 tags: [python]

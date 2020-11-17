@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: how-rust-made-me-a-better-python-programmer
-date: 2020-05-01T12:19:25.455275+00:00
+date: "2020-05-01T12:19:25.455275+00:00"
 draft: true
 title: "How Rust made me a better Python programmer"
 tags: [python, rust]

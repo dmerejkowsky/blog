@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: i-took-an-oath
-date: 2019-09-26T18:53:23.457560+00:00
+date: "2019-09-26T18:53:23.457560+00:00"
 draft: true
 title: "I took an Oath"
 tags: [misc]

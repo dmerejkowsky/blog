@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: killing-unwrap
-date: 2019-01-30T19:11:26.380880+00:00
+date: "2019-01-30T19:11:26.380880+00:00"
 draft: false
 title: "Killing unwrap()"
 tags: [rust]

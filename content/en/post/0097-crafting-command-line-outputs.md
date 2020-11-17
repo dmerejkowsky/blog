@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: crafting-command-line-outputs
-date: 2019-03-25T13:55:26.357243+00:00
+date: "2019-03-25T13:55:26.357243+00:00"
 draft: false
 title: "Crafting command line outputs"
 tags: [misc]

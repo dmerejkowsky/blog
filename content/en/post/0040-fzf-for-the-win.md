@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: fzf-for-the-win
-date: 2017-05-17T08:13:53.590982+00:00
+date: "2017-05-17T08:13:53.590982+00:00"
 draft: false
 title: fzf for the win
 tags: ['neovim', 'zsh']

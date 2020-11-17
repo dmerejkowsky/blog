@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: ruplacer
-date: 2018-10-14T12:34:43.722319+00:00
+date: "2018-10-14T12:34:43.722319+00:00"
 draft: false
 title: "ruplacer: find and replace text in source files"
 tags: [rust]

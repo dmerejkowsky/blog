@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: bye-bye-pylint
-date: 2018-08-07T17:23:02.720690+00:00
+date: "2018-08-07T17:23:02.720690+00:00"
 draft: false
 title: "Bye-bye pylint"
 tags: [python]

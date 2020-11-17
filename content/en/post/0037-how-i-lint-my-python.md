@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: how-i-lint
-date: 2017-04-14T10:34:55.624890+00:00
+date: "2017-04-14T10:34:55.624890+00:00"
 draft: false
 title: How I Lint My Python
 tags: ["python", "neovim"]

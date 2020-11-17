@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: tips-from-a-build-farmer-part-2-some-concepts
-date: 2018-08-28T18:17:04.151310+00:00
+date: "2018-08-28T18:17:04.151310+00:00"
 draft: false
 title: "Tips From a Build Farmer - Part 2: Some concepts"
 tags: [ci]

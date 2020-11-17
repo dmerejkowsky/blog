@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: else-after-return-yea-or-nay
-date: 2018-07-12T15:38:15.003805+00:00
+date: "2018-07-12T15:38:15.003805+00:00"
 draft: false
 title: "Else after return: yea or nay?"
 tags: [python]

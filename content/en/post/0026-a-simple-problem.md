@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: a-simple-problem
-date: 2016-11-20T14:54:11.710423+00:00
+date: "2016-11-20T14:54:11.710423+00:00"
 draft: false
 title: A Simple Problem
 tags: ["misc"]

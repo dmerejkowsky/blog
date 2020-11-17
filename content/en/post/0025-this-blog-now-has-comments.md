@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: this-blog-now-has-comments
-date: 2016-11-05T17:34:30.613426+00:00
+date: "2016-11-05T17:34:30.613426+00:00"
 draft: false
 title: This Blog Now Has Comments
 tags: ["misc"]

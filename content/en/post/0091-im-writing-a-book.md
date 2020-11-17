@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: im-writing-a-book
-date: 2019-01-11T10:58:18.142670+00:00
+date: "2019-01-11T10:58:18.142670+00:00"
 draft: false
 title: "I am writing a book about CI"
 tags: [ci]
