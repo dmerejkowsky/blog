@@ -55,10 +55,10 @@ It also features (optional) commands to interact with GitLab.
 
 Let's see how it works.
 
-{{<note>}}
+{{< note >}}
 We will only be showing the basic usage of some tsrc commands.
 You can use `--help` to discover all the available options.
-{{</note>}}
+{{< /note> }}
 
 
 # Installation

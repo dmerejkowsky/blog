@@ -12,7 +12,7 @@ _Note: This is part 6 of the [Let's Build Chuck Norris!]({{< ref "0060-introduci
 
 # Introduction
 
-After our little detour talking about how to [wrap C++]({{< ref "/post/0064-let-s-build-chuck-norris-part-4-python-and-ctypes.md" >}}) in [Python]({{< ref "/post/0065-let-s-build-chuck-norris-part-5-python-and-cffi.md" >}}), we now are ready to tackle writing Android applications using C++ code.
+After our little detour talking about how to wrap C++ in Python, we now are ready to tackle writing Android applications using C++ code.
 
 We'll start with a simple challenge: try and run a simple "Hello, world" program written in C inside a simulator and on our phone.
 

@@ -11,7 +11,7 @@ summary: "Should you fix your code to remove unnecessary else after a return sta
 
 # Introduction
 
-As you may know, I use [pylint](https://www.pylint.org/) for most of my Python projects. [^1]
+As you may know, I use [pylint](https://www.pylint.org/) for most of my Python projects.
 
 A few weeks ago, I upgraded pylint and a new warning appeared. This tends to happen when you have a pretty large code base: new checks are added to pylint all the time, so new warnings are bound to show up.
 
@@ -181,4 +181,3 @@ Last, be careful with code samples that are too abstract :)
 Cheers!
 
 
-[^1]: I already blogged about this in [Some pylint tips]({{< ref "/post/0018-some-pylint-tips.md" >}}) and [How I lint my Python]({{< ref "/post/0037-how-i-lint-my-python.md" >}}).

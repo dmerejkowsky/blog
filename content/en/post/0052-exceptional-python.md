@@ -39,7 +39,7 @@ featured in the [Daily WTF error'd series](https://thedailywtf.com/series/errord
 
 # Part One: Various Error Handling Techniques
 
-{{<note>}}
+{{< note >}}
 This section is mostly theoretical. If you want more concrete stuff, feel free to skip directly to [part 2](#part-two-a-concrete-example)
 {{</note >}}
 

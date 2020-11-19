@@ -11,8 +11,8 @@ summary: |
 
 This is the second article in a 2-part series of blog posts that examine
 the complicated relationships between the real world and object-oriented
-code. If you haven't already, you should read the first part: [classes suck]({{<
-relref "./0107-classes-suck.md" >}}) first.
+code. If you haven't already, you should read the first part:
+[classes suck]({{< relref "./0107-classes-suck.md" >}}) first.
 
 Let's recap: we used a `Robot` class to implement the
 client specifications. It worked well, until we tried to model the

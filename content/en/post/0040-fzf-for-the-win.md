@@ -384,10 +384,10 @@ function gcd() {
 This is not a coincidence. After all, If I'm doing the same kind of stuff in my
 editor and my shell, I expect to be able to use similar keystrokes.
 
-{{<note>}}
+{{< note >}}
 I've still have a few things to say about the editor/shell relationship,
 but this will be done in an other post. (shameless teasing)
-{{</note>}}
+{{< /note> }}
 
 # Conclusion
 
