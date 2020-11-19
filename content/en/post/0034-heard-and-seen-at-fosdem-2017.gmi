@@ -1,0 +1,156 @@
+```
+2017, Feb 11 - Dimitri Merejkowsky
+License: CC By 4.0
+```
+
+Last weekend I attended FOSDEM 2017[1] in Brussels, Belgium.
+
+=> https://fosdem.org/2017/ 1: https://fosdem.org/2017/
+
+Here are, in no particular order, things I heard and seen while being there.
+
+## Stuff on slides
+
+
+https://fosdem.org/2017/schedule/event/freifunk_access_human_right/
+
+> Access for refugees: A government task, but the Freifunk community fixed it.
+> [...]
+> We provide free Internet access, so that they can use their money for
+> food and family and not for prepaid internet dealers
+
+
+https://fosdem.org/2017/schedule/event/de_google_ify/
+
+> "How many likes did I get" are the new slot machines of the Internet.
+
+https://fosdem.org/2017/schedule/event/copyleft_defense/)
+
+> I got kicked out of university after delivering a brilliant lecture on the
+> aggressive influence of German philosophy on rock and roll entitled: *You,
+> Kant, Always Get What You Want*.
+>
+> — John Cameron Mitchell
+
+## Quotes
+
+Some speaker:
+
+> I was working in a big company, so nobody here wanted to write code that actually worked.
+
+De-google-ify Internet:
+
+> We help our users leave our service if they want to go for an alternative
+> of what we do.
+>
+> When they do leave, we party.
+
+Elsewhere:
+
+> From an English-speaking point of view it's hard to keep up with all the
+> awesome stuff you are doing in France
+
+In the "Decentralized Internet room":
+
+> Is that an implementation of the CHATONS protocol?
+
+
+YunoHost speaker:
+
+> If you come contributing to YunoHost, expect French. Don't worry, it's not
+> a disease.
+
+## Scenes
+
+=> https://fosdem.org/2017/schedule/event/dinosaurs/
+
+Resurrecting Dinosaurs, what could possibly go wrong?
+```
+SPEAKER: I did not expect to have a win32 architecture slide here at FOSDEM
+```
+
+You know what's cool? Running on billions of devices:
+```
+QUESTION: Have you been approached by a government agency to introduce a backdoor?
+ANSWER:   Well, if I had I could not tell you. I suggest you go read the
+          code, and if you find one, please let me know.
+```
+
+Unbreakable Unit Tests
+```
+SPEAKER: Who here is using TDD?
+*Half the audience raises their hand*
+SPEAKER: Who here has been doing that for more than five years?
+*An other guy and I raise our hands*
+*I feel old*
+```
+
+Understanding The Complexity of Copyleft Defense
+```
+BRADLEY M. KUHN: Copyleft is a *strategy*
+
+Community-oriented enforcement must never prioritize financial gain.
+
+So, I encourage you to wake up, demand your copyrights back, and use the
+licensing strategy you think is best for long-term software freedom.
+
+```
+
+Access is a human right
+```
+*German presenter starts talking*
+*French organizer tell him to wait 40 seconds because the recording is not ready*
+PRESENTER: Timing is strict here
+ORGANIZER: Well, we're a bit German. And I mean that in a good way
+```
+
+Let's de-Google-ify the Internet
+```
+SPEAKER: You just need a web browser, so please use Firefox
+*Crowd applause*
+```
+
+
+libre.sh helps you to host your FLOSS
+```
+*In the middle of a live demo*
+*Types a command on the terminal*
+*Console gets flooded with warning messages*
+SPEAKER: You can safely ignore these warnings
+*Everyone laughs*
+```
+
+
+Puffin: Free Webapp Hosting for Average Users
+```
+SPEAKER: Let's start with a demo
+*Clicks the register button*
+*Enters the 'login' field*
+*Lots of suggestions are displayed: 'test', 'test1', 'test2', ...*
+*Types 'test6'*
+*Everyone laughs*
+```
+
+FreedomBox, liberty inside the cloud
+
+```
+QUESTION: Are you going to include an e-mail client and server in the freedombox distribution?
+ANSWER: Well, no. I think certain things need to die at some point.
+```
+
+And, last but not least:
+
+## FOSDEM in a nutshell
+
+
+Decentralized Internet devroom
+```
+TRISTAN NITOT: The room is full at 9 AM on a Sunday morning after a
+short night, a long evening and probably too many beers. Thanks for
+coming!
+```
+
+See you next year!
+
+=> index.gmi Back to Index
+=> ../contact.gmi Contact me
