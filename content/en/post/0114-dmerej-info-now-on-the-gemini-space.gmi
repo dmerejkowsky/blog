@@ -1,0 +1,16 @@
+```
+2020, Nov 11 - Dimitri Merejkowsky
+License: CC By 4.0
+(Gemini only)
+```
+
+# dmerej.info now on the Gemini space
+
+Hello, there :)
+
+If you're coming from my annoncement from the HTTP blog, welcome!
+
+As promised, here's some juicy Gemini-exclusive-content ;-)
+
+# Why Gemini
+
