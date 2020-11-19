@@ -37,7 +37,7 @@ So, which type of library do we need to write bindings in Python ?
 {{< note >}}
 From now on, everything takes place on a **Linux** machine. There are some differences when using macOS or Windows, but for the sake of simplicity I will only deal with one platform here.
 We will also use **Python3** only. Again, in Python2 things are a little different, but let's keep things simple.
-{{< /note> }}
+{{</ note >}}
 
 Since we are using Python as a *program* (the `/usr/bin/python3` binary), it's obviously too late to do anything at compile time. So let's build a shared library and see what we can do at runtime, shall we?
 

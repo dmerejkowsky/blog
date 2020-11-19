@@ -58,7 +58,7 @@ Let's see how it works.
 {{< note >}}
 We will only be showing the basic usage of some tsrc commands.
 You can use `--help` to discover all the available options.
-{{< /note> }}
+{{</ note >}}
 
 
 # Installation

@@ -387,7 +387,7 @@ editor and my shell, I expect to be able to use similar keystrokes.
 {{< note >}}
 I've still have a few things to say about the editor/shell relationship,
 but this will be done in an other post. (shameless teasing)
-{{< /note> }}
+{{</ note >}}
 
 # Conclusion
 
