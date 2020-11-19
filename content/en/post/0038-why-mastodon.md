@@ -28,10 +28,9 @@ using three articles I've already written:
 When I was at FOSDEM in February, I spent a lot of time in a room called
 "Decentralized Internet".
 
-I heard about [many nice projects and people]({{< ref "/pages/links.md#decentralized-internet" >}}).
-
-All of them shared the same concern for their users' privacy, and all of them
-wanted to avoid having all their data centralized in one place.
+I heard about many nice projects and people - all of them shared the
+same concern for their users' privacy, and all of them wanted to avoid
+having all their data centralized in one place.
 
 They were trying to fix the same problems, but each of them with a different
 approach.

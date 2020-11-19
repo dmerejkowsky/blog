@@ -53,7 +53,7 @@ I have another Python script to automate publication. Here's what it does:
 * run `rsync` to upload them to my server
 * run `git push` to publish changes to GitHub
 
-Note that the publishing of a new post triggers a new version of [the blog feed](/index.xml) to be written.
+Note that the publishing of a new post triggers a new version of the blog' feed to be written.
 
 This script can be run after any corrections to an already published article.
 
