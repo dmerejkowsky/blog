@@ -8,9 +8,125 @@ License: CC By 4.0
 
 Hello, there :)
 
-If you're coming from my annoncement from the HTTP blog, welcome!
+If you're coming from my announcement from the HTTP blog, welcome!
 
-As promised, here's some juicy Gemini-exclusive-content ;-)
+As promised, what follows here is some juicy Gemini-exclusive-content, as to why I chose to host this blog (or as they say here, this capsule), on Gemini.
 
-# Why Gemini
+I'm assuming you know what the Gemini space is, but just in case, here's a link to its FAQ:
 
+=> gemini://gemini.circumlunar.space/docs/faq.gmi Gemini FAQ
+
+So - why Gemini?
+
+# 1. Because I can
+
+Because I can! - classic geeky answer I know.
+
+I've been hosting my own server on the Web for quite some time, and it's much, much easier to set up a Gemini server. So, feel free to give it a go yourself.
+
+# 2. Because of what Gemini stands for
+
+The second reason is that I like what Gemini stands for.
+
+As per the FAQ:
+
+> Gemini may be of interest to people who are:
+>
+> * Opposed to the web's ubiquitous user tracking
+> * Tired of obnoxious adverts, auto-playing videos and other misfeatures
+> * Interested in low-power computing and/or low-speed networks
+
+I'm interested in the first two for philosophical and political reasons. I care a bit less about the last one, but it's a nice touch (think of the environmental reasons).
+
+# 3. Because I know some people that are already here
+
+I'm thinking mostly about Drew Devault here (Drew, if you're reading this - Hi!).
+
+=> gemini://drewdevault.com Drew Devault's geminispace
+
+I've been reading his blog for quite some time - and I mostly agrees with what he says there:
+
+=> gemini://drewdevault.com/2020/11/01/What-is-Gemini-anyway.gmi What is this Gemini thing anyway, and why am I excited about it?
+
+I've also been using Source Hut, an alternative to GitHub that I personally found very promising.
+
+=> https://drewdevault.com/2018/11/15/sr.ht-general-availability.html Annouce of SourceHut's first general availability
+
+Here's how he describes it:
+
+> sr.ht is one of the most lightweight websites on the internet, with the average page weighing less than 10 KiB, with no tracking and JavaScript
+
+and elsewhere:
+
+> sr.ht instead embraces git more closely [than GitHub or GitLab] for example building on top of email rather than instead of email.
+
+As you can see, Drew Devault's design for SourceHut and Solderpunk's design for Gemini share some of the same traits:
+
+* Re-use good solutions when they exist (TLS for Gemini, git and email for SourceHut)
+* Get rid of the tracking features and focus on privacy
+* Maximize the "power to weight ratio"
+
+# 4. To produce more contents
+
+To cite the FAQ:
+
+> Gemini already has a surprising number of client and server implementations in existence [...], but the real shortage right now is not of software but of content [...] The greatest contribution you can make to the project is to be a part of this process.
+
+So, enjoy about 100 articles spanning 4 years!
+
+=> index.gmi Blog Index
+
+# 5. Because I feel like the gmi format is good for my prose
+
+I've already talked about how I don't like syntax highlighting when writing my blog posts, because it distracts me from the content.
+=> 0087-syntax-highlighting-is-useless.gmi Syntax Highlighting is useless
+
+In this regard, the `text/gemini` format is a blessing. There's almost no syntax to be highlighted in the first place!
+
+But the main reason is that all the "limitations" of the format actually forces me to write clearer English, as I've discovered while writing this very article.
+
+For instance, instead of using `*` to emphasis, I have to convey the importance of what I'm saying using words, not punctuation.
+
+In the same vein, because there's no inline links, I have to think about whether or not the link is important, and explain why you might want to follow the link.
+
+In markdown:
+
+```md
+I am talking about [foo](...) for some reason
+```
+
+In gmi:
+```gmi
+I am talking about foo for some reason.
+
+=> https://en.wiktionary.org/wiki/foo Definition of 'foo' in the Wikitonary
+```
+
+Or:
+```gmi
+I am talking about foo for some reason.
+
+=> https://foo.tld See foo project's home page
+```
+
+I could go on. The point is, for me the writing experience of transcribing my thoughts using the gmi format is much better.
+
+
+# What's next?
+
+Well, I don't know yet. For now, the Web blog and the Gemini capsule have roughly the same contents (this particular being one of the exceptions). The `gmi` files were generated from the sources of the Web blog (I use the Hugo engine) - and a not-so-small amount of dirty code that I'm not really wanting to share here ...
+
+I'll try and write the next articles in gmi, and do the conversion the other way around (which should be much easier!).
+
+There are a few features I want to implement for the gemini capsule: a proper RSS feed and a comment system so I'll start working on that - this time, I'll probably share the code :)
+
+Finally, there is something nice in knowing that every one who reads Gemini-exclusive content has at least made an effort to get there, or has an interest in the Geminispace itself. Not sure what kind of exclusive content I'll write though. We'll see.
+
+See you next time!
+
+```
+----
+```
+
+=> index.gmi Back to Index
+=> ../contact.gmi Contact me
