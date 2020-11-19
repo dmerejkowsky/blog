@@ -10,7 +10,7 @@ tags: [ideas]
 
 This year I've decided to try something a bit different on my blog.
 
-"Quantum of Ideas" is the title for a new series of posts. You'll find them in the [list of posts tagged with 'ideas'](/tags/ideas)
+"Quantum of Ideas" is the title for a new series of posts. You'll find them in the list of posts tagged with 'ideas'.
 
 In each post, I will present an idea I had about a certain topic.
 

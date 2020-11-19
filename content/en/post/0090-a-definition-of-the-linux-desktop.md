@@ -79,14 +79,18 @@ But to be honest, I did not take the time to look for a solution, which leads us
 
 Let's take a look at some exchanges between an average user with a problem, looking for answer from the community, for instance in a public bug tracker or a forum:
 
-
-> Q: I've upgraded *foo* to version 3.0 and now I cannot frob anymore <br />
+First example:
+```
+> Q: I've upgraded *foo* to version 3.0 and now I cannot frob anymore
 > A: Did you read the changelog before upgrading?
+```
 
-<span/>
 
-> Q: I bought a new printer and now I can only print in black and white! </br>
+Second example:
+```
+> Q: I bought a new printer and now I can only print in black and white!
 > A: Did you research compatibility with Linux before buying the new printer?
+```
 
 Let's try to put ourselves in the shoes of those users. They might think they failed at something, or even that they are not even supposed to ask this kind of question[^3], which illustrates with the "moral failure" Gary talked about.
 

@@ -79,7 +79,7 @@ That's what I like about this distribution:
     of keeping the old version in place (well, except for huge libraries like `Qt4` and
     `Qt5`&nbsp;...)
 
-* The OP said the response was "arrogant" and "unhelpful". It's not. <br/>
+* The OP said the response was "arrogant" and "unhelpful". It's not.
   As said in the [Arch Linux Wiki](https://wiki.archlinux.org/index.php/Arch_Linux#Principles),
   It's just that this distribution is targeted at the "proficient Linux user".
   It's not a "user-friendly" distribution, it's a "user-centric" distribution, which means
