@@ -428,7 +428,7 @@ import abc
 class Repository(metaclass=abc.ABCMeta):
 
     @abc.abstractmethod
-    def get_employee(self, company_name: str, id: int) -> Employee
+    def get_employee(self, company_name: str, id: int) -> Employee:
         pass
 ```
 
