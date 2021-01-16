@@ -37,7 +37,7 @@ languages:
       footnoteReturnLinkContents: "<sup>[retour]</sup>"
       params:
         info:
-          description: ~
+          description: Blog personnel de Dimitri Merejkowsky
         settings:
           dateFormat: 02/01/2006
           showReadingTime: true
