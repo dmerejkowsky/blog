@@ -1,10 +1,10 @@
 ---
 authors: [dmerej]
 slug: une-page-se-tourne
-date: "2021-01-18T17:20:55.195331+00:00"
+date: "2021-01-18T15:20:55.195331+00:00"
 draft: false
 title: "Une page se tourne"
-feedback: false
+feedback: true
 summary: Une page se tourne ... et ensuite ?
 ---
 
