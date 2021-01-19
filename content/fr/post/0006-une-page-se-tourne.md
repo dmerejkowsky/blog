@@ -55,7 +55,7 @@ mais surtout pour que vous, chers lecteurs, puissiez le partager et
 m'aider à passer cette nouvelle étape de ma carrière.
 
 Comme d'habitude, ma [page de contact]({{< relref "../pages/about.md">}}) est là si vous
-avez des pistes à me suggérer, des questions à me poser, ou toute autre
+avez des pistes à me suggérer, des questions à me poser, ou pour toute autre
 remarque.
 
 À bientôt !
