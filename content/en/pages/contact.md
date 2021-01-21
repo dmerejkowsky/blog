@@ -14,7 +14,7 @@ Here are a few ways to contact me. Note that I follow the [Croker's Rules](http:
 ## e-mail
 
 
-Here's my e-mail, encrypted with a very secure algorithm:
+Here's my e-mail, encrypted with a [very secure algorithm](https://en.wikipedia.org/wiki/ROT13):
 
 ```text
 qvzvgev@qzrerw.vasb

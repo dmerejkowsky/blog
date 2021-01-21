@@ -56,7 +56,7 @@ Si vous trouvez des typos ou des erreurs similaires dans le contenu des articles
 
 ## e-mail
 
-Voici mon addresse e-mail, chiffrée avec un puissant algorithme :
+Voici mon addresse e-mail, chiffrée avec un [puissant algorithme](https://fr.wikipedia.org/wiki/ROT13) :
 
 ```text
 q.zrerw@tznvy.pbz
