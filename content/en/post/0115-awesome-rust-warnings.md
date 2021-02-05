@@ -10,22 +10,17 @@ summary: Why I love the Rust compiler
 
 # Introduction
 
-If you've ever used a compiler (or any other tool) that can produce warnings about your code, you may
-be used to messages that are hard to understand, confusing or just plain wrong.
+If you've ever used a compiler (or any other tool) that can produce warnings about your code, you may be used to messages that are hard to understand, confusing or just plain wrong.
 
-But today I want to show yo that good compiler warnings do exist and how they can make your code
-more correct.
+But today I want to show you that good compiler warnings do exist and how they can make your code more correct.
 
 # The incorrect server API
 
-The first example comes from code I wrote to test the Rust implementation
-of the Tanker client SDK. You don't need to know precisely how Tanker
-works to follow this example - let's just say the client needs a "tanker
-permanent identity" from an identity server to start a session. [^1]
+The first example comes from code I wrote to test the Rust implementation of the Tanker client SDK. You don't need to know precisely how Tanker works to follow this example - let's just say the client needs a "Tanker permanent identity" from an identity server to start a session. [^1]
 
 In my case, the identity server was already written in Go using the Gin-Gonic framework.
 
-Here's what the implementation of the `sign_in` route looks like:
+Here's what the implementation of the `sign_in` route looked like:
 
 ```go
 // This struct is used by various Gin handlers
@@ -60,7 +55,7 @@ func (this *Server) signIn(c *gin.Context) {
 }
 ```
 
-To parse the JSON response from the server in Rust, I used serde, like this:
+To parse the JSON response from the server in the Rust client, I used serde, like this:
 
 ```rust
 #[derive(Deserialize)]
@@ -108,23 +103,16 @@ Warning: field is never read: `user_id`
    = note: `#[warn(dead_code)]` on by default
 ```
 
-And this makes sense: as you can see, to start a Tanker session we only
-need the `email` and `tanker_permanent_identity` fields of the JSON response
-returned by the server. In particular, we don't need the user ID at all.
+This made sense: as you can see, to start a Tanker session we only need the `email` and `tanker_permanent_identity` fields of the JSON response returned by the server. In particular, we don't need the user ID at all.
 
-What's interesting with this example is that we already wrote *six other clients* for
-the server in question (using Python, Go, Java, Javascript, Objective-C and Ruby)
-and that was the first time we got an indication that our JSON API was wasting
-bandwidth by sending information that was actually not needed!
+What's interesting with this example is that at Tanker, we already wrote *six other clients* for the server in question (using Python, Go, Java, Javascript, Objective-C and Ruby) and that was the first time we got an indication that our JSON API was wasting bandwidth by sending information that was actually not needed!
 
 
 # The useless mutation
 
-The second example comes from a personal project - a week ago I started working on a new personal project : implementing the Monkey programming
-language in Rust - following the instructions from the [Writing an Interpreter in Go](https://interpreterbook.com/),
-by Throsten Ball.
+The second example comes from a personal project - a week ago I started implementing an interpreter in Rust, following the instructions from the [Writing an Interpreter in Go](https://interpreterbook.com/), by Throsten Ball.
 
-As part of implementing the lexer, I wrote the following code:
+As I worked on the the lexer, I wrote the following code:
 
 ```rust
 use std::iter::Peekable;
@@ -219,8 +207,8 @@ remove the line that sets `end_pos` before calling `self.iter.next()`:
         loop {
               match peek {
 -                 Some((next_pos, next_c)) if Self::is_valid_ident(*next_c) => {
-+                 Some((_, next_c)) if Self::is_valid_ident(*next_c) => {
 -                     end_pos = Some(*next_pos);
++                 Some((_, next_c)) if Self::is_valid_ident(*next_c) => {
                       self.iter.next();
                   }
                   Some((next_pos, _)) => {
