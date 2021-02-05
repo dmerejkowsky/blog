@@ -2,7 +2,7 @@
 authors: [dmerej]
 slug: awesome-rust-warnings
 date: "2021-02-02T13:35:21.074236+00:00"
-draft: true
+draft: false
 title: "Two awesome Rust warnings"
 tags: [rust]
 summary: Why I love the Rust compiler
