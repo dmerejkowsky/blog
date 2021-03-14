@@ -7,6 +7,11 @@ baseUrl: https://dmerej.info/blog
 
 theme: minimo
 
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+
 pygmentsStyle: native
 pygmentsCodeFences: true
 
