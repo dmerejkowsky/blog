@@ -99,8 +99,8 @@ to run the tests, why stick with `unittest`?
 # Switching to pytest
 
 Before diving into `pytest` specific features, let me point out that **pytest is
-+fully compatible with unittest**, so if you want to switch, you don't have to rewrite
-+all your tests right away :)
+fully compatible with unittest**, so if you want to switch, you don't have to rewrite
+all your tests right away :)
 
 ## Basic test
 
