@@ -7,40 +7,41 @@ baseUrl: https://dmerej.info/blog
 
 theme: minimo
 
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+
 pygmentsStyle: native
 pygmentsCodeFences: true
 
 buildDrafts: true
 
 languages:
-    en:
-      title: "dmerej's blog"
-      footnoteReturnLinkContents: "<sup>[return]</sup>"
-      contentDir: content/en/
-      params:
-        info:
-          description: Personal blog of Dimitri Merejkowsky
-        settings:
-          dateFormat: 2006, Jan 02
-          showReadingTime: true
-          blackfriday:
-            footnoteReturnLinkContents: return
-      menu:
-        main:
-          - name: RSS
-            identifier: subscribe
-            url: /index.xml
-            weight: 0
-    fr:
-      title: "Le blog de Dim'"
-      contentDir: content/fr/
-      footnoteReturnLinkContents: "<sup>[retour]</sup>"
-      params:
-        info:
-          description: Blog personnel de Dimitri Merejkowsky
-        settings:
-          dateFormat: 02/01/2006
-          showReadingTime: true
+  en:
+    title: "dmerej's blog"
+    contentDir: content/en/
+    params:
+      info:
+        description: Personal blog of Dimitri Merejkowsky
+      settings:
+        dateFormat: 2006, Jan 02
+        showReadingTime: true
+    menu:
+      main:
+        - name: RSS
+          identifier: subscribe
+          url: /index.xml
+          weight: 0
+  fr:
+    title: "Le blog de Dim'"
+    contentDir: content/fr/
+    params:
+      info:
+        description: Blog personnel de Dimitri Merejkowsky
+      settings:
+        dateFormat: 02/01/2006
+        showReadingTime: true
       menu:
         main:
           - name: "Flux RSS"

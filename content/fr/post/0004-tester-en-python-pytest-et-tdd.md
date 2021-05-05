@@ -691,12 +691,17 @@ def test_all_ones():
     assert score == 20
 ```
 
-Ces deux tests nous montre une *ambiguïté* dans les specifications. Veut-on pouvoir obtenir le score en temps réel, ou voulons-nous
+Les deux tests sont subtilement différents. Dans un cas, on appelle `roll()` une fois, suivi immédiatement d'un appel à `score()`.
+
+Dans l'autre, on appelle `roll()` 20 fois, et on appelle `score()` à la fin.
+
+Ceci nous montre une *ambiguïté* dans les spécifications. Veut-on pouvoir obtenir le score en temps réel, ou voulons-nous
 simplement appeler `score` à la fin de la partie&nbsp;?
 
 On retrouve ce lien intéressant entre tests et API&nbsp;: aurions-nous découvert cette ambiguïté sans avoir écrit aucun test&nbsp;?
 
-Ici, on va décider que `score()` n'est appelé qu'à la fin de la partie, et donc réécrire les tests ainsi&nbsp;:
+Ici, on va décider que `score()` n'est appelé qu'à la fin de la partie, et donc réécrire les tests ainsi&nbsp;, en appelant 20 fois
+`roll(0)`:
 
 ```python
 def test_gutter_game():
