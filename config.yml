@@ -29,7 +29,7 @@ languages:
         showReadingTime: true
     menu:
       main:
-        - name: RSS
+        - name: "Subscribe"
           identifier: subscribe
           url: /index.xml
           weight: 0
@@ -42,19 +42,12 @@ languages:
       settings:
         dateFormat: 02/01/2006
         showReadingTime: true
-      menu:
-        main:
-          - name: "Flux RSS"
-            identifier: subscribe
-            url: /fr/index.xml
-            weight: 0
+    menu:
+      main:
+        - name: "Flux RSS"
+          identifier: subscribe
+          url: /fr/index.xml
+          weight: 0
 
 taxonomies:
   tag: tags
-
-menu:
-  main:
-    - name: Subscribe
-      identifier: subscribe
-      url: /index.xml
-      weight: 0
