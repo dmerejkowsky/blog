@@ -77,7 +77,7 @@ Vous pouvez m'envoyer un message privé sur twitter même si vous ne me suivez p
 
 ## IRC
 
-Vous pouvez me trouver sur freenode, avec le pseudo `dmerejkowsky`.
+Vous pouvez me trouver sur libera.chat, avec le pseudo `dmerejkowsky`.
 
 ## GitHub
 

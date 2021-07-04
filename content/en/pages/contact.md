@@ -61,7 +61,7 @@ message.
 
 ## IRC
 
-You can also find me on freenode,  my nick there is `dmerejkowsky`
+You can also find me on libera.chat,  my nick there is `dmerejkowsky`
 
 ## GitHub
 

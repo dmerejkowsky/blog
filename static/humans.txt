@@ -1,7 +1,7 @@
 Main author: Dimitri Merejkowsky
 Location: Paris, France.
 Mastodon: dmerej@mamot.fr
-IRC     : dmerejkowsy (freenode, irc.mozilla.org)
+IRC     : dmerejkowsy (libera.chat)
 Twitter : d_merej
 
 
@@ -23,6 +23,6 @@ Twitter : d_merej
   Doctype: HTML5
   IDE: kakoune
 
-  DNS and SSL certificate from gandi
+  DNS from Gandi
 
   Server hosted on Digital Ocean
