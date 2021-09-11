@@ -10,7 +10,7 @@ summary: "What happens when you let the compiler tell you what to do? Let's find
 
 If you've ever written code in a compiled language (C, C++, Java, ...), you are probably used to compiler error messages, and you may think there are only here to prevent you from making mistakes.
 
-Well, sometimes you can also use compiler error messages to *design and implement* new features. Let me show you with a simple command-line program written in Rust.
+Well, sometimes you can also use compiler error messages to *design and implement new features*. Let me show you with a simple command-line program written in Rust.
 
 # An example
 
@@ -74,7 +74,7 @@ fn main() {
 
 Anyway, we try and compile this code and are faced with a bunch of compiler errors.
 
-And that's where the magic starts. We are going to make this work *without* changing the way structopt works and by *only* reading and fixing compiler errors, one by one. Ready? Let's go!
+And that's where the magic starts. We are going to make this work *without* opening structopt's documentation and by *only* following the advice given by the compiler, one error after the other. Ready? Let's go!
 
 
 ## Error 1
@@ -104,12 +104,13 @@ Well, that what easy. Let's move on to the next error.
 
 ```
   | #[derive(StructOpt)]
-  |          ^^^^^^^^^ the trait `std::str::FromStr` is not implemented for `ColorWhen`
+  |          ^^^^^^^^^ the trait `std::str::FromStr` is not implemented for
+  |                    `ColorWhen`
 ```
 
 The compiler tells us it does not know how to convert the command line argument (a string) into the enum.
 
-We don't really remember what the `FromStr` trait contains. We could look up the documentation, but we can also write an empty implementation and see what happens:
+We don't really remember what the `FromStr` trait contains. We could look up the documentation (but that would be cheating), so instead we write an empty implementation and see what happens:
 
 ```rust
 impl std::str::FromStr for ColorWhen {
@@ -230,7 +231,7 @@ struct Opt {
     // ...
     #[structopt(
         long = "--color",
-        help = "Wether to enable colorful output"
+        help = "Whether to enable colorful output"
     )]
     color_when: Option<ColorWhen>,
 }
