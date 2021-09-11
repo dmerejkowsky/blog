@@ -5,8 +5,9 @@ date: "2021-09-11T14:36:46.126712+00:00"
 draft: true
 title: "Applying Optimistic Merging"
 tags: [misc]
-summary: I decided to try and implement Optimistic Merging for the open source
-project I maintain - here's why
+summary: |
+ I decided to try and implement Optimistic Merging for the open source
+ project I maintain - here's why.
 ---
 
 # Introduction - Pessimistic Merging
