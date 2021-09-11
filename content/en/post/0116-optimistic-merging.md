@@ -1,6 +1,6 @@
 ---
 authors: [dmerej]
-slug: opttimistic-merging
+slug: optimistic-merging
 date: "2021-09-11T14:36:46.126712+00:00"
 draft: true
 title: "Applying Optimistic Merging"
