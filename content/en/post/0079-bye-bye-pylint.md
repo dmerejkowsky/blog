@@ -161,4 +161,4 @@ And that's how I stopped using pylint and removed it from my CI scripts. My apol
 This is not the end of the story of my never-ending quest of tools to help me write better Python code. You can read the rest of the story in [Hello flake8]({{< ref "/post/0080-hello-flake8.md" >}}).
 
 
-[^1]: By the way, at the end of  _[Giving mypy a go](https://dmerej.info/blog/post/giving-mypy-a-go/)_ I said I was curious to know if mypy would help during [a massive refactoring](https://github.com/TankerHQ/tbump/pull/24/files). Well, it did, even better than I would have hoped!
+[^1]: By the way, at the end of  _[Giving mypy a go](https://dmerej.info/blog/post/giving-mypy-a-go/)_ I said I was curious to know if mypy would help during [a massive refactoring](https://github.com/dmerejkowsky/tbump/pull/24/files). Well, it did, even better than I would have hoped!

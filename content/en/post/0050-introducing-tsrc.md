@@ -45,7 +45,7 @@ state, we could simply push the same tag on several repositories.
 
 # tsrc
 
-Enter [tsrc](https://github.com/TankerApp/tsrc). We use it everyday
+Enter [tsrc](https://github.com/dmerejkowsky/tsrc). We use it everyday
 at [Tanker](https://tanker.io) to manage our sources.
 
 It has a nice and intuitive user interface that takes care of running
@@ -79,7 +79,7 @@ $ pip3 install tsrc
 # PATH is already correct: it is set by the Windows installer
 ```
 
-You can find the sources on [github](https://github.com/TankerApp/tsrc).
+You can find the sources on [github](https://github.com/dmerejkowsky/tsrc).
 
 # Usage
 
@@ -208,5 +208,5 @@ We hope you'll find this tool handy for your own projects.
 Feel free to try it, contribute, and give us feedback.
 
 
-*Update: The project now has a [documentation](https://tankerapp.github.io/tsrc/)
-and a [FAQ](https://tankerapp.github.io/tsrc/faq/)!*
+*Update: The project now has a [documentation](https://dmerejkowsky.github.io/tsrc/)
+and a [FAQ](https://dmerejkowsky.github.io/tsrc/faq/)!*

@@ -449,7 +449,7 @@ So, given all this flexibility, what's the best way to handle errors in Python?
 
 ## Introduction
 
-I'm going to use [tsrc](https://github.com/tankerapp/tsrc) as an example.
+I'm going to use [tsrc](https://github.com/dmerejkowsky/tsrc) as an example.
 
 The code samples are taken from its source code (and sometimes simplified a bit for the purpose of this article).
 

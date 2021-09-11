@@ -14,7 +14,7 @@ Since I believe in the [rule of
 three](https://blog.codinghorror.com/rule-of-three/) and I already have three
 different projects using it, I've decided to share it to the world.
 
-Feel free to take a look at the [github page](https://github.com/TankerApp/python-cli-ui).
+Feel free to take a look at the [github page](https://github.com/dmerejkowsky/python-cli-ui).
 
 <!--more-->
 

@@ -314,7 +314,7 @@ pick 1b36450f fix revocation bug
 
 # Creating the merge request
 
-Finally it's time to create a merge request. For this I use [tsrc](https://github.com/TankerApp/tsrc) which is the tool we use to help us manage several git repositories and contains some nice features leveraging the GitLab API:
+Finally it's time to create a merge request. For this I use [tsrc](https://github.com/dmerejkowsky/tsrc) which is the tool we use to help us manage several git repositories and contains some nice features leveraging the GitLab API:
 
 ```console
 $ tsrc push -a theo

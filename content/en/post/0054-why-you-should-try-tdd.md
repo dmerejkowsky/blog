@@ -15,7 +15,7 @@ Not convinced? Let me elaborate.
 
 # Introduction
 
-Throughout this article, I'll be using code taken from a project I'm currently working on: [tsrc](https://github.com/tankerapp/tsrc)
+Throughout this article, I'll be using code taken from a project I'm currently working on: [tsrc](https://github.com/dmerejkowsky/tsrc)
 
 It's a command-line tool to manage several git repositories.
 

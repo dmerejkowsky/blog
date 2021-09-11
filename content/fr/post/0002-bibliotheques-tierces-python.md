@@ -274,7 +274,7 @@ On constate également que chaque bibliothèque possède un *numéro de version*
 
 Les numéros de version remplissent plusieurs rôles, mais l'un des principaux est de spécifier des changements incompatibles.
 
-Par exemple, pour `cli-ui`, la façon d'appeler la fonction `ask_choice` a changé entre les versions 0.7 et 0.8, comme le montre cet extrait du [changelog](https://tankerhq.github.io/python-cli-ui/changelog.html#v0-8-0):
+Par exemple, pour `cli-ui`, la façon d'appeler la fonction `ask_choice` a changé entre les versions 0.7 et 0.8, comme le montre le [changelog](https://dmerejkowsky.github.io/python-cli-ui/changelog.html):
 
 > the list of choices used by ask_choice is now a named keyword argument:
 
