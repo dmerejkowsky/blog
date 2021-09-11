@@ -6,7 +6,7 @@ draft: false
 title: "I am a rusty frog"
 tags: [misc, rust]
 summary: >
- A story about lack of optimisation and the weaknesses
+ A story about lack of optimization and the weaknesses
  of the human mind.
 ---
 
@@ -30,14 +30,14 @@ Then I realized I could solve both of those problems by writing two very similar
 
 Let's talk about the former. It's a command-line tool that takes two actions, `add`  and `list`. Here's how it works:
 
-* `cmd-history add` takes one parameter and adds it to a "database" in `~/.local/share/dm-tools/commands-history`. The database is just a file with one command per line.
+* `cmd-history add` takes one parameter and adds it to a "database" in `~/.local/share/bwataout/commands-history`. The database is just a file with one command per line.
 * `cmd-history list` simply dumps the contents of the database to `stdout`.
 * Then,  there's a `zsh` hook to run right after a command has been read and is about to be executed. In the hook, `cmd-history add` is called with the text of the last command.
 * Finally, `zsh` is configured so that when `ctrl-r` is pressed, the output of `cmd-history list` is piped through `fzf` and then the selected command is run.
 
 I use a similar program called `cwd-history` that does exactly the same thing but for the working directories. It runs in another zsh hook called `chpwd`, and is triggered by typing the command `z`[^1].
 
-There are a few specificities like making sure the entries are not duplicated or ensuring that every symlink in the added path is resolved, but we'll get to that later.
+There are a few specifics like making sure the entries are not duplicated or ensuring that every symlink in the added path is resolved, but we'll get to that later.
 
 # Part 2: RIR
 
@@ -61,7 +61,7 @@ hook global BufOpenFile .* %{ nop %sh{ mru-files add  "${kak_hook_param}" } }
 # Call `mru files list` when pressing <leader key>o:
 map global user o
   -docstring 'open old files'
-  ':evaluate-commands %sh{ mru-files list --kakoune }<ret>'
+  ': evaluate-commands %sh{ mru-files list --kakoune }<ret>'
 ```
 
 Note the `--kakoune` option when calling `mru-files list`: we need to call the `menu` command so that we can present the list of MRU files to the user and open the file when it's selected.
@@ -80,7 +80,7 @@ While I was it, I also added a `--kakoune` argument to `cwd-history list` so tha
 ```bash
  map global cd o
    -docstring 'open old working directory'
-   ':evaluate-commands %sh{ cwd-history list --kakoune }<ret>'
+   ': evaluate-commands %sh{ cwd-history list --kakoune }<ret>'
 ```
 
 # Part 4: the refactoring
@@ -209,28 +209,28 @@ impl StorageManager {
 
 ```rust
 // In src/bin/cmd-history.rs
-use dm_tools::StorageType;
+use bwataout::StorageType;
 fn main() {
     // ...
-    dm_tools::run_storage_manager(StorageType::CommandsHistory)
+    bwataout::run_storage_manager(StorageType::CommandsHistory)
 }
 ```
 
 ```rust
 // In src/bin/cwd-history.rs
-use dm_tools::StorageType;
+use bwataout::StorageType;
 fn main() {
     // ...
-    dm_tools::run_storage_manager(StorageType::CwdHistory)
+    bwataout::run_storage_manager(StorageType::CwdHistory)
 }
 ```
 
 ```rust
 // In src/bin/mru-files.rs.rs
-use dm_tools::StorageType;
+use bwataout::StorageType;
 fn main() {
     // ...
-    dm_tools::run_storage_manager(StorageType::FilesHistory)
+    bwataout::run_storage_manager(StorageType::FilesHistory)
 }
 ```
 
@@ -274,14 +274,14 @@ impl Storage {
 
 We're reading each line of the database file, and passing it to `EntriesCollection.add()`. This means we keep calling the `add()` method over and over. It does not do much, but it still has to go through *all* the entries when performing deduplication. This is a classic case of the [Shlemiel algorithm](https://www.joelonsoftware.com/2001/12/11/back-to-basics/) and it explains the abysmal performance of the tool as soon as the database gets big enough.
 
-I believe I wrote the code that way because I thought it would be nice to somehow "validate" the entries when reading the database. That way, if the algorithm in the `add` method changed, the database will be migrated automatically. Another classical mistake named *<abbr title="You Ain't Gonna Need It">YAGNI<abbr>*: it's doubtful I'll ever need to migrate the database, and when I need to, I'll probably just have to write a tiny throw-away script to do it.
+I believe I wrote the code that way because I thought it would be nice to somehow "validate" the entries when reading the database. That way, if the algorithm in the `add` method changed, the database will be "migrated" automatically (for instance, all non-existing paths still present in the db will automatically disappear). Another classical mistake named *<abbr title="You Ain't Gonna Need It">YAGNI<abbr>*: it's doubtful I'll ever need to "migrate" the database, and when I need to, I'll probably just have to write a tiny throw-away script to do it.
 
 Anyway, now that we've decided the "auto migrating" feature can go away, we can solve our performance issue by adding an `add_all` method to the trait, and replacing the `for` loop in the `Storage` constructor:
 
 {{< highlight rust "hl_lines=3" >}}
  pub trait EntriesCollection {
      fn add(&mut self, entry: &str);
-+    fn add_all(&mut self, entres: Vec<String>);
++    fn add_all(&mut self, entries: Vec<String>);
      fn list(&self) -> &Vec<String>;
 }
 {{</ highlight >}}
@@ -297,7 +297,7 @@ impl Storage {
 -       for entry in entries {
 -           entries_collection.add(&entry);
 -       }
-+       entries_collection.add_all(entres);
++       entries_collection.add_all(entries);
         Storage {
             db_path,
             entries_collection,
