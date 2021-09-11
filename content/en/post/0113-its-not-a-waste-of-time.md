@@ -45,7 +45,7 @@ Most of the time, I can't convince people who tell me that I'm suggesting  is a 
 Instead, they skip what I think was a critical preparatory step, and then I watch them spend a ton of time rectifying the situation afterward - it's frustrating.
 
 
-Fortunately, after they've repeated the same mistake enough times, they tend to listen to me finally. But I'd very much like not to have to go through this painful process every time.
+Fortunately, after they've repeated the same mistake enough times, they tend to listen to me at last. But I'd very much like not to have to go through this painful process every time.
 
 I'm not sure what to do about it, though. Maybe it's just human nature?
 
