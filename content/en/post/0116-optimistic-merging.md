@@ -12,22 +12,24 @@ summary: |
 
 # Introduction - Pessimistic Merging
 
-If you've contribute to an open-source project on GitHub or GitLab, or
-write code inside for a company, you are probably familiar with the
+If you've contributed to an open-source project on GitHub or GitLab, or
+written code inside for a company, you are probably familiar with the
 concept of "Pessimistic Merging" - you write a patch (or a pull request
-or a merge request), but it is not merged right away. For it to be
-merged you need to wait for human approval to be given and/or continuous
-integration to pass.
+or a merge request), but it is not merged (or applied) right away.
+Instead, you need to wait for human approval to be given and/or
+continuous integration to pass.
 
-I can think of several reasons why this strategy is often the one which is used:
+I can think of two reasons why this strategy is often the one which is used:
 
-* It's used by really big projects for quite some time
-* It's kind of the *default* way to collaborate on a platform like GitHub or GitLab
-* There are even tools like Gerrit which work by specifying a list of
-* constraints before a patch can be merged [^1] - which is used among other
-  things, Google's Android Open Source Project or the Qt framework
+* It's been used by really big projects (like the Linux kernel) for quite some time
+* and it's kind of the *default* way to collaborate on a platform like GitHub or GitLab
 
-There's also the fact that it allows to enforce some rules. Used with source control like Git,
+There are even tools like Gerrit which work by specifying a list of
+constraints before a patch can be merged [^1] - which is used among
+other things by Google's Android Open Source Project or the Qt framework
+
+There's also the fact that it allows to enforce some rules. Used in
+combination with source control with source control (like Git),
 Pessimistic Merging can ensure:
 
 * A "clean" git history (from the commit messages to their contents to the size of the patches)
@@ -41,7 +43,8 @@ And indeed, there are some projects where this matters a lot - in a corporate en
 a "sensitive" project like a browser, a database engine or an operating system ...
 
 That being said, we rarely talk about the *downsides* of Pessimistic
-Merging (and you'll probably never think that this concept needed a *name*).
+Merging - which is why you probably never thought that this concept
+needed a *name*.
 
 # Issues with Pessimistic Merging
 
@@ -53,24 +56,22 @@ The idea behind Optimistic Merging is very simple: you *merge the patch first*, 
 
 Sure, this means that the main development branch of your Git repository may now contain
 commits that do not fully work, code that does not always compile, or commits that only
-fix whitespace.
+fix code styling errors.
 
-But for a medium-sized project, that does nothing too security-sensitive, and for which
+But for a small or medium-sized project, that does nothing too security-sensitive, and for which
 maintainers and collaborators are hard to find - is it such a bad deal?
 
-Note that most users of your projects will only use tagged releases, so
-the bad history is only an issue for direct contributors of the project.
-
-See also Aleksey Kladov's piece on [Two Kinds of Code
-Review](https://matklad.github.io/2021/01/03/two- kinds-of-code-
-review.html) - which is the reason I learned about Optimistic Merging in
-the first place and wanted to try it out.
+See also Aleksey Kladov's piece on [Two Kinds of Code Review](https://matklad.github.io/2021/01/03/two-kinds-of-code-review.html) (which is the reason I learned about Optimistic Merging in
+the first place and wanted to try it out), where he explains how pull
+requests are reviewed and merged for the rust-analyzer project.
 
 A note before I continue: they are plenty of cases where using
 Pessimistic Merging *is* the best strategy - in my case, I've decided to
 use Optimistic Merging only for the open- source projects *I* maintain,
-and I'm not suggesting you should do too. I'm just describing an
-alternate strategy you may or may not find better for your case.
+and I'm not suggesting you should do too!  I'm just describing an
+alternate strategy you find interesting.
+
+With that out of the way, let's now look how Optimistic Merging works for me in practice.
 
 ## My workflow for Optimistic Merging
 
@@ -90,7 +91,8 @@ their first ever merge request to the GitHub repository.
 
 ### Merging Mallory's changes
 
-The first step is for me to get the proposed changes on my local machine.
+The first step is for me to get the proposed changes on my local machine and
+to prepare a list of notes for later feedback. (A simple text file is enough).
 
 Since it's a PR on GitHub, I can do something like this, where "some-branch"
 is the *source ref* of Mallory's PR:
@@ -102,33 +104,23 @@ From github.com:mallory/foo
 * [new branch] some-branch -> mallory/some-branch
 ```
 
-Then I try and rebase `some-branch` on top of the main branch. This
+Then I rebase `some-branch` on top of the main branch. This
 allows me to make sure the commits can be merged right away.
 
-Best case scenario: Mallory already rebased or merge their branch on top of main
-and there are no conflicts :)
+During the rebase I look at each commit diff and I take notes.
 
-Worse case scenario: I spend some time fixing some conflicts, no big
-deal - at this point I've been fixing conflicts during `git rebase` for
-more than 10 years - why would I impose that to a new contributor ?
-Sure, they'll be a moment when Mallory will *have* to master git rebase,
-but does it need to be *right now*? What if it's their first patch ever?
+Since everything is on my machine, it's trivial to amend Mallory's
+commits if a linter complains or to run `black` after each commit for instance.
 
-Anyway, during the rebase I can take a look at each commit. Since everything
-is on my machine, it's trivial to amend Mallory's commits if a linter complains.
+I can also choose to run the test locally if I fear a commit may have cause
+a regression.
 
-It's also trivial to run `black .` after each commit.
+Finally, if there's a small issue (like a misleading comment) I can fix
+it right away! There's no need to go through the hassle of:
 
-If I feel I need to, I can also choose to run the tests to make sure that the
-commit did not break anything.
-
-Also, if there's a small issue (like a misleading comment) *I can fix
-it right away!* - why go through the hassle of telling Mallory they did
-something wrong, *then* wait for them to update the merge request,
-*then* re-start the process from scratch?
-
-Finally, I keep a simple text file opened with some *notes* for later
-use (you'll see in a moment)
+* telling Mallory they did something wrong,
+* wait for them to update the merge request,
+* re-start the process from scratch.
 
 When all of this is done, it's time to push Mallory's branch. I re-run
 the linters and the tests just to be sure, then I push the code and
@@ -136,23 +128,24 @@ leave a message in the PR telling Mallory the changes have been merged.
 
 ## Looking at the interaction from Mallory's point of view
 
-It's very likely Mallory's was not paid to write the patch, but they still
-worked on it and thought their work was good enough to open a pull request.
+It's very likely Mallory's was not paid to write the patch, (this is a
+medium-size opens source project, after all) but they still worked on it
+and thought their work was good enough to open a pull request.
 
 They probably don't know much about the project, and it's likely they
-don't know everything about Git, Python, flake8 or black - and it's even
-possible they know nothing about testing!
+don't know everything about Git, Python, flake8 or black. And it's even
+possible they know nothing about testing.
 
 Yet, the first reply they got for the maintainer is "Thanks! Your
 commits have been merged". Boom. The collaboration is already working.
 
 What a great start!
 
-Contrast with a typical response when using PM,  which would look like this:
+Contrast with a typical response when using Pessimistic Merging,  which would look like this:
 
-> hank you for contribution, but the CI does not pass (test_foo_bar4 is
-> failing and there are some lint error). Also, please merge or rebase
-> your work on top of the main branch so that the merge is fast-forward".
+> Thank you for your contribution, but the CI does not pass (test_foo_bar4 is
+> failing and there are some lint errors). Also, please merge or rebase
+> your work on top of the main branch so that the merge is fast-forward.
 
 ... followed by a bunch of nitpicks about the merge request.
 
@@ -161,7 +154,7 @@ Contrast with a typical response when using PM,  which would look like this:
 
 Anyway, now it's time to put my notes to good use.
 
-If there are some trivial changes I have to do, I can just tell Mallory:
+If there are some trivial changes I had to do, I can just tell Mallory:
 
 > It was a good idea to refactor the do_stuff() method inside the Foo class,
 > but you did not adapt the doc string, which I've done in commit ...
@@ -171,6 +164,8 @@ more likely to watch their docstrings next time they write a new patch
 
 If there was some non-trivial changes (like a missed opportunity for a
 refactoring), I can just create an issue with a task list for instance.
+
+I can also start a pull request and have *Mallory* review it.
 
 # Conclusion
 
@@ -190,7 +185,8 @@ By the way, you may have noticed that my Optimistic Merging workflow
 requires *very little features* from whatever platform I'm using to host
 the code (I'm not even doing the code review form the web interface !).
 This is not a coincidence, but will be the topic for an other blog post.
-Stay tuned.
+Stay tuned ;)
 
 
 [^1]: Fun fact: to do this,  Gerrit embeds [an implementation of the Prolog Language](https://gerrit-review.googlesource.com/Documentation/prolog-cookbook.html)
+[^2]: If you have trouble with opening this link, make sure you are using the http:// URL, the https:// version is  unfortunately broken.
