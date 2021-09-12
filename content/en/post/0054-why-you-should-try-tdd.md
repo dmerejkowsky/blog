@@ -539,7 +539,7 @@ def parse_config_file(path, schema=None):
     if schema:
         try:
            schema.validate(cfg)
-        except ShemaError as schema_error:
+        except SchemaError as schema_error:
             raise InvalidConfig(path, schema_error)
 
 ```

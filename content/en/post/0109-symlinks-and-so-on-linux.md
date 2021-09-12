@@ -291,7 +291,7 @@ the PKGBUILD and publish a new release.
 You build and install the package on your machine and check it still works:
 
 ```console
-$ makepg
+$ makepkg
 $ sudo pacman -U libanswer-1.1-1-x86_64.pkg.tar.xz
 ```
 
@@ -379,7 +379,7 @@ Time to publish the v2!
 ```
 
 ```console
-$ makepg
+$ makepkg
 $ sudo pacman -U libanswer-2.0-1-x86_64.pkg.tar.xz
 ```
 

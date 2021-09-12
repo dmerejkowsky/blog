@@ -44,3 +44,5 @@ The last one is interesting: we need to recursively walk through all the files i
 That will be an opportunity to play a little bit with Rust concurrency features :)
 
 Cheers!
+
+*Update: well, I implemented this features using a pipeline of `std::sync::mpsc` channels, and it worked great! Here's the [relevant commit](https://github.com/dmerejkowsky/rusync/commit/01f68335c9593c6cbf99d6d971adf67d2e0ec379) if you want to take a look.*
