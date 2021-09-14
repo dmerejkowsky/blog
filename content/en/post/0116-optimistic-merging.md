@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: optimistic-merging
-date: "2021-09-11T14:36:46.126712+00:00"
+date: "2021-09-14T16:06:46.126712+00:00"
 title: "Optimistic Merging In Practice"
 tags: [misc]
 summary: |
