@@ -2,8 +2,7 @@
 authors: [dmerej]
 slug: optimistic-merging
 date: "2021-09-11T14:36:46.126712+00:00"
-draft: true
-title: "Applying Optimistic Merging"
+title: "Optimistic Merging In Practice"
 tags: [misc]
 summary: |
  I decided to try and implement Optimistic Merging for the open source
@@ -88,7 +87,7 @@ Finally, if there's a small issue (like a misleading comment) I can fix it right
 
 When all of this is done, it's time to push Mallory's branch. I re-run the linters and the tests just to be sure, then I push the code and leave a message in the PR discussion telling Mallory the changes have been merged.
 
-## Looking at the interaction from Mallory's point of view
+### Looking at the interaction from Mallory's point of view
 
 It's very likely that Mallory was not paid to write the patch, (this is a medium-size open-source project, after all) but they still worked on it and thought their work was good enough to open a pull request.
 
@@ -103,7 +102,7 @@ Contrast with a typical response when using Pessimistic Merging,  which would lo
 ... followed by a bunch of nitpicks about the merge request.
 
 
-## After the merge
+### After the merge
 
 Anyway, now it's time to put my notes to good use.
 
