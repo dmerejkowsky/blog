@@ -125,3 +125,6 @@ things easier for you and your teammates, then yes, it's definitely worth it.
 It's hard, but trying and solve this challenge is what I love about programming.
 
 Cheers!
+
+*Update 2021-09-16: see also this fantastic article by By Mathias Verraes and Rebecca Wirfs-Brock:
+called [Design and Reality](https://verraes.net/2021/09/design-and-reality/)*.
