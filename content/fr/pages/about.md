@@ -26,7 +26,7 @@ simple demande.
 
 # Qui je suis
 
-En quelques mots: je travaille dans l'informatique depuis une petite dizaine d'années. J'ai ouvert ce blog pour partager mes connaissances et apprendre au contact d'autres personnes. J'aime Python3, écrire des tests, et coller des post-its sur des tableaux (beaucoup de posts-its).
+En quelques mots: je travaille dans l'informatique depuis une petite dizaine d'années. J'ai ouvert ce blog pour partager mes connaissances et apprendre au contact d'autres personnes. J'aime Python3, écrire des tests, et coller des post-it sur des tableaux (beaucoup de posts-it).
 
 # Me contacter
 
@@ -48,15 +48,15 @@ Choses à savoir:
   en cas de besoin. Notez que vous ne serez *pas* notifié des réponses à vos commentaires par e-mail.
   Vous pouvez bien sûr demander à n'importe quel moment que votre e-mail soit supprimé de la base de données.
 * Une fois votre commentaire soumis, vous aurez 15 minutes pour le modifier ou le supprimer. Ceci fonctionne grâce à
-  un cookie de durée de vie éhpémère.
+  un cookie de durée de vie éphémère.
 
 ## Suggérer des corrections
 
-Si vous trouvez des typos ou des erreurs similaires dans le contenu des articles et que vous avez un compte GitHub, le plus pratique pour moi est de créer une pull request en cliquant sur le lien correspondant en haut de chaque article. Vous êtes bien sûr libres d'envoyer les corrections de la façon que *vous* préfèrez&nbsp;: je suis toujours content quand des lecteurs attentifs me permettent d'améliorer mon contenu&nbsp;!
+Si vous trouvez des typos ou des erreurs similaires dans le contenu des articles et que vous avez un compte GitHub, le plus pratique pour moi est de créer une pull request en cliquant sur le lien correspondant en haut de chaque article. Vous êtes bien sûr libres d'envoyer les corrections de la façon que *vous* préférez&nbsp;: je suis toujours content quand des lecteurs attentifs me permettent d'améliorer mon contenu&nbsp;!
 
 ## e-mail
 
-Voici mon addresse e-mail, chiffrée avec un [puissant algorithme](https://fr.wikipedia.org/wiki/ROT13) :
+Voici mon adresse e-mail, chiffrée avec un [puissant algorithme](https://fr.wikipedia.org/wiki/ROT13) :
 
 ```text
 q.zrerw@tznvy.pbz
@@ -69,7 +69,7 @@ Je dispose d'un compte [Mastodon](https://mastodon.social/about): `@dmerej@mamot
 
 ## twitter
 
-J'ai égalemnt un compte twitter : [@d_merej](https://twitter.com/d_merej)
+J'ai également un compte twitter : [@d_merej](https://twitter.com/d_merej)
 
 {{< note >}}
 Vous pouvez m'envoyer un message privé sur twitter même si vous ne me suivez pas.

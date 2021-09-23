@@ -25,5 +25,5 @@ Le hic : la technologie en question n'a jamais fonctionné ...
 
 Le livre contient en gros deux parties.
 
-Dans la première, on suit l'évolution de la société Theranos, en commançant par son tout débutces débuts jusqu'à
+Dans la première, on suit l'évolution de la société Theranos, en commençant par son tout débuts jusqu'à
 

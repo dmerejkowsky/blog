@@ -403,7 +403,7 @@ On a:
 
 # C'est parti
 
-Retours aux régles:
+Retours aux règles:
 
 * Règle 1: Il est interdit d'écrire du code de production, *sauf* si c'est pour faire passer un test qui
   a échoué.
@@ -827,7 +827,7 @@ class Game:
         return result
 ```
 
-Petit apparté sur le nombre 21. Ici ce qu'on veut c'est le nombre maximum de frames.
+Petit aparté sur le nombre 21. Ici ce qu'on veut c'est le nombre maximum de frames.
 On peut s'assurer que 21 est bien le nombre maximum en énumérant les cas possibles
 de la dernière frame, et en supposant qu'il n'y a eu ni spare ni strike au cours
 du début de partie (donc 20 lancers, 2 pour chacune des 10 premières frame)
@@ -1209,7 +1209,7 @@ D'abord, je trouve qu'on peut être fier du code auquel on a abouti&nbsp;:
 Le code se "lit" quasiment comme les règles du bowling. Il a l'air correct, et il *est* correct.
 
 Ensuite, même si notre refléxion initiale nous a guidé (notamment avec la classe Game et ses deux méthodes),
-notez qu'on a pas eu besoin des classes `Frame` ou `Roll`, ni de la classe fille `TenthFrame`. En ce sens, on peut dire que TDD est égalemnent
+notez qu'on a pas eu besoin des classes `Frame` ou `Roll`, ni de la classe fille `TenthFrame`. En ce sens, on peut dire que TDD est également
 une façon de *concevoir* le code, et pas juste une façon de faire évoluer le code de production et le code de test en parallèle.
 
 Enfin, on avait un moyen de savoir quand le code était *fini*. Quand on pratique TDD, on sait qu'on peut s'arrêter dès que tous les tests

@@ -12,7 +12,7 @@ summary: "Gestions des bibliothèques tierces en Python - pipenv, PYTHONPATH et 
 Note: cet article fait suite à [Utiliser des bibliothèques tierces avec Python]({{< ref "0002-bibliotheques-tierces-python.md" >}}). Il est recommandé d'avoir lu celui-ci
 auparavant.
 
-# Compléments sur le méchanisme d'import de Python
+# Compléments sur le mécanisme d'import de Python
 
 ## PYTHONPATH
 
@@ -21,7 +21,7 @@ TOOD: voir la liste complète dans la doc
 
 PYTHONPATH est l'une de ces variables, et se comporte à peu près comme la variable d'environnement `$PATH`.
 
-Elle peut contenir une liste de répertoires séparés par des `:`. Voici un example, en supposant qu'il existe un fichier `foo.py` dans le répertoire `toto` et un fichier `bar.py` dans un répertoire `tutu`
+Elle peut contenir une liste de répertoires séparés par des `:`. Voici un exemple, en supposant qu'il existe un fichier `foo.py` dans le répertoire `toto` et un fichier `bar.py` dans un répertoire `tutu`
 
 ```
 $ export PYTHONPATH=toto:tutu
@@ -66,7 +66,7 @@ addsitedir
 
 # Cas pratique: lancer les tests d'un projet Python
 
-Dans la première partie j'ai expliqué qu'il était préferable de toujours utiliser `pip` dans un virtualenv, et d'utiliser un virtualenv par projet et par version de python.
+Dans la première partie j'ai expliqué qu'il était préférable de toujours utiliser `pip` dans un virtualenv, et d'utiliser un virtualenv par projet et par version de python.
 
 Admettons que vous vouliez travailler sur le projet `flask` avec Python3.7, et pour cela, lancer les tests du projet. Il va vous falloir:
 

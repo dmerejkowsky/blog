@@ -44,7 +44,7 @@ dans une coopérative ou similaire.
 
 Je ne me vois pas du tout travailler dans une société de service ou dans
 une grosse boîte, et après plus de 10 ans passés dans le monde des start-
-ups, j'ai besoin de changement.  Je pense que je m'épanouirai davantage
+up, j'ai besoin de changement.  Je pense que je m'épanouirai davantage
 dans ce genre de structure, et en tout cas, cela m'intéresse de
 découvrir une nouvelle forme d'organisation.
 
