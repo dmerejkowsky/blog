@@ -322,7 +322,22 @@ Supposons deux projets A et B dans votre répertoire personnel. Ils dépendent t
 
 La solution est d'utiliser un environnement virtuel (*virtualenv* en abrégé). C'est un répertoire *isolé* du reste du système.
 
-Il se crée par exemple avec la commande `python3 -m venv foo-venv`. où `foo-venv` est un répertoire quelconque.
+Pour créer un virtualenv il faut utiliser la commande:
+
+```bash
+$ python -m venv /chemin/vers/virtualenv
+```
+
+où `/chemin/vers/virtualenv` est le dossier cible. Les dossiers parents seront créés si nécessaire par le module `venv`.
+
+En pratique, on préfère utiliser un chemin qui n'existe pas encore, typiquement :
+
+```bash
+$ cd /chemin/vers/project
+$ python -m .venv
+```
+
+Ici on a utilisé le répertoire relatif `.venv`.
 
 ## Aparté : python3 -m venv sur Debian
 
