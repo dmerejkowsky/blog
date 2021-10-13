@@ -23,7 +23,7 @@ Back at the office, it sometimes happens we face a really tricky bug and we ask
 someone else for help.
 
 One day I was stuck into a tricky bug, and ask a workmate for help. He fired up
-`emacs`, (the bastard), and we looked at the code.
+`emacs`, and we looked at the code.
 
 After a few minutes, we knew what changes needed to be made ("just call that
 before this, add this parameter here, ...")
