@@ -4,7 +4,7 @@ slug: dmerej-info-in-french
 date: "2019-05-05T16:16:35.932553+00:00"
 draft: false
 title: "dmerej.info: now also in French"
-tags: [misc]
+tags: [meta]
 feedbakc: false
 ---
 

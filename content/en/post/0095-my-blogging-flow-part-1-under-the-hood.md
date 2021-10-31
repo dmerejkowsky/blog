@@ -4,7 +4,7 @@ slug: my-blogging-flow-part-1-under-the-hood
 date: "2019-02-06T11:46:32.632044+00:00"
 draft: false
 title: "My Blogging Flow - Part 1 - Under the hood"
-tags: [misc]
+tags: [meta]
 summary: How this blog gets written - part 1
 ---
 

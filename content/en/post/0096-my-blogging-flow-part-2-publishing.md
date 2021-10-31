@@ -4,7 +4,7 @@ slug: my-blogging-flow-part-2-publishing
 date: "2019-02-07T12:14:20.273365+00:00"
 draft: false
 title: "My Blogging Flow - Part 2 - Publishing"
-tags: [misc]
+tags: [meta]
 summary: How this blog gets written - part 2
 feedback: false
 ---
