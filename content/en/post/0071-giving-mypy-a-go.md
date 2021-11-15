@@ -15,6 +15,9 @@ I left a teaser explaining I'll be giving concrete examples using a Python proje
 
 As you may have guessed, I'm going to talk about type annotations and the [mypy](http://mypy-lang.org/) static type checker.
 
+*Update: 2021-11-15: Feel free to also read the [case study about urllib3](
+https://sethmlarson.dev/blog/2021-10-18/tests-arent-enough-case-study-after-adding-types-to-urllib3)*
+
 # How mypy works
 
 Here's a quick overview of how mypy works, in case you are not already familiar with it.
