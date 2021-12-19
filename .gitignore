@@ -1,3 +1,4 @@
 public/
 old/
 resources/_gen/
+.hugo_build.lock
