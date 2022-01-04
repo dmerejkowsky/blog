@@ -1,8 +1,8 @@
 ---
 authors: [dmerej]
 slug: rust-secrets-and-logs
-date: 2022-01-03T13:11:47.416699+00:00
-draft: true
+date: 2022-01-04T10:11:47.416699+00:00
+draft: false
 title: "Is Rust worth learning? Part 1: logs and secrets"
 tags: [rust]
 summary: Is Rust worth learning? Let's find out. A story based on real events.
