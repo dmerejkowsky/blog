@@ -16,8 +16,7 @@ To see if Rust is worth trying, then, let me tell you a story - based on real ev
 
 # Logs and secrets
 
-Let's say you are writing a Java application that needs to make HTTP calls
-on an external API.
+Let's say you are writing a Java application that needs to make HTTP calls on an external API.
 
 To do this, you have a client class that implements a `call` method.
 
@@ -38,8 +37,7 @@ public class Client {
 }
 ```
 
-Note that you need do send an `app secret` along the url to make the call, hence the separate
-`authenticate()` method.
+Note that you need do send an `app secret` along the url to make the call, hence the separate `authenticate()` method.
 
 You also have a Config record to hold the configuration of the application:
 
@@ -48,8 +46,7 @@ public record Config(String appSecret, String url) {
 }
 ```
 
-Finally, you have a main class that reads the values from the environment, builds
-a Config and a Client instances and uses it to make calls:
+Finally, you have a main class that reads the values from the environment, builds a Config and a Client instances and uses it to make calls:
 
 ```java
 public class App {
@@ -77,8 +74,7 @@ public void call(String appSecret, String url) {
 
 # A vulnerability happens
 
-You push the code into production, and some time later you get assigned to the following
-bug in the issue tracker:
+You push the code into production, and some time later you get assigned to the following bug in the issue tracker:
 
 ```
 BUG: APP_SECRET found in the logs
@@ -94,9 +90,7 @@ INFO: config: Config[appSecret=s3cret, url=https://api.dev]
 INFO: Making the call
 ```
 
-So you take a look at the code base, and sure enough, you find the
-problem: someone from an other team added a log containing the contents
-of the Config class:
+So you take a look at the code base, and sure enough, you find the problem: someone from an other team added a log containing the contents of the Config class:
 
 ```java
 // SomewhereElse.java
@@ -106,9 +100,7 @@ logger.info("config:" + config.toString());
 
 Sure, the bug is easy to fix. You can just remove the call to `logger.info`.
 
-But after thinking about it more, you decide to also override the
-`toString()` method of the `Config` struct so that the app secret is
-*always* redacted:
+But after thinking about it more, you decide to also override the `toString()` method of the `Config` struct so that the app secret is *always* redacted:
 
 ```diff
 public record Config(...) {
@@ -119,16 +111,13 @@ public record Config(...) {
 }
 ```
 
-There. You can mark the bug as "fixed" and move to something else, like
-take a look at this new programming language called Rust ...
+There. You can mark the bug as "fixed" and move to something else, like take a look at this new programming language called Rust ...
 
 A few hours later, here's what you learned.
 
 # Ownership
 
-First, Rust has this notion of *ownership*: every piece of data must
-have exactly one owner. By default, data is *moved* and can't be used
-after the move.
+First, Rust has this notion of *ownership*: every piece of data must have exactly one owner. By default, data is *moved* and can't be used after the move.
 
 Here's an example:
 
@@ -165,13 +154,11 @@ fn main() {
 
 This is a immutable (or shared) borrow: you won't be able to modify the string.
 
-You've also learned about mutable (or exclusive) borrows. They would allow you to
-modify the string, but they are not relevant for this story.
+You've also learned about mutable (or exclusive) borrows. They would allow you to modify the string, but they are not relevant for this story.
 
 ## The trait system
 
-You also learned that  classes don't exist in Rust. Instead,
-Rust uses *traits*, and adds methods to structs using `impl` blocks:
+You also learned that classes don't exist in Rust. Instead, Rust uses *traits*, and adds methods to structs using `impl` blocks:
 
 ```rust
 /* in stuff.rs */
@@ -216,10 +203,7 @@ foo.do_stuff(); // OK: Stuffer trait is in scope
 
 # A rewrite
 
-So, feeling adventurous, you decide to try and re-implement your
-application in Rust, just to feel like how the code would look like
-and if you can find a better way of handling the security issue you had
-to fix in Java.
+So, feeling adventurous, you decide to try and re-implement your application in Rust, just to feel like how the code would look like and if you can find a better way of handling the security issue you had to fix in Java.
 
 You start with the `Config` class:
 
@@ -269,8 +253,7 @@ fn main() {
 }
 ```
 
-"Well, that was easy" you think. "I wonder what people
-mean when they're talking about 'fighting the borrow checker'".
+"Well, that was easy" you think. "I wonder what people mean when they're talking about 'fighting the borrow checker'".
 
 Then you try to use `client.call` a second time:
 
@@ -295,8 +278,7 @@ error[E0382]: use of moved value: `config.app_secret`
    |                 ^^^^^^^^^^^^^^^^^ value used here after move
 ```
 
-"Oh, right", I need to "borrow" the `app_secret` and the `url` in the
-client if I want to be able to keep using the config struct.
+"Oh, right", I need to "borrow" the `app_secret` and the `url` in the client if I want to be able to keep using the config struct.
 
 So you change the code to be like this instead:
 
@@ -313,13 +295,11 @@ So you change the code to be like this instead:
 +    client.call(&config.app_secret, &config.url);
 ```
 
-There. Now the client *borrows* the app secret and the url and the code compiles
-and runs fine.
+There. Now the client *borrows* the app secret and the url and the code compiles and runs fine.
 
 Feeling confident, you try and reproduce the logging issue.
 
-First, you add a `#[derive(Debug)]` annotation on top
-of the `Config` struct:
+First, you add a `#[derive(Debug)]` annotation on top of the `Config` struct:
 
 ```diff
 + #[derive(Debug)]
@@ -338,10 +318,7 @@ And then you add a log displaying the contents of the config struct:
 }
 ```
 
-This code works because Rust knows how to print debug representations of
-strings and booleans and the `derive(Debug)` annotation can
-automatically generates the code to print a debug representation of the
-`Config` struct.
+This code works because Rust knows how to print debug representations of strings and booleans and the `derive(Debug)` annotation can automatically generates the code to print a debug representation of the `Config` struct.
 
 Indeed, the code compile, and, sure enough, the secret shows up in the log:
 
@@ -371,8 +348,7 @@ impl SecretString {
 }
 ```
 
-The constructor takes ownership of the string, which is a good thing, because it means
-the inner value *can no longer be accessed* once the `SecretString` struct is created:
+The constructor takes ownership of the string, which is a good thing, because it means the inner value *can no longer be accessed* once the `SecretString` struct is created:
 
 ```rust
 let secret_value = std::env::var("APP_SECRET").unwrap();
@@ -434,7 +410,7 @@ impl Debug for SecretString {
 }
 ```
 
-Second you can't use the `inner` field directly in the `call()` method:
+Second, you can't use the `inner` field directly in the `call()` method:
 
 ```
 error[E0616]: field `inner` of struct `SecretString` is private
@@ -466,8 +442,7 @@ pub fn call(&self, app_secret: &SecretString, url: &str) {
 
 # Going further
 
-Ten you think back about the rule about traits having to be in scope, and
-you decide to move the `expose_value` method into a trait:
+Then you think back about the rule about traits having to be in scope, and you decide to move the `expose_value` method into a trait:
 
 ```rust
 pub trait ExposeSecret {
@@ -509,32 +484,23 @@ use crate::secrecy::SecretString;
 
 There - the code compiles, and it's now pretty hard to leak the app secret:
 
-Indeed, if a value has been wrapped in the SecretString struct,
-anyone attempting to access it must:
+Indeed, if a value has been wrapped in the SecretString struct, anyone attempting to access it must:
 
 * call a method that *sounds* dangerous (`expose_value()`)
 * import a trait that *also* sounds dangerous (`secrets::ExposeSecret`)
 
-It's also very easy to edit the code for safety: just list the usages of
-the `ExposeSecret` trait.
+It's also very easy to edit the code for safety: just list the usages of the `ExposeSecret` trait.
 
 # Conclusion
 
-I hope you found this post interesting: it shows how you can use some unique features
-of the Rust programming language to tackle an old issue in a novel way.
+I hope you found this post interesting: it shows how you can use some unique features of the Rust programming language to tackle an old issue in a novel way.
 
-I mentioned at the beginning that the this post is based on true stories, so here are my two sources
-of inspiration.
+I mentioned at the beginning that the this post is based on true stories, so here are my two sources of inspiration:
 
-The issue of a secret value exposed by mistake is based on an actual
-security vulnerability I reported to the Miniflux maintainers. You can see the details in the [miniflux
-repository](https://github.com/miniflux/v2/commit/87d58987a698296fa4306ed43e8400568edd51f1).
+* The issue of a secret value exposed by mistake is based on an actual security vulnerability I reported to the Miniflux maintainers. You can see the details in the [miniflux repository](https://github.com/miniflux/v2/commit/87d58987a698296fa4306ed43e8400568edd51f1).
+* The `SecretString` struct is based on a real crate, called [secrecy](https://docs.rs/secrecy/latest/secrecy/).
 
-The `SecretString` struct is based on a real crate, called [secrecy](https://docs.rs/secrecy/latest/secrecy/).
-
-Thanks for taking this journey with me, and if you're a reading this
-while trying to fix the log4j security vulnerability, you have my
-sincere sympathy :)
+Thanks for taking this journey with me, and if you're a reading this while trying to fix the log4j security vulnerability, you have my sincere sympathy :)
 
 Cheers!
 
