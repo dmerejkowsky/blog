@@ -123,7 +123,7 @@ Here's an example:
 
 ```rust
 struct StringOwner {
-   inner: String, // <- note: fields is private by default
+   inner: String, // <- note: fields are private by default
 }
 
 fn main() {
