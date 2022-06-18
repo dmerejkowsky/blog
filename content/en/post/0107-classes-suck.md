@@ -23,7 +23,7 @@ This is not new, of course, but it raises some interesting questions: how can we
 
 In these two parts series, we'll try and answer the last question.
 
-We will use an exercise I've stolen from the [exercism.io](https://exercism.io/, website, and the two parts will argue opposing points of view.
+We will use an exercise I've stolen from the [exercism.io](https://exercism.io/) website, and the two parts will argue opposing points of view.
 
 Let's start with part one: *classes suck*. Bear in mind there we'll be a part two called *classes rock*, so don't leave angry comments below just yet :)
 
