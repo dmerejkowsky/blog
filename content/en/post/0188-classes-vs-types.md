@@ -27,6 +27,8 @@ As a reminder, here's our spec:
 
 # Using Rust
 
+Something about expressivens, correctness and performance.
+
 What's interesting with the Rust programming language is that we can express the spec in such a way that **invalid states lead to compilation errors** and **without using anything but structs and methods**.
 
 Here's how. We're going to use 2 types - and to be precise, those are called *structs*:
