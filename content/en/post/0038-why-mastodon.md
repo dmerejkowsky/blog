@@ -6,7 +6,7 @@ draft: false
 title: Why Mastodon
 ---
 
-On April 20th, I created my first [Mastodon](https://mastodon.social/about) account,
+On April 20th 2017, I created my first [Mastodon](https://mastodon.social/about) account,
 `@dmerej@mamot.fr`.
 
 In this article, I'd like to show you why this matters a great deal to me,
