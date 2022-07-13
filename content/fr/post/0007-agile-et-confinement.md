@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: agile-et-confinement
-date: "2021-07-13T09:30:55.195431+00:00"
+date: "2021-07-12T09:30:55.195431+00:00"
 draft: false
 title:  Manifeste agile et confinement - une rétrospective
 feedback: true

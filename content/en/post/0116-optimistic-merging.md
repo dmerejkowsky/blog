@@ -3,6 +3,7 @@ authors: [dmerej]
 slug: optimistic-merging
 date: "2021-09-14T14:06:46.126712+00:00"
 title: "Merge first, ask questions later - Optimistic Merging in practice"
+draft: false
 tags: [misc]
 summary: |
  I decided to try and implement Optimistic Merging for the open source

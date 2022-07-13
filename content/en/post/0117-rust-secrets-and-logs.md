@@ -1,7 +1,7 @@
 ---
 authors: [dmerej]
 slug: rust-secrets-and-logs
-date: 2022-01-04T10:11:47.416699+00:00
+date: "2022-01-04T10:11:47.416699+00:00"
 draft: false
 title: "Is Rust worth learning? Part 1: logs and secrets"
 tags: [rust]
