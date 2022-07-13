@@ -26,8 +26,9 @@ Relisons-le ensemble, il est là:
 >
 > Nous reconnaissons la valeur des seconds éléments, mais privilégions les premiers.
 
-
 Notez que la comparaison "les individus et les interactions plus que processus et les outils" est en premier.
+
+Comme le reste de l'article s'appuie sur ce concept je vous propose de le nommer "Principe d'Humanité" ci-dessous pour plus de lisibilité.
 
 D'un autre côté "réagir au changement plus que suivre un plan" est en dernier et c'est pourtant la phrase qui donne son titre au manifeste (et par conséquent, que l'on retient le plus).
 
@@ -58,11 +59,11 @@ les réunions à plusieurs qui mériteraient un article à part).
 
 Voici une liste non-exhaustive des différentes façons dont une conversation de travail peut avoir lieu si les deux collègues sont face à face:
 
+- de part à et d'autre d'un bureau pour un conversation "officielle"
 - entre deux portes - par exemple juste avant ou juste après une réunion
 - autour de la machine à café  pour parler de la météo
 - autour d'un verre dans un bar en fin d'après-midi pour décompresser après le boulot
 - à la table d'un restaurant le midi pour une réunion commerciale
-- de part à et d'autre d'un bureau pour un conversation "officielle"
 - etc.
 
 Voici une liste exhaustive des différentes façons dont une conversation peut avoir lieu si les deux personnes ne sont /pas/ face à face:
@@ -76,6 +77,7 @@ Et c'est à peu près tout ce que la technique permet aujourd'hui, qu'on le veui
 Ainsi, la question posée par le confinement en entreprise peut être formulée ainsi: comment reproduire toute la richesse permise par les discussions face à face ?
 
 Notez que cette question ni problème technique, ni un problème financier, ni un problème de processus, mais bien d'interactions entre individus ...
+
 # L'impact du confinement sur une entreprise fonctionnant sans le Principe d'Humanité
 
 La thèse que je veux défendre est celle-ci : si l'entreprise dans son ensemble a oublié l'importance des individus et de leurs interactions, elle n'a aucun bon moyen de gérer correctement la question du confinement!
