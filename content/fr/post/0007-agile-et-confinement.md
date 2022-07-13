@@ -30,7 +30,7 @@ Notez que la comparaison "les individus et les interactions plus que processus e
 
 Comme le reste de l'article s'appuie sur ce concept je vous propose de le nommer "Principe d'Humanité" ci-dessous pour plus de lisibilité.
 
-D'un autre côté "réagir au changement plus que suivre un plan" est en dernier et c'est pourtant la phrase qui donne son titre au manifeste (et par conséquent, que l'on retient le plus).
+D'un autre côté "réagir au changement plus que suivre un plan" est en dernier et c'est pourtant la phrase qui donne son titre au manifeste - l'adjectif "agile" a été choisi pour s'y référer. Par conséquent, c'est la partie "réagir au changement" que l'on retient le plus, alors que le Principe d'Humanité est beaucoup moins connu.
 
 Explorons ensemble ce paradoxe, en se replongeant dans l'effet du confinement en entreprise.
 
