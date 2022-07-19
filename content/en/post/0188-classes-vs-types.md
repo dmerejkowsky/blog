@@ -3,7 +3,7 @@ authors: [dmerej]
 slug: classes-vs-types
 date: 2022-06-23T10:11:47.416699+00:00
 draft: true
-title: "No, not classes. Types!"
+title: "Classes vs Types (or Yet Another Reason To Learn Rust)"
 tags: [rust]
 summary: A follow-up to the "do classes suck or rock?" debate
 ---
@@ -11,7 +11,7 @@ summary: A follow-up to the "do classes suck or rock?" debate
 # Introduction
 
 Note: this is both a follow-up to the [do classes suck]({{< relref "0107-classes-suck.md" >}}) or [do classes suck]({{< relref "0108-classes-rock.md" >}}) articles, *and*
-yet another reason why you should [learn Rust]({{< relref "./0117-rust-secrets-and-logs.md" >}}).
+yet another reason why you should [learn Rust]({{< relref "./0117-rust-secrets-and-logs.md" >}}), so you should have read at least one of them in order to understand the context for this post.
 
 ![](/pics/classes-vs-types.png)
 
@@ -149,7 +149,7 @@ let name3 = robot.name();
 If Rust had allowed this code to compile, we would have a `name3` variable *after*
 the robot has been reset, which is not allowed by our spec!
 
-Note that this also means we can't have `name1` and `name2` be merely string reference (`&str`).
+Note that this also means we can't have `name1` and `name2` be merely string references (`&str`).
 
 That's why we use the `.to_string()` method, which gives us as a *mutable copy* (a `String`) for the robot name.
 
@@ -161,7 +161,7 @@ If you learn Rust, you'll find that:
 * There's more to Object-Oriented Programming than just classes
 * The borrow checker, when used well, can prevent a bunch of mistakes **at compile time**.
 
-Side note: I used two different types to make a point. You will find a more idiomatic version of the code in the [`idiomatic` branch](
-https://github.com/dmerejkowsky/robots/blob/idiomatic/rust/src/lib.rs)
+Side note: I used two different types to make a point. You will find a more idiomatic version of the code in the [aptly named "idiomatic" branch on GitHub](
+https://github.com/dmerejkowsky/robots/blob/idiomatic/rust/src/lib.rs).
 
-The code again show how the borrow checker rules prevent invalid states *at compile time*, this time because some methods use `&mut self` and other just `&self`.
+The again show again how the borrow checker rules prevent invalid states *at compile time*, this time because some methods (like `start` or `reset`) use `&mut self` and other just `&self` (like `name`). It also shows the "new type" pattern, in order to enforce robot name format at runtime.
