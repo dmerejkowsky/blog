@@ -38,7 +38,7 @@ Explorons ensemble ce paradoxe, en se replongeant dans l'effet du confinement en
 
 ## Le confinement au niveau des individus
 
-Du jour au lendemain, tous les salariés de la société ont été obligés de travailler depuis leur domicile. Les réactions de chaque personne ont été très différentes, entre:
+Du jour au lendemain, tous les salariés de la société ont été obligés de travailler depuis leur domicile. Les réactions de chaque personne ont été très différentes, entre :
 
 Celles qui préfèrent tout simplement ne plus avoir à venir au bureau - pour un tas de raisons diverses (temps de trajet, peur de contaminer des proches, envie de passer du temps avec ses enfants, etc ...)
 
@@ -46,7 +46,7 @@ Celles qui tolèrent mal le confinement - également pour des raisons diverses (
 
 Celles qui ne le tolèrent pas du tout et cessent de travailler (cela peut aller de la simple perte de motivation en passant par la démission ou la dépression nerveuse)
 
-Sans oublier les personnes qui pratiquaient le télétravail depuis déjà longtemps, ou celles qui ont simplement changé d'emploi !
+Sans oublier les personnes qui pratiquaient le télétravail depuis déjà longtemps, ou celles qui ont simplement changé d'emploi
 
 Nous voyons ici que la bonne façon d'aborder le problème du confinement doit nécessairement prendre en compte les individus au sens fort - c'est-à-dire pas seulement les personnes une par une, mais des personne singulières - dotées de personnalités propres.
 
@@ -57,7 +57,7 @@ D'un autre côté, les *conditions matérielles* des interactions entre individu
 Prenons par exemple le cas d'une conversation entre deux personnes (je laisse de côté
 les réunions à plusieurs qui mériteraient un article à part).
 
-Voici une liste non-exhaustive des différentes façons dont une conversation de travail peut avoir lieu si les deux collègues sont face à face:
+Voici une liste non-exhaustive des différentes façons dont une conversation de travail peut avoir lieu si les deux collègues sont face à face :
 
 - de part à et d'autre d'un bureau pour un conversation "officielle"
 - entre deux portes - par exemple juste avant ou juste après une réunion
@@ -66,7 +66,7 @@ Voici une liste non-exhaustive des différentes façons dont une conversation de
 - à la table d'un restaurant le midi pour une réunion commerciale
 - etc.
 
-Voici une liste exhaustive des différentes façons dont une conversation peut avoir lieu si les deux personnes ne sont /pas/ face à face:
+Voici une liste exhaustive des différentes façons dont une conversation peut avoir lieu si les deux personnes ne sont /pas/ face à face :
 
 - voix seulement (téléphone)
 - texte seulement (SMS ou messagerie instantanée)
@@ -74,13 +74,13 @@ Voici une liste exhaustive des différentes façons dont une conversation peut a
 
 Et c'est à peu près tout ce que la technique permet aujourd'hui, qu'on le veuille ou non !
 
-Ainsi, la question posée par le confinement en entreprise peut être formulée ainsi: comment reproduire toute la richesse permise par les discussions face à face ?
+Ainsi, la question posée par le confinement en entreprise peut être formulée ainsi : comment reproduire toute la richesse permise par les discussions face à face ?
 
-Notez que cette question ni problème technique, ni un problème financier, ni un problème de processus, mais bien d'interactions entre individus ...
+Notez que cette question n'est ni problème technique, ni un problème financier, ni un problème de processus, mais bien d'interactions entre individus ...
 
 # L'impact du confinement sur une entreprise fonctionnant sans le Principe d'Humanité
 
-La thèse que je veux défendre est celle-ci : si l'entreprise dans son ensemble a oublié l'importance des individus et de leurs interactions, elle n'a aucun bon moyen de gérer correctement la question du confinement!
+La thèse que je veux défendre est celle-ci : si l'entreprise dans son ensemble a oublié l'importance des individus et de leurs interactions, elle n'a aucun bon moyen de gérer correctement la question du confinement !
 
 De fait, elle va naturellement ignorer le problème principal et s’occuper à la place des problèmes qu'elle sait déjà gérer, c'est à dire les problèmes pour lesquels il existe *déjà* un processus.
 
@@ -102,12 +102,12 @@ Et en tout cas, une entreprise suivant le Principe d'Humanité aura de bien meil
 
 Réduire la question du confinement à "il faut trouver un moyen technique de travailler à distance", et simplement investir dans la visioconférence et des outils collaboratifs en ligne, est, je pense, manquer l'essentiel.
 
-Au passage, c'est aussi ignorer que l'Humanité a déjà connu dans l'histoire des conditions similaires au confinement - typiquement, un couvre-feu dans pendant la guerre.
+Au passage, c'est aussi ignorer que l'Humanité a déjà connu dans l'histoire des conditions similaires au confinement - typiquement, un couvre-feu pendant la guerre.
 
 J'espère vous avoir convaincu maintenant que le dernier principe agile (réagir au changement) découle en fait du premier.
 
 En effet, les entreprises qui valorisaient les individus et leurs interactions par-dessus le le reste ont probablement pu réagir au changement qu'était le confinement bien mieux que les autres sans nécessairement avoir besoin de faire de plan - ce qui de toutes façons était très compliqué (souvenez-vous de votre propre état mental lors du premier confinement).
 
-En réalité, les entreprises qui ont oublié le Principe d'Humanité sont finalement fort peu capables de réagir à des changements /non prévus/ et sont finalement ... peu agiles
+En réalité, les entreprises qui ont oublié le Principe d'Humanité sont finalement fort peu capables de réagir à des changements /non prévus/ et sont finalement ... peu agiles.
 
 D'ailleurs, la seule chose qui ne changera probablement jamais dans une entreprise, c'est que c'est un ensemble complexe et mouvant d'individus et d'interactions ...
