@@ -2,7 +2,7 @@
 authors: [dmerej]
 slug: classes-vs-types
 date: 2022-06-23T10:11:47.416699+00:00
-draft: true
+draft: false
 title: "Classes vs Types (or Yet Another Reason To Learn Rust)"
 tags: [rust]
 summary: A follow-up to the "do classes suck or rock?" debate
@@ -39,7 +39,7 @@ pub struct NamedRobot {
   name: String,
 }
 
-// We create a brand new type for "robots that don't have names" yet
+// We create a brand new type for "robots that don't have names"
 pub struct UnnamedRobot;
 
 // Note : interestingly, this struct costs *nothing* to allocate and is
@@ -58,6 +58,9 @@ fn generate_random_name() -> String { /* ... */ }
 pub fn new_robot() -> UnnamedRobot { /* ... */ }
 
 impl UnnamedRobot {
+    // Note: emit a compiler warning if users call start() without
+    // using the return value
+    #[must_use]
     pub fn start(self) -> NamedRobot {
       let name = generate_random_name();
       NamedRobot { name }
@@ -76,7 +79,7 @@ impl NamedRobot {
 }
 ```
 
-Valid code does compile of course
+Valid code compiles of course:
 
 ```rust
 let robot = new_robot();
