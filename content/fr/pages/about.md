@@ -67,14 +67,6 @@ Si vous n'arrivez pas à la déchiffrer, laissez simplement un commentaire n'imp
 
 Je dispose d'un compte [Mastodon](https://mastodon.social/about): `@dmerej@mamot.fr`
 
-## twitter
-
-J'ai également un compte twitter : [@d_merej](https://twitter.com/d_merej)
-
-{{< note >}}
-Vous pouvez m'envoyer un message privé sur twitter même si vous ne me suivez pas.
-{{< /note >}}
-
 ## IRC
 
 Vous pouvez me trouver sur libera.chat, avec le pseudo `dmerejkowsky`.
