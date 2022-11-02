@@ -50,15 +50,6 @@ I'm always grateful when attentive readers allow me to improve my work!
 I have a [Mastodon](https://mastodon.social/about) account:
 `@dmerej@mamot.fr`
 
-## twitter
-
-I also have a twitter account at [@d_merej](https://twitter.com/d_merej)
-
-{{< note >}}
-You do not need to follow me to send me a private
-message.
-{{< /note >}}
-
 ## IRC
 
 You can also find me on libera.chat,  my nick there is `dmerejkowsky`
