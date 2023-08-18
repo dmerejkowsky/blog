@@ -16,5 +16,4 @@ blog.
 
 I like Python, Rust, writing tests and put sticky notes on white boards.
 
-I'm also a teacher and a coach, so  don't hesitate to [get in touch]
-({{< ref "/pages/contact.md" >}})
+I'm also a teacher and a coach, so  don't hesitate to [get in touch]({{< ref "/pages/contact.md" >}}).
