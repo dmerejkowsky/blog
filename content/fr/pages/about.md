@@ -26,11 +26,17 @@ simple demande.
 
 # Qui je suis
 
-En quelques mots: je travaille dans l'informatique depuis une petite dizaine d'années. J'ai ouvert ce blog pour partager mes connaissances et apprendre au contact d'autres personnes. J'aime Python3, écrire des tests, et coller des post-it sur des tableaux (beaucoup de posts-it).
+En quelques mots: je travaille dans l'informatique depuis une
+quizaine d'années. J'ai ouvert ce blog pour partager mes connaissances et
+apprendre au contact d'autres personnes. J'aime Python, Rust, écrire des
+tests, et coller des Post-It sur des tableaux (beaucoup de Post-It).
+
+En plus de mon activité de codeur, je suis aussi coach et formateur
+(toujours dans le domaine de l'informatique)
 
 # Me contacter
 
-Quelques moyens de me contacter ci-dessous. Notez que j'observe [les règles de Croker](http://sl4.org/crocker.html), donc n'hésitez pas à
+Vous trouverez quelques moyens de me contacter ci-dessous. Notez que j'observe [les règles de Croker](http://sl4.org/crocker.html), donc n'hésitez pas à
 me dire ce que vous pensez vraiment!
 
 ## Commentaires
@@ -52,7 +58,13 @@ Choses à savoir:
 
 ## Suggérer des corrections
 
-Si vous trouvez des typos ou des erreurs similaires dans le contenu des articles et que vous avez un compte GitHub, le plus pratique pour moi est de créer une pull request en cliquant sur le lien correspondant en haut de chaque article. Vous êtes bien sûr libres d'envoyer les corrections de la façon que *vous* préférez&nbsp;: je suis toujours content quand des lecteurs attentifs me permettent d'améliorer mon contenu&nbsp;!
+Si vous trouvez des typos ou des erreurs similaires dans le contenu des
+articles et que vous avez un compte GitHub, le plus pratique pour moi
+est de créer une pull request en cliquant sur le lien correspondant en
+haut de chaque article. Vous êtes bien sûr libres d'envoyer les
+corrections de la façon que *vous* préférez&nbsp;: je suis toujours
+content quand des lecteurs attentifs me permettent d'améliorer mon
+contenu&nbsp;!
 
 ## e-mail
 
