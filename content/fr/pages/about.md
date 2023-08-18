@@ -76,7 +76,3 @@ Vous pouvez me trouver sur libera.chat, avec le pseudo `dmerejkowsky`.
 Je publie aussi du code [sur GitHub](https://github.com/dmerejkowsky/).
 
 Vous y trouverez entre autres les [sources de ce blog](https://github.com/dmerejkowsky/blog).
-
-## Clés GPG
-
-Enfin, notez que je possède un compte sur [keybase.io](https://keybase.io/dmerej). Vous y trouverez mes clés publiques ainsi que la preuve de leur authenticité.

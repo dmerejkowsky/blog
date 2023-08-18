@@ -63,9 +63,3 @@ Among other projects, you can find the [sources of this blog](https://github.com
 ## dev.to
 
 I cross-post most of my blog posts to [dev.to](https://dev.to/dmerejkowsky). You can reach me there if you like.
-
-
-## GPG
-
-Finally, I have a [keybase.io](https://keybase.io/dmerej) account. You'll find my public GPG keys and their
-proof of ownership there.
