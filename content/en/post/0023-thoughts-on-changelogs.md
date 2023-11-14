@@ -30,8 +30,8 @@ We decided to start using this too, and someone on the team said:
 ## Keep a CHANGELOG
 
 Some one on the Internet[^1] already said it:
-[Don’t let your friends dump git logs into CHANGELOGs™](
-http://keepachangelog.com/en")
+[Don’t let your friends dump git logs into CHANGELOGs](
+http://keepachangelog.com/en)
 
 Feel free to read the page, there's tons of helpful advice.
 
