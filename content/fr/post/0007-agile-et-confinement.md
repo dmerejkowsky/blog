@@ -70,9 +70,9 @@ Voici une liste exhaustive des différentes façons dont une conversation peut a
 
 - voix seulement (téléphone)
 - texte seulement (SMS ou messagerie instantanée)
-- vidéo-conférence (audio et vidéo - avec messagerie instantanée incluse ou non), c'est à dire les problèmes pour lesquels il existe déjà un processus.
+- vidéo-conférence (audio et vidéo - avec messagerie instantanée incluse ou non)
 
-Et c'est à peu près tout ce que la technique permet aujourd'hui, qu'on le veuille ou non !
+Et c'est à peu près tout ce que la technique permet aujourd'hui - qu'on le veuille ou non !
 
 Ainsi, la question posée par le confinement en entreprise peut être formulée ainsi : comment reproduire toute la richesse permise par les discussions face à face ?
 
@@ -108,6 +108,6 @@ J'espère vous avoir convaincu maintenant que le dernier principe agile (réagir
 
 En effet, les entreprises qui valorisaient les individus et leurs interactions par-dessus le le reste ont probablement pu réagir au changement qu'était le confinement bien mieux que les autres sans nécessairement avoir besoin de faire de plan - ce qui de toutes façons était très compliqué (souvenez-vous de votre propre état mental lors du premier confinement).
 
-En réalité, les entreprises qui ont oublié le Principe d'Humanité sont finalement fort peu capables de réagir à des changements /non prévus/ et sont finalement ... peu agiles.
+En réalité, les entreprises qui ont oublié le Principe d'Humanité sont finalement fort peu capables de réagir à des changements non prévus et sont finalement ... peu agiles.
 
 D'ailleurs, la seule chose qui ne changera probablement jamais dans une entreprise, c'est que c'est un ensemble complexe et mouvant d'individus et d'interactions ...
