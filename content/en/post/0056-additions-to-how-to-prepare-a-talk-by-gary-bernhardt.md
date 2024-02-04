@@ -145,4 +145,4 @@ Before I go, one last "meta" advice. If you want to get better at giving talks, 
 
 Cheers!
 
-[^1]: Except at [FOSDEM](https://fosdem.org), because FOSDEM  tech guys rock.
+[^1]: Except at [FOSDEM](https://fosdem.org), because FOSDEM tech team rocks.
