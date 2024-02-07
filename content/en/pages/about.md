@@ -14,7 +14,7 @@ I've been writing software for quite some time now, and I've always liked
 sharing knowledge and learn from others, which is why I created this
 blog.
 
-I mostly program in Python and Rust, and I like solving problems within
-a team (usually by putting sticky notes on white boards)
+I mostly program in Python and Rust, and I like solving problems using
+collective intelligence (usually by putting sticky notes on white boards).
 
 I'm also a teacher and a coach, so  don't hesitate to [get in touch]({{< ref "/pages/contact.md" >}}).
