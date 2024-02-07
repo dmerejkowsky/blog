@@ -1,0 +1,15 @@
+<section id='recent-posts' class='home-section'>
+  <header>
+    <h2 class='home-section-title title'>
+      {{- i18n "recentPosts" -}}
+    </h2>
+  </header>
+
+  <div class='list-container'>
+    <ul class='list'>
+    {{ range ( first 10 ( where .Site.RegularPages "Section" "eq" "post" ) ) }}
+      {{ .Render "li" }}
+    {{ end }}
+    </ul>
+  </div>
+</section>

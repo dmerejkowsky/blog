@@ -1,0 +1,27 @@
+$color__accent: #ffcd00;
+$color__black: #212121;
+$color__grey: #bdbdbd;
+$color__white: #fafafa;
+
+$color__background-hr: $color__grey;
+// Keep this sync'd with isso
+$color__background-button: #CCC;
+$color__background-button-hover: #DDD;
+$color__background-screen: $color__black;
+$color__background-inline-code: #e6e6e6;
+// Keep this sync'd with chroma theme
+$color__background-code-snippets: #202020;
+
+$color__text-heading: #263238;
+$color__text-main: #37474f;
+$color__text-button: $color__black;
+$color__text-screen: $color__white;
+$color__text-input: $color__text-main;
+
+$color__link: $color__black;
+$color__link-hover: $color__text-main;
+$color__link-faded: #455a64;
+
+$color__border-input: $color__grey;
+$color__border-input-focus: $color__black;
+$color__border-table: $color__grey;

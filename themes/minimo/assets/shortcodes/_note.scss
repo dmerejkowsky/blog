@@ -1,0 +1,18 @@
+div.note {
+  padding-top: 0.7em;
+  padding-bottom: 0.7em;
+  border-bottom: 0.2em solid $color__grey;
+  border-top: 0.2em solid $color__grey;
+  border-spacing: 3em 3em;
+  font-style: italic;
+
+  em {
+    font-style: normal;
+  }
+
+}
+
+div.note::before {
+  content: "Note: ";
+  color: black;
+}

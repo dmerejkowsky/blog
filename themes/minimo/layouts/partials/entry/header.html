@@ -1,0 +1,14 @@
+<header class='header-container'>
+  <div class='header entry-header'>
+    <div class='header-info'>
+      <h1 class='title'>
+        {{- if .Draft -}} Draft:&nbsp;{{- end -}}
+        {{- .Title -}}
+      </h1>
+      {{ partial "header/subtitle" . }}
+    </div>
+    {{- if not ( eq .Params.meta false ) -}}
+    {{ partial "entry/meta" . }}
+    {{- end -}}
+  </div>
+</header>

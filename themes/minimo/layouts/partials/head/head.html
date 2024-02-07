@@ -1,0 +1,12 @@
+<head>
+  {{ partial "head/meta" . }}
+  <title>{{ partial "data/title" . }}</title>
+  <link rel='author' href='/humans.txt' />
+  <link rel='canonical' href='{{ .Permalink }}'>
+  {{- $siteTile := .Site.Title -}}
+  {{ with .OutputFormats.Get "RSS" }}
+  <link href="{{ .RelPermalink }}" rel="alternate" type="application/rss+xml" title="{{ $siteTile }}" />
+  {{ end }}
+  {{ partial "head/hreflang" . }}
+  {{ partial "head/includes" . }}
+</head>

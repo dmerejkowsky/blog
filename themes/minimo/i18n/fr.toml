@@ -1,0 +1,96 @@
+[author]
+one = "Auteur"
+other = "Auteurs"
+
+[by]
+other = "par"
+
+[category]
+one = "Catégorie"
+other = "Catégories"
+
+[githubEdit]
+other = "Suggérer une modification"
+
+[goHome]
+other = "Retour à l'accueil ..."
+
+[next]
+other = "Suivant"
+
+[nextPage]
+other = "Page suivante"
+
+[nextPost]
+other = "Article suivant"
+
+[page]
+other = "page"
+
+[previous]
+other = "Précédent"
+
+[previousPage]
+other = "Page précédente"
+
+[previousPost]
+other = "Article précédent"
+
+[postedOn]
+other = "Publié le"
+
+[readingTime]
+one = "moins d'une minute de lecture"
+other = "{{ .Count }} minutes de lecture"
+
+[recentPosts]
+other = "Articles récents"
+
+[skipToContent]
+other = "Aller au contenu"
+
+[tableOfContents]
+other = "Table des matières"
+
+[licensedUnder]
+other = "Contenu placé sous license"
+
+[bilingual]
+other = """
+<p>
+Bienvenue sur mon blog !
+</p>
+
+<p>
+Notez que je publie aussi un blog en langue anglaise à l'adresse suivante :
+<a href="https://dmerej.info/blog">https://dmerej.info/blog</a>.
+</p>
+"""
+
+[feedbackInvitation]
+other = """
+    <p>
+      Merci d'avoir lu jusqu'au bout !
+    </p>
+    <p>
+      Je serais ravi d'avoir vos retours. Rendez-vous sur la <a href="https://dmerej.info/blog/fr/pages/about">page de contact</a>
+      pour me joindre de votre façon préférée, ou bien laissez un commentaire ci-dessous.
+    </p>
+
+    <p>
+    Pour être prévenu de la publication des prochains articles, vous pouvez:
+    <ul>
+      <li>vous abonner au <a href="https://dmerej.info/blog/fr/index.xml">flux RSS</a>;
+      <li>me suivre sur
+          <a href="https://mamot.fr/@dmerej">Mastodon</a>,
+      </li>
+      <li>ou bien m'envoyer un mail pour vous inscrire à ma newsletter.
+      </li>
+    </ul>
+    </p>
+
+    <p>
+      À bientôt !
+    </p>
+  </div>
+"""

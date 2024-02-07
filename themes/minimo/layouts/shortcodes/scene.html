@@ -1,0 +1,14 @@
+<div class="scene">
+<h1>
+  {{ .Get "title" }}
+  {{ with .Get "link" }}
+    <span class="scene-link">
+      <a href="{{ . }}">link</a>
+    </span>
+  {{ end }}
+</h1>
+{{ .Inner | markdownify }}
+<p>
+<br />
+</p>
+</div>

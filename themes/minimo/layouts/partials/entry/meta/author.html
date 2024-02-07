@@ -1,0 +1,13 @@
+{{- with .Params.Authors -}}
+
+{{- $lang := ( $.Params.Lang | default $.Lang ) -}}
+
+<span class='byline'>
+  <span class='screen-reader'> {{ i18n "by" }} </span>
+  {{- partial "svg/icons" "author" -}}
+  {{- $authorID := (index . 0) -}}
+  {{- $author := ( index $.Site.Data.authors $authorID ) -}}
+  <a href="{{ $author.url }}">{{ $author.name.display }}</a>
+</span>
+
+{{- end -}}

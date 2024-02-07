@@ -1,0 +1,41 @@
+{{ partial "header" . }}
+
+
+<main id='main' class='main'>
+  <article lang='{{ .Params.Lang | default .Lang }}' class='entry'>
+    {{ partial "entry/header" . }}
+  <div class='home-sections-container'>
+    <div class='home-sections'>
+    <h2>By tag</h2>
+
+
+  <div id="tag-list">
+    <p>
+      <ul>
+        {{ range $name, $taxonomy := .Site.Taxonomies.tags }}
+          <li>
+            <a href="{{ "/tags/" | relLangURL }}{{ $name | urlize }}">{{ $name }}</a>
+          </li>
+        {{ end }}
+      </ul>
+    </p>
+  </div>
+
+  <h2>By date</h2>
+  {{ range .Data.Pages.GroupByDate "2006" }}
+  <h3>{{ .Key }}</h3>
+  <ul>
+  {{ range .Pages }}
+    {{ .Render "li" }}
+  {{ end }}
+  </ul>
+  {{ end }}
+
+      </div>
+    </div>
+  </article>
+</main>
+{{ partial "entry/footer" . }}
+
+
+{{ partial "footer" . }}

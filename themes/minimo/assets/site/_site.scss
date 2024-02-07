@@ -1,0 +1,46 @@
+.site {
+  @extend %flexContainer;
+}
+
+.main {
+  @extend %flexContainer;
+}
+
+// Header
+@import 'header';
+
+// List Blocks
+@import 'lists';
+
+// Post Entry
+@import 'entry/entry';
+
+// Layouts
+@import 'layouts/layouts';
+
+// Footer
+@import "footer";
+
+// Comments
+.isso-comment .text a {
+  text-decoration: underline !important;
+}
+
+a.anchor {
+   text-decoration: none;
+   border-bottom: none;
+   color: $color__grey;
+   font-size: 0.8em;
+}
+
+
+.icon {
+  @extend %svgIcon;
+
+  stroke: currentColor;
+  fill: none;
+
+  position: relative;
+  top: 2px;
+}
+

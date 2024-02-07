@@ -1,0 +1,47 @@
+{{- if not .Site.Params.Settings.HideEntryNavigation -}}
+
+{{- if ( eq .Section "post" ) -}}
+
+{{ if gt ( len ( where .Site.RegularPages "Section" .Section ) ) 1 }}
+<nav class='entry-nav-container'>
+  <div class='entry-nav'>
+
+    {{- if .PrevInSection -}}
+    <div class='prev-entry'>
+      <a href='{{ .PrevInSection.Permalink | relURL }}'>
+        <span aria-hidden='true'>
+          {{- partial "svg/icons" "prev" -}}
+          {{- print " " ( i18n "previous" ) -}}
+        </span>
+        <span class='screen-reader'>{{ i18n "previousPost" }}: </span>
+        {{- .PrevInSection.Title -}}
+      </a>
+    </div>
+    {{- end -}}
+
+    {{- if .NextInSection -}}
+    <div class='next-entry'>
+      <a href='{{ .NextInSection.Permalink | relURL }}'>
+        <span class='screen-reader'>{{ i18n "nextPost" }}: </span>
+        {{- .NextInSection.Title -}}
+        <span aria-hidden='true'>
+          {{- print ( i18n "next" ) " " -}}
+          {{- partial "svg/icons" "next" -}}
+        </span>
+      </a>
+    </div>
+    {{- end -}}
+    <hr />
+    <script data-isso="//dmerej.info/isso/"
+            src="//dmerej.info/isso/js/embed.min.js">
+    </script>
+    <section id="isso-thread">
+    </section>
+
+  </div>
+</nav>
+{{ end }}
+
+{{- end -}}
+
+{{- end -}}

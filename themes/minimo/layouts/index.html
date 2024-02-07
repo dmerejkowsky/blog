@@ -1,0 +1,17 @@
+{{ partial "header" . }}
+
+<main id='main' class='main'>
+  <article class='entry'>
+    <div class="entry-content">
+        {{- i18n "bilingual" | safeHTML -}}
+    </div>
+  </article>
+
+  <div class='home-sections-container'>
+    <div class='home-sections'>
+      {{ partial "home/recent_posts" . }}
+    </div>
+  </div>
+</main>
+
+{{ partial "footer" . }}

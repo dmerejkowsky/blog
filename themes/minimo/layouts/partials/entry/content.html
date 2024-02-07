@@ -1,0 +1,9 @@
+<div class='entry-content'>
+  {{ .Content }}
+
+  {{- if not ( eq .Params.feedback false ) -}}
+  <hr />
+  <div id='feedback-invitation'>
+    {{ i18n "feedbackInvitation" | safeHTML }}
+  {{- end -}}
+</div>

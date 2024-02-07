@@ -1,0 +1,17 @@
+{{- $txs := ( $.Scratch.Get "taxonomy" ) -}}
+{{- $tx := ( $txs | singularize ) -}}
+
+  <span class='taxonomyTerm-icon'>
+    {{- partial "svg/icons" $tx -}}
+  <span class='screen-reader'>{{ ( ( i18n $tx 2 ) | default $txs ) | title }}: </span>
+  {{- range $i, $term := ( index $.Params $txs ) -}}
+  {{- if gt $i 0 }}, {{ end -}}
+  <a class='{{ $tx }}' href='{{ $.Site.LanguagePrefix }}/{{ $txs }}/{{ $term | urlize }}'>
+    {{- with $.Site.GetPage (printf "/taxonomyTerm/$txs") ( $term | urlize ) -}}
+      {{- .Title | lower -}}
+    {{- else -}}
+      {{- $term -}}
+    {{- end -}}
+  </a>
+  {{- end -}}
+  </span>

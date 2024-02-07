@@ -1,0 +1,15 @@
+{{- with .Description -}}
+  {{- . -}}
+{{- else -}}
+  {{- if .IsPage -}}
+    {{- if .Params.Summary }}
+      {{ .Params.Summary }}
+    {{- else -}}
+      {{- .Summary -}}
+    {{- end -}}
+  {{- else -}}
+    {{- with .Site.Params.Info.description -}}
+      {{- . -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}

@@ -1,0 +1,10 @@
+<link rel='icon' href='{{ ( or .Site.Params.Assets.favicon "favicon.ico" ) | relURL }}'>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Ubuntu:400,400i,700&subset=latin'>
+{{ $sass := resources.Get "style.scss" }}
+{{ $style := $sass | resources.ToCSS }}
+<link rel="stylesheet" href="{{ $style.Permalink }}">
+{{- range .Site.Params.Assets.customCSS -}}
+  <link rel='stylesheet' href='{{ . | relURL }}'>
+{{- end -}}
+
+{{- partial "head/analytics" . -}}
