@@ -16,7 +16,7 @@ But today I want to show you that good compiler warnings do exist and how they c
 
 # The incorrect server API
 
-The first example comes from code I wrote to test the Rust implementation of the Tanker client SDK. You don't need to know precisely how Tanker works to follow this example - let's just say the client needs a "Tanker permanent identity" from an identity server to start a session. [^1]
+The first example comes from code I wrote to test the Rust implementation of the Tanker client SDK. You don't need to know precisely how Tanker works to follow this example - let's just say the client needs a "Tanker permanent identity" from an identity server to start a session.
 
 In my case, the identity server was already written in Go using the Gin-Gonic framework.
 
@@ -276,6 +276,3 @@ For now, Rust is the only language I've used which gave me this feeling of "the 
 but I'm sure they are others - please tell me bellow if you know one.
 
 And if this gave you a motivation to try and learn Rust, go for it!
-
-
-[^1]: More info in the [Tanker documentation](https://docs.tanker.io/latest/)
