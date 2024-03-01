@@ -353,7 +353,7 @@ to keep easily available.
   https://pypi.python.org/pypi/ntfy)
 * [pass: the standard unix password manager](https://www.passwordstore.org/)
 * [Passbolt: Password management for a team](https://www.passbolt.com)
-* [Polymer: Javascript HTML framework](https://www.polymer-project.org/)
+* [Polymer: JavaScript HTML framework](https://www.polymer-project.org/)
 * [ProtonMail: free encrypted email](https://protonmail.com/)
 * [pycp: cp and mv with a progress bar](https://pypi.python.org/pypi/pycp)
 * [replacer: replace text in files](https://pypi.python.org/pypi/replacer)

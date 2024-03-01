@@ -15,7 +15,7 @@ tags: [misc]
 
 We programmers just *love* arguing about programming langages.
 
-Which is the best tool for the job? Which has a future? Which should we be using when teaching programming? Which should be the next Javascript, the next C++, the next SmallTalk
+Which is the best tool for the job? Which has a future? Which should we be using when teaching programming? Which should be the next JavaScript, the next C++, the next SmallTalk
 
 And when we discuss programming langage, we *always* talk about syntax.
 

@@ -3,11 +3,11 @@ authors: [dmerej]
 slug: my-javascript-workflow
 date: "2017-10-18T12:50:41.477085+00:00"
 draft: false
-title: My Javascript Workflow
+title: My JavaScript Workflow
 tags: [javascript, neovim]
 ---
 
-Following the (relative) success of [How I lint My Python]({{< relref "0037-how-i-lint-my-python.md" >}}), today I'd like to talk about the tools and techniques I use while writing Javascript at work.
+Following the (relative) success of [How I lint My Python]({{< relref "0037-how-i-lint-my-python.md" >}}), today I'd like to talk about the tools and techniques I use while writing JavaScript at work.
 
 <!-- more -->
 
@@ -21,7 +21,7 @@ What I like about TDD is that each of the phases has a very precise goal and a s
 * *green*: just get the tests to pass, write the feature as quickly and as simply as possible
 * *refactor*: consider the mess you've made, and clean it up.
 
-My cycle when developing Javascript encapsulates this workflow:
+My cycle when developing JavaScript encapsulates this workflow:
 
 1. Select a feature or a bug fix to implement
 2. Write tests or production code
@@ -34,7 +34,7 @@ My cycle when developing Javascript encapsulates this workflow:
 9. Tell GitLab to merge the changes when the CI passes
 
 {{< note >}}
-I'm adding `flow` annotations *after* the whole TDD cycle. This is probably because I'm used to work with dynamically typed languages, so I'm still not used to static typing. Thus, I deal with types in a separate phase. If you come to "flowed" Javascript from a C++ background, you may prefer adding types first. I've also found that, when you don't have any tests, `flow` can be of great help during refactoring.
+I'm adding `flow` annotations *after* the whole TDD cycle. This is probably because I'm used to work with dynamically typed languages, so I'm still not used to static typing. Thus, I deal with types in a separate phase. If you come to "flowed" JavaScript from a C++ background, you may prefer adding types first. I've also found that, when you don't have any tests, `flow` can be of great help during refactoring.
 {{</ note >}}
 
 Anyway, let's go through these steps one by one. You will see how the tools I use are tailored for each specific task.

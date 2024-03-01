@@ -177,7 +177,7 @@ So I did what I had to: I took a closer look at those other frameworks.
 
 Here's an implementation of our test using [Mocha](https://mochajs.org/):
 
-```Javascript
+```javascript
 describe('sync', function() {
   it('syncs a remote file', function() {
     remote.addFile('a.txt', { contents: newContents });

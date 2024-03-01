@@ -291,7 +291,7 @@ canBuyAlcohol user =
     Just age -> (age >= 21)
 ```
 
-or about Javascript, where you can handle errors in callbacks:
+or about JavaScript, where you can handle errors in callbacks:
 
 ```javascript
 const prom = new Promise((resolve, reject) => {

@@ -105,7 +105,7 @@ Warning: field is never read: `user_id`
 
 This made sense: as you can see, to start a Tanker session we only need the `email` and `tanker_permanent_identity` fields of the JSON response returned by the server. In particular, we don't need the user ID at all.
 
-What's interesting with this example is that at Tanker, we already wrote *six other clients* for the server in question (using Python, Go, Java, Javascript, Objective-C and Ruby) and that was the first time we got an indication that our JSON API was wasting bandwidth by sending information that was actually not needed!
+What's interesting with this example is that at Tanker, we already wrote *six other clients* for the server in question (using Python, Go, Java, JavaScript, Objective-C and Ruby) and that was the first time we got an indication that our JSON API was wasting bandwidth by sending information that was actually not needed!
 
 
 # The useless mutation

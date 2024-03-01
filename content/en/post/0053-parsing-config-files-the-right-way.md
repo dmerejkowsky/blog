@@ -18,7 +18,7 @@ In the rest of this article, we'll assume we want to parse a configuration
 file containing a github access token in a command line program called
 `frob`.
 
-# In Javascript
+# In JavaScript
 
 You may write something like this:
 
@@ -42,7 +42,7 @@ const token = config.auth.github.token;
 ...
 ```
 
-Well, that's assuming we are using `node`. Making this work in a browser or in any other Javascript context is left as an exercise to the reader :)
+Well, that's assuming we are using `node`. Making this work in a browser or in any other JavaScript context is left as an exercise to the reader :)
 
 There are several issues with the above approach, though. To explain them, we are going to switch to a language I know a lot better and see a list of problems and potential solutions.
 

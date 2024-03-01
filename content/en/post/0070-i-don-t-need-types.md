@@ -95,9 +95,9 @@ But this was rather abstract. Changing my mind about tests required me working
 with programming languages other than C++ and Python.
 
 
-## Javascript
+## JavaScript
 
-Last year I had to make a refactoring in a Javascript project.
+Last year I had to make a refactoring in a JavaScript project.
 
 There were *no tests at all*, and adding them would have been pretty challenging.
 

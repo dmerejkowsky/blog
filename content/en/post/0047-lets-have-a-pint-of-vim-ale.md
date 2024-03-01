@@ -51,7 +51,7 @@ This works quite well for me when I'm using Python because:
 * I like using the `quickfix` window (thanks to the very nice
   [vim-qf](https://github.com/romainl/vim-qf) plug-in by the way)
 
-But some time ago at work, we all start working on some Javascript code.
+But some time ago at work, we all start working on some JavaScript code.
 
 We use [eslint](http://eslint.org) for code style,  [flow](https://flow.org/)
 for type checking, and [mocha](https://mochajs.org/) plus [chai](http://chaijs.com/) for tests.
@@ -75,7 +75,7 @@ that is in `node_modules/.bin`
 
 Our `eslint` configuration is quite strict. (It's based on the one from
 [Air B&B](https://www.npmjs.com/package/eslint-config-airbnb) if you're curious),
-and I'm not used to Javascript yet, so I constantly had style issues and it was
+and I'm not used to JavaScript yet, so I constantly had style issues and it was
 frustrating to have my merge requests blocked because I forgot to run
 `:make`  and had a bunch of style problems.
 
@@ -145,7 +145,7 @@ took for all the linters to run.
 
 After hearing good things about [vim-ale](https://github.com/w0rp/ale),
 I decided to give it a try, and I was *very* pleased to notice it was able to
-run `eslint` and `flow` in our Javascript project with *zero* configuration!
+run `eslint` and `flow` in our JavaScript project with *zero* configuration!
 
 This is how `vim-ale` works by default:
 
@@ -388,7 +388,7 @@ I highly recommend  you give it a try.
 Cheers!
 
 
-[^1]: There's a whole rant to be written about the console output of Javascript tools, but let's save that for another day ...
+[^1]: There's a whole rant to be written about the console output of JavaScript tools, but let's save that for another day ...
 [^2]: There's a bunch of code in Vim that assumes you are writing C code, even today (historical reasons, as they say)
 [^3]: It's done in [2793 lines of vim script](https://github.com/neovim/neovim/blob/master/runtime/filetype.vim)
 [^4]: Regular readers of this blog will notice this is exactly what happened to me with `fzf`
