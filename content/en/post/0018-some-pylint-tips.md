@@ -54,7 +54,7 @@ my_thread = MyThread()
 my_thread.start()
 ```
 <cite>
-\_\_init\_\_ method from base class 'Thread' is not called (super-init-not-called)
+__init__ method from base class 'Thread' is not called (super-init-not-called)
 </cite>
 
 This is nice because it saves you a fatal assertion at runtime:
