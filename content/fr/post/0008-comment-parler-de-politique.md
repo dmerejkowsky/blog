@@ -95,7 +95,7 @@ Si la personne vous dit "je compte m'abstenir", "je compte voter
 blanc", "je compte voter RN", **ne la jugez pas**. Au contraire,
 écoutez-là et montrez-vous curieux. Exemple:
 
-- Je ne peux pas voter pour le Front Populaire parce que Mélanchon et la LFI me font peur.
+- Je ne peux pas voter pour le Front Populaire parce que Mélenchon et la LFI me font peur.
 - Je comprends. Beaucoup de gens on peur de la LFI.  Qu'est-ce qui te fais peur chez LFI?
 - Ce sont des extrémistes.
 - Comment ça?
