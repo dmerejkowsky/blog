@@ -3,6 +3,7 @@ authors: [dmerej]
 slug: comment-parler-de-politique
 date: 2024-06-13T10:04:10.477993+00:00
 draft: false
+comments: false
 title: "Comment Parler De Politique"
 tags: [politique]
 summary: |
