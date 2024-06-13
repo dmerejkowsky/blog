@@ -29,7 +29,7 @@ Qu'est-ce que ça aura pour conséquences?
 3. En 2027, Marine Le Pen remportera l'élection présidentielle et la France basculera vers le fascisme.
 
 Les deux premiers points sont assez certains, cela découle naturellement du
-fonctionnement de nos instituions. Le troisième point est assez probable si
+fonctionnement de nos institutions. Le troisième point est assez probable si
 l'on se base sur les précédents historiques - en tout cas, il donne une
 idée de l'importance colossale de ces législatives anticipées.
 
@@ -78,7 +78,7 @@ Traduction :
 
 > Si vous partez du principe qu'il n'y a pas d'espoir, alors il ne pourra pas y en avoir.
 > Si vous partez du principe qu'il existe un instinct pour la liberté, qu'il y a des opportunités
-> pour changez les choses, alors il est possible que vous puissiez contribuer à bâtir un monde meilleur.
+> pour changer les choses, alors il est possible que vous puissiez contribuer à bâtir un monde meilleur.
 
 Si vous avez tenu jusque là, on peut rentrer dans le vif du sujet.
 
@@ -93,10 +93,10 @@ politique (ça reste un tabou pour beaucoup de gens).
 
 Si la personne vous dit "je compte m'abstenir", "je compte voter
 blanc", "je compte voter RN", **ne la jugez pas**. Au contraire,
-écoutez-là et montrez-vous curieux. Exemple:
+écoutez-la et montrez-vous curieux. Exemple:
 
 - Je ne peux pas voter pour le Front Populaire parce que Mélenchon et la LFI me font peur.
-- Je comprends. Beaucoup de gens on peur de la LFI.  Qu'est-ce qui te fais peur chez LFI?
+- Je comprends. Beaucoup de gens ont peur de la LFI.  Qu'est-ce qui te fait peur chez LFI?
 - Ce sont des extrémistes.
 - Comment ça?
 - Ils soutiennent les islamistes.
@@ -130,10 +130,10 @@ Autre exemple:
 - Pourquoi tu penses que ton vote ne sert à rien?
 - Parce qu'une fois élus ils font le contraire de ce qu'ils ont promis
 - Je sais. En fait c'est plutôt logique vu le fonctionnement des
-  instituions. Mais ce n'est pas l'enjeu. L'enjeu c'est d'empêcher que
+  instituions. Mais ce n'est pas l'enjeu. L'enjeu c'est d'empêcher
   l'extrême-droite d'arriver au pouvoir.
 
-Et là vous pouvez rentrez sur *pourquoi* la perspective de l'extrême droite
+Et là vous pouvez rentrer sur *pourquoi* la perspective de l'extrême droite
 au pouvoir vous touche *vous*, personnellement, ou bien vos proches.
 
 Ainsi, vous allez vous montrer vulnérable et ce sera plus facile d'instaurer
