@@ -160,6 +160,6 @@ Vous noterez que les commentaires sous ce billet sont désactivés parce
 que, justement, si le sujet vous intéresse, je veux avoir une vraie
 conversation avec vous ;)
 
-À bientôt peut-être pour d'autres articles sur le même thème, et comme
-d'habitude, merci de m'avoir lu jusque là et, si vous le souhaitez,
-n'hésitez pas à partager cet article autour de vous.
+Enfin et si vous le souhaitez, n'hésitez pas à partager cet article
+autour de vous, ça m'intéresse de recueillir une variété de points de
+vue.
