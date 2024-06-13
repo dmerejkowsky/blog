@@ -32,11 +32,13 @@
     </div>
     {{- end -}}
     <hr />
+    {{- if not ( eq .Params.comment false ) -}}
     <script data-isso="//dmerej.info/isso/"
             src="//dmerej.info/isso/js/embed.min.js">
     </script>
     <section id="isso-thread">
     </section>
+    {{- end -}}
 
   </div>
 </nav>
