@@ -96,13 +96,20 @@ Si la personne vous dit "je compte m'abstenir", "je compte voter
 blanc", "je compte voter RN", **ne la jugez pas**. Au contraire,
 écoutez-la et montrez-vous curieux. Exemple:
 
-- Je ne peux pas voter pour le Front Populaire parce que Mélenchon et la LFI me font peur.
-- Je comprends. Beaucoup de gens ont peur de la LFI.  Qu'est-ce qui te fait peur chez LFI?
-- Ce sont des extrémistes.
-- Comment ça?
-- Ils soutiennent les islamistes.
-- Qu'est-ce que tu entends par islamistes?
-- Ben, les terroristes du Hamas, tout ça. En plus ils sont antisémites.
+
+&mdash; Je ne peux pas voter pour le Front Populaire parce que Mélenchon et la LFI me font peur.
+
+&mdash; Je comprends. Beaucoup de gens ont peur de la LFI.  Qu'est-ce qui te fait peur chez LFI?
+
+&mdash; Ce sont des extrémistes.
+
+&mdash; Comment ça?
+
+&mdash; Ils soutiennent les islamistes.
+
+&mdash; Qu'est-ce que tu entends par islamistes?
+
+&mdash; Ben, les terroristes du Hamas, tout ça. En plus ils sont antisémites.
 
 Vous voyez l'idée - commencez par écouter et comprendre les émotions de
 la personne avec qui vous discutez *avant* de présenter votre point de
@@ -127,12 +134,15 @@ braquer et vous n'arriverez pas à la convaincre.
 
 Autre exemple:
 
-- Je vais pas voter parce que mon vote sert à rien
-- Pourquoi tu penses que ton vote ne sert à rien?
-- Parce qu'une fois élus ils font le contraire de ce qu'ils ont promis
-- Je sais. En fait c'est plutôt logique vu le fonctionnement des
-  instituions. Mais ce n'est pas l'enjeu. L'enjeu c'est d'empêcher
-  l'extrême-droite d'arriver au pouvoir.
+&mdash; Je vais pas voter parce que mon vote sert à rien
+
+&mdash;  Pourquoi tu penses que ton vote ne sert à rien?
+
+&mdash; Parce qu'une fois élus ils font le contraire de ce qu'ils ont promis
+
+&mdash; Je sais. En fait c'est plutôt logique vu le fonctionnement des
+institutions. Mais ce n'est pas l'enjeu. L'enjeu c'est d'empêcher
+l'extrême-droite d'arriver au pouvoir.
 
 Et là vous pouvez rentrer sur *pourquoi* la perspective de l'extrême droite
 au pouvoir vous touche *vous*, personnellement, ou bien vos proches.
